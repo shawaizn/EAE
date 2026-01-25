@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .prose {
+    @apply max-w-none text-slate-700 leading-relaxed;
+  }
+
+  .prose h3 {
+    @apply text-2xl font-semibold text-slate-900 mt-8 mb-4 first:mt-0;
+    letter-spacing: -0.02em;
+  }
+
+  .prose h4 {
+    @apply text-lg font-semibold text-slate-800 mt-6 mb-3;
+    letter-spacing: -0.01em;
+  }
+
+  .prose h5 {
+    @apply text-base font-semibold text-slate-700 mt-4 mb-2;
+    letter-spacing: -0.01em;
+  }
+
+  .prose p {
+    @apply text-base text-slate-700 mb-4 leading-7;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply my-4 pl-6;
+  }
+
+  .prose li {
+    @apply text-base text-slate-700 mb-2 leading-7;
+    margin-left: 0;
+  }
+
+  .prose li > * {
+    @apply mb-0;
+  }
+
+  .prose strong {
+    @apply font-semibold text-slate-900;
+  }
+
+  .prose em {
+    @apply italic text-slate-700;
+  }
+
+  .prose-lg h3 {
+    @apply text-2xl;
+  }
+
+  .prose-lg h4 {
+    @apply text-lg;
+  }
+
+  .prose-lg h5 {
+    @apply text-base;
+  }
+
+  .prose-lg p {
+    @apply text-base;
+  }
+
+  .prose-lg ul,
+  .prose-lg ol {
+    @apply pl-6;
+  }
+
+  .prose-lg li {
+    @apply text-base;
+  }
+
+  article > h3:first-child {
+    @apply mt-0;
+  }
+
+  article > * + h3 {
+    @apply mt-10;
+  }
+
+  article > * + h4 {
+    @apply mt-8;
+  }
+
+  article ul > li > strong:first-child {
+    @apply text-slate-900;
+  }
+
+  article ol > li > strong:first-child {
+    @apply text-slate-900;
+  }
+
+  article ul > li > em:first-child {
+    @apply text-slate-600 italic;
+  }
+
+  article > ol {
+    counter-reset: item;
+    padding-left: 0;
+  }
+
+  article > ol > li {
+    counter-increment: item;
+    margin-bottom: 0.875rem;
+    padding-left: 1.75rem;
+    position: relative;
+  }
+
+  article > ol > li:before {
+    content: counter(item);
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 600;
+    color: #0ea5e9;
+  }
+
+  article ul > li {
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  article ul > li:before {
+    content: '•';
+    position: absolute;
+    left: 0.5rem;
+    color: #0ea5e9;
+    font-weight: bold;
+  }
+
+  article p + p {
+    @apply mt-3;
+  }
+
+  article h4 + ul {
+    @apply mt-3;
+  }
+
+  article h4 + ol {
+    @apply mt-3;
+  }
+
+  article h5 + p {
+    @apply mt-2;
+  }
+
+  article h5 + ul {
+    @apply mt-2;
+  }
+
+  /* Notes-specific styling: larger typography for better readability */
+  .prose-notes h3 {
+    @apply text-4xl;
+  }
+
+  .prose-notes h4 {
+    @apply text-2xl mt-10;
+  }
+
+  .prose-notes h5 {
+    @apply text-xl;
+  }
+
+  .prose-notes p {
+    @apply text-lg leading-8;
+  }
+
+  .prose-notes li {
+    @apply text-lg leading-8;
+  }
+
+  .prose-notes ul,
+  .prose-notes ol {
+    @apply my-5;
+  }
+
+  .prose-notes strong {
+    @apply font-bold text-slate-900;
+  }
+
+  /* Activities-specific styling: enhanced visual structure for action clarity */
+  .prose-activities h4 {
+    @apply text-3xl font-bold text-slate-900 mt-16 mb-6;
+    padding-bottom: 12px;
+    border-bottom: 3px solid rgb(34, 197, 94);
+    background: linear-gradient(to right, rgba(34, 197, 94, 0.1), transparent);
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 8px;
+  }
+
+  .prose-activities h5 {
+    @apply text-xl font-bold text-slate-900 mt-8 mb-3;
+    background-color: rgba(59, 130, 246, 0.12);
+    padding: 10px 14px;
+    border-radius: 6px;
+    border-left: 4px solid rgb(59, 130, 246);
+  }
+
+  .prose-activities h5 + p {
+    @apply mt-3 text-lg text-slate-700;
+  }
+
+  .prose-activities p {
+    @apply mb-4 text-lg;
+  }
+
+  .prose-activities strong {
+    @apply font-bold text-slate-900;
+  }
+
+  .prose-activities em {
+    @apply italic text-slate-700;
+    background-color: rgba(59, 130, 246, 0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  .prose-activities ul {
+    @apply my-4 pl-6;
+  }
+
+  .prose-activities li {
+    @apply text-lg text-slate-700 mb-3 leading-8;
+    margin-left: 0;
+  }
+
+  .prose-activities ul ul {
+    @apply mt-3 mb-3;
+  }
+
+  .prose-activities ul ul li {
+    @apply mb-2 text-lg;
+  }
+
+  /* Larger spacing between action blocks */
+  .prose-activities h5 {
+    padding: 12px 14px !important;
+    margin-top: 32px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .prose-activities h5:first-of-type {
+    margin-top: 6px !important;
+  }
+
+  /* Add visual separation between sections */
+  .prose-activities h4 + h5 {
+    margin-top: 16px !important;
+  }
+
+  /* Spacing after lists within actions */
+  .prose-activities h5 + ul,
+  .prose-activities h5 + ol,
+  .prose-activities h5 + p {
+    margin-bottom: 24px !important;
+  }
+}
