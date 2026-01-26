@@ -86,7 +86,6 @@ export const lessonMedia = {
       <li>Practice and apply: Continue with assigned tasks to reinforce understanding.</li>
       </ul>
       <p>This video explains the evolution of AI technology, focusing on deep learning and the breakthrough of Transformers in 2017. It describes how deep learning uses multiple neural network layers to recognize complex patterns, and how Transformers solved the AI memory problem, enabling AI to understand context and language more effectively, as seen in models like ChatGPT.</p>
-      <h4>Edit</h4>
       <h4>Action items</h4>
       <p>Understand the concept of deep learning and its use of multiple neural network layers.</p>
       <p>Recognize the importance of the Transformer architecture in solving AI's memory problem.</p>
