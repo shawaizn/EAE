@@ -28,14 +28,14 @@ export function Dashboard() {
   };
 
   const moduleNarratives = [
-    "Unlock how AI works so you can multiply your capability",
-    "See your tool clearly so you multiply its effectiveness",
-    "Understand the game so you multiply your strategic advantage",
-    "Master judgment so you multiply your genuine strength, not AI's",
-    "Learn to communicate so you multiply AI's output quality",
-    "Build systems that multiply your edge over time",
-    "Position yourself so your AI multiplies irreplaceable value",
-    "Build your custom GPT - the ultimate multiplier for your work"
+    "This module shows you how AI fits into the pattern of tools that change how humans work. It's not magic—it's just the next tool in a long line of tools.",
+    "This module shows you exactly how AI works—from the moment you type something to the moment it responds, all the way up to AI systems that can make decisions and take actions by themselves.",
+    "This module shows you that same journey for AI—how it goes from research labs into the thousands of products you see on your phone, and how to make sense of all of them.",
+    "This module shows you exactly how to use AI correctly so it becomes your superpower instead of your downfall. You'll learn when to use it, when not to, and how to protect yourself from the traps.",
+    "This module shows you how to communicate with AI so it becomes your personal expert assistant instead of a generic tool. Everyone has access to the same AI—what separates the people getting 10x better results is how they ask questions.",
+    "This module shows you how to stop collecting AI tools and start building systems that work for you. You'll learn how the best AI users actually operate and make AI part of their daily work.",
+    "This module shows you the game that's changing right now—the AI era. You'll learn how to position yourself to WIN in this changing world and what skills to build that will stay useful no matter what happens.",
+    "Build your implementation strategy and best practices for using AI effectively in your work and life."
   ];
 
   // Calculate progress for all modules from modulesData
