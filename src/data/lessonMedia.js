@@ -27,7 +27,7 @@ export const lessonMedia = {
       <li>Stay mindful that technology adoption drives ongoing change.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Pick one task you need to do today</li>\n<li>Paste it into ChatGPT or Claude</li>\n<li>Use the output for your work</li>\n</ol>'
+    activity: '<ol>\\n<li>Pick one task you need to do today</li>\\n<li>Paste it into ChatGPT or Claude</li>\\n<li>Use the output for your work</li>\\n</ol>'
   },
 
   "1-2": {
@@ -61,7 +61,7 @@ export const lessonMedia = {
       <li>Recognize the significance of the backpropagation algorithm in enabling neural networks to learn from mistakes</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Go to ChatGPT or Claude</li>\n<li>Use this prompt:</li>\n</ol>\n\n<strong>"Create a visual timeline showing the evolution of AI with these key events:\n<ul>\n<li>1950: Turing Test proposed</li>\n<li>1956: \'Artificial Intelligence\' term coined</li>\n<li>1957: Perceptron invented</li>\n<li>1966: ELIZA chatbot created</li>\n<li>1970s: AI Winter begins</li>\n<li>1986: Backpropagation algorithm developed</li>\n</ul>\n\n<p>Format as a clear, visual timeline I can save and build on later."</strong></p>\n<ol>\n<li>Save it - you\'ll add to this in next lessons</li>\n</ol>'
+    activity: '<ol>\\n<li>Go to ChatGPT or Claude</li>\\n<li>Use this prompt:</li>\\n</ol>\\n\\n<strong>"Create a visual timeline showing the evolution of AI with these key events:\\n<ul>\\n<li>1950: Turing Test proposed</li>\\n<li>1956: \\'
   },
 
   "1-3": {
@@ -86,12 +86,11 @@ export const lessonMedia = {
       <li>Practice and apply: Continue with assigned tasks to reinforce understanding.</li>
       </ul>
       <p>This video explains the evolution of AI technology, focusing on deep learning and the breakthrough of Transformers in 2017. It describes how deep learning uses multiple neural network layers to recognize complex patterns, and how Transformers solved the AI memory problem, enabling AI to understand context and language more effectively, as seen in models like ChatGPT.</p>
+      <h4>Edit</h4>
       <h4>Action items</h4>
-      <p>Understand the concept of deep learning and its use of multiple neural network layers.</p>
-      <p>Recognize the importance of the Transformer architecture in solving AI's memory problem.</p>
-      <p>Appreciate how AI models like ChatGPT leverage these advancements to understand and generate human language effectively.</p>
+      <p>Understand the concept of deep learning and its use of multiple neural network layers. Recognize the importance of the Transformer architecture in solving AI's memory problem. Appreciate how AI models like ChatGPT leverage these advancements to understand and generate human language effectively.</p>
     `,
-    activity: '<ol>\n<li>Open your timeline from Lesson 2</li>\n<li>Use this prompt:</li>\n</ol>\n\n<strong>"Add these new events to my existing timeline:\n<ul>\n<li>2010: Deep Learning revolution (AI using multiple layers for complex patterns)</li>\n<li>2017: Transformers architecture (solved the memory problem in AI)</li>\n<li>2020s: ChatGPT era (AI that understands full conversation context)</li>\n</ul>\n\n<p>Keep the same visual format and integrate these seamlessly with the previous events."</strong></p>\n<ol>\n<li>Save the updated version - you\'ll add Lesson 4 events next</li>\n</ol>'
+    activity: '<ol>\\n<li>Open your timeline from Lesson 2</li>\\n<li>Use this prompt:</li>\\n</ol>\\n\\n<strong>"Add these new events to my existing timeline:\\n<ul>\\n<li>2010: Deep Learning revolution (AI using multiple layers for complex patterns)</li>\\n<li>2017: Transformers architecture (solved the memory problem in AI)</li>\\n<li>2020s: ChatGPT era (AI that understands full conversation context)</li>\\n</ul>\\n\\n<p>Keep the same visual format and integrate these seamlessly with the previous events."</strong></p>\\n<ol>\\n<li>Save the updated version - you\\'
   },
 
   "1-4": {
@@ -123,7 +122,7 @@ export const lessonMedia = {
       <li>Remember that AI is fundamentally pattern recognition and prediction, without true understanding or emotions, and can make mistakes.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Use this prompt to complete your timeline:</li>\n</ol>\n\n<strong>"Add these final events to my timeline:\n<ul>\n<li>2022-2024: LLMs & Generative AI (AI predicts patterns through compression and generalization)</li>\n<li>2023: Multi-modal AI (one AI model handles text, images, and more)</li>\n<li>2024: AI Explosion (massive data + computational power + investment + breakthroughs)</li>\n</ul>\n\n<p>Keep the visual timeline format consistent with all previous events."</strong></p>\n<ol>\n<li>Save the complete timeline as an image</li>\n<li>Upload the image and use this prompt:</li>\n</ol>\n\n<strong>"Convert this AI evolution timeline into a clear written summary for someone with no technical background. Explain what each major phase meant and why it mattered."</strong>\n<ol>\n<li>Use this summary for your work</li>\n</ol>'
+    activity: '<ol>\\n<li>Use this prompt to complete your timeline:</li>\\n</ol>\\n\\n<strong>"Add these final events to my timeline:\\n<ul>\\n<li>2022-2024: LLMs & Generative AI (AI predicts patterns through compression and generalization)</li>\\n<li>2023: Multi-modal AI (one AI model handles text, images, and more)</li>\\n<li>2024: AI Explosion (massive data + computational power + investment + breakthroughs)</li>\\n</ul>\\n\\n<p>Keep the visual timeline format consistent with all previous events."</strong></p>\\n<ol>\\n<li>Save the complete timeline as an image</li>\\n<li>Upload the image and use this prompt:</li>\\n</ol>\\n\\n<strong>"Convert this AI evolution timeline into a clear written summary for someone with no technical background. Explain what each major phase meant and why it mattered."</strong>\\n<ol>\\n<li>Use this summary for your work</li>\\n</ol>'
   },
 
   "2-1": {
@@ -156,7 +155,7 @@ export const lessonMedia = {
       <li>Know that AI generates responses by predicting the next most likely token based on patterns learned from training data.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Pick any project you need to start (document, plan, analysis, proposal)</li>\n<li>Use this prompt:</li>\n</ol>\n\n<strong>"Create a structured first draft for [YOUR PROJECT TYPE - e.g., project proposal, essay, business plan, report].\n<p>Include:</p>\n<ul>\n<li>[KEY REQUIREMENT 1]</li>\n<li>[KEY REQUIREMENT 2]</li>\n<li>[KEY REQUIREMENT 3]</li>\n</ul>\n\n<p>Provide a complete framework with baseline content I can refine."</strong></p>\n<ol>\n<li>Use the structured draft as your starting point</li>\n<li>Refine with your expertise, judgment, and specific details</li>\n</ol>'
+    activity: '<ol>\\n<li>Pick any project you need to start (document, plan, analysis, proposal)</li>\\n<li>Use this prompt:</li>\\n</ol>\\n\\n<strong>"Create a structured first draft for [YOUR PROJECT TYPE - e.g., project proposal, essay, business plan, report].\\n<p>Include:</p>\\n<ul>\\n<li>[KEY REQUIREMENT 1]</li>\\n<li>[KEY REQUIREMENT 2]</li>\\n<li>[KEY REQUIREMENT 3]</li>\\n</ul>\\n\\n<p>Provide a complete framework with baseline content I can refine."</strong></p>\\n<ol>\\n<li>Use the structured draft as your starting point</li>\\n<li>Refine with your expertise, judgment, and specific details</li>\\n</ol>'
   },
 
   "2-2": {
@@ -189,7 +188,7 @@ export const lessonMedia = {
       <li>Use AI interactions knowing they rely on pre-trained knowledge, not ongoing learning.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Pick a project needing both general knowledge and your specific context</li>\n<li>Use this prompt structure:</li>\n</ol>\n\n<strong>"Create [WHAT YOU NEED] using this specific information:\n</strong>Context:<strong>\n<ul>\n<li>[RELEVANT DETAIL 1]</li>\n<li>[RELEVANT DETAIL 2]</li>\n<li>[RELEVANT DETAIL 3]</li>\n</ul>\n\n</strong>Requirements:<strong>\n<ul>\n<li>[SPECIFIC REQUIREMENT 1]</li>\n<li>[SPECIFIC REQUIREMENT 2]</li>\n</ul>\n\n<p>Combine your general knowledge with my specific context."</strong></p>\n<ol>\n<li>Use the output that integrates both general patterns and your specific information</li>\n</ol>'
+    activity: '<ol>\\n<li>Pick a project needing both general knowledge and your specific context</li>\\n<li>Use this prompt structure:</li>\\n</ol>\\n\\n<strong>"Create [WHAT YOU NEED] using this specific information:\\n</strong>Context:<strong>\\n<ul>\\n<li>[RELEVANT DETAIL 1]</li>\\n<li>[RELEVANT DETAIL 2]</li>\\n<li>[RELEVANT DETAIL 3]</li>\\n</ul>\\n\\n</strong>Requirements:<strong>\\n<ul>\\n<li>[SPECIFIC REQUIREMENT 1]</li>\\n<li>[SPECIFIC REQUIREMENT 2]</li>\\n</ul>\\n\\n<p>Combine your general knowledge with my specific context."</strong></p>\\n<ol>\\n<li>Use the output that integrates both general patterns and your specific information</li>\\n</ol>'
   },
 
   "2-3": {
@@ -223,7 +222,7 @@ export const lessonMedia = {
       <li>Know that ChatGPT is a fine-tuned assistant model built on the base GPT model.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Pick a task you need help with</li>\n<li>Start with: "You are a [EXPERT TYPE]"</li>\n<li>Get the output - if not quite right, refine the role</li>\n<li>Test variations:</li>\n</ol>\n<ul>\n<li>Make role more specific</li>\n<li>Add context about audience</li>\n<li>Specify expertise area</li>\n</ul>\n<ol>\n<li>Use the best version</li>\n</ol>\n\n<strong>Example progression:</strong>\n<ul>\n<li>Try 1: "You are a writer" → too generic</li>\n<li>Try 2: "You are a technical writer" → better</li>\n<li>Try 3: "You are a technical writer explaining complex topics to beginners" → exactly what you need</li>\n</ul>'
+    activity: '<ol>\\n<li>Pick a task you need help with</li>\\n<li>Start with: "You are a [EXPERT TYPE]"</li>\\n<li>Get the output - if not quite right, refine the role</li>\\n<li>Test variations:</li>\\n</ol>\\n<ul>\\n<li>Make role more specific</li>\\n<li>Add context about audience</li>\\n<li>Specify expertise area</li>\\n</ul>\\n<ol>\\n<li>Use the best version</li>\\n</ol>\\n\\n<strong>Example progression:</strong>\\n<ul>\\n<li>Try 1: "You are a writer" → too generic</li>\\n<li>Try 2: "You are a technical writer" → better</li>\\n<li>Try 3: "You are a technical writer explaining complex topics to beginners" → exactly what you need</li>\\n</ul>'
   },
 
   "2-4": {
@@ -258,7 +257,7 @@ export const lessonMedia = {
       <li>Apply the autonomy ladder concept to better understand AI's current and future potential.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Pick a complex task you need to do</li>\n<li>Use this framework:</li>\n</ol>\n\n<strong>"Break down this task into clear steps: [YOUR COMPLEX TASK]\n<p>For each step, help me identify:</p>\n<ol>\n<li>What exactly needs to happen</li>\n<li>Whether it\'s mechanical or requires judgment</li>\n<li>What leverage could apply (AI, template, delegation, automation, or personal execution)</li>\n</ol>\n\n<p>Provide 5-10 numbered steps."</strong></p>\n<ol>\n<li>Review the breakdown</li>\n<li>Mark each step: AI / Template / Delegate / Automate / Do yourself</li>\n<li>Execute following your leverage map</li>\n</ol>'
+    activity: '<ol>\\n<li>Pick a complex task you need to do</li>\\n<li>Use this framework:</li>\\n</ol>\\n\\n<strong>"Break down this task into clear steps: [YOUR COMPLEX TASK]\\n<p>For each step, help me identify:</p>\\n<ol>\\n<li>What exactly needs to happen</li>\\n<li>Whether it\\'
   },
 
   "2-5": {
@@ -288,14 +287,14 @@ export const lessonMedia = {
       <li>Use the five evaluation questions to determine the autonomy level of any AI system.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Pick something you do regularly where you have specific knowledge others don\'t</li>\n<li>Document what only you know:</li>\n</ol>\n\n<strong>"For this task: [YOUR TASK]\n<p>Help me articulate my specific knowledge by asking about:</p>\n<ul>\n<li>My preferences and quality standards</li>\n<li>Specific requirements for my situation</li>\n<li>My methods or approaches that work</li>\n<li>Things I\'ve learned from experience</li>\n<li>Common mistakes I avoid</li>\n</ul>\n\n<p>Ask me questions to extract this knowledge."</strong></p>\n<ol>\n<li>Answer AI\'s questions</li>\n<li>Use the documented knowledge with AI for your task</li>\n<li>Save the knowledge for reuse</li>\n</ol>'
+    activity: '<ol>\\n<li>Pick something you do regularly where you have specific knowledge others don\\'
   },
 
   "2-6": {
     video: '<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/kwDsCgZNYbM0uLJnYhHo?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>',
     guide: '<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/OmAsKZtZRrGKyZHskGrZ?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>',
     summary: `
-      <h4>5 Key Questions to Evaluate Any AI Tool</h4>
+      <p>5 Key Questions to Evaluate Any AI Tool</p>
       <h4>Overview of the Framework</h4>
       <ul>
       <li>Shawaiz shares five essential questions to assess any AI system’s capabilities, use cases, and trustworthiness.</li>
@@ -323,7 +322,7 @@ export const lessonMedia = {
       <li>Evaluate the AI's decision-making authority to establish appropriate trust and responsibility levels.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Pick a specific task you need AI for</li>\n<li>Search systematically:</li>\n</ol>\n\n<strong>Search in these locations:</strong>\n<ul>\n<li><strong>AI Directories:</strong> Product Hunt, There\'s An AI For That, Futurepedia, AI Tool Guru</li>\n<li><strong>Communities:</strong> Reddit (r/ArtificialIntelligence, r/ChatGPT, task-specific subreddits)</li>\n<li><strong>Social:</strong> Twitter/X (#AITools, #AI + your task), LinkedIn AI communities</li>\n<li><strong>Reviews:</strong> YouTube "[your task] AI tools 2025"</li>\n</ul>\n\n<ol>\n<li>Document what you find:</li>\n</ol>\n<ul>\n<li>Tool names</li>\n<li>Key features</li>\n<li>Pricing/access</li>\n<li>User feedback</li>\n</ul>\n<ol>\n<li>Keep this research for when you need a solution</li>\n</ol>'
+    activity: '<ol>\\n<li>Pick a specific task you need AI for</li>\\n<li>Search systematically:</li>\\n</ol>\\n\\n<strong>Search in these locations:</strong>\\n<ul>\\n<li><strong>AI Directories:</strong> Product Hunt, There\\'
   },
 
   "3-1": {
@@ -356,7 +355,7 @@ export const lessonMedia = {
       <li>Use the AI pyramid metaphor to comprehend why many AI products exist, powered by a few underlying AI models.</li>
       </ul>
     `,
-    activity: '<p>Pick one real decision you\'re facing this week (work, school, business, life - anything with real consequences). Use AI to think it through systematically.</p>\n<strong>Use this decision clarity prompt:</strong>\n<strong>"I\'m facing a decision and need help thinking through it clearly.\n</strong>The decision I\'m making:<strong>\n<p>[Describe specifically what you\'re choosing between - be concrete]</p>\n</strong>What I\'m trying to achieve:<strong>\n<p>[Your goal - what does success look like?]</p>\n</strong>My constraints:<strong>\n<p>[Time, money, resources, skills, other limitations]</p>\n</strong>What worries me:<strong>\n<p>[Risks, uncertainties, things that could go wrong]</p>\n</strong>Information I have:<strong>\n<p>[What you know - data, past experience, context]</p>\n</strong>Information I\'m missing:<strong>\n<p>[What you wish you knew but don\'t]</p>\n<p>Help me make this decision by:</p>\n<ol>\n<li></strong>Clarifying the real question<strong> - Restate my decision more clearly if I\'m framing it wrong</li>\n</ol>\n\n<ol>\n<li></strong>Generating options<strong> - Give me 5 different ways I could approach this, including options I haven\'t considered</li>\n</ol>\n\n<ol>\n<li></strong>Analyzing trade-offs<strong> - For each option, show:</li>\n</ol>\n<ul>\n<li>What I gain</li>\n<li>What I give up</li>\n<li>Hidden costs or risks</li>\n<li>Second-order effects (what happens after the immediate result)</li>\n</ul>\n\n<ol>\n<li></strong>Stress-testing my thinking<strong> - Where am I:</li>\n</ol>\n<ul>\n<li>Making assumptions that might be wrong?</li>\n<li>Overlooking important factors?</li>\n<li>Being influenced by bias (recency, confirmation, sunk cost)?</li>\n<li>Optimizing for the wrong thing?</li>\n</ul>\n\n<ol>\n<li></strong>Identifying decision criteria<strong> - What factors should actually drive this choice? Rank them by importance.</li>\n</ol>\n\n<ol>\n<li></strong>Red-teaming<strong> - Argue against my current leading option. What\'s the strongest case for NOT doing what I\'m leaning toward?</li>\n</ol>\n\n<ol>\n<li></strong>Recommending next steps<strong> - Don\'t tell me what to decide. Tell me:</li>\n</ol>\n<ul>\n<li>What information would most change this decision?</li>\n<li>What small test could I run to learn more?</li>\n<li>What questions should I ask myself or others?</li>\n<li>When should I actually make this decision (now vs later)?</li>\n</ul>\n\n<p>Present this as a structured analysis, not a conversation. I need clarity, not endless back-and-forth."</strong></p>'
+    activity: '<p>Pick one real decision you\\'
   },
 
   "3-2": {
@@ -389,7 +388,7 @@ export const lessonMedia = {
       <li>Determine if an AI tool is stand-alone or integrated to understand how it fits into existing workflows</li>
       </ul>
     `,
-    activity: '<p>Upload your actual work documents to an AI tool, then ask it questions only YOUR knowledge can answer. Experience the difference.</p>\n<strong>Step-by-step:</strong>\n<ol>\n<li><strong>Pick 3-5 documents from your real work/studies:</strong></li>\n</ol>\n<ul>\n<li>Reports, notes, policies, research, meeting notes, project docs</li>\n<li>PDFs, Word docs, text files, slides - anything with information you reference regularly</li>\n</ul>\n\n<ol>\n<li><strong>Choose your RAG tool</strong> (pick what\'s easiest):</li>\n</ol>\n<ul>\n<li><strong>Claude Projects</strong> (best) - Create new project, upload files</li>\n<li><strong>ChatGPT</strong> - Upload files in conversation</li>\n<li><strong>NotebookLM</strong> (free, Google) - Upload and organize sources</li>\n<li><strong>Perplexity Spaces</strong> - Upload to create searchable knowledge base</li>\n</ul>\n\n<ol>\n<li><strong>Upload your documents</strong> to the tool (5 minutes max)</li>\n</ol>\n\n<ol>\n<li><strong>Use this comprehensive RAG testing prompt:</strong></li>\n</ol>\n\n<strong>"I\'ve uploaded documents containing my specific knowledge/work. I want to test how well you can work with MY information versus generic knowledge.\n</strong>My uploaded documents contain:<strong>\n<p>[Brief description - e.g. "Q3 project meeting notes", "Course lecture materials for Biology", "Client contract templates and past proposals"]</p>\n</strong>What I want to extract from these documents:<strong>\n<p>[Your goal - e.g. "Find all action items", "Understand key concepts for exam", "Reference successful proposal language"]</p>\n<p>Test your retrieval and reasoning over MY documents by:</p>\n</strong>1. Document Summary:<strong>\n<ul>\n<li>List all documents you can access</li>\n<li>Briefly describe what each contains</li>\n<li>Identify the most important/relevant ones for my goal</li>\n</ul>\n\n</strong>2. Specific Extraction:<strong>\n<ul>\n<li>[Insert your specific question - examples below]</li>\n<li>Cite exactly where you found each piece of information (document name, section, page if available)</li>\n<li>If information conflicts across documents, show me both versions</li>\n</ul>\n\n</strong>3. Cross-Document Analysis:<strong>\n<ul>\n<li>What patterns or themes appear across multiple documents?</li>\n<li>Are there any contradictions or inconsistencies I should know about?</li>\n<li>What\'s missing that I\'d expect to find?</li>\n</ul>\n\n</strong>4. Actionable Synthesis:<strong>\n<ul>\n<li>Based ONLY on these documents, what are the key takeaways for [my specific need]?</li>\n<li>What questions do these documents NOT answer that I might need to address separately?</li>\n</ul>\n\n</strong>Example specific questions to insert in step 2:<strong>\n<ul>\n<li>"Summarize all decisions made in [specific meeting/document]"</li>\n<li>"Extract all action items assigned to [person/team]"</li>\n<li>"What\'s our established position on [topic] based on these materials?"</li>\n<li>"Compare the approach in [document A] versus [document B]"</li>\n<li>"Find all mentions of [concept/term] and explain how it\'s used"</li>\n<li>"What were the main concerns or risks identified about [topic]?"</li>\n<li>"Pull all relevant examples or case studies related to [subject]"</li>\n</ul>\n\n<p>Always cite your sources. I need to verify everything against the original documents."</strong></p>\n<ol>\n<li><strong>Compare results:</strong></li>\n</ol>\n<ul>\n<li>Ask same question to regular AI (without documents)</li>\n<li>Notice: Regular AI gives generic answer or says "I don\'t have access..."</li>\n<li>Your RAG tool gives specific answer with citations from YOUR documents</li>\n<li>Experience the difference</li>\n</ul>'
+    activity: '<p>Upload your actual work documents to an AI tool, then ask it questions only YOUR knowledge can answer. Experience the difference.</p>\\n<strong>Step-by-step:</strong>\\n<ol>\\n<li><strong>Pick 3-5 documents from your real work/studies:</strong></li>\\n</ol>\\n<ul>\\n<li>Reports, notes, policies, research, meeting notes, project docs</li>\\n<li>PDFs, Word docs, text files, slides - anything with information you reference regularly</li>\\n</ul>\\n\\n<ol>\\n<li><strong>Choose your RAG tool</strong> (pick what\\'
   },
 
   "3-3": {
@@ -423,7 +422,7 @@ export const lessonMedia = {
       <li>Consider progressing through levels as your familiarity and needs with AI tools evolve.</li>
       </ul>
     `,
-    activity: '<p>Create a simple AI governance framework for yourself or your team - the foundation you\'ll expand as you scale usage.</p>\n<strong>Use this governance foundation prompt:</strong>\n<strong>"I need to create basic AI governance guidelines for [myself/my team/my organization].\n</strong>Context:<strong>\n<ul>\n<li></strong>Who will use AI:<strong> [Role/department/team description]</li>\n<li></strong>What they\'ll use it for:<strong> [Specific tasks and workflows]</li>\n<li></strong>Sensitive areas:<strong> [What data, decisions, or content involve risk]</li>\n<li></strong>Current AI tools:<strong> [What\'s already being used, if any]</li>\n<li></strong>Biggest concerns:<strong> [Privacy, accuracy, bias, job security, other worries]</li>\n</ul>\n\n<p>Create a practical AI governance framework with these components:</p>\n</strong>1. Usage Guidelines - When TO Use AI:<strong>\n<ul>\n<li>Create a simple checklist of tasks/situations where AI use is:</li>\n<li>✅ Encouraged (high value, low risk)</li>\n<li>⚠️ Allowed with caution (useful but requires verification)</li>\n<li>❌ Prohibited (too risky, regulated, or sensitive)</li>\n</ul>\n\n</strong>2. Usage Guidelines - When NOT to Use AI:<strong>\n<ul>\n<li>List specific situations where AI should NOT be used</li>\n<li>Explain WHY for each (helps people understand, not just follow rules)</li>\n<li>Include consequences of violation</li>\n</ul>\n\n</strong>3. Quality Checks:<strong>\n<ul>\n<li>For each AI use case, define:</li>\n<li>What "good output" looks like (specific criteria)</li>\n<li>Required verification steps before using AI output</li>\n<li>Who reviews or approves (if needed)</li>\n<li>How to handle mistakes or hallucinations</li>\n</ul>\n\n</strong>4. Data Protection:<strong>\n<ul>\n<li>What information can/cannot be input into AI tools?</li>\n<li>How to handle:</li>\n<li>Customer data</li>\n<li>Employee information</li>\n<li>Financial data</li>\n<li>Confidential/proprietary information</li>\n<li>Regulated content (GDPR, HIPAA, etc. if applicable)</li>\n</ul>\n\n</strong>5. Accountability:<strong>\n<ul>\n<li>Who is responsible when AI makes mistakes?</li>\n<li>How to report AI errors or concerns</li>\n<li>Process for reviewing AI decisions</li>\n<li>Who has final say when AI disagrees with humans?</li>\n</ul>\n\n</strong>6. Training Requirements:<strong>\n<ul>\n<li>What must people know before using AI for work?</li>\n<li>How will they learn safe, effective usage?</li>\n<li>Who can answer questions about AI use?</li>\n</ul>\n\n</strong>7. Evaluation Metrics:<strong>\n<ul>\n<li>How will we measure if AI is helping or hurting?</li>\n<li>Time saved</li>\n<li>Quality maintained/improved</li>\n<li>Errors caught</li>\n<li>User satisfaction</li>\n<li>Specific KPIs for our use cases</li>\n</ul>\n\n</strong>8. Review Schedule:<strong>\n<ul>\n<li>How often do we review and update these guidelines?</li>\n<li>Who leads the review?</li>\n<li>What triggers an emergency review (incidents, new tools, policy changes)?</li>\n</ul>\n\n<p>Make this:</p>\n<ul>\n<li>Practical (people will actually follow it)</li>\n<li>Specific (clear yes/no decisions, not vague principles)</li>\n<li>Expandable (foundation we build on as we learn)</li>\n<li>Enforcement-ready (clear consequences and accountability)</li>\n</ul>\n\n<p>Format as a simple document with sections, checklists, and decision trees where helpful."</strong></p>'
+    activity: '<p>Create a simple AI governance framework for yourself or your team - the foundation you\\'
   },
 
   "3-4": {
@@ -528,7 +527,7 @@ export const lessonMedia = {
       <li>Use AI responsibly and selectively, focusing on tasks it is designed for to maintain mental sharpness.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Go to ChatGPT and open the GPT store</li>\n<li>Find and talk to the "Monday" custom GPT (or similar planning GPT)</li>\n<li>Browse the GPT store for 5 minutes</li>\n<li>Find one GPT that could help with something you actually do</li>\n</ol>'
+    activity: '<ol>\\n<li>Go to ChatGPT and open the GPT store</li>\\n<li>Find and talk to the "Monday" custom GPT (or similar planning GPT)</li>\\n<li>Browse the GPT store for 5 minutes</li>\\n<li>Find one GPT that could help with something you actually do</li>\\n</ol>'
   },
 
   "4-2": {
@@ -562,7 +561,7 @@ export const lessonMedia = {
       <li>Develop the skill to balance head and heart work in the AI age for optimal productivity</li>
       </ul>
     `,
-    activity: '<ol>\n<li>List everything you do in a typical day (work tasks, not personal)</li>\n<li>Use this prompt:</li>\n</ol>\n\n<strong>"I want to identify quick AI wins in my daily work using free AI tools (ChatGPT, Claude, Google Gemini). \n<p>Here\'s what I do in a typical day:</p>\n<p>[PASTE YOUR TASK LIST]</p>\n<p>For each task, tell me:</p>\n<ol>\n<li>Is this head work (mechanical/pattern-based) or heart work (judgment/creativity)?</li>\n<li>If it\'s head work, show me EXACTLY how to use FREE AI for it:</li>\n</ol>\n<ul>\n<li>Specific prompt to use</li>\n<li>Whether to upload images/documents</li>\n<li>Which free AI features apply</li>\n</ul>\n<ol>\n<li>Estimate time savings per use</li>\n</ol>\n\n<p>Focus on things I could start doing TODAY with zero cost and zero setup."</strong></p>\n<ol>\n<li>Review all the AI solutions</li>\n<li>Use one of them for real work today</li>\n</ol>'
+    activity: '<ol>\\n<li>List everything you do in a typical day (work tasks, not personal)</li>\\n<li>Use this prompt:</li>\\n</ol>\\n\\n<strong>"I want to identify quick AI wins in my daily work using free AI tools (ChatGPT, Claude, Google Gemini). \\n<p>Here\\'
   },
 
   "4-3": {
@@ -597,7 +596,7 @@ export const lessonMedia = {
       <li>Use AI as a tool to handle mechanical tasks while focusing on personal growth and learning.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Pick a task you need to do this week</li>\n<li>Write down: What\'s the surface goal? (what it seems you need to do)</li>\n<li>Ask yourself: Who benefits if I do this well? What am I supposed to learn or build?</li>\n<li>Write down: What\'s the real goal?</li>\n<li>Do the task focused on the real goal</li>\n</ol>'
+    activity: '<ol>\\n<li>Pick a task you need to do this week</li>\\n<li>Write down: What\\'
   },
 
   "4-4": {
@@ -620,7 +619,7 @@ export const lessonMedia = {
       <li>Aim for a balanced approach—neither full automation nor complete manual effort—to maximize learning, quality, and time savings.</li>
       </ul>
     `,
-    activity: '<p>Answer these 7 questions about your work. Be honest - there are no right answers.</p>\n<strong>Question 1: What makes time disappear?</strong>\n<p>Think of 3 activities where you\'re so absorbed that hours pass without noticing. After you finish, do you feel energized or drained?</p>\n<strong>Question 2: What makes you actually proud?</strong>\n<p>Think of something you accomplished recently that made you genuinely proud - not because others praised you, but because it mattered to YOU. What did you do? Why did it feel important?</p>\n<strong>Question 3: Your best day - what are you doing?</strong>\n<p>Imagine your ideal day at work or in your studies. What are you doing? What part makes you feel most like yourself? Most confident?</p>\n<strong>Question 4: What do you care about that others don\'t?</strong>\n<p>What\'s something you care deeply about even if nobody else seems to notice or value it as much as you do? Why does it matter to you?</p>\n<strong>Question 5: What drains you?</strong>\n<p>What task or activity always drains your energy? Even if you\'re good at it or get praised for it, it just empties you. What feels different about that compared to things that excite you?</p>\n<strong>Question 6: "Should" vs "Actually Care"</strong>\n<p>Think of something you did mainly because you felt you "should" but it didn\'t feel meaningful to you. How did that feel compared to doing something you actually cared about?</p>\n<strong>Question 7: What would you keep for yourself?</strong>\n<p>If AI could do one of your regular tasks perfectly, which task would you gladly give away? And which would you want to keep for yourself - because it feels important, fun, or part of who you are?</p>\n<strong>After answering:</strong> Questions 1-4 = Your heart work (protect from AI). Questions 5-6 = Head work candidates (delegate to AI). Question 7 = Your boundary line.'
+    activity: '<p>Answer these 7 questions about your work. Be honest - there are no right answers.</p>\\n<strong>Question 1: What makes time disappear?</strong>\\n<p>Think of 3 activities where you\\'
   },
 
   "4-5": {
@@ -655,7 +654,7 @@ export const lessonMedia = {
       <li>Provide sufficient context when using AI to get valuable and specific outputs</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Use this prompt:</li>\n</ol>\n\n<strong>"I want you to act as a mirror for my behavior patterns. \n<p>I\'ll describe situations or decisions. Your job is to:</p>\n<ol>\n<li>Point out patterns you notice in what I\'m sharing</li>\n<li>Ask questions that make me think deeper</li>\n<li>Reflect back what my actions might reveal about my priorities</li>\n</ol>\n\n<p>You\'re not here to give advice or tell me what to do. Just show me what you see and ask questions that make me think.</p>\n<p>Ready when you are."</strong></p>\n<ol>\n<li>Share 3 recent situations from your week</li>\n<li>Read what AI reflects back</li>\n<li>Pick one pattern to think about</li>\n</ol>'
+    activity: '<ol>\\n<li>Use this prompt:</li>\\n</ol>\\n\\n<strong>"I want you to act as a mirror for my behavior patterns. \\n<p>I\\'
   },
 
   "4-6": {
@@ -720,7 +719,7 @@ export const lessonMedia = {
       <li>Focus on communication quality to save time and get better AI results.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Pick something you want AI to do</li>\n<li>Write your first instinct prompt</li>\n<li>Now add: length, audience/purpose, tone, and one specific requirement</li>\n<li>Compare both outputs</li>\n</ol>'
+    activity: '<ol>\\n<li>Pick something you want AI to do</li>\\n<li>Write your first instinct prompt</li>\\n<li>Now add: length, audience/purpose, tone, and one specific requirement</li>\\n<li>Compare both outputs</li>\\n</ol>'
   },
 
   "5-2": {
@@ -762,7 +761,7 @@ export const lessonMedia = {
       <li>Provide detailed context to help AI understand your needs better</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Pick something you need AI to create today</li>\n<li>Fill in each COSTAR element:</li>\n</ol>\n\n<strong>"Create [YOUR REQUEST]\n</strong>Context:<strong> [Your situation and background]\n</strong>Objective:<strong> [What you want and why]\n</strong>Style:<strong> [How it should be written]\n</strong>Tone:<strong> [The mood or feeling]\n</strong>Audience:<strong> [Who it\'s for]\n</strong>Response format:<strong> [Structure and length you need]"</strong>\n<ol>\n<li>Use the complete prompt</li>\n<li>Get your result</li>\n</ol>'
+    activity: '<ol>\\n<li>Pick something you need AI to create today</li>\\n<li>Fill in each COSTAR element:</li>\\n</ol>\\n\\n<strong>"Create [YOUR REQUEST]\\n</strong>Context:<strong> [Your situation and background]\\n</strong>Objective:<strong> [What you want and why]\\n</strong>Style:<strong> [How it should be written]\\n</strong>Tone:<strong> [The mood or feeling]\\n</strong>Audience:<strong> [Who it\\'
   },
 
   "5-3": {
@@ -797,7 +796,7 @@ export const lessonMedia = {
       <li>Control output by specifying format, length, tone, style, elements, and constraints</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Go to one of these prompt libraries:</li>\n</ol>\n<ul>\n<li>FlowGPT</li>\n<li>PromptBase (free section)</li>\n<li>Reddit r/ChatGPTPromptGenius</li>\n<li>Awesome ChatGPT Prompts (GitHub)</li>\n</ul>\n<ol>\n<li>Search for a task you do regularly</li>\n<li>Find 2-3 prompts that look useful</li>\n<li>Try one on your actual work</li>\n<li>Save the ones that work</li>\n</ol>'
+    activity: '<ol>\\n<li>Go to one of these prompt libraries:</li>\\n</ol>\\n<ul>\\n<li>FlowGPT</li>\\n<li>PromptBase (free section)</li>\\n<li>Reddit r/ChatGPTPromptGenius</li>\\n<li>Awesome ChatGPT Prompts (GitHub)</li>\\n</ul>\\n<ol>\\n<li>Search for a task you do regularly</li>\\n<li>Find 2-3 prompts that look useful</li>\\n<li>Try one on your actual work</li>\\n<li>Save the ones that work</li>\\n</ol>'
   },
 
   "5-4": {
@@ -830,7 +829,7 @@ export const lessonMedia = {
       <li>Combine expert knowledge and context to create effective meta prompts for high-quality AI outputs</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Write a prompt for something you actually need</li>\n<li>Use this meta-prompt:</li>\n</ol>\n\n<strong>"I\'m trying to get you to help me with: [DESCRIBE WHAT YOU WANT]\n<p>Here\'s my current prompt:</p>\n<p>[PASTE YOUR PROMPT]</p>\n<p>The output isn\'t quite right. Analyze my prompt and tell me:</p>\n<ol>\n<li>What\'s missing or unclear</li>\n<li>What I should add for better results</li>\n<li>Give me an improved version I can use right now</li>\n</ol>\n\n<p>Make your improved prompt specific and complete."</strong></p>\n<ol>\n<li>Use AI\'s improved prompt</li>\n<li>Get better results</li>\n</ol>'
+    activity: '<ol>\\n<li>Write a prompt for something you actually need</li>\\n<li>Use this meta-prompt:</li>\\n</ol>\\n\\n<strong>"I\\'
   },
 
   "5-5": {
@@ -863,7 +862,7 @@ export const lessonMedia = {
       <li>Combine expert knowledge and context to create effective meta prompts for high-quality AI outputs</li>
       </ul>
     `,
-    activity: '<p>Pick a problem and match it to the right technique:</p>\n<strong>Need expertise?</strong>\n<strong>"You are a [SPECIFIC ROLE] with [X YEARS EXPERIENCE] in [SPECIALIZATION]. [YOUR REQUEST]"</strong>\n<strong>Need consistency?</strong>\n<strong>"Here are 2 examples of what I want:\n<p>Example 1: [EXAMPLE]</p>\n<p>Example 2: [EXAMPLE]</p>\n<p>Now create one for [YOUR TOPIC] in the same style."</strong></p>\n<strong>Need reasoning?</strong>\n<strong>"Before answering, think through this step-by-step:\n<ul>\n<li>First consider [FACTOR 1]</li>\n<li>Then [FACTOR 2]</li>\n<li>Then weigh them</li>\n</ul>\n<p>Show your thinking, then give your conclusion."</strong></p>\n<strong>Need options?</strong>\n<strong>"Provide 3 completely different approaches to [PROBLEM].\n<p>For each: explain the approach, list pros and cons, estimate difficulty.</p>\n<p>Then recommend which is best for [YOUR SITUATION]."</strong></p>\n<strong>Need creativity within bounds?</strong>\n<strong>"Create [WHAT YOU WANT].\n<p>Requirements:</p>\n<ul>\n<li>Exactly [LENGTH]</li>\n<li>Must include [REQUIREMENT 1], [REQUIREMENT 2]</li>\n<li>Tone: [SPECIFIC]</li>\n<li>Format: [SPECIFIC]"</strong></li>\n</ul>\n\n<p>Apply the matching technique to your actual problem.</p>'
+    activity: '<p>Pick a problem and match it to the right technique:</p>\\n<strong>Need expertise?</strong>\\n<strong>"You are a [SPECIFIC ROLE] with [X YEARS EXPERIENCE] in [SPECIALIZATION]. [YOUR REQUEST]"</strong>\\n<strong>Need consistency?</strong>\\n<strong>"Here are 2 examples of what I want:\\n<p>Example 1: [EXAMPLE]</p>\\n<p>Example 2: [EXAMPLE]</p>\\n<p>Now create one for [YOUR TOPIC] in the same style."</strong></p>\\n<strong>Need reasoning?</strong>\\n<strong>"Before answering, think through this step-by-step:\\n<ul>\\n<li>First consider [FACTOR 1]</li>\\n<li>Then [FACTOR 2]</li>\\n<li>Then weigh them</li>\\n</ul>\\n<p>Show your thinking, then give your conclusion."</strong></p>\\n<strong>Need options?</strong>\\n<strong>"Provide 3 completely different approaches to [PROBLEM].\\n<p>For each: explain the approach, list pros and cons, estimate difficulty.</p>\\n<p>Then recommend which is best for [YOUR SITUATION]."</strong></p>\\n<strong>Need creativity within bounds?</strong>\\n<strong>"Create [WHAT YOU WANT].\\n<p>Requirements:</p>\\n<ul>\\n<li>Exactly [LENGTH]</li>\\n<li>Must include [REQUIREMENT 1], [REQUIREMENT 2]</li>\\n<li>Tone: [SPECIFIC]</li>\\n<li>Format: [SPECIFIC]"</strong></li>\\n</ul>\\n\\n<p>Apply the matching technique to your actual problem.</p>'
   },
 
   "5-6": {
@@ -898,7 +897,7 @@ export const lessonMedia = {
       <li>Use AI to handle hard work and amplify your unique skills, not to replace your genius.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Use this communication coaching prompt:</li>\n</ol>\n\n<strong>"You are an executive communication coach with 15 years of experience helping professionals improve clarity, precision, and impact in their written communications. You\'ve worked with leaders across business, education, and consulting to eliminate vague requests and build communication that gets results.\n<p>I want you to coach me on my actual messages. I\'ll share requests, questions, or messages I\'ve sent to people (boss, teacher, client, team) where the response wasn\'t what I wanted.</p>\n<p>For each one, analyze my communication and tell me:</p>\n</strong>What\'s Missing:<strong>\n<ul>\n<li>What information did I assume they knew but didn\'t state?</li>\n<li>What context did I leave out?</li>\n<li>What specific details were unclear?</li>\n</ul>\n\n</strong>What\'s Weak:<strong>\n<ul>\n<li>Where am I being vague or general instead of specific?</li>\n<li>What questions would someone need to ask me for clarity?</li>\n<li>What could be misinterpreted?</li>\n</ul>\n\n</strong>How to Fix It:<strong>\n<ul>\n<li>Rewrite my message with the missing information included</li>\n<li>Show me exactly what to add and why it matters</li>\n<li>Explain the communication principle I should remember</li>\n</ul>\n\n</strong>Start with this message I sent:<strong>\n<p>[PASTE YOUR ACTUAL MESSAGE]</p>\n<p>Be direct and specific like you would with an executive client. I want to improve, not feel good."</strong></p>\n<ol>\n<li>Review AI\'s analysis</li>\n<li>Note the specific weakness pattern</li>\n<li>Rewrite using AI\'s guidance</li>\n<li>Apply this insight to future communications</li>\n</ol>'
+    activity: '<ol>\\n<li>Use this communication coaching prompt:</li>\\n</ol>\\n\\n<strong>"You are an executive communication coach with 15 years of experience helping professionals improve clarity, precision, and impact in their written communications. You\\'
   },
 
   "6-1": {
@@ -933,7 +932,7 @@ export const lessonMedia = {
       <li>Avoid getting stuck on mastering individual AI tools; instead, develop a strategic approach to using AI effectively</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Think of your most repeated task (reports, content, analysis, anything weekly/monthly)</li>\n<li>Paste this into ChatGPT/Claude:</li>\n</ol>\n\n<strong>"I repeatedly [describe task]. Create a 5-step workflow that:\n<ul>\n<li>Focuses on WHAT outcomes I need (not tools)</li>\n<li>Works with any AI or no AI</li>\n<li>Shows: Step → What I decide → What AI executes</li>\n</ul>\n<p>Format as a simple reusable checklist."</strong></p>\n<ol>\n<li>Copy the workflow into a note titled "My [Task] Workflow"</li>\n</ol>'
+    activity: '<ol>\\n<li>Think of your most repeated task (reports, content, analysis, anything weekly/monthly)</li>\\n<li>Paste this into ChatGPT/Claude:</li>\\n</ol>\\n\\n<strong>"I repeatedly [describe task]. Create a 5-step workflow that:\\n<ul>\\n<li>Focuses on WHAT outcomes I need (not tools)</li>\\n<li>Works with any AI or no AI</li>\\n<li>Shows: Step → What I decide → What AI executes</li>\\n</ul>\\n<p>Format as a simple reusable checklist."</strong></p>\\n<ol>\\n<li>Copy the workflow into a note titled "My [Task] Workflow"</li>\\n</ol>'
   },
 
   "6-2": {
@@ -966,7 +965,7 @@ export const lessonMedia = {
       <li>Integrate AI tools selectively into existing systems for optimal effectiveness.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Answer these 3 questions in a note:</li>\n</ol>\n<ul>\n<li>What task takes me the most time each week?</li>\n<li>What work do I procrastinate on because it\'s tedious?</li>\n<li>What bottleneck slows down my best work?</li>\n</ul>\n\n<ol>\n<li>Pick ONE answer</li>\n</ol>\n\n<ol>\n<li>Use your AI tool finding skills from Module 2 Lesson 6 (search FlowGPT, Product Hunt, There\'s An AI For That, etc.) to find a tool for that specific problem</li>\n</ol>\n\n<ol>\n<li>Bookmark one tool to try this week</li>\n</ol>'
+    activity: '<ol>\\n<li>Answer these 3 questions in a note:</li>\\n</ol>\\n<ul>\\n<li>What task takes me the most time each week?</li>\\n<li>What work do I procrastinate on because it\\'
   },
 
   "6-3": {
@@ -1001,7 +1000,7 @@ export const lessonMedia = {
       <li>Focus on one to three key updates weekly and make informed decisions based on them.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Pick 1-2 AI news sources (examples: TLDR AI newsletter, Ben\'s Bites, The Rundown AI)</li>\n<li>Schedule 20 minutes once per week to check them</li>\n<li>This week: Read your sources, note 1-3 things worth trying</li>\n<li>Ignore everything else</li>\n</ol>'
+    activity: '<ol>\\n<li>Pick 1-2 AI news sources (examples: TLDR AI newsletter, Ben\\'
   },
 
   "6-4": {
@@ -1034,7 +1033,7 @@ export const lessonMedia = {
       <li>Decide to adopt, park, or reject the tool based on consistent time savings and quality outcomes</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Pick one AI tool that passed your filter</li>\n<li>Define your goal: "Can this save me 30%+ time on [specific task] while keeping quality?"</li>\n<li>Use it on 2-3 real examples of that task (not demo/test data)</li>\n<li>Decide: Adopt (integrate it), Park (revisit in 3 months), or Reject (doesn\'t deliver)</li>\n</ol>'
+    activity: '<ol>\\n<li>Pick one AI tool that passed your filter</li>\\n<li>Define your goal: "Can this save me 30%+ time on [specific task] while keeping quality?"</li>\\n<li>Use it on 2-3 real examples of that task (not demo/test data)</li>\\n<li>Decide: Adopt (integrate it), Park (revisit in 3 months), or Reject (doesn\\'
   },
 
   "6-5": {
@@ -1069,7 +1068,7 @@ export const lessonMedia = {
       <li>Prioritize desired outcomes and processes over the implementation of individual AI tools.</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Open the AI tool you use most (ChatGPT, Claude, Gemini, etc.)</li>\n<li>Go to Settings</li>\n<li>Spend 5 minutes exploring what features exist</li>\n<li>Turn on or try ONE thing that looks useful</li>\n</ol>'
+    activity: '<ol>\\n<li>Open the AI tool you use most (ChatGPT, Claude, Gemini, etc.)</li>\\n<li>Go to Settings</li>\\n<li>Spend 5 minutes exploring what features exist</li>\\n<li>Turn on or try ONE thing that looks useful</li>\\n</ol>'
   },
 
   "6-6": {
@@ -1103,7 +1102,42 @@ export const lessonMedia = {
       <li>Use human review for medium and high stakes tasks to ensure quality and accountability</li>
       </ul>
     `,
-    activity: '<p>Next 3 times you use AI for something important (email to boss, client work, anything with consequences):</p>\n<p>Before using the output, do a 30-second check:</p>\n<ol>\n<li>Read first and last sentence</li>\n<li>Scan for any numbers/facts</li>\n<li>Ask yourself: "Would I look stupid if this was wrong?"</li>\n</ol>\n\n<p>If yes → read the whole thing</p>\n<p>If no → use it</p>'
+    activity: '<p>Next 3 times you use AI for something important (email to boss, client work, anything with consequences):</p>\\n<p>Before using the output, do a 30-second check:</p>\\n<ol>\\n<li>Read first and last sentence</li>\\n<li>Scan for any numbers/facts</li>\\n<li>Ask yourself: "Would I look stupid if this was wrong?"</li>\\n</ol>\\n\\n<p>If yes → read the whole thing</p>\\n<p>If no → use it</p>'
+  },
+
+  "6-7": {
+    video: '<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/vuLjQwOVhQJ074tCnw2X?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>',
+    guide: '<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/JTWAJzeaS1Ntk8QHugt3?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>',
+    summary: `
+      <h4>Building Effective AI Playbooks for Lasting Results</h4>
+      <h4>Overview</h4>
+      <ul>
+      <li>Shawaiz explains how advanced AI playbooks give users a powerful, long-term edge over those who rely on scattered tools or chase quick wins.</li>
+      <li>Tier 3 users focus on documented, repeatable processes that combine human strategy with AI capabilities for compounding results.</li>
+      </ul>
+      <h4>Key Concepts and Methodology</h4>
+      <ul>
+      <li>A playbook is a step-by-step, documented process marking where AI and human roles intersect, adaptable as tools or goals change.</li>
+      <li>Ideal playbook uses include research, writing, studying, project planning, content creation, and any routine involving clear steps.</li>
+      <li>The five core steps for high-quality outputs: identify research angles, extract relevant arguments, structure logic, express clearly, and ensure flow/strength—these remain, even as AI handles execution.</li>
+      </ul>
+      <h4>Actionable Takeaways</h4>
+      <ul>
+      <li>Focus on systems, not just tools, to build a lasting advantage.</li>
+      <li>Document and regularly update your processes to improve efficiency and save time.</li>
+      <li>Use AI strategically: test new tech briefly, then go deep on the best fits.</li>
+      <li>Stay adaptable—let AI handle more, but always maintain clarity on what you do versus what AI does.</li>
+      <li>Start building your first "what" system documented as a playbook for greatest impact.</li>
+      </ul>
+      <p>This video lesson focuses on the concept of AI playbooks as a strategic tool for tier 3 users to build efficient, repeatable processes that integrate AI for tasks such as research, writing, and project planning. It emphasizes the importance of mastering systems over tools, strategic filtering, and long-term thinking to gain a compound advantage in AI usage. The lesson also outlines a detailed example of creating a playbook for producing a well-researched essay, highlighting the consistent process steps and the evolving role of AI in executing them</p>
+      <h4>Action items</h4>
+      <ul>
+      <li>Develop and document repeatable processes as AI playbooks integrating AI at each step.</li>
+      <li>Focus on mastering systems and strategic filtering rather than dabbling in many tools.</li>
+      <li>Continuously refine and adapt playbooks over time to maintain a competitive advantage</li>
+      </ul>
+    `,
+    activity: '<p>Replace with actual activity content</p>'
   },
 
   "7-1": {
@@ -1138,13 +1172,14 @@ export const lessonMedia = {
       <li>Learn to use AI strategically to enhance market value and career longevity</li>
       </ul>
     `,
-    activity: '<ol>\n<li>Make two lists in a note:</li>\n</ol>\n\n<strong>Declining Value (AI does it better):</strong>\n<ul>\n<li>Skills AI handles well now</li>\n</ul>\n\n<strong>Rising Value (Human advantage):</strong>\n<ul>\n<li>Skills only humans can do well</li>\n</ul>\n\n<ol>\n<li>Look at your current role/studies - which list does most of your time go to?</li>\n<li>Identify ONE rising-value skill to develop this month</li>\n</ol>'
+    activity: '<ol>\\n<li>Make two lists in a note:</li>\\n</ol>\\n\\n<strong>Declining Value (AI does it better):</strong>\\n<ul>\\n<li>Skills AI handles well now</li>\\n</ul>\\n\\n<strong>Rising Value (Human advantage):</strong>\\n<ul>\\n<li>Skills only humans can do well</li>\\n</ul>\\n\\n<ol>\\n<li>Look at your current role/studies - which list does most of your time go to?</li>\\n<li>Identify ONE rising-value skill to develop this month</li>\\n</ol>'
   },
 
   "7-2": {
     video: '<p class="text-gray-600">Video content for Module 7, Lesson 2 will be available soon.</p>',
     guide: '<p class="text-gray-600">Interactive guide for Module 7, Lesson 2 will be available soon.</p>',
     summary: `
+      
       <h4>Skills for Tomorrow</h4>
       <p>This lesson explores the critical skills that will remain valuable in an AI-powered future, focusing on capabilities that complement rather than compete with AI systems.</p>
       <h4>Key Topics</h4>
@@ -1154,14 +1189,16 @@ export const lessonMedia = {
       <li>Building adaptive learning capabilities</li>
       <li>Understanding how to work effectively alongside AI tools</li>
       </ul>
+    
     `,
-    activity: '<ol>\n<li>Pick ONE competitive advantage to develop this week:</li>\n</ol>\n<ul>\n<li>Experience (try something new, face a challenge)</li>\n<li>Purpose-driven creativity (create something with intention)</li>\n<li>Judgment under pressure (make a hard call)</li>\n<li>Empathy in action (truly help someone)</li>\n</ul>\n\n<ol>\n<li>Do it</li>\n<li>Reflect: What did I learn that AI never could?</li>\n</ol>'
+    activity: '<ol>\\n<li>Pick ONE competitive advantage to develop this week:</li>\\n</ol>\\n<ul>\\n<li>Experience (try something new, face a challenge)</li>\\n<li>Purpose-driven creativity (create something with intention)</li>\\n<li>Judgment under pressure (make a hard call)</li>\\n<li>Empathy in action (truly help someone)</li>\\n</ul>\\n\\n<ol>\\n<li>Do it</li>\\n<li>Reflect: What did I learn that AI never could?</li>\\n</ol>'
   },
 
   "7-3": {
     video: '<p class="text-gray-600">Video content for Module 7, Lesson 3 will be available soon.</p>',
     guide: '<p class="text-gray-600">Interactive guide for Module 7, Lesson 3 will be available soon.</p>',
     summary: `
+      
       <h4>Building Your Personal Strategy</h4>
       <p>This lesson guides you through creating a personalized strategy for thriving in the AI era, balancing technical skills with human-centered capabilities.</p>
       <h4>Key Topics</h4>
@@ -1171,14 +1208,16 @@ export const lessonMedia = {
       <li>Balancing technical AI literacy with human skills</li>
       <li>Setting realistic milestones and tracking progress</li>
       </ul>
+    
     `,
-    activity: '<p>This week, use AI to unlock one capability you don\'t currently have. Not to do something faster - to do something you literally can\'t do right now.</p>\n<strong>Use this prompt:</strong>\n<strong>"I want to use AI to unlock a capability I don\'t currently have.\n<p>Here\'s my situation:</p>\n<ul>\n<li>What I\'m currently good at: [list your existing skills]</li>\n<li>What I wish I could do but can\'t: [specific capability you lack - be concrete]</li>\n<li>Why I can\'t do it now: [what\'s blocking you - knowledge gap, technical skill, time, resources]</li>\n<li>What unlocking this would let me create: [specific output or result you\'d produce]</li>\n<li>My available time this week: [realistic amount]</li>\n</ul>\n\n<p>Help me use AI to unlock this capability by:</p>\n<ol>\n<li></strong>Breaking down the capability<strong> - What do I actually need to learn/understand to do this? Give me the essential components, not everything.</li>\n</ol>\n\n<ol>\n<li></strong>AI as unlock tool<strong> - Give me a step-by-step process to use AI to help me gain this capability. Show me how AI enhances MY ability, not replaces it.</li>\n</ol>\n\n<ol>\n<li></strong>Verification method<strong> - How do I know I actually gained the capability vs AI just doing it for me? What\'s the test?</li>\n</ol>\n\n<ol>\n<li></strong>This week\'s proof<strong> - Give me ONE specific thing to create this week that proves I unlocked this capability. Make it small but real.</li>\n</ol>\n\n<ol>\n<li></strong>Common traps<strong> - What mistakes do people make when trying to unlock this capability with AI? How do I avoid them?</li>\n</ol>\n\n<ol>\n<li></strong>Next level<strong> - Once I prove I can do this, what\'s the next capability to unlock?</li>\n</ol>\n\n<p>Make this practical for someone with [available time] this week. I want to actually DO something I couldn\'t do before and have proof I can do it, not just learn about it.</p>\n<p>Focus on unlocking MY capability, not having AI do it for me."</strong></p>'
+    activity: '<p>This week, use AI to unlock one capability you don\\'
   },
 
   "7-4": {
     video: '<p class="text-gray-600">Video content for Module 7, Lesson 4 will be available soon.</p>',
     guide: '<p class="text-gray-600">Interactive guide for Module 7, Lesson 4 will be available soon.</p>',
     summary: `
+      
       <h4>Staying Ahead of Change</h4>
       <p>This lesson provides strategies for maintaining relevance and adaptability as AI technology continues to evolve rapidly.</p>
       <h4>Key Topics</h4>
@@ -1188,14 +1227,16 @@ export const lessonMedia = {
       <li>Building networks and communities for ongoing growth</li>
       <li>Recognizing and adapting to emerging trends</li>
       </ul>
+    
     `,
-    activity: '<p>Score yourself 1-5 on each asset, pick your lowest, improve it this month:</p>\n<strong>Asset 1 - AI Skills:</strong> Can you use AI strategically? (1=no, 5=expert)\n<strong>Asset 2 - Human Skills:</strong> Are you developing empathy, judgment, courage? (1=weak, 5=strong)\n<strong>Asset 3 - Experience:</strong> Are you building things, not just consuming? (1=no, 5=constantly)\n<strong>Asset 4 - Flexibility:</strong> Can you learn new things quickly? (1=rigid, 5=adaptable)\n<p>Pick lowest score → Create plan to improve it this month</p>'
+    activity: '<p>Score yourself 1-5 on each asset, pick your lowest, improve it this month:</p>\\n<strong>Asset 1 - AI Skills:</strong> Can you use AI strategically? (1=no, 5=expert)\\n<strong>Asset 2 - Human Skills:</strong> Are you developing empathy, judgment, courage? (1=weak, 5=strong)\\n<strong>Asset 3 - Experience:</strong> Are you building things, not just consuming? (1=no, 5=constantly)\\n<strong>Asset 4 - Flexibility:</strong> Can you learn new things quickly? (1=rigid, 5=adaptable)\\n<p>Pick lowest score → Create plan to improve it this month</p>'
   },
 
   "7-5": {
     video: '<p class="text-gray-600">Video content for Module 7, Lesson 5 will be available soon.</p>',
     guide: '<p class="text-gray-600">Interactive guide for Module 7, Lesson 5 will be available soon.</p>',
     summary: `
+      
       <h4>Your Next Steps</h4>
       <p>This lesson helps you consolidate your learning and create an actionable plan for moving forward with confidence in the AI era.</p>
       <h4>Key Topics</h4>
@@ -1205,6 +1246,7 @@ export const lessonMedia = {
       <li>Identifying resources and support systems</li>
       <li>Committing to ongoing growth and adaptation</li>
       </ul>
+    
     `,
     activity: '<p>Replace with actual activity content</p>'
   },
@@ -1213,6 +1255,7 @@ export const lessonMedia = {
     video: '<p class="text-gray-600">Video content for Module 8, Lesson 1 will be available soon.</p>',
     guide: '<p class="text-gray-600">Interactive guide for Module 8, Lesson 1 will be available soon.</p>',
     summary: `
+      
       <h4>Getting Started with AI Tools</h4>
       <p>This lesson provides practical guidance for selecting and beginning to use AI tools effectively in your work or studies.</p>
       <h4>Key Topics</h4>
@@ -1222,6 +1265,7 @@ export const lessonMedia = {
       <li>Understanding pricing models and feature sets</li>
       <li>Setting clear objectives before adopting new tools</li>
       </ul>
+    
     `,
     activity: '<p>Replace with actual activity content</p>'
   },
@@ -1230,6 +1274,7 @@ export const lessonMedia = {
     video: '<p class="text-gray-600">Video content for Module 8, Lesson 2 will be available soon.</p>',
     guide: '<p class="text-gray-600">Interactive guide for Module 8, Lesson 2 will be available soon.</p>',
     summary: `
+      
       <h4>Building AI Workflows</h4>
       <p>This lesson teaches you how to design effective workflows that combine human judgment with AI capabilities for optimal results.</p>
       <h4>Key Topics</h4>
@@ -1239,6 +1284,7 @@ export const lessonMedia = {
       <li>Documenting workflows for consistency and improvement</li>
       <li>Balancing automation with human oversight</li>
       </ul>
+    
     `,
     activity: '<p>Replace with actual activity content</p>'
   },
@@ -1247,6 +1293,7 @@ export const lessonMedia = {
     video: '<p class="text-gray-600">Video content for Module 8, Lesson 3 will be available soon.</p>',
     guide: '<p class="text-gray-600">Interactive guide for Module 8, Lesson 3 will be available soon.</p>',
     summary: `
+      
       <h4>Team Collaboration with AI</h4>
       <p>This lesson covers best practices for using AI effectively within teams while maintaining quality and consistency.</p>
       <h4>Key Topics</h4>
@@ -1256,6 +1303,7 @@ export const lessonMedia = {
       <li>Fostering a culture of experimentation and learning</li>
       <li>Ensuring quality and accountability in team AI workflows</li>
       </ul>
+    
     `,
     activity: '<p>Replace with actual activity content</p>'
   },
@@ -1264,6 +1312,7 @@ export const lessonMedia = {
     video: '<p class="text-gray-600">Video content for Module 8, Lesson 4 will be available soon.</p>',
     guide: '<p class="text-gray-600">Interactive guide for Module 8, Lesson 4 will be available soon.</p>',
     summary: `
+      
       <h4>Measuring AI Impact</h4>
       <p>This lesson teaches you how to track and evaluate the effectiveness of your AI implementations using clear metrics.</p>
       <h4>Key Topics</h4>
@@ -1273,6 +1322,7 @@ export const lessonMedia = {
       <li>Conducting regular reviews and adjustments</li>
       <li>Balancing quantitative and qualitative measures</li>
       </ul>
+    
     `,
     activity: '<p>Replace with actual activity content</p>'
   },
@@ -1281,6 +1331,7 @@ export const lessonMedia = {
     video: '<p class="text-gray-600">Video content for Module 8, Lesson 5 will be available soon.</p>',
     guide: '<p class="text-gray-600">Interactive guide for Module 8, Lesson 5 will be available soon.</p>',
     summary: `
+      
       <h4>Continuous Improvement</h4>
       <p>This lesson focuses on building systems for ongoing optimization and refinement of your AI practices.</p>
       <h4>Key Topics</h4>
@@ -1290,12 +1341,9 @@ export const lessonMedia = {
       <li>Iterating on workflows based on measured results</li>
       <li>Building sustainable AI practices for long-term success</li>
       </ul>
+    
     `,
     activity: '<p>Replace with actual activity content</p>'
-  },
-
-  getLesson: (moduleId, lessonId) => {
-    const key = `${moduleId}-${lessonId}`;
-    return lessonMedia[key] || null;
   }
+
 };
