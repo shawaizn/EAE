@@ -1,5 +1,6 @@
 import { modulesData } from '../data/modulesData';
 export const MODULE_TITLES = modulesData.map(m => m.title);
+export const LESSON_TITLES = modulesData.flatMap(m => m.lessons.map(l => l.title));
 
 export const CATEGORIES = ['notes', 'activities', 'practice_questions', 'resources'];
 
