@@ -144,8 +144,8 @@ export function LessonPage() {
             <div className="p-4 bg-gray-50">
               <h3 className="font-semibold text-gray-900">Activity</h3>
             </div>
-            <div className="p-4 text-gray-600">
-              <p>[Activity content will be added here]</p>
+            <div className="p-4 text-gray-700">
+              <div className="prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: lessonMedia_.activity }} />
             </div>
           </div>
 
