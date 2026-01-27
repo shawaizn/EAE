@@ -49,7 +49,7 @@ function App() {
             path="/dashboard"
             element={
               <ProtectedRoute>
-                <Layout user={user} onSignOut={signOut}>
+                <Layout user={user} onSignOut={signOut} hideDashboardHeader={true}>
                   <Dashboard />
                 </Layout>
               </ProtectedRoute>
