@@ -1,17 +1,12 @@
 import { modulesData } from '../data/modulesData';
-export const MODULE_TITLES = [
-  'What is AI?',
-  'Today\'s AI - From Chatbots to Agents',
-  'The AI Market',
-  'When to Use AI (and When Not)',
-  'Speaking AI - Prompting Mastery',
-  'Using AI Like the Top 1%',
-  'Your Future Strategy in the AI Era'
-];
+export const MODULE_TITLES = modulesData.map(m => m.title);
 
 export const CATEGORIES = ['notes', 'activities', 'practice_questions', 'resources'];
 
-export function calculateProgress(completions, totalLessons = 35) {
+export function calculateProgress(completions, totalLessons = null) {
+  if (totalLessons === null) {
+    totalLessons = modulesData.reduce((sum, m) => sum + m.lessons.length, 0);
+  }
   const totalPossible = totalLessons * 4;
 
   if (totalPossible === 0) return 0;
@@ -40,21 +35,25 @@ export function getLessonKey(moduleId, lessonId) {
   return `${moduleId}-${lessonId}`;
 }
 
-// Convert (moduleId, lessonId) to global lesson number (1-35)
-// Module 1, Lesson 1 = 1
-// Module 1, Lesson 5 = 5
-// Module 2, Lesson 1 = 6
-// Module 2, Lesson 5 = 10
-// Module 7, Lesson 5 = 35
+// Convert (moduleId, lessonId) to global lesson number
 export function getLessonNumber(moduleId, lessonId) {
-  return (moduleId - 1) * 5 + lessonId;
+  let lessonNumber = 0;
+  for (let i = 0; i < moduleId - 1; i++) {
+    lessonNumber += modulesData[i].lessons.length;
+  }
+  return lessonNumber + lessonId;
 }
 
 // Reverse: convert global lesson number back to (moduleId, lessonId)
 export function getModuleAndLesson(lessonNumber) {
-  const moduleId = Math.floor((lessonNumber - 1) / 5) + 1;
-  const lessonId = ((lessonNumber - 1) % 5) + 1;
-  return { moduleId, lessonId };
+  let count = 0;
+  for (const module of modulesData) {
+    if (count + module.lessons.length >= lessonNumber) {
+      return { moduleId: module.id, lessonId: lessonNumber - count };
+    }
+    count += module.lessons.length;
+  }
+  return { moduleId: 1, lessonId: 1 };
 }
 
 
