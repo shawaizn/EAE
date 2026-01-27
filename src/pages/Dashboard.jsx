@@ -2,18 +2,11 @@ import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { getLessonNumber } from '../lib/utils';
-import { useEffect } from 'react';
-import { useSidebar } from '../context/SidebarContext';
 import { Link } from 'react-router-dom';
 
 export function Dashboard() {
   const { user } = useAuth();
   const { isComplete, loading } = useProgress(user?.id, []);
-  const { setSidebarOpen } = useSidebar();
-
-  useEffect(() => {
-    setSidebarOpen(true);
-  }, [setSidebarOpen]);
 
   const moduleNarratives = [
     "This module shows you how AI fits into the pattern of tools that change how humans work. It's not magic—it's just the next tool in a long line of tools.",

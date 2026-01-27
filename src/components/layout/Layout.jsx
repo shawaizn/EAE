@@ -1,9 +1,17 @@
 import { Navbar } from './Navbar';
 import { MainSidebar } from './MainSidebar';
 import { useSidebar } from '../../context/SidebarContext';
+import { useLocation, useEffect } from 'react';
 
 export function Layout({ children, user, onSignOut }) {
-  const { sidebarOpen } = useSidebar();
+  const { sidebarOpen, setSidebarOpen } = useSidebar();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.pathname === '/dashboard') {
+      setSidebarOpen(true);
+    }
+  }, [location.pathname, setSidebarOpen]);
 
   return (
     <div className="min-h-screen bg-gray-50">
