@@ -1,7 +1,8 @@
 import { Navbar } from './Navbar';
 import { MainSidebar } from './MainSidebar';
 import { useSidebar } from '../../context/SidebarContext';
-import { useLocation, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export function Layout({ children, user, onSignOut }) {
   const { sidebarOpen, setSidebarOpen } = useSidebar();
