@@ -4,6 +4,7 @@ import { modulesData } from '../data/modulesData';
 import { getLessonNumber } from '../lib/utils';
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
+import { HelpCircle } from 'lucide-react';
 
 export function Dashboard() {
   const { user } = useAuth();
@@ -56,21 +57,19 @@ export function Dashboard() {
 
   const totalProgress = Math.round(allModules.reduce((acc, m) => acc + m.progress, 0) / 8);
   const completedModules = allModules.filter(m => m.progress === 100).length;
+  const totalLessons = modulesData.reduce((acc, m) => acc + m.lessons.length, 0);
+  const completedLessons = allModules.reduce((acc, m) => acc + m.completedLessons, 0);
 
   // Calculate current module only after loading is complete
   const currentModule = !loading ? (() => {
-    // First, find any module in progress (started but not completed)
     const inProgress = allModules.find(m => m.progress > 0 && m.progress < 100);
     if (inProgress) return inProgress;
 
-    // Next, find the first module with 0 progress
     const nextAvailable = allModules.find(m => m.progress === 0);
     if (nextAvailable) return nextAvailable;
 
-    // If all modules are complete, return null (no current module)
     if (allModules.every(m => m.progress === 100)) return null;
 
-    // Fallback to module 1
     return allModules[0];
   })() : null;
 
@@ -78,187 +77,246 @@ export function Dashboard() {
     const current = allModules[index];
     if (current.progress === 100) return 'completed';
     if (current.progress > 0) return 'in-progress';
-    return 'available';
+    return 'locked';
   };
 
-  // Progress ring circumference for SVG animation
-  const circumference = 2 * Math.PI * 45; // radius 45
+  const getInitials = (name) => {
+    return name
+      .split(' ')
+      .map(n => n[0])
+      .join('')
+      .toUpperCase();
+  };
 
   return (
-    <div className="flex-1 flex flex-col min-w-0">
-      {/* Content */}
-      <div className="flex-1 overflow-y-auto bg-white">
-          <div className="w-full px-4 sm:px-6 lg:px-8 py-16">
-          {/* HEADER */}
-          <div className="mb-20 text-center">
-            <h1 className="text-6xl font-black text-gray-900 mb-3 tracking-tight">
-              Multiply Your Potential
+    <div className="flex-1 flex flex-col min-w-0 bg-white">
+      {/* STICKY HEADER */}
+      <header className="sticky top-0 z-40 border-b-2 border-slate-200">
+        <div className="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-cyan-500 to-slate-900 flex items-center justify-center text-white font-black text-sm">
+              ∞
+            </div>
+            <div>
+              <div className="font-black text-sm tracking-wide text-slate-900">Energise</div>
+              <div className="text-xs font-black tracking-widest text-slate-600">AI EDUCATION</div>
+            </div>
+          </div>
+
+          {/* Right Actions */}
+          <div className="flex items-center gap-4">
+            <button className="p-2 hover:bg-slate-100 rounded-lg transition-colors">
+              <HelpCircle size={20} className="text-slate-600" />
+            </button>
+            <div className="w-10 h-10 rounded-full bg-cyan-500 text-white font-black flex items-center justify-center text-sm">
+              {getInitials(userName || 'User')}
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* MAIN CONTENT */}
+      <div className="flex-1 overflow-y-auto">
+        <div className="max-w-7xl mx-auto px-8 py-8">
+          {/* WELCOME SECTION */}
+          <section className="mb-24">
+            <h1 className="text-6xl font-black text-slate-900 mb-4" style={{ letterSpacing: '-0.02em' }}>
+              Welcome Back
             </h1>
-            <p className="text-xl text-gray-700 font-semibold mb-1">
-              Work quicker. Work better. Work bigger.
+            <p className="text-lg text-slate-600 font-semibold">
+              Continue your journey through AI education
             </p>
-            <p className="text-base text-gray-600">
-              More effective, more efficient = more productive
+          </section>
+
+          {/* ABOUT THIS COURSE SECTION */}
+          <section className="mb-24 p-12 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-xl">
+            <h2 className="text-3xl font-black text-slate-900 mb-6" style={{ letterSpacing: '-0.02em' }}>
+              About This Course
+            </h2>
+            <p className="text-base text-slate-700 mb-8 leading-relaxed max-w-3xl">
+              Energise AI Education is a premium, comprehensive course designed for learners aged 15-60 who want to master AI. Over approximately 45 hours across 8 modules, you'll move from foundational concepts to advanced strategies. This isn't about collecting information—it's about building real, actionable capability. We refuse mediocrity and focus on what's right, not what's common.
             </p>
-          </div>
 
-          {/* CURRENT MODULE SECTION */}
-          {currentModule && currentModule.progress !== 100 && (
-            <div className="mb-20 flex justify-center">
-              <div className="w-full max-w-2xl border border-gray-300 rounded-lg p-10">
-                <p className="text-xs font-bold uppercase tracking-widest text-gray-600 mb-3">
-                  You Are Here
+            {/* Stats Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+              <div className="p-6 bg-white border-l-4 border-cyan-500 rounded-lg">
+                <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
+                  Total Duration
                 </p>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                  {currentModule.title}
-                </h2>
-                <p className="text-gray-700 text-base mb-8 leading-relaxed">
-                  {currentModule.narrative}
+                <p className="text-2xl font-black text-slate-900">~45 Hours</p>
+              </div>
+              <div className="p-6 bg-white border-l-4 border-cyan-500 rounded-lg">
+                <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
+                  Modules
                 </p>
-
-                <div className="flex items-center justify-between mb-6">
-                  <span className="text-sm text-gray-600">
-                    {currentModule.completedLessons} of {currentModule.totalLessons} lessons
-                  </span>
-                  <span className="text-3xl font-bold text-gray-900">
-                    {Math.round(currentModule.progress)}%
-                  </span>
-                </div>
-
-                <div className="w-full bg-gray-200 rounded-full h-2">
-                  <div
-                    className="bg-gray-900 h-2 rounded-full transition-all duration-500"
-                    style={{ width: `${currentModule.progress}%` }}
-                  />
-                </div>
+                <p className="text-2xl font-black text-slate-900">8 Modules</p>
+              </div>
+              <div className="p-6 bg-white border-l-4 border-cyan-500 rounded-lg">
+                <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
+                  Format
+                </p>
+                <p className="text-2xl font-black text-slate-900">Self-Paced</p>
               </div>
             </div>
-          )}
 
-          {/* THE MAP - HORIZONTAL FLOW */}
-          <div className="mb-20">
-            <div className="flex justify-center">
-              <div className="w-full px-4">
-                <div className="flex items-end gap-8 py-12 justify-center flex-wrap">
-
-                  {/* Modules */}
-                  {allModules.map((module, index) => {
-                    const state = getModuleState(index);
-                    const isCompleted = state === 'completed';
-                    const isInProgress = state === 'in-progress';
-                    const isAvailable = state === 'available';
-                    const isLast = index === allModules.length - 1;
-
-                    const strokeDashoffset =
-                      circumference - (module.progress / 100) * circumference;
-
-                    return (
-                      <div
-                        key={module.moduleId}
-                        className="flex flex-col items-center"
-                      >
-                        {/* Peak marker for last module */}
-                        {isLast && (
-                          <div className="mb-4 text-4xl">🏔️</div>
-                        )}
-
-                        {/* Progress Ring */}
-                        <div
-                          className="relative w-24 h-24 flex items-center justify-center transition-all duration-300"
-                        >
-                          {/* Ring Background */}
-                          <svg
-                            className="absolute w-24 h-24 transform -rotate-90"
-                            viewBox="0 0 100 100"
-                          >
-                            <circle
-                              cx="50"
-                              cy="50"
-                              r="45"
-                              fill="none"
-                              stroke="#f3f4f6"
-                              strokeWidth="3"
-                            />
-                            {/* Progress Ring */}
-                            <circle
-                              cx="50"
-                              cy="50"
-                              r="45"
-                              fill="none"
-                              stroke={
-                                isCompleted
-                                  ? '#111827'
-                                  : isInProgress
-                                  ? '#111827'
-                                  : '#d1d5db'
-                              }
-                              strokeWidth="3"
-                              strokeDasharray={circumference}
-                              strokeDashoffset={strokeDashoffset}
-                              strokeLinecap="round"
-                              className="transition-all duration-500"
-                            />
-                          </svg>
-
-                          {/* Center Content */}
-                          <div className="relative z-10 text-center">
-                            <div className="text-2xl font-bold text-gray-900">
-                              {isCompleted ? '✓' : isInProgress ? '★' : module.moduleId}
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Module Info */}
-                        <div className="mt-6 text-center">
-                          <h3 className="text-sm font-bold text-gray-900">
-                            Module {module.moduleId}
-                          </h3>
-                          <p className="text-xs text-gray-600 mt-1">
-                            {module.completedLessons}/{module.totalLessons}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* STATS */}
-          <div className="flex justify-center mb-20">
-            <div className="w-full max-w-2xl grid grid-cols-3 gap-6">
-              <div className="p-6 border border-gray-300 rounded-lg text-center">
-                <p className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">
-                  Multiplication
-                </p>
-                <p className="text-4xl font-black text-gray-900">{totalProgress}%</p>
-              </div>
-              <div className="p-6 border border-gray-300 rounded-lg text-center">
-                <p className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">
-                  Completed
-                </p>
-                <p className="text-4xl font-black text-gray-900">{completedModules}/8</p>
-              </div>
-              <div className="p-6 border border-gray-300 rounded-lg text-center">
-                <p className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">
-                  Lessons
-                </p>
-                <p className="text-4xl font-black text-gray-900">
-                  {allModules.reduce((acc, m) => acc + m.completedLessons, 0)}/{modulesData.reduce((acc, m) => acc + m.lessons.length, 0)}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* PHILOSOPHY */}
-          <div className="flex justify-center pb-20">
-            <div className="w-full max-w-2xl p-10 border border-gray-300 rounded-lg text-center">
-              <p className="text-lg leading-relaxed text-gray-900">
-                <span className="font-bold">Use AI. Don't let AI use you.</span> AI is a multiplier. Every module unlocks another dimension of your potential. The summit awaits.
+            {/* Info Box */}
+            <div className="p-6 bg-cyan-50 border-l-4 border-cyan-500">
+              <p className="text-sm font-black uppercase tracking-wider text-slate-900 mb-3">
+                You'll Master:
               </p>
+              <ul className="text-sm text-slate-700 space-y-2">
+                <li>• Foundational AI concepts and how they apply to your work</li>
+                <li>• Advanced prompting techniques to get 10x better results</li>
+                <li>• Strategic thinking about AI tools and when to use them</li>
+                <li>• Building systems and workflows that multiply your productivity</li>
+                <li>• Positioning yourself for success in the AI era</li>
+              </ul>
             </div>
-          </div>
+          </section>
+
+          {/* YOUR PROGRESS SECTION */}
+          <section className="mb-24 p-12 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-xl">
+            <h2 className="text-3xl font-black text-slate-900 mb-8" style={{ letterSpacing: '-0.02em' }}>
+              Your Progress
+            </h2>
+
+            {/* Overall Progress */}
+            <div className="mb-8">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-sm font-semibold text-slate-700">
+                  Overall Completion
+                </span>
+                <span className="text-2xl font-black text-slate-900">
+                  {totalProgress}%
+                </span>
+              </div>
+              <div className="h-4 bg-slate-200 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-cyan-500 transition-all duration-500"
+                  style={{ width: `${totalProgress}%` }}
+                />
+              </div>
+            </div>
+
+            {/* Lesson Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 bg-white border border-slate-200 rounded-lg">
+                <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
+                  Lessons Completed
+                </p>
+                <p className="text-2xl font-black text-slate-900">
+                  {completedLessons} / {totalLessons}
+                </p>
+              </div>
+              <div className="p-6 bg-white border border-slate-200 rounded-lg">
+                <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
+                  Modules Completed
+                </p>
+                <p className="text-2xl font-black text-slate-900">
+                  {completedModules} / 8
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* MODULE TIMELINE SECTION */}
+          <section className="mb-24 p-12 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-xl">
+            <h2 className="text-3xl font-black text-slate-900 mb-8" style={{ letterSpacing: '-0.02em' }}>
+              Module Timeline
+            </h2>
+
+            <div className="space-y-4">
+              {allModules.map((module, index) => {
+                const state = getModuleState(index);
+                const isCompleted = state === 'completed';
+                const isInProgress = state === 'in-progress';
+                const isLocked = state === 'locked';
+
+                let borderClass = 'border-slate-200';
+                let bgClass = 'bg-white';
+                let ringClass = '';
+                let badgeClass = 'bg-slate-100 text-slate-700';
+                let badgeText = 'Locked';
+                let opacityClass = 'opacity-60';
+
+                if (isCompleted) {
+                  borderClass = 'border-cyan-400';
+                  bgClass = 'bg-white';
+                  badgeClass = 'bg-cyan-100 text-cyan-700';
+                  badgeText = 'Completed';
+                  opacityClass = '';
+                } else if (isInProgress) {
+                  borderClass = 'border-slate-900';
+                  bgClass = 'bg-white';
+                  ringClass = 'ring-2 ring-cyan-500';
+                  badgeClass = 'bg-slate-900 text-white';
+                  badgeText = 'Current';
+                  opacityClass = '';
+                }
+
+                return (
+                  <div
+                    key={module.moduleId}
+                    className={`p-6 rounded-lg border-2 ${borderClass} ${bgClass} ${ringClass} ${!isLocked ? '' : opacityClass} transition-all`}
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="flex-1">
+                        <h3 className="text-lg font-black text-slate-900">
+                          Module {module.moduleId}: {module.title}
+                        </h3>
+                        <p className="text-sm text-slate-600 mt-2">
+                          {module.narrative}
+                        </p>
+                      </div>
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ml-4 ${badgeClass}`}>
+                        {badgeText}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center justify-between mt-4">
+                      <span className="text-xs font-semibold text-slate-600">
+                        {module.completedLessons} / {module.totalLessons} lessons
+                      </span>
+                      <span className="text-sm font-black text-slate-900">
+                        ~{Math.ceil(module.totalLessons / 8 * 5)} hours
+                      </span>
+                    </div>
+
+                    {(isCompleted || isInProgress) && (
+                      <div className="mt-4 h-2 bg-slate-200 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-cyan-500 transition-all duration-500"
+                          style={{ width: `${module.progress}%` }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* NEXT STEPS SECTION */}
+          <section className="p-12 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-xl border-2 border-cyan-400 mb-24">
+            <h2 className="text-3xl font-black mb-4" style={{ letterSpacing: '-0.02em' }}>
+              Next Steps
+            </h2>
+            <p className="text-base text-slate-200 mb-8 max-w-2xl leading-relaxed">
+              {currentModule ? (
+                <>
+                  Continue with <span className="font-semibold">{currentModule.title}</span> to keep building your AI mastery. Every lesson completed brings you closer to becoming an AI expert who uses AI strategically to multiply your potential.
+                </>
+              ) : (
+                <>
+                  You've completed all modules! Congratulations on your journey through AI education. Keep applying these concepts to stay ahead in the AI era.
+                </>
+              )}
+            </p>
+            <button className="px-12 py-4 bg-cyan-500 hover:bg-cyan-600 text-slate-900 font-black rounded-lg transition-colors">
+              Continue Learning
+            </button>
+          </section>
         </div>
       </div>
     </div>
