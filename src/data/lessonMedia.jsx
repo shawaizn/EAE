@@ -94,14 +94,78 @@ export const lessonMedia = {
     video: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/RNxXbL03CkgAdrxNTOvJ?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     guide: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/Q2Dqszbr9MQSAn57WmVb?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     summary: `<p>This video explains the market dynamics shaping AI products, focusing on five key forces: competition, cost, business models, access and inequality, and the pace of innovation. It emphasizes the importance of staying flexible with AI tools, understanding frameworks over specific products, and recognizing the economic and competitive factors influencing AI development and accessibility.</p>`,
-    activity: `<p>Replace with actual activity content</p>`
+    activity: `<ol>
+<li>Pick one AI tool you currently use (ChatGPT, Claude, Gemini, or any other)</li>
+<li>Research and document:</li>
+</ol>
+<ul>
+<li>Who controls it (company/organization)?</li>
+<li>What level of control do you have?</li>
+<li>What can't you customize or change?</li>
+<li>What are the limitations?</li>
+</ul>
+<ol>
+<li>Use this prompt to analyze the tool:</li>
+</ol>
+
+<strong>"Analyze [TOOL NAME] in terms of user control:
+<ul>
+<li>What decisions does the company make for me?</li>
+<li>What can I customize or control?</li>
+<li>What are the trade-offs of this control level?</li>
+<li>For my use case [DESCRIBE YOUR USE], is this the right level of control?"</strong></li>
+</ul>
+
+<ol>
+<li>Document your findings and whether this tool's control level fits your needs</li>
+</ol>`
   },
 
   "3-5": {
     video: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/PN8QqQV6WQZ2vtw6pFKr?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     guide: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/riiwY250r8FIdxDua950?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     summary: `<p>This video discusses the impact of AI on jobs and the importance of adapting skills in the face of technological change. It highlights the difference between government and company roles in AI development, the historical lessons from technological shifts like the advent of cars, and emphasizes the necessity of understanding and using AI effectively to stay competitive. The video also outlines the course modules that bridge AI theory to practical application and prepares viewers for responsible AI usage.</p>`,
-    activity: `<p>Replace with actual activity content</p>`
+    activity: `<ol>
+<li>Reflect on your current skills and role</li>
+<li>Use this career adaptation prompt:</li>
+</ol>
+
+<strong>"Help me understand how AI will impact my career and what I should do about it.
+</strong>My current role:<strong> [YOUR JOB TITLE/FIELD]
+</strong>What I do day-to-day:<strong> [BRIEF DESCRIPTION]
+</strong>Skills I use most:<strong> [LIST 3-5 KEY SKILLS]
+
+<p>Based on this information:</p>
+<ol>
+<li></strong>Task Analysis:<strong>
+<ul>
+<li>Which of my tasks could AI automate or augment?</li>
+<li>Which tasks require human judgment, creativity, or emotional intelligence?</li>
+<li>What's my unique value that AI can't replicate?</li>
+</ul>
+</li>
+<li></strong>Skill Evolution:<strong>
+<ul>
+<li>What new skills should I develop to stay relevant?</li>
+<li>How can I use AI to enhance my current strengths?</li>
+<li>What skills are becoming more valuable in an AI-augmented workplace?</li>
+</ul>
+</li>
+<li></strong>Action Plan:<strong>
+<ul>
+<li>Give me 3 specific actions I can take this month to adapt</li>
+<li>Suggest ways to integrate AI into my current workflow</li>
+<li>Identify learning resources for AI tools relevant to my field</li>
+</ul>
+</li>
+</ol>
+
+<p>Be specific and practical. I need actionable guidance, not general advice."</strong></p>
+
+<ol>
+<li>Review the analysis and commit to one action this week</li>
+<li>Document your plan for AI adaptation in your career</li>
+</ol>`
   },
 
   "4-1": {
@@ -143,7 +207,54 @@ export const lessonMedia = {
     video: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/3s9kExpe8YYP00jdfqHk?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     guide: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/rUsJjBk8R7KU71u4L3Vd?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     summary: `<p>The video discusses five key tactics to prevent misuse of AI, emphasizing deliberate and reflective use rather than reflexive reliance. It highlights the importance of maintaining human skills through AI-free periods and self-testing, challenging AI outputs critically, and setting personal rules for AI use. The video also explores the future impact of AI on work, stressing that human qualities like emotion, judgment, and kindness will become increasingly valuable as AI automates routine tasks.</p>`,
-    activity: `<p>Replace with actual activity content</p>`
+    activity: `<ol>
+<li>Create your personal AI usage rules based on the 5 safeguarding tactics:</li>
+</ol>
+
+<strong>Tactic 1: Deliberate vs Reflexive Use</strong>
+<p>Define when you will PAUSE before using AI:</p>
+<ul>
+<li>I will stop and think before using AI for: [LIST SPECIFIC SITUATIONS]</li>
+<li>My decision criteria will be: [WHAT QUESTIONS WILL YOU ASK YOURSELF?]</li>
+</ul>
+
+<strong>Tactic 2: Maintain Human Skills</strong>
+<p>Schedule AI-free practice:</p>
+<ul>
+<li>I will practice [SPECIFIC SKILL] without AI every [FREQUENCY]</li>
+<li>I will test myself on [WHAT] by [HOW]</li>
+<li>If I struggle without AI, I will [YOUR PLAN TO REBUILD SKILLS]</li>
+</ul>
+
+<strong>Tactic 3: Challenge AI Outputs</strong>
+<p>Create your verification checklist:</p>
+<ul>
+<li>Before accepting AI output, I will always check: [3-5 SPECIFIC THINGS]</li>
+<li>I will verify factual claims by: [YOUR METHOD]</li>
+<li>I will spot-check AI work by: [HOW OFTEN AND WHAT TO CHECK]</li>
+</ul>
+
+<strong>Tactic 4: Set Personal Boundaries</strong>
+<p>Define your AI usage rules:</p>
+<ul>
+<li>I will NEVER use AI for: [LIST TASKS/SITUATIONS]</li>
+<li>I will ALWAYS do myself: [WHAT WORK STAYS HUMAN?]</li>
+<li>I will REQUIRE human review when AI helps with: [WHAT NEEDS OVERSIGHT?]</li>
+</ul>
+
+<strong>Tactic 5: Protect Heart Work</strong>
+<p>Identify work that defines you:</p>
+<ul>
+<li>These tasks are core to who I am: [WHAT WORK DO YOU KEEP?]</li>
+<li>I use AI to free time FOR: [WHAT MATTERS TO YOU?]</li>
+<li>I measure AI success by: [WHAT OUTCOMES MATTER BEYOND EFFICIENCY?]</li>
+</ul>
+
+<ol>
+<li>Document these rules in a place you'll see regularly</li>
+<li>Review and adjust monthly based on what you learn</li>
+<li>Share with one person who will help you stay accountable</li>
+</ol>`
   },
 
   "5-1": {
@@ -234,7 +345,73 @@ export const lessonMedia = {
     video: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/vuLjQwOVhQJ074tCnw2X?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     guide: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/JTWAJzeaS1Ntk8QHugt3?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     summary: `<p>This video lesson focuses on the concept of AI playbooks as a strategic tool for tier 3 users to build efficient, repeatable processes that integrate AI for tasks such as research, writing, and project planning. It emphasizes the importance of mastering systems over tools, strategic filtering, and long-term thinking to gain a compound advantage in AI usage. The lesson also outlines a detailed example of creating a playbook for producing a well-researched essay, highlighting the consistent process steps and the evolving role of AI in executing them.</p>`,
-    activity: `<p>Activity content coming soon</p>`
+    activity: `<ol>
+<li>Pick one task you do regularly (weekly or monthly) that has multiple steps</li>
+<li>Use this playbook creation prompt:</li>
+</ol>
+
+<strong>"I want to create a reusable playbook (repeatable process) for this task: [YOUR TASK]
+</strong>Current approach:<strong> [HOW YOU DO IT NOW - ALL STEPS]
+</strong>Typical time required:<strong> [HOW LONG IT TAKES]
+</strong>Pain points:<strong> [WHAT'S FRUSTRATING OR INCONSISTENT]
+</strong>Quality criteria:<strong> [WHAT MAKES THE OUTPUT GOOD VS BAD]
+
+<p>Help me build a tier 3 AI playbook following this structure:</p>
+
+</strong>1. PLAYBOOK NAME:<strong>
+<p>Create a clear, specific name for this process</p>
+
+</strong>2. GOAL & SUCCESS CRITERIA:<strong>
+<ul>
+<li>What does success look like?</li>
+<li>How do I know it's done well?</li>
+<li>What are the non-negotiable requirements?</li>
+</ul>
+
+</strong>3. CONSISTENT PROCESS STEPS:<strong>
+<p>Break this down into 5-10 repeatable steps that work every time, regardless of specific content. For each step, define:</p>
+<ul>
+<li><strong>Step name:</strong> What happens in this step</li>
+<li><strong>Input required:</strong> What do I need to start this step</li>
+<li><strong>Human decisions:</strong> What judgment calls do I make</li>
+<li><strong>AI execution:</strong> What can AI handle mechanically</li>
+<li><strong>Output produced:</strong> What comes out of this step</li>
+<li><strong>Quality check:</strong> How do I verify this step is done right</li>
+</ul>
+
+</strong>4. AI INTEGRATION POINTS:<strong>
+<p>For each step where AI helps, specify:</p>
+<ul>
+<li>Exact prompt template to use</li>
+<li>What information to provide</li>
+<li>What to expect back</li>
+<li>How to verify quality</li>
+</ul>
+
+</strong>5. TOOLS & RESOURCES:<strong>
+<ul>
+<li>What tools does this playbook require?</li>
+<li>What templates, checklists, or references?</li>
+<li>What examples should I keep on hand?</li>
+</ul>
+
+</strong>6. ITERATION TRIGGERS:<strong>
+<ul>
+<li>When should I update this playbook?</li>
+<li>What signals mean the process isn't working?</li>
+<li>How do I improve it over time?</li>
+</ul>
+
+<p>Format this as a practical, reusable document I can reference every time I do this task. Focus on the WHAT (outcomes) at each step, not the HOW (specific tools), so it adapts as tools change."</strong></p>
+
+<ol>
+<li>Document your playbook</li>
+<li>Use it for your next 2-3 instances of this task</li>
+<li>Refine based on what you learn</li>
+<li>Save the final version as your repeatable system</li>
+</ol>
+
+<p><strong>This is the difference between tier 2 and tier 3 AI users:</strong> Tier 2 asks AI for help each time. Tier 3 builds systems that compound over time. Your playbook is now a strategic asset that improves with every use.</p>`
   },
 
   "7-1": {
@@ -269,42 +446,430 @@ export const lessonMedia = {
     video: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/HO0ycmOji31WZZr8AtdG?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     guide: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/aOs1hJDBeqYIlsquPdj7?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     summary: `<p>This video introduces the AI Productivity Process, a capstone project that integrates knowledge from previous modules to build a functional AI solution. It outlines five phases: identification of time-wasting tasks, designing AI applications, evaluating build or buy options, building the AI solution, and implementation. The example project demonstrates creating a multi-stakeholder communication transformer that customizes raw notes for different audiences, saving time and building valuable AI experience.</p>`,
-    activity: `<p>Replace with actual activity content</p>`
+    activity: `<ol>
+<li>Review the 5-phase AI Productivity Process framework</li>
+<li>Select a real productivity challenge from your work or studies</li>
+<li>Use this planning prompt:</li>
+</ol>
+
+<strong>"I want to apply the AI Productivity Process to solve a real problem.
+</strong>My productivity challenge:<strong> [DESCRIBE THE REPETITIVE TASK OR TIME-WASTER]
+</strong>Current process:<strong> [HOW YOU DO IT NOW - STEP BY STEP]
+</strong>Time spent:<strong> [HOW OFTEN AND HOW LONG]
+</strong>Pain points:<strong> [WHAT MAKES IT FRUSTRATING OR INEFFICIENT]
+
+<p>Help me plan an AI solution using this 5-phase framework:</p>
+
+</strong>Phase 1 - Identification:<strong>
+<ul>
+<li>Validate this is worth automating (time saved vs effort to build)</li>
+<li>Identify the specific parts that AI could handle</li>
+<li>What should stay human?</li>
+</ul>
+
+</strong>Phase 2 - Design:<strong>
+<ul>
+<li>What are the inputs? (what information goes in)</li>
+<li>What are the outputs? (what I want to get back)</li>
+<li>What quality standards must be met?</li>
+<li>What knowledge or context does the AI need?</li>
+</ul>
+
+</strong>Phase 3 - Evaluate:<strong>
+<ul>
+<li>Search for existing tools that might solve this</li>
+<li>Should I buy/use an existing tool or build a custom solution?</li>
+<li>What are the pros and cons of each option?</li>
+</ul>
+
+</strong>Phase 4 - Build:<strong>
+<ul>
+<li>What's the simplest version I can build to test this?</li>
+<li>What prompts or setup do I need?</li>
+<li>How will I structure this for repeatability?</li>
+</ul>
+
+</strong>Phase 5 - Implement:<strong>
+<ul>
+<li>How will I integrate this into my workflow?</li>
+<li>What metrics will show if it's working?</li>
+<li>How will I iterate and improve?</li>
+</ul>
+
+<p>Create a concrete action plan I can start implementing this week."</strong></p>
+
+<ol>
+<li>Document your plan and commit to building this AI solution through the remaining lessons</li>
+</ol>`
   },
 
   "8-2": {
     video: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/4KqGIHLusaXsKDiRPvu6?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     guide: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/VCNjBnl3tyinPyxdHcHl?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     summary: `<p>The video explains a step-by-step framework for identifying tasks suitable for AI automation within a workweek. It emphasizes tracking and classifying tasks, calculating potential time savings, and selecting high-impact tasks to automate, using a personal example of automating project updates for stakeholders. The process aims to optimize work efficiency by focusing on repetitive tasks that can be streamlined with AI solutions.</p>`,
-    activity: `<p>Replace with actual activity content</p>`
+    activity: `<p><strong>Phase 1: Identify your automation opportunity</strong></p>
+
+<ol>
+<li>Track your tasks for 2-3 days. For each task, note:</li>
+</ol>
+<ul>
+<li>Task name</li>
+<li>Time spent</li>
+<li>How often you do it (daily, weekly, monthly)</li>
+<li>How repetitive it is (1-5, where 5 = exactly the same every time)</li>
+</ul>
+
+<ol>
+<li>Use this analysis prompt:</li>
+</ol>
+
+<strong>"Here's my task list from this week:
+<p>[PASTE YOUR TASK LIST WITH TIME AND FREQUENCY DATA]</p>
+
+<p>Help me identify the best automation candidate:</p>
+
+<ol>
+<li><strong>Calculate time savings:</strong></li>
+</ol>
+<ul>
+<li>For each repetitive task, calculate: (time per task) × (frequency per month)</li>
+<li>Rank tasks by monthly time spent</li>
+</ul>
+
+<ol>
+<li><strong>Assess AI suitability:</strong></li>
+</ol>
+<ul>
+<li>Which tasks are pattern-based and mechanical?</li>
+<li>Which require significant human judgment?</li>
+<li>Which are mostly repetitive with minor variations?</li>
+</ul>
+
+<ol>
+<li><strong>Recommend top 3 candidates:</strong></li>
+</ol>
+<ul>
+<li>Best immediate return (high time savings, easy to automate)</li>
+<li>Best learning opportunity (moderate difficulty, teaches useful skills)</li>
+<li>Best long-term impact (strategic importance, compounds over time)</li>
+</ul>
+
+<p>For each, explain why and estimate effort required to automate."</strong></p>
+
+<ol>
+<li>Select ONE task to focus on for your AI productivity project</li>
+<li>Document: Task name, current time spent, target time savings, why you chose it</li>
+</ol>`
   },
 
   "8-3": {
     video: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/4yOZoRCdNKgdq6Rz5Rc1?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     guide: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/oB5f00FjnQ67sDhihq4j?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     summary: `<p>The video explains the second phase of app development, focusing on architecting the AI solution by defining inputs, outputs, quality standards, necessary knowledge, boundaries, and success criteria. It emphasizes the importance of clear guidelines for AI, including examples and style preferences, and outlines responsibilities between AI and human oversight. The video concludes by introducing the next phase, evaluation.</p>`,
-    activity: `<p>Replace with actual activity content</p>`
+    activity: `<p><strong>Phase 2: Design your AI solution architecture</strong></p>
+
+<p>For the task you selected in Phase 1, use this design prompt:</p>
+
+<strong>"I'm designing an AI solution for this task: [YOUR TASK FROM PHASE 1]
+</strong>Current process:<strong> [DESCRIBE STEP-BY-STEP HOW YOU DO IT NOW]
+
+<p>Help me architect an AI solution by defining these components:</p>
+
+</strong>1. INPUTS (What information goes into the AI):<strong>
+<ul>
+<li>What data or information do I need to provide?</li>
+<li>What format should it be in?</li>
+<li>What context is essential vs optional?</li>
+<li>What examples should I include?</li>
+</ul>
+
+</strong>2. OUTPUTS (What I want to get back):<strong>
+<ul>
+<li>What exactly should the AI produce?</li>
+<li>What format/structure do I need?</li>
+<li>What level of detail?</li>
+<li>How should it be organized?</li>
+</ul>
+
+</strong>3. QUALITY STANDARDS (What "good" looks like):<strong>
+<ul>
+<li>What are my non-negotiable requirements?</li>
+<li>What makes output usable vs unusable?</li>
+<li>What style, tone, or conventions must be followed?</li>
+<li>How will I measure quality?</li>
+</ul>
+
+</strong>4. KNOWLEDGE (What the AI needs to know):<strong>
+<ul>
+<li>What specific information about my work/context does AI need?</li>
+<li>What terminology, acronyms, or specialized language?</li>
+<li>What examples of good vs bad outputs?</li>
+<li>What background information or constraints?</li>
+</ul>
+
+</strong>5. BOUNDARIES (What AI should and shouldn't do):<strong>
+<ul>
+<li>What decisions can AI make autonomously?</li>
+<li>What requires my review or approval?</li>
+<li>What should AI never do?</li>
+<li>Where do I add human judgment?</li>
+</ul>
+
+</strong>6. SUCCESS CRITERIA:<strong>
+<ul>
+<li>How do I know this is working?</li>
+<li>What metrics matter (time saved, quality maintained, errors avoided)?</li>
+<li>What would make me trust this enough to use regularly?</li>
+</ul>
+
+<p>Create a complete design specification I can use to build this solution."</strong></p>
+
+<ol>
+<li>Document this architecture design</li>
+<li>Gather 2-3 examples of your current work to use as training examples</li>
+</ol>`
   },
 
   "8-4": {
     video: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/TJumoFmYDUiogsB8u4xY?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     guide: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/vQfGce410sjuZPajJXn8?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     summary: `<p>The video explains phase three of a project workflow, focusing on evaluating whether to buy or build a solution. It details criteria for assessing existing tools, including problem fit, workflow integration, ROI, ease of use, and reliability. An example evaluation of Grammarly's tone detector illustrates the decision-making process, leading to a choice to build a custom tool due to specific unmet need.</p>`,
-    activity: `<p>Replace with actual activity content</p>`
+    activity: `<p><strong>Phase 3: Evaluate - Buy vs Build decision</strong></p>
+
+<ol>
+<li>Research existing tools that might solve your problem</li>
+<li>Use this evaluation prompt:</li>
+</ol>
+
+<strong>"I need to decide whether to use an existing tool or build a custom AI solution.
+</strong>My need:<strong> [YOUR TASK FROM PHASE 1]
+</strong>My design requirements:<strong> [KEY REQUIREMENTS FROM PHASE 2]
+
+<p>Help me search for and evaluate existing solutions:</p>
+
+</strong>1. SEARCH STRATEGY:<strong>
+<ul>
+<li>What search terms should I use?</li>
+<li>What categories of tools should I explore?</li>
+<li>What platforms or directories should I check?</li>
+<li>What questions should I ask to qualify tools?</li>
+</ul>
+
+</strong>2. EVALUATION FRAMEWORK:<strong>
+<p>For each tool I find, help me assess:</p>
+<ul>
+<li><strong>Problem Fit:</strong> Does it solve my exact problem or close enough?</li>
+<li><strong>Workflow Integration:</strong> How easily does it fit my current process?</li>
+<li><strong>ROI:</strong> Cost vs time saved vs building custom?</li>
+<li><strong>Ease of Use:</strong> Learning curve vs immediate productivity?</li>
+<li><strong>Reliability:</strong> Track record, reviews, support quality?</li>
+<li><strong>Control:</strong> Can I customize it if needs change?</li>
+</ul>
+
+</strong>3. BUILD VS BUY DECISION MATRIX:<strong>
+<p>Create a decision matrix comparing:</p>
+<ul>
+<li><strong>Option A:</strong> Best existing tool I found</li>
+<li><strong>Option B:</strong> Build custom solution (using ChatGPT custom GPT, Claude Project, or similar)</li>
+</ul>
+
+<p>Compare on:</p>
+<ul>
+<li>Time to get working (hours/days)</li>
+<li>Ongoing cost ($/month)</li>
+<li>Setup effort (low/medium/high)</li>
+<li>Fit to requirements (% match)</li>
+<li>Flexibility for future changes</li>
+<li>Maintenance burden</li>
+</ul>
+
+</strong>4. RECOMMENDATION:<strong>
+<p>Based on my specific situation, should I buy or build? Why?"</strong></p>
+
+<ol>
+<li>Document your decision with clear reasoning</li>
+<li>If buying: Note the tool name, cost, and setup plan</li>
+<li>If building: Confirm you're ready to proceed to Phase 4 (Build)</li>
+</ol>`
   },
 
   "8-5": {
     video: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/DOHkX4bDzOVrOnfF1B36?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     guide: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/E7Cv71ibRNd3f5lfpsyW?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     summary: `<p>This video lesson guides viewers through building a custom AI solution using ChatGPT Plus, focusing on automating communication tasks by creating tailored GPTs. It covers the process from identifying tasks suitable for AI, architecting the solution, evaluating existing options, to implementing and applying the custom GPT for efficient multi-stakeholder communication. The tutorial emphasizes using AI to generate prompts, instructions, and knowledge bases to save time and improve productivity.</p>`,
-    activity: `<p>Replace with actual activity content</p>`
+    activity: `<p><strong>Phase 4: Build your AI solution</strong></p>
+
+<p>Choose your build approach based on your Phase 3 decision:</p>
+
+<strong>OPTION A: Build a Custom GPT (ChatGPT Plus required):</strong>
+
+<ol>
+<li>Go to ChatGPT → Explore GPTs → Create</li>
+<li>Use this setup prompt:</li>
+</ol>
+
+<strong>"Help me build a custom GPT for this task:
+</strong>Task:<strong> [YOUR TASK]
+</strong>Design specs:<strong> [YOUR PHASE 2 ARCHITECTURE]
+</strong>Examples:<strong> [PASTE 2-3 EXAMPLES OF CURRENT WORK]
+
+<p>Create for me:</p>
+<ol>
+<li><strong>GPT Name:</strong> Clear, descriptive name</li>
+<li><strong>Description:</strong> One sentence explaining what it does</li>
+<li><strong>Instructions:</strong> Complete prompt with all requirements, quality standards, and boundaries</li>
+<li><strong>Conversation starters:</strong> 3-4 example prompts users can click</li>
+<li><strong>Knowledge base:</strong> What documents or information should I upload?</li>
+</ol>
+
+<p>Format each section ready to copy-paste into the GPT builder."</strong></p>
+
+<strong>OPTION B: Build a Claude Project:</strong>
+
+<ol>
+<li>Go to Claude → Projects → New Project</li>
+<li>Use this setup prompt:</li>
+</ol>
+
+<strong>"Help me set up a Claude Project for this task:
+</strong>Task:<strong> [YOUR TASK]
+</strong>Design specs:<strong> [YOUR PHASE 2 ARCHITECTURE]
+</strong>Examples:<strong> [PASTE 2-3 EXAMPLES OF CURRENT WORK]
+
+<p>Create for me:</p>
+<ol>
+<li><strong>Project instructions:</strong> Complete system prompt with requirements, quality standards, constraints</li>
+<li><strong>Knowledge documents:</strong> What should I add to project knowledge?</li>
+<li><strong>Usage template:</strong> Standard prompt template I'll reuse each time</li>
+<li><strong>Quality checklist:</strong> What to verify before accepting output</li>
+</ol>
+
+<p>Make it comprehensive and ready to use."</strong></p>
+
+<strong>OPTION C: Build a Reusable Prompt:</strong>
+
+<p>If you don't have paid AI access, create a reusable prompt template:</p>
+
+<strong>"Create a reusable prompt template for this task:
+</strong>Task:<strong> [YOUR TASK]
+</strong>Requirements:<strong> [YOUR PHASE 2 SPECS]
+</strong>Examples:<strong> [PASTE 2-3 EXAMPLES]
+
+<p>Format as a fill-in-the-blank template I can save and reuse, with:</p>
+<ul>
+<li>Clear role/context for the AI</li>
+<li>Placeholders for variable inputs [IN BRACKETS]</li>
+<li>All quality requirements built in</li>
+<li>Output format specification</li>
+</ul>
+
+<p>Make it copy-paste ready."</strong></p>
+
+<ol>
+<li>Build your solution using your chosen approach</li>
+<li>Test it with 2-3 real examples</li>
+<li>Refine based on initial results</li>
+<li>Document your final setup for future reference</li>
+</ol>`
   },
 
   "8-6": {
     video: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/I4u365nXqYcCO6Q9MVS9?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     guide: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/szIKdd0dW0jEjZq1Qo49?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     summary: `<p>The video discusses phase five of the AI productivity process, focusing on the implementation and continuous improvement of AI solutions, including custom GPTs. It emphasizes monitoring outputs, gathering feedback, refining prompts, and tracking efficiency gains to ensure effective AI integration in workflows. The video concludes by highlighting the importance of experience gained through building or using AI tools as valuable proof of capability.</p>`,
-    activity: `<p>Activity content coming soon</p>`
+    activity: `<p><strong>Phase 5: Implement and Continuously Improve</strong></p>
+
+<ol>
+<li>Put your AI solution into regular use for at least 2 weeks</li>
+<li>Track your implementation and improvement using this framework:</li>
+</ol>
+
+<strong>WEEK 1 - Initial Implementation:</strong>
+
+<p>Create an implementation log with these sections:</p>
+
+<strong>Usage Tracking:</strong>
+<ul>
+<li>Date and time used</li>
+<li>Task completed</li>
+<li>Time spent with AI vs previous manual process</li>
+<li>Quality rating (1-5 stars)</li>
+<li>What worked well</li>
+<li>What needed manual adjustment</li>
+</ul>
+
+<strong>Issues & Patterns:</strong>
+<ul>
+<li>What errors or problems occurred?</li>
+<li>What patterns do you notice in outputs?</li>
+<li>What's consistently good or consistently bad?</li>
+<li>Where does it need your help most?</li>
+</ul>
+
+<strong>WEEK 2 - Refinement:</strong>
+
+<ol>
+<li>Use this improvement prompt after your first week:</li>
+</ol>
+
+<strong>"I've been using my AI solution for a week. Here's what I've learned:
+</strong>What's working well:<strong>
+<p>[LIST 3-5 SUCCESSES]</p>
+</strong>What's not working:<strong>
+<p>[LIST 3-5 PROBLEMS OR LIMITATIONS]</p>
+</strong>Usage data:<strong>
+<ul>
+<li>Used X times</li>
+<li>Average time saved per use: Y minutes</li>
+<li>Average quality rating: Z/5</li>
+<li>Manual adjustments needed: [FREQUENCY]</li>
+</ul>
+
+<p>Help me improve this solution:</p>
+
+<ol>
+<li><strong>Prompt refinements:</strong> What should I change in my instructions to fix recurring issues?</li>
+<li><strong>Workflow adjustments:</strong> How can I better integrate this into my process?</li>
+<li><strong>Quality improvements:</strong> What constraints or examples should I add?</li>
+<li><strong>Efficiency gains:</strong> Where can I streamline further?</li>
+</ol>
+
+<p>Give me specific changes to implement this week."</strong></p>
+
+<ol>
+<li>Implement the recommended improvements</li>
+<li>Continue tracking for week 2</li>
+</ol>
+
+<strong>END OF WEEK 2 - Final Assessment:</strong>
+
+<strong>Calculate your results:</strong>
+<ul>
+<li><strong>Total time invested:</strong> Setup time + learning + refinement</li>
+<li><strong>Total time saved:</strong> (Uses × time saved per use)</li>
+<li><strong>Net benefit:</strong> Time saved - time invested</li>
+<li><strong>Projected monthly savings:</strong> Based on usage frequency</li>
+<li><strong>Break-even point:</strong> When total saved exceeds total invested</li>
+<li><strong>Quality impact:</strong> Better/same/worse than manual process</li>
+</ul>
+
+<strong>Document your learnings:</strong>
+<ol>
+<li>What worked that you'll keep doing?</li>
+<li>What failed that you'll avoid?</li>
+<li>What surprised you?</li>
+<li>What would you do differently next time?</li>
+<li>Is this solution worth maintaining? Why or why not?</li>
+</ol>
+
+<strong>Next steps:</strong>
+<ul>
+<li>If successful: Identify your next automation candidate from Phase 1</li>
+<li>If unsuccessful: Analyze why and decide whether to iterate or abandon</li>
+<li>Share your results with one person to reinforce your learning</li>
+</ul>
+
+<p><strong>Congratulations!</strong> You've completed the full AI Productivity Process. You now have hands-on experience building and implementing AI solutions - experience that's worth more than any certification.</p>`
   }
 
   ,
