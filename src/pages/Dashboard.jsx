@@ -61,7 +61,7 @@ export function Dashboard() {
   };
 
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full h-full overflow-y-auto">
       <div className="max-w-7xl mx-auto px-8 py-8">
         {/* WELCOME SECTION */}
         <section className="mb-24">
