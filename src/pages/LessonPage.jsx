@@ -3,9 +3,11 @@ import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
 import { Button } from '../components/ui/Button';
+import { Modal } from '../components/ui/Modal';
 import { Check, Copy, ChevronDown, ChevronUp } from 'lucide-react';
 import { modulesData } from '../data/modulesData';
 import { lessonMedia } from '../data/lessonMedia';
+import { activityData } from '../data/activityData';
 import { getLessonNumber } from '../lib/utils';
 
 export function LessonPage() {
@@ -15,6 +17,7 @@ export function LessonPage() {
   const [showSummary, setShowSummary] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isMarking, setIsMarking] = useState(false);
+  const [activeModal, setActiveModal] = useState(null);
   const { isComplete, toggleComplete, loading } = useProgress(user?.id, []);
 
   const moduleIdNum = parseInt(moduleId);
@@ -42,6 +45,8 @@ export function LessonPage() {
 
   // After loading, calculate progress and access
   const lessonMedia_ = lessonMedia.getLesson(moduleIdNum, lessonIdNum);
+  const activityKey = `${moduleIdNum}-${lessonIdNum}`;
+  const activity = activityData[activityKey];
   const globalLessonNumber = getLessonNumber(moduleIdNum, lessonIdNum);
   const completed = isComplete(globalLessonNumber, 'lesson');
 
@@ -140,14 +145,102 @@ export function LessonPage() {
           </div>
 
           {/* Activity Section */}
-          <div className="mb-8 border rounded-lg">
-            <div className="p-4 bg-gray-50">
-              <h3 className="font-semibold text-gray-900">Activity</h3>
+          {activity && (
+            <div className="mb-8 border rounded-lg">
+              <div className="p-4 bg-gray-50">
+                <h3 className="font-semibold text-gray-900">Skill</h3>
+              </div>
+              <div className="p-6 text-gray-700 space-y-6">
+                {/* Skill */}
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Skills You're Building:</h4>
+                  <p className="font-medium text-blue-700">{activity.skill}</p>
+                </div>
+
+                {/* Connection */}
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Connection:</h4>
+                  <p className="text-gray-700">{activity.connection}</p>
+                </div>
+
+                {/* Activity */}
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Activity:</h4>
+                  <div className="text-gray-700 whitespace-pre-line">{activity.activity}</div>
+                </div>
+
+                {/* Why this matters */}
+                <div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Why this matters:</h4>
+                  <p className="text-gray-700">{activity.whyMatters}</p>
+                </div>
+
+                {/* Audience Buttons */}
+                <div className="pt-4 border-t">
+                  <h4 className="font-semibold text-gray-900 mb-4">Apply this as:</h4>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                    <button
+                      onClick={() => setActiveModal('learners')}
+                      className="px-4 py-3 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition font-medium text-sm"
+                    >
+                      📚 Learners
+                    </button>
+                    <button
+                      onClick={() => setActiveModal('employees')}
+                      className="px-4 py-3 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition font-medium text-sm"
+                    >
+                      💼 Employees
+                    </button>
+                    <button
+                      onClick={() => setActiveModal('selfEmployed')}
+                      className="px-4 py-3 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition font-medium text-sm"
+                    >
+                      🚀 Self-Employed
+                    </button>
+                    <button
+                      onClick={() => setActiveModal('businesses')}
+                      className="px-4 py-3 bg-orange-50 text-orange-700 rounded-lg hover:bg-orange-100 transition font-medium text-sm"
+                    >
+                      🏢 Businesses
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="p-4 text-gray-700">
-              <div className="prose prose-sm max-w-none" dangerouslySetInnerHTML={{ __html: lessonMedia_.activity }} />
-            </div>
-          </div>
+          )}
+
+          {/* Modals */}
+          <Modal
+            isOpen={activeModal === 'learners'}
+            onClose={() => setActiveModal(null)}
+            title="For Learners"
+          >
+            <div className="whitespace-pre-line">{activity?.learners}</div>
+          </Modal>
+
+          <Modal
+            isOpen={activeModal === 'employees'}
+            onClose={() => setActiveModal(null)}
+            title="For Employees"
+          >
+            <div className="whitespace-pre-line">{activity?.employees}</div>
+          </Modal>
+
+          <Modal
+            isOpen={activeModal === 'selfEmployed'}
+            onClose={() => setActiveModal(null)}
+            title="For Self-Employed"
+          >
+            <div className="whitespace-pre-line">{activity?.selfEmployed}</div>
+          </Modal>
+
+          <Modal
+            isOpen={activeModal === 'businesses'}
+            onClose={() => setActiveModal(null)}
+            title="For Businesses"
+          >
+            <div className="whitespace-pre-line">{activity?.businesses}</div>
+          </Modal>
 
           {/* Mark Complete Button */}
           <div className="pt-8 border-t">
