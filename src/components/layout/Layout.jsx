@@ -18,7 +18,7 @@ export function Layout({ children, user, onSignOut }) {
         {sidebarOpen && <div className="w-64 flex-shrink-0" />}
 
         {/* Main Content */}
-        <main className="flex-1 min-w-0">
+        <main className="flex-1 min-w-0 bg-white">
           {children}
         </main>
       </div>
