@@ -299,6 +299,15 @@ export const lessonMedia = {
     summary: `<p>This video lesson guides viewers through building a custom AI solution using ChatGPT Plus, focusing on automating communication tasks by creating tailored GPTs. It covers the process from identifying tasks suitable for AI, architecting the solution, evaluating existing options, to implementing and applying the custom GPT for efficient multi-stakeholder communication. The tutorial emphasizes using AI to generate prompts, instructions, and knowledge bases to save time and improve productivity.</p>`,
     activity: `<p>Replace with actual activity content</p>`
   },
+
+  "8-6": {
+    video: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/I4u365nXqYcCO6Q9MVS9?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
+    guide: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/szIKdd0dW0jEjZq1Qo49?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
+    summary: `<p>The video discusses phase five of the AI productivity process, focusing on the implementation and continuous improvement of AI solutions, including custom GPTs. It emphasizes monitoring outputs, gathering feedback, refining prompts, and tracking efficiency gains to ensure effective AI integration in workflows. The video concludes by highlighting the importance of experience gained through building or using AI tools as valuable proof of capability.</p>`,
+    activity: `<p>Activity content coming soon</p>`
+  }
+
+  ,
   getLesson(moduleId, lessonId) {
     const key = `${moduleId}-${lessonId}`;
     return this[key];
