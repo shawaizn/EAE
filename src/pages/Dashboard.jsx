@@ -2,10 +2,18 @@ import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { getLessonNumber } from '../lib/utils';
+import { useEffect } from 'react';
+import { useSidebar } from '../context/SidebarContext';
+import { Link } from 'react-router-dom';
 
 export function Dashboard() {
   const { user } = useAuth();
   const { isComplete, loading } = useProgress(user?.id, []);
+  const { setSidebarOpen } = useSidebar();
+
+  useEffect(() => {
+    setSidebarOpen(true);
+  }, [setSidebarOpen]);
 
   const moduleNarratives = [
     "This module shows you how AI fits into the pattern of tools that change how humans work. It's not magic—it's just the next tool in a long line of tools.",
@@ -199,9 +207,10 @@ export function Dashboard() {
               }
 
               return (
-                <div
+                <Link
                   key={module.moduleId}
-                  className={`p-6 rounded-lg border-2 ${borderClass} ${bgClass} ${ringClass} ${!isLocked ? '' : opacityClass} transition-all`}
+                  to={`/modules/${module.moduleId}`}
+                  className={`block p-6 rounded-lg border-2 ${borderClass} ${bgClass} ${ringClass} ${!isLocked ? '' : opacityClass} transition-all hover:shadow-lg`}
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
@@ -234,7 +243,7 @@ export function Dashboard() {
                       />
                     </div>
                   )}
-                </div>
+                </Link>
               );
             })}
           </div>
@@ -256,9 +265,18 @@ export function Dashboard() {
               </>
             )}
           </p>
-          <button className="px-12 py-4 bg-cyan-500 hover:bg-cyan-600 text-slate-900 font-black rounded-lg transition-colors">
-            Continue Learning
-          </button>
+          {currentModule ? (
+            <Link
+              to={`/modules/${currentModule.moduleId}`}
+              className="inline-block px-12 py-4 bg-cyan-500 hover:bg-cyan-600 text-slate-900 font-black rounded-lg transition-colors"
+            >
+              Continue Learning
+            </Link>
+          ) : (
+            <button disabled className="px-12 py-4 bg-gray-400 text-gray-600 font-black rounded-lg cursor-not-allowed">
+              All Modules Complete
+            </button>
+          )}
         </section>
       </div>
     </div>
