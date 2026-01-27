@@ -6,8 +6,7 @@ export const modulesData = [
       { id: 1, title: "AI Definition & Core Concepts" },
       { id: 2, title: "Technology & Change" },
       { id: 3, title: "Early AI - Rules & Limits" },
-      { id: 4, title: "Machine Learning" },
-      { id: 5, title: "Transformers & Generative AI" }
+      { id: 4, title: "Machine Learning" }
     ]
   },
   {
@@ -18,7 +17,8 @@ export const modulesData = [
       { id: 2, title: "Training, Fine-Tuning and RLHF" },
       { id: 3, title: "Autonomy Ladder - LLMs, Workflows, Agents" },
       { id: 4, title: "Inside an AI Agent" },
-      { id: 5, title: "Evaluating AI Systems" }
+      { id: 5, title: "Evaluating AI Systems" },
+      { id: 6, title: "Discovering AI Tools" }
     ]
   },
   {
@@ -40,7 +40,8 @@ export const modulesData = [
       { id: 2, title: "Patterns, Head Work and AI" },
       { id: 3, title: "Heart Work - Protect It" },
       { id: 4, title: "Finding the Real Goal" },
-      { id: 5, title: "Common AI Traps and How to Avoid Them" }
+      { id: 5, title: "Common AI Traps and How to Avoid Them" },
+      { id: 6, title: "Safeguarding Against AI Misuse" }
     ]
   },
   {
@@ -51,7 +52,8 @@ export const modulesData = [
       { id: 2, title: "Core Prompting Principles" },
       { id: 3, title: "The CO-STAR Framework" },
       { id: 4, title: "Improving and Refining Prompts" },
-      { id: 5, title: "Advanced Prompting Tactics" }
+      { id: 5, title: "Advanced Prompting Tactics" },
+      { id: 6, title: "Mastering Communication with AI" }
     ]
   },
   {
@@ -62,7 +64,9 @@ export const modulesData = [
       { id: 2, title: "Strategic Filtering and Staying Current" },
       { id: 3, title: "Systems That Flow, Not Tool Chaos" },
       { id: 4, title: "Evaluating AI Outputs and Task Stakes" },
-      { id: 5, title: "Playbooks and Compounding Success" }
+      { id: 5, title: "Playbooks and Compounding Success" },
+      { id: 6, title: "Quality Control for AI Outputs" },
+      { id: 7, title: "Building AI Playbooks and Systems" }
     ]
   },
   {
@@ -72,8 +76,7 @@ export const modulesData = [
       { id: 1, title: "Understanding the AI Landscape" },
       { id: 2, title: "Skills for Tomorrow" },
       { id: 3, title: "Building Your Personal Strategy" },
-      { id: 4, title: "Staying Ahead of Change" },
-      { id: 5, title: "Your Next Steps" }
+      { id: 4, title: "Staying Ahead of Change" }
     ]
   },
   {
@@ -84,7 +87,8 @@ export const modulesData = [
       { id: 2, title: "Building AI Workflows" },
       { id: 3, title: "Team Collaboration with AI" },
       { id: 4, title: "Measuring AI Impact" },
-      { id: 5, title: "Continuous Improvement" }
+      { id: 5, title: "Continuous Improvement" },
+      { id: 6, title: "Implementation and Continuous Improvement" }
     ]
   }
 ];

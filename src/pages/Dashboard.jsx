@@ -245,7 +245,7 @@ export function Dashboard() {
                   Lessons
                 </p>
                 <p className="text-4xl font-black text-gray-900">
-                  {allModules.reduce((acc, m) => acc + m.completedLessons, 0)}/40
+                  {allModules.reduce((acc, m) => acc + m.completedLessons, 0)}/{modulesData.reduce((acc, m) => acc + m.lessons.length, 0)}
                 </p>
               </div>
             </div>
