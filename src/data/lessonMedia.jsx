@@ -16,7 +16,37 @@ export const lessonMedia = {
   "1-3": {
     video: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: min(62.5%, 95vh);"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/recordings/ARCT3uDknz5BokMRoJJN?onlyRecording=1" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
     guide: `<div style="position: relative; width: 100%; height: 0px; overflow: hidden; padding-bottom: 66.67%;"><iframe allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" playsinline="" allow="autoplay; fullscreen; picture-in-picture" src="https://kommodo.ai/embed/guides/QhcKxv9iuR3iWEk75fBa?view=interactive" width="100%" height="100%" style="border: 0px; position: absolute; inset: 0px;"></iframe></div>`,
-    summary: `<p>This video explains the evolution of AI technology, focusing on deep learning and the breakthrough of Transformers in 2017. It describes how deep learning uses multiple neural network layers to recognize complex patterns, and how Transformers solved the AI memory problem, enabling AI to understand context and language more effectively, as seen in models like ChatGPT.</p>`,
+    summary: `<div>
+      <h2 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; color: #1f2937;">The Evolution of AI: From Deep Learning to Transformers</h2>
+
+      <h3 style="font-size: 1.1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.75rem; color: #374151;">Overview of AI Progression</h3>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1rem; list-style-type: disc;">
+        <li>Shawaiz traces AI history from the Turing Test and rule-based systems to modern breakthroughs.</li>
+        <li>Early limits: Rule-based AI was too rigid; basic machine learning had modest pattern recognition but hit a ceiling.</li>
+      </ul>
+
+      <h3 style="font-size: 1.1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.75rem; color: #374151;">Breakthroughs in Deep Learning and Transformers</h3>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1rem; list-style-type: disc;">
+        <li>Deep learning gave AI 'bigger brains' using stacked neural networks for complex pattern recognition (e.g., face and voice recognition, translation).</li>
+        <li>The 2017 Transformer model let AI remember context like a human, enabling systems like ChatGPT to learn and understand language at scale.</li>
+      </ul>
+
+      <h3 style="font-size: 1.1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.75rem; color: #374151;">Recommendations and Takeaways</h3>
+      <ul style="margin-left: 1.5rem; margin-bottom: 1rem; list-style-type: disc;">
+        <li>Focus on patterns: AI learns from clear patterns; more data and depth improves results.</li>
+        <li>Transformers solved AI's 'memory problem,' revolutionizing understanding and conversation capacity.</li>
+        <li>Practice and apply: Continue with assigned tasks to reinforce understanding.</li>
+      </ul>
+
+      <p style="margin-top: 1.25rem; margin-bottom: 1rem; line-height: 1.625;">This video explains the evolution of AI technology, focusing on deep learning and the breakthrough of Transformers in 2017. It describes how deep learning uses multiple neural network layers to recognize complex patterns, and how Transformers solved the AI memory problem, enabling AI to understand context and language more effectively, as seen in models like ChatGPT.</p>
+
+      <h3 style="font-size: 1.1rem; font-weight: 600; margin-top: 1.25rem; margin-bottom: 0.75rem; color: #374151;">Action Items</h3>
+      <ul style="margin-left: 1.5rem; list-style-type: disc;">
+        <li>Understand the concept of deep learning and its use of multiple neural network layers.</li>
+        <li>Recognize the importance of the Transformer architecture in solving AI's memory problem.</li>
+        <li>Appreciate how AI models like ChatGPT leverage these advancements to understand and generate human language effectively.</li>
+      </ul>
+    </div>`,
     activity: `<ol>\n<li>Open your timeline from Lesson 2</li>\n<li>Use this prompt:</li>\n</ol>\n\n<strong>"Add these new events to my existing timeline:\n<ul>\n<li>2010: Deep Learning revolution (AI using multiple layers for complex patterns)</li>\n<li>2017: Transformers architecture (solved the memory problem in AI)</li>\n<li>2020s: ChatGPT era (AI that understands full conversation context)</li>\n</ul>\n\n<p>Keep the same visual format and integrate these seamlessly with the previous events."</strong></p>\n<ol>\n<li>Save the updated version - you\'ll add Lesson 4 events next</li>\n</ol>`
   },
 
