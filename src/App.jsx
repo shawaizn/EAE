@@ -41,7 +41,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* Public Routes */}
-          <Route path="/" element={<PublicLayout><Landing /></PublicLayout>} />
+          <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<PublicLayout><Login /></PublicLayout>} />
 
           {/* Protected Routes with Layout */}

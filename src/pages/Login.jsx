@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
+import { AnimatedLoginBackground } from '../components/branding/AnimatedLoginBackground';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -28,8 +29,9 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center bg-slate-50 px-4">
-      <Card className="w-full max-w-md">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 relative">
+      <AnimatedLoginBackground />
+      <Card className="w-full max-w-md relative z-10 bg-white/90 backdrop-blur-lg border-2 border-white/20 shadow-2xl">
         <h2 className="text-3xl font-black text-slate-900 mb-8 text-center" style={{ letterSpacing: '-0.02em' }}>
           Login to Your Account
         </h2>
