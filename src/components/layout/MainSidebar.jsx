@@ -1,12 +1,51 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { LogOut, User, ChevronDown, ChevronUp } from 'lucide-react';
+import { LogOut, User, ChevronRight, ChevronDown } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { modulesData } from '../../data/modulesData';
 
+const tiers = [
+  {
+    id: 'beginner',
+    name: 'Beginner',
+    modules: [1, 2],
+    color: {
+      bg: 'bg-blue-50',
+      activeBg: 'bg-blue-100',
+      text: 'text-blue-700',
+      hover: 'hover:bg-blue-100',
+      border: 'border-l-blue-400'
+    }
+  },
+  {
+    id: 'intermediate',
+    name: 'Intermediate',
+    modules: [3, 4, 5],
+    color: {
+      bg: 'bg-amber-50',
+      activeBg: 'bg-amber-100',
+      text: 'text-amber-700',
+      hover: 'hover:bg-amber-100',
+      border: 'border-l-amber-400'
+    }
+  },
+  {
+    id: 'advanced',
+    name: 'Advanced',
+    modules: [6, 7, 8],
+    color: {
+      bg: 'bg-slate-50',
+      activeBg: 'bg-slate-100',
+      text: 'text-slate-700',
+      hover: 'hover:bg-slate-100',
+      border: 'border-l-slate-400'
+    }
+  }
+];
+
 export function MainSidebar({ user, onSignOut }) {
   const [userName, setUserName] = useState('User');
-  const [expandedModules, setExpandedModules] = useState({});
+  const [expandedTier, setExpandedTier] = useState(null);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -15,6 +54,19 @@ export function MainSidebar({ user, onSignOut }) {
       fetchUserName();
     }
   }, [user]);
+
+  // Auto-expand tier containing current module
+  useEffect(() => {
+    const currentPath = location.pathname;
+    const moduleMatch = currentPath.match(/\/modules\/(\d+)/);
+    if (moduleMatch) {
+      const currentModuleId = parseInt(moduleMatch[1]);
+      const tierWithModule = tiers.find(tier => tier.modules.includes(currentModuleId));
+      if (tierWithModule && expandedTier !== tierWithModule.id) {
+        setExpandedTier(tierWithModule.id);
+      }
+    }
+  }, [location.pathname]);
 
   const fetchUserName = async () => {
     const { data } = await supabase
@@ -32,14 +84,16 @@ export function MainSidebar({ user, onSignOut }) {
     navigate('/login');
   };
 
-  const toggleModule = (moduleId) => {
-    setExpandedModules(prev => ({
-      ...prev,
-      [moduleId]: !prev[moduleId]
-    }));
+  const toggleTier = (tierId) => {
+    setExpandedTier(prev => prev === tierId ? null : tierId);
   };
 
   const isActive = (path) => location.pathname === path || location.pathname.startsWith(path + '/');
+
+  const shortenTitle = (title, maxLength = 30) => {
+    if (title.length <= maxLength) return title;
+    return title.substring(0, maxLength - 3) + '...';
+  };
 
   return (
     <div className="flex flex-col h-full">
@@ -55,61 +109,57 @@ export function MainSidebar({ user, onSignOut }) {
           Dashboard
         </Link>
 
-        {modulesData.map(module => (
-          <div key={module.id}>
-            <div className="flex items-center">
-              <Link
-                to={`/modules/${module.id}`}
-                className={`flex-1 px-4 py-3 rounded-lg transition-colors ${
-                  isActive(`/modules/${module.id}`)
-                    ? 'bg-blue-100 text-blue-700 font-medium'
+        {tiers.map(tier => {
+          const isExpanded = expandedTier === tier.id;
+          const hasActiveModule = tier.modules.some(moduleId =>
+            isActive(`/modules/${moduleId}`)
+          );
+
+          return (
+            <div key={tier.id} className="space-y-1">
+              <button
+                onClick={() => toggleTier(tier.id)}
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors ${
+                  hasActiveModule
+                    ? `${tier.color.activeBg} ${tier.color.text} font-medium border-l-4 ${tier.color.border}`
                     : 'text-gray-700 hover:bg-gray-100'
                 }`}
               >
-                Module {module.id}
-              </Link>
-              <button
-                onClick={() => toggleModule(module.id)}
-                className="px-3 py-3 transition text-gray-600 hover:text-gray-900"
-                title="Toggle lessons"
-              >
-                {expandedModules[module.id] ? (
-                  <ChevronUp size={18} />
-                ) : (
+                <span className="font-medium">{tier.name}</span>
+                {isExpanded ? (
                   <ChevronDown size={18} />
+                ) : (
+                  <ChevronRight size={18} />
                 )}
               </button>
-            </div>
 
-            {expandedModules[module.id] && (
-              <div className="ml-4 space-y-1 mt-1">
-                {module.lessons.map(lesson => (
-                  <Link
-                    key={lesson.id}
-                    to={`/modules/${module.id}/lessons/${lesson.id}`}
-                    className={`block px-4 py-2 rounded-lg text-sm transition-colors ${
-                      isActive(`/modules/${module.id}/lessons/${lesson.id}`)
-                        ? 'bg-blue-100 text-blue-700 font-medium'
-                        : 'text-gray-600 hover:bg-gray-100'
-                    }`}
-                  >
-                    Lesson {lesson.id}
-                  </Link>
-                ))}
-                <Link
-                  to={`/modules/${module.id}/recap`}
-                  className={`block px-4 py-2 rounded-lg text-sm transition-colors font-medium ${
-                    isActive(`/modules/${module.id}/recap`)
-                    ? 'bg-blue-100 text-blue-700'
-                    : 'text-gray-600 hover:bg-gray-100'
-                }`}
-                >
-                  Recap
-                </Link>
-              </div>
-            )}
-          </div>
-        ))}
+              {isExpanded && (
+                <div className="ml-2 space-y-1">
+                  {tier.modules.map(moduleId => {
+                    const module = modulesData.find(m => m.id === moduleId);
+                    if (!module) return null;
+
+                    const isModuleActive = isActive(`/modules/${moduleId}`);
+
+                    return (
+                      <Link
+                        key={moduleId}
+                        to={`/modules/${moduleId}`}
+                        className={`block px-4 py-2.5 rounded-lg transition-colors text-sm border-l-2 ${
+                          isModuleActive
+                            ? `${tier.color.activeBg} ${tier.color.text} font-medium ${tier.color.border}`
+                            : `text-gray-600 hover:bg-gray-100 border-transparent`
+                        }`}
+                      >
+                        {shortenTitle(module.title)}
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          );
+        })}
 
         <Link
           to="/resources"
