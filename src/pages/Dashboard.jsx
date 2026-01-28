@@ -40,7 +40,27 @@ export function Dashboard() {
   const totalLessons = modulesData.reduce((acc, m) => acc + m.lessons.length, 0);
   const completedLessons = allModules.reduce((acc, m) => acc + m.completedLessons, 0);
 
-  // Calculate current module only after loading is complete
+  // Calculate current lesson (first uncompleted) only after loading is complete
+  const currentLesson = !loading ? (() => {
+    // Loop through all modules and lessons to find first uncompleted
+    for (const module of modulesData) {
+      for (const lesson of module.lessons) {
+        const lessonNumber = getLessonNumber(module.id, lesson.id);
+        if (!isComplete(lessonNumber, 'lesson')) {
+          return {
+            moduleId: module.id,
+            lessonId: lesson.id,
+            moduleTitle: module.title,
+            lessonTitle: lesson.title
+          };
+        }
+      }
+    }
+    // All lessons completed
+    return null;
+  })() : null;
+
+  // Keep currentModule for display purposes
   const currentModule = !loading ? (() => {
     const inProgress = allModules.find(m => m.progress > 0 && m.progress < 100);
     if (inProgress) return inProgress;
@@ -248,9 +268,9 @@ export function Dashboard() {
             Next Steps
           </h2>
           <p className="text-base text-slate-200 mb-8 max-w-2xl leading-relaxed">
-            {currentModule ? (
+            {currentLesson ? (
               <>
-                Continue with <span className="font-semibold">{currentModule.title}</span> to keep building your AI mastery. Every lesson completed brings you closer to becoming an AI expert who uses AI strategically to multiply your potential.
+                Continue with <span className="font-semibold">{currentLesson.moduleTitle}</span> to keep building your AI mastery. Every lesson completed brings you closer to becoming an AI expert who uses AI strategically to multiply your potential.
               </>
             ) : (
               <>
@@ -258,9 +278,9 @@ export function Dashboard() {
               </>
             )}
           </p>
-          {currentModule ? (
+          {currentLesson ? (
             <Link
-              to={`/modules/${currentModule.moduleId}`}
+              to={`/modules/${currentLesson.moduleId}/lessons/${currentLesson.lessonId}`}
               className="inline-block px-12 py-4 bg-cyan-500 hover:bg-cyan-600 text-slate-900 font-black rounded-lg transition-colors"
             >
               Continue Learning

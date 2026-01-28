@@ -78,56 +78,61 @@ export function LessonPage() {
 
   return (
     <div className="flex-1 overflow-y-auto">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-screen-xl mx-auto px-8 py-8">
           {/* Breadcrumb */}
-          <div className="mb-6">
-            <Link to="/dashboard" className="text-blue-600 hover:text-blue-700">
+          <div className="mb-8">
+            <Link to="/dashboard" className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
               Dashboard
             </Link>
-            <span className="mx-2 text-gray-400">&gt;</span>
-            <Link to={`/modules/${moduleIdNum}`} className="text-blue-600 hover:text-blue-700">
+            <span className="mx-2 text-slate-400">/</span>
+            <Link to={`/modules/${moduleIdNum}`} className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
               {module.title}
             </Link>
-            <span className="mx-2 text-gray-400">&gt;</span>
-            <span className="text-gray-600">{lesson.title}</span>
+            <span className="mx-2 text-slate-400">/</span>
+            <span className="text-slate-600 font-medium">{lesson.title}</span>
           </div>
 
+          {/* Lesson Title */}
+          <h1 className="text-5xl font-black text-slate-900 mb-24" style={{ letterSpacing: '-0.02em' }}>
+            {lesson.title}
+          </h1>
+
           {/* Video */}
-          <div className="mb-8 bg-black rounded-lg overflow-hidden">
+          <div className="mb-24 bg-black rounded-lg overflow-hidden shadow-lg">
             <div dangerouslySetInnerHTML={{ __html: lessonMedia_.video }} />
           </div>
 
           {/* Summary Section */}
-          <div className="mb-8 border rounded-lg">
+          <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
             <button
               onClick={() => setShowSummary(!showSummary)}
-              className="w-full flex items-center justify-between p-4 bg-gray-50 hover:bg-gray-100 transition"
+              className="w-full flex items-center justify-between p-6 bg-slate-50 hover:bg-slate-100 transition"
             >
-              <h3 className="font-semibold text-gray-900">Lesson Summary</h3>
-              <div className="flex items-center gap-2">
+              <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Lesson Summary</h2>
+              <div className="flex items-center gap-3">
                 {!showSummary && (
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       handleCopySummary();
                     }}
-                    className="p-2 hover:bg-gray-200 rounded transition"
+                    className="p-2 hover:bg-slate-200 rounded transition"
                     title="Copy summary"
                   >
-                    <Copy size={18} className={copied ? 'text-green-600' : 'text-gray-600'} />
+                    <Copy size={20} className={copied ? 'text-cyan-600' : 'text-slate-600'} />
                   </button>
                 )}
-                {showSummary ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                {showSummary ? <ChevronUp size={24} className="text-slate-600" /> : <ChevronDown size={24} className="text-slate-600" />}
               </div>
             </button>
             {showSummary && (
-              <div className="p-4 border-t">
-                <div className="prose prose-sm max-w-none text-gray-700 mb-4" dangerouslySetInnerHTML={{ __html: lessonMedia_.summary }} />
+              <div className="p-6 border-t-2 border-slate-200">
+                <div className="prose prose-sm max-w-none text-slate-700 mb-6" dangerouslySetInnerHTML={{ __html: lessonMedia_.summary }} />
                 <button
                   onClick={handleCopySummary}
-                  className="flex items-center gap-2 px-4 py-2 bg-blue-50 text-blue-700 rounded hover:bg-blue-100 transition text-sm font-medium"
+                  className="flex items-center gap-2 px-6 py-3 bg-slate-100 text-slate-800 rounded-lg hover:bg-slate-200 transition font-medium"
                 >
-                  <Copy size={16} />
+                  <Copy size={18} />
                   {copied ? 'Copied!' : 'Copy Summary'}
                 </button>
               </div>
@@ -135,71 +140,71 @@ export function LessonPage() {
           </div>
 
           {/* Guide Section */}
-          <div className="mb-8 border rounded-lg overflow-hidden">
-            <div className="p-4 bg-gray-50">
-              <h3 className="font-semibold text-gray-900">Guide</h3>
+          <div className="mb-24 border-2 border-slate-200 rounded-lg overflow-hidden shadow-sm">
+            <div className="p-6 bg-slate-50 border-b-2 border-slate-200">
+              <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Guide</h2>
             </div>
-            <div className="p-4 bg-white">
+            <div className="p-12 bg-white">
               <div dangerouslySetInnerHTML={{ __html: lessonMedia_.guide }} />
             </div>
           </div>
 
           {/* Activity Section */}
           {activity && (
-            <div className="mb-8 border rounded-lg">
-              <div className="p-4 bg-gray-50">
-                <h3 className="font-semibold text-gray-900">Skill</h3>
+            <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
+              <div className="p-6 bg-slate-50 border-b-2 border-slate-200">
+                <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Skill</h2>
               </div>
-              <div className="p-6 text-gray-700 space-y-6">
+              <div className="p-12 text-slate-700 space-y-8">
                 {/* Skill */}
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Skills You're Building:</h4>
-                  <p className="font-medium text-blue-700">{activity.skill}</p>
+                  <h3 className="text-lg font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>Skills You're Building:</h3>
+                  <p className="text-lg font-semibold text-cyan-600">{activity.skill}</p>
                 </div>
 
                 {/* Connection */}
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Connection:</h4>
-                  <p className="text-gray-700">{activity.connection}</p>
+                  <h3 className="text-lg font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>Connection:</h3>
+                  <p className="text-slate-700 leading-relaxed">{activity.connection}</p>
                 </div>
 
                 {/* Activity */}
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Activity:</h4>
-                  <div className="text-gray-700 whitespace-pre-line">{activity.activity}</div>
+                  <h3 className="text-lg font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>Activity:</h3>
+                  <div className="text-slate-700 whitespace-pre-line leading-relaxed">{activity.activity}</div>
                 </div>
 
                 {/* Why this matters */}
                 <div>
-                  <h4 className="font-semibold text-gray-900 mb-2">Why this matters:</h4>
-                  <p className="text-gray-700">{activity.whyMatters}</p>
+                  <h3 className="text-lg font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>Why this matters:</h3>
+                  <p className="text-slate-700 leading-relaxed">{activity.whyMatters}</p>
                 </div>
 
                 {/* Audience Buttons */}
-                <div className="pt-4 border-t">
-                  <h4 className="font-semibold text-gray-900 mb-4">Apply this as:</h4>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                <div className="pt-6 border-t-2 border-slate-200">
+                  <h3 className="text-lg font-black text-slate-900 mb-6" style={{ letterSpacing: '-0.02em' }}>Apply this as:</h3>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     <button
                       onClick={() => setActiveModal('learners')}
-                      className="px-4 py-3 bg-blue-50 text-blue-700 rounded-lg hover:bg-blue-100 transition font-medium text-sm"
+                      className="px-6 py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200"
                     >
                       📚 Learners
                     </button>
                     <button
                       onClick={() => setActiveModal('employees')}
-                      className="px-4 py-3 bg-purple-50 text-purple-700 rounded-lg hover:bg-purple-100 transition font-medium text-sm"
+                      className="px-6 py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200"
                     >
                       💼 Employees
                     </button>
                     <button
                       onClick={() => setActiveModal('selfEmployed')}
-                      className="px-4 py-3 bg-green-50 text-green-700 rounded-lg hover:bg-green-100 transition font-medium text-sm"
+                      className="px-6 py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200"
                     >
                       🚀 Self-Employed
                     </button>
                     <button
                       onClick={() => setActiveModal('businesses')}
-                      className="px-4 py-3 bg-orange-50 text-orange-700 rounded-lg hover:bg-orange-100 transition font-medium text-sm"
+                      className="px-6 py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200"
                     >
                       🏢 Businesses
                     </button>
@@ -243,21 +248,51 @@ export function LessonPage() {
           </Modal>
 
           {/* Mark Complete Button */}
-          <div className="pt-8 border-t">
-            <Button
-              variant={completed ? 'success' : 'primary'}
-              onClick={handleToggleComplete}
-              disabled={isMarking}
-              className="flex items-center gap-2"
-            >
-              {completed ? (
-                <>
-                  <Check size={18} /> Completed
-                </>
-              ) : (
-                'Mark as Complete'
-              )}
-            </Button>
+          <div className="pt-12 border-t-2 border-slate-200">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+              <Button
+                variant={completed ? 'success' : 'primary'}
+                onClick={handleToggleComplete}
+                disabled={isMarking}
+                className="flex items-center gap-2"
+              >
+                {completed ? (
+                  <>
+                    <Check size={20} /> Completed
+                  </>
+                ) : (
+                  'Mark as Complete'
+                )}
+              </Button>
+
+              {completed && (() => {
+                // Find next lesson
+                const currentLessonIndex = module.lessons.findIndex(l => l.id === lessonIdNum);
+                const nextLesson = module.lessons[currentLessonIndex + 1];
+
+                if (nextLesson) {
+                  // Next lesson in same module
+                  return (
+                    <Link
+                      to={`/modules/${moduleIdNum}/lessons/${nextLesson.id}`}
+                      className="px-6 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors"
+                    >
+                      Next Lesson →
+                    </Link>
+                  );
+                } else {
+                  // Last lesson in module - go to recap
+                  return (
+                    <Link
+                      to={`/modules/${moduleIdNum}/recap`}
+                      className="px-6 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors"
+                    >
+                      View Module Recap →
+                    </Link>
+                  );
+                }
+              })()}
+            </div>
           </div>
         </div>
       </div>
