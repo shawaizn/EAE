@@ -2,6 +2,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
+import { moduleIntros } from '../data/moduleIntros';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { Check } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
@@ -64,6 +65,24 @@ export function ModulePage() {
             </div>
             <ProgressBar progress={progress} />
           </div>
+
+          {/* Module Introduction */}
+          {moduleIntros[moduleIdNum] && (
+            <div className="mb-8 bg-blue-50 rounded-lg p-6 space-y-4">
+              <div>
+                <h3 className="text-sm font-semibold text-blue-900 mb-2">What You Already Know</h3>
+                <p className="text-gray-700 leading-relaxed">{moduleIntros[moduleIdNum].activation}</p>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-blue-900 mb-2">In This Module</h3>
+                <p className="text-gray-700 leading-relaxed">{moduleIntros[moduleIdNum].zoom}</p>
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-blue-900 mb-2">Why This Matters</h3>
+                <p className="text-gray-700 leading-relaxed">{moduleIntros[moduleIdNum].stakes}</p>
+              </div>
+            </div>
+          )}
 
           {/* Lessons List */}
           <div className="mb-8">
