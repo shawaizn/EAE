@@ -1,5 +1,6 @@
 import { useAuth } from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
+import appFrameworkPdf from '../assets/app-framework.pdf';
 
 export function ResourcesPage() {
   const { user, signOut } = useAuth();
@@ -70,8 +71,8 @@ export function ResourcesPage() {
                     </p>
                   </div>
                   <a
-                    href="/app-framework.pdf"
-                    download
+                    href={appFrameworkPdf}
+                    download="app-framework.pdf"
                     className="ml-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                   >
                     Download PDF
