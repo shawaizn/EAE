@@ -70,7 +70,7 @@ export function ResourcesPage() {
                     </p>
                   </div>
                   <a
-                    href="/The APP Framework (1).pdf"
+                    href="/app-framework.pdf"
                     download
                     className="ml-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
                   >
