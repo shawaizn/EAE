@@ -17,7 +17,7 @@ export function Layout({ children, user, onSignOut }) {
   return (
     <div className="min-h-screen bg-gray-50">
       <Navbar user={user} />
-      <div className="flex pt-16 h-[calc(100vh-4rem)]">
+      <div className="flex h-[calc(100vh-4rem)]">
         {/* Sidebar */}
         {sidebarOpen && (
           <aside className="w-64 bg-white border-r border-gray-300 h-[calc(100vh-4rem)] overflow-y-auto flex-shrink-0 fixed left-0 top-16 z-10">
