@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useSidebar } from '../../context/SidebarContext';
+import { LogoHorizontal } from '../branding/Logo';
 
 export function Navbar({ user }) {
   const { sidebarOpen, setSidebarOpen } = useSidebar();
@@ -19,8 +20,8 @@ export function Navbar({ user }) {
                 {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             )}
-            <Link to={user ? '/dashboard' : '/'} className="text-xl font-bold text-blue-600">
-              AI Course Platform
+            <Link to={user ? '/dashboard' : '/'} className="flex items-center">
+              <LogoHorizontal size="sm" />
             </Link>
           </div>
 
