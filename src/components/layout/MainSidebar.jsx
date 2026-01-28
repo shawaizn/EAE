@@ -10,11 +10,11 @@ const tiers = [
     name: 'Beginner',
     modules: [1, 2],
     color: {
-      bg: 'bg-blue-50',
-      activeBg: 'bg-blue-100',
-      text: 'text-blue-700',
-      hover: 'hover:bg-blue-100',
-      border: 'border-l-blue-400'
+      bg: 'bg-cyan-50',
+      activeBg: 'bg-cyan-100',
+      text: 'text-cyan-700',
+      hover: 'hover:bg-cyan-100',
+      border: 'border-l-cyan-600'
     }
   },
   {
@@ -22,11 +22,11 @@ const tiers = [
     name: 'Intermediate',
     modules: [3, 4, 5],
     color: {
-      bg: 'bg-amber-50',
-      activeBg: 'bg-amber-100',
-      text: 'text-amber-700',
-      hover: 'hover:bg-amber-100',
-      border: 'border-l-amber-400'
+      bg: 'bg-slate-100',
+      activeBg: 'bg-slate-200',
+      text: 'text-slate-900',
+      hover: 'hover:bg-slate-200',
+      border: 'border-l-slate-900'
     }
   },
   {
@@ -100,10 +100,10 @@ export function MainSidebar({ user, onSignOut }) {
       <nav className="p-6 space-y-1 flex-1 overflow-y-auto">
         <Link
           to="/dashboard"
-          className={`block px-4 py-3 rounded-lg transition-colors ${
+          className={`block px-4 py-3 rounded-lg transition-colors font-semibold ${
             isActive('/dashboard')
-              ? 'bg-blue-100 text-blue-700 font-medium'
-              : 'text-gray-700 hover:bg-gray-100'
+              ? 'bg-cyan-100 text-cyan-700'
+              : 'text-slate-700 hover:bg-slate-100'
           }`}
         >
           Dashboard
@@ -119,13 +119,13 @@ export function MainSidebar({ user, onSignOut }) {
             <div key={tier.id} className="space-y-1">
               <button
                 onClick={() => toggleTier(tier.id)}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors ${
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors font-semibold ${
                   hasActiveModule
-                    ? `${tier.color.activeBg} ${tier.color.text} font-medium border-l-4 ${tier.color.border}`
-                    : 'text-gray-700 hover:bg-gray-100'
+                    ? `${tier.color.activeBg} ${tier.color.text} border-l-4 ${tier.color.border}`
+                    : 'text-slate-700 hover:bg-slate-100'
                 }`}
               >
-                <span className="font-medium">{tier.name}</span>
+                <span>{tier.name}</span>
                 {isExpanded ? (
                   <ChevronDown size={18} />
                 ) : (
@@ -145,10 +145,10 @@ export function MainSidebar({ user, onSignOut }) {
                       <Link
                         key={moduleId}
                         to={`/modules/${moduleId}`}
-                        className={`block px-4 py-2.5 rounded-lg transition-colors text-sm border-l-2 ${
+                        className={`block px-4 py-2.5 rounded-lg transition-colors text-sm border-l-2 font-medium ${
                           isModuleActive
-                            ? `${tier.color.activeBg} ${tier.color.text} font-medium ${tier.color.border}`
-                            : `text-gray-600 hover:bg-gray-100 border-transparent`
+                            ? `${tier.color.activeBg} ${tier.color.text} ${tier.color.border}`
+                            : `text-slate-600 hover:bg-slate-100 border-transparent`
                         }`}
                       >
                         {shortenTitle(module.title)}
@@ -163,10 +163,10 @@ export function MainSidebar({ user, onSignOut }) {
 
         <Link
           to="/resources"
-          className={`block px-4 py-3 rounded-lg transition-colors ${
+          className={`block px-4 py-3 rounded-lg transition-colors font-semibold ${
             isActive('/resources')
-              ? 'bg-blue-100 text-blue-700 font-medium'
-              : 'text-gray-700 hover:bg-gray-100'
+              ? 'bg-cyan-100 text-cyan-700'
+              : 'text-slate-700 hover:bg-slate-100'
           }`}
         >
           Resources
@@ -174,14 +174,14 @@ export function MainSidebar({ user, onSignOut }) {
       </nav>
 
       {user && (
-        <div className="border-t p-4 space-y-2">
-          <div className="flex items-center gap-2 px-4 py-3 bg-gray-50 rounded-lg">
-            <User size={18} className="text-gray-600" />
-            <span className="text-sm font-medium text-gray-700 truncate">{userName}</span>
+        <div className="border-t-2 border-slate-200 p-4 space-y-2">
+          <div className="flex items-center gap-2 px-4 py-3 bg-slate-50 rounded-lg">
+            <User size={18} className="text-slate-600" />
+            <span className="text-sm font-semibold text-slate-700 truncate">{userName}</span>
           </div>
           <button
             onClick={handleSignOut}
-            className="w-full flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-red-50 rounded-lg transition-colors text-sm"
+            className="w-full flex items-center gap-2 px-4 py-2 text-slate-700 hover:bg-red-50 rounded-lg transition-colors text-sm font-medium"
           >
             <LogOut size={18} />
             Sign Out

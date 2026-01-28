@@ -6,6 +6,7 @@ import { moduleIntros } from '../data/moduleIntros';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { Check } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
+import { BRAND } from '../lib/brandConstants';
 
 export function ModulePage() {
   const { user, signOut } = useAuth();
@@ -39,28 +40,30 @@ export function ModulePage() {
 
   return (
     <div className="flex-1 overflow-y-auto">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-screen-xl mx-auto px-8 py-8">
           {/* Breadcrumb */}
-          <div className="mb-6">
-            <Link to="/dashboard" className="text-blue-600 hover:text-blue-700">
+          <div className="mb-8">
+            <Link to="/dashboard" className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
               Dashboard
             </Link>
-            <span className="mx-2 text-gray-400">&gt;</span>
-            <span className="text-gray-600">{module.title}</span>
+            <span className="mx-2 text-slate-400">/</span>
+            <span className="text-slate-600 font-medium">{module.title}</span>
           </div>
 
           {/* Module Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">{module.title}</h1>
-            <p className="text-gray-600">Module {moduleIdNum} of {modulesData.length}</p>
+          <div className="mb-24">
+            <h1 className="text-5xl font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>
+              {module.title}
+            </h1>
+            <p className="text-lg text-slate-600 font-medium">Module {moduleIdNum} of {modulesData.length}</p>
           </div>
 
           {/* Progress */}
-          <div className="mb-8">
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg font-semibold">Progress</h2>
-              <span className="text-gray-600 text-sm">
-                {completedLessons} of {module.lessons.length} lessons complete
+          <div className="mb-24 border-2 border-slate-200 rounded-lg p-8 shadow-sm">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Your Progress</h2>
+              <span className="text-slate-700 font-semibold">
+                {completedLessons} / {module.lessons.length} lessons
               </span>
             </div>
             <ProgressBar progress={progress} />
@@ -68,40 +71,55 @@ export function ModulePage() {
 
           {/* Module Introduction */}
           {moduleIntros[moduleIdNum] && (
-            <div className="mb-8 bg-blue-50 rounded-lg p-6 space-y-4">
-              <div>
-                <h3 className="text-sm font-semibold text-blue-900 mb-2">What You Already Know</h3>
-                <p className="text-gray-700 leading-relaxed">{moduleIntros[moduleIdNum].activation}</p>
+            <div className="mb-24 border-2 border-cyan-600 rounded-lg overflow-hidden shadow-sm">
+              <div className="p-6 bg-cyan-50 border-b-2 border-cyan-600">
+                <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>
+                  Module Overview
+                </h2>
               </div>
-              <div>
-                <h3 className="text-sm font-semibold text-blue-900 mb-2">In This Module</h3>
-                <p className="text-gray-700 leading-relaxed">{moduleIntros[moduleIdNum].zoom}</p>
-              </div>
-              <div>
-                <h3 className="text-sm font-semibold text-blue-900 mb-2">Why This Matters</h3>
-                <p className="text-gray-700 leading-relaxed">{moduleIntros[moduleIdNum].stakes}</p>
+              <div className="p-12 bg-white space-y-8">
+                <div>
+                  <h3 className="text-lg font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>
+                    What You Already Know
+                  </h3>
+                  <p className="text-slate-700 leading-relaxed">{moduleIntros[moduleIdNum].activation}</p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>
+                    In This Module
+                  </h3>
+                  <p className="text-slate-700 leading-relaxed">{moduleIntros[moduleIdNum].zoom}</p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>
+                    Why This Matters
+                  </h3>
+                  <p className="text-slate-700 leading-relaxed">{moduleIntros[moduleIdNum].stakes}</p>
+                </div>
               </div>
             </div>
           )}
 
           {/* Lessons List */}
-          <div className="mb-8">
-            <h2 className="text-lg font-semibold mb-4">Lessons</h2>
-            <div className="space-y-3">
+          <div className="mb-24">
+            <h2 className="text-2xl font-black text-slate-900 mb-6" style={{ letterSpacing: '-0.02em' }}>Lessons</h2>
+            <div className="space-y-4">
               {module.lessons.map((lesson) => {
                 const completed = isComplete(getLessonNumber(moduleIdNum, lesson.id), 'lesson');
                 return (
                   <Link
                     key={lesson.id}
                     to={`/modules/${moduleIdNum}/lessons/${lesson.id}`}
-                    className="block p-4 border rounded-lg hover:bg-gray-50 transition"
+                    className="block p-6 border-2 border-slate-200 rounded-lg hover:border-cyan-600 hover:shadow-md transition"
                   >
                     <div className="flex items-center justify-between">
                       <div>
-                        <h3 className="font-medium text-gray-900">Lesson {lesson.id}: {lesson.title}</h3>
+                        <h3 className="text-lg font-semibold text-slate-900">
+                          Lesson {lesson.id}: {lesson.title}
+                        </h3>
                       </div>
                       {completed && (
-                        <Check size={20} className="text-green-600" />
+                        <Check size={24} className="text-cyan-600" />
                       )}
                     </div>
                   </Link>
@@ -111,12 +129,12 @@ export function ModulePage() {
           </div>
 
           {/* Recap Button */}
-          <div className="mt-8 pt-8 border-t">
+          <div className="pt-12 border-t-2 border-slate-200">
             <Link
               to={`/modules/${moduleIdNum}/recap`}
-              className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+              className="inline-block px-8 py-4 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors font-semibold"
             >
-              Go to Module Recap
+              Go to Module Recap →
             </Link>
           </div>
         </div>

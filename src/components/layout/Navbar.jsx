@@ -7,14 +7,14 @@ export function Navbar({ user }) {
   const { sidebarOpen, setSidebarOpen } = useSidebar();
 
   return (
-    <nav className="bg-white shadow-sm border-b sticky top-0 z-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="bg-white shadow-sm border-b-2 border-slate-200 sticky top-0 z-20">
+      <div className="max-w-7xl mx-auto px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-4">
             {user && (
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="p-2 hover:bg-slate-100 rounded-lg transition-colors text-slate-900"
                 title={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
               >
                 {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
@@ -28,7 +28,7 @@ export function Navbar({ user }) {
           {!user && (
             <Link
               to="/login"
-              className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+              className="px-6 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors font-semibold"
             >
               Login
             </Link>

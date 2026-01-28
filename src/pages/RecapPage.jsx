@@ -33,55 +33,57 @@ export function RecapPage() {
 
   return (
     <div className="flex-1 overflow-y-auto">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-screen-xl mx-auto px-8 py-8">
           {/* Breadcrumb */}
-          <div className="mb-6">
-            <Link to="/dashboard" className="text-blue-600 hover:text-blue-700">
+          <div className="mb-8">
+            <Link to="/dashboard" className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
               Dashboard
             </Link>
-            <span className="mx-2 text-gray-400">&gt;</span>
-            <Link to={`/modules/${moduleIdNum}`} className="text-blue-600 hover:text-blue-700">
+            <span className="mx-2 text-slate-400">/</span>
+            <Link to={`/modules/${moduleIdNum}`} className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
               {module.title}
             </Link>
-            <span className="mx-2 text-gray-400">&gt;</span>
-            <span className="text-gray-600">Recap</span>
+            <span className="mx-2 text-slate-400">/</span>
+            <span className="text-slate-600 font-medium">Recap</span>
           </div>
 
           {/* Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Module Recap</h1>
-            <p className="text-gray-600">{module.title}</p>
+          <div className="mb-24">
+            <h1 className="text-5xl font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>
+              Module Recap
+            </h1>
+            <p className="text-lg text-slate-600 font-medium">{module.title}</p>
           </div>
 
           {/* Module Notes */}
-          <div className="mb-8 border rounded-lg">
-            <div className="p-4 bg-gray-50 flex items-center gap-2">
-              <FileText size={20} className="text-blue-600" />
-              <h2 className="font-semibold text-gray-900">Module Notes</h2>
+          <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
+            <div className="p-6 bg-slate-50 border-b-2 border-slate-200 flex items-center gap-3">
+              <FileText size={24} className="text-cyan-600" />
+              <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Module Notes</h2>
             </div>
-            <div className="p-6">
-              <p className="text-gray-700 mb-4">
+            <div className="p-12">
+              <p className="text-slate-700 mb-6 leading-relaxed">
                 [Module {moduleIdNum} notes will be displayed here]
               </p>
-              <p className="text-gray-600 text-sm">
+              <p className="text-slate-600">
                 These are comprehensive notes summarizing all {module.lessons.length} lessons in this module.
               </p>
             </div>
           </div>
 
           {/* Practice Quiz */}
-          <div className="mb-8 border rounded-lg bg-blue-50">
-            <div className="p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <BookOpen size={20} className="text-blue-600" />
-                <h2 className="font-semibold text-gray-900">Practice Quiz</h2>
+          <div className="mb-24 border-2 border-cyan-600 rounded-lg bg-cyan-50 shadow-sm">
+            <div className="p-12">
+              <div className="flex items-center gap-3 mb-6">
+                <BookOpen size={28} className="text-cyan-600" />
+                <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Practice Quiz</h2>
               </div>
-              <p className="text-gray-700 mb-6">
-                Test your knowledge with {module.lessons.length} lessons worth of questions. 
+              <p className="text-slate-700 mb-8 leading-relaxed text-lg">
+                Test your knowledge with {module.lessons.length} lessons worth of questions.
               </p>
               <Link
                 to={`/quiz/lesson/${moduleIdNum}`}
-                className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+                className="inline-block px-8 py-4 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors font-semibold"
               >
                 Start Module Quiz
               </Link>
@@ -89,20 +91,21 @@ export function RecapPage() {
           </div>
 
           {/* Navigation */}
-          <div className="pt-8 border-t flex justify-between">
-            {moduleIdNum > 1 && (
+          <div className="pt-12 border-t-2 border-slate-200 flex justify-between items-center">
+            {moduleIdNum > 1 ? (
               <Link
                 to={`/modules/${moduleIdNum - 1}`}
-                className="px-6 py-3 text-gray-700 border rounded-lg hover:bg-gray-50 transition font-medium"
+                className="px-6 py-3 text-slate-900 border-2 border-slate-200 rounded-lg hover:bg-slate-50 transition font-semibold"
               >
                 ← Previous Module
               </Link>
+            ) : (
+              <div></div>
             )}
-            <div></div>
             {moduleIdNum < 8 && (
               <Link
                 to={`/modules/${moduleIdNum + 1}`}
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-medium"
+                className="px-8 py-4 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors font-semibold"
               >
                 Next Module →
               </Link>
