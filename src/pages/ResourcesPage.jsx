@@ -61,9 +61,23 @@ export function ResourcesPage() {
               <p className="text-gray-700 mb-4">
                 Step-by-step guides for getting the most out of the course.
               </p>
-              <p className="text-gray-600 text-sm">
-                [How-to guide content will be displayed here]
-              </p>
+              <div className="space-y-3">
+                <div className="flex items-center justify-between p-4 bg-white border rounded-lg hover:bg-gray-50 transition-colors">
+                  <div className="flex-1">
+                    <h3 className="font-medium text-gray-900">The APP Framework</h3>
+                    <p className="text-sm text-gray-600 mt-1">
+                      A comprehensive framework for understanding and applying key concepts
+                    </p>
+                  </div>
+                  <a
+                    href="/The APP Framework (1).pdf"
+                    download
+                    className="ml-4 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors"
+                  >
+                    Download PDF
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
