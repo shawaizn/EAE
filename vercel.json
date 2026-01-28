@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/app-framework.pdf",
+      "destination": "/app-framework.pdf"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
