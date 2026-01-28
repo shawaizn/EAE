@@ -77,7 +77,14 @@ export function Dashboard() {
     const current = allModules[index];
     if (current.progress === 100) return 'completed';
     if (current.progress > 0) return 'in-progress';
-    return 'locked';
+
+    // Special case: Module 1 should be 'current' if no other module is in progress
+    if (index === 0) {
+      const hasInProgressModule = allModules.some(m => m.progress > 0 && m.progress < 100);
+      if (!hasInProgressModule) return 'in-progress';
+    }
+
+    return 'incomplete';
   };
 
   return (
@@ -195,13 +202,13 @@ export function Dashboard() {
               const state = getModuleState(index);
               const isCompleted = state === 'completed';
               const isInProgress = state === 'in-progress';
-              const isLocked = state === 'locked';
+              const isIncomplete = state === 'incomplete';
 
               let borderClass = 'border-slate-200';
               let bgClass = 'bg-white';
               let ringClass = '';
               let badgeClass = 'bg-slate-100 text-slate-700';
-              let badgeText = 'Locked';
+              let badgeText = 'Incomplete';
               let opacityClass = 'opacity-60';
 
               if (isCompleted) {
@@ -223,7 +230,7 @@ export function Dashboard() {
                 <Link
                   key={module.moduleId}
                   to={`/modules/${module.moduleId}`}
-                  className={`block p-6 rounded-lg border-2 ${borderClass} ${bgClass} ${ringClass} ${!isLocked ? '' : opacityClass} transition-all hover:shadow-lg`}
+                  className={`block p-6 rounded-lg border-2 ${borderClass} ${bgClass} ${ringClass} ${opacityClass} transition-all hover:shadow-lg`}
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
