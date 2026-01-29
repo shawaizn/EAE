@@ -5,30 +5,14 @@ import { modulesData } from '../data/modulesData';
 import { Button } from '../components/ui/Button';
 import { BookOpen, FileText } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
-import { getModuleNotes } from '../lib/notesFetch';
-import { useState, useEffect } from 'react';
 
 export function RecapPage() {
   const { user, signOut } = useAuth();
   const { moduleId } = useParams();
   const { isComplete, loading } = useProgress(user?.id, []);
-  const [notes, setNotes] = useState(null);
-  const [notesLoading, setNotesLoading] = useState(true);
 
   const moduleIdNum = parseInt(moduleId);
   const module = modulesData.find(m => m.id === moduleIdNum);
-
-  useEffect(() => {
-    const fetchNotes = async () => {
-      setNotesLoading(true);
-      const moduleNotes = await getModuleNotes(moduleIdNum);
-      setNotes(moduleNotes);
-      setNotesLoading(false);
-    };
-    if (moduleIdNum) {
-      fetchNotes();
-    }
-  }, [moduleIdNum]);
 
   if (!module) {
     return (
@@ -78,33 +62,12 @@ export function RecapPage() {
               <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Module Notes</h2>
             </div>
             <div className="p-12">
-              {notesLoading ? (
-                <p className="text-slate-600 italic">Loading notes...</p>
-              ) : notes && notes.sections ? (
-                <div className="space-y-8">
-                  {notes.sections.map((section, idx) => (
-                    <div key={idx}>
-                      <h3 className="text-xl font-bold text-slate-900 mb-4">{section.name}</h3>
-                      {section.subsections && Array.isArray(section.subsections) ? (
-                        <div className="space-y-4 pl-4">
-                          {section.subsections.map((subsection, subIdx) => (
-                            <div key={subIdx} className="border-l-2 border-cyan-300 pl-4">
-                              <h4 className="font-semibold text-slate-800 mb-2">{subsection.title}</h4>
-                              <p className="text-slate-700 leading-relaxed text-sm">{subsection.content}</p>
-                            </div>
-                          ))}
-                        </div>
-                      ) : (
-                        <p className="text-slate-700 leading-relaxed">{section.content}</p>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-slate-600">
-                  Comprehensive notes summarizing all {module.lessons.length} lessons in this module.
-                </p>
-              )}
+              <p className="text-slate-700 mb-6 leading-relaxed">
+                [Module {moduleIdNum} notes will be displayed here]
+              </p>
+              <p className="text-slate-600">
+                These are comprehensive notes summarizing all {module.lessons.length} lessons in this module.
+              </p>
             </div>
           </div>
 
