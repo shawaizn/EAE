@@ -51,7 +51,7 @@ export function RecapPage() {
     <div className="flex-1 overflow-y-auto">
       <div className="max-w-screen-xl mx-auto px-8 py-8">
           {/* Breadcrumb */}
-          <div className="mb-8">
+          {/* <div className="mb-8">
             <Link to="/dashboard" className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
               Dashboard
             </Link>
@@ -61,7 +61,7 @@ export function RecapPage() {
             </Link>
             <span className="mx-2 text-slate-400">/</span>
             <span className="text-slate-600 font-medium">Recap</span>
-          </div>
+          </div> */}
 
           {/* Header */}
           <div className="mb-24">
