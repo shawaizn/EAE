@@ -14,7 +14,9 @@ export function LessonPage() {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
   const { moduleId, lessonId } = useParams();
-  const [showSummary, setShowSummary] = useState(false);
+  const [showSummary, setShowSummary] = useState(true);
+  const [showSkill, setShowSkill] = useState(false);
+  const [showGuide, setShowGuide] = useState(false);
   const [copied, setCopied] = useState(false);
   const [isMarking, setIsMarking] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
@@ -206,23 +208,20 @@ export function LessonPage() {
             )}
           </div>
 
-          {/* Guide Section */}
-          <div className="mb-24 border-2 border-slate-200 rounded-lg overflow-hidden shadow-sm">
-            <div className="p-6 bg-slate-50 border-b-2 border-slate-200">
-              <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Guide</h2>
-            </div>
-            <div className="p-12 bg-white">
-              <div dangerouslySetInnerHTML={{ __html: lessonMedia_.guide }} />
-            </div>
-          </div>
-
           {/* Activity Section */}
           {activity && (
             <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
-              <div className="p-6 bg-slate-50 border-b-2 border-slate-200">
-                <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Skill</h2>
-              </div>
-              <div className="p-12 text-slate-700 space-y-8">
+              <button
+                onClick={() => setShowSkill(!showSkill)}
+                className="w-full flex items-center justify-between p-6 bg-slate-50 hover:bg-slate-100 transition"
+              >
+                <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>
+                  Skill{activity.skill && `: ${activity.skill}`}
+                </h2>
+                {showSkill ? <ChevronUp size={24} className="text-slate-600" /> : <ChevronDown size={24} className="text-slate-600" />}
+              </button>
+              {showSkill && (
+              <div className="p-12 text-slate-700 space-y-8 border-t-2 border-slate-200">
                 {/* Skill */}
                 <div>
                   <h3 className="text-lg font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>Skills You're Building:</h3>
@@ -278,8 +277,25 @@ export function LessonPage() {
                   </div>
                 </div>
               </div>
+              )}
             </div>
           )}
+
+          {/* Guide Section */}
+          <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
+            <button
+              onClick={() => setShowGuide(!showGuide)}
+              className="w-full flex items-center justify-between p-6 bg-slate-50 hover:bg-slate-100 transition"
+            >
+              <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Guide</h2>
+              {showGuide ? <ChevronUp size={24} className="text-slate-600" /> : <ChevronDown size={24} className="text-slate-600" />}
+            </button>
+            {showGuide && (
+              <div className="p-12 bg-white border-t-2 border-slate-200">
+                <div dangerouslySetInnerHTML={{ __html: lessonMedia_.guide }} />
+              </div>
+            )}
+          </div>
 
           {/* Modals */}
           <Modal
