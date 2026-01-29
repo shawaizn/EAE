@@ -80,7 +80,7 @@ export function LessonPage() {
     <div className="flex-1 overflow-y-auto">
       <div className="max-w-screen-xl mx-auto px-8 py-8">
           {/* Breadcrumb */}
-          <div className="mb-8">
+          {/* <div className="mb-8">
             <Link to="/dashboard" className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
               Dashboard
             </Link>
@@ -90,7 +90,7 @@ export function LessonPage() {
             </Link>
             <span className="mx-2 text-slate-400">/</span>
             <span className="text-slate-600 font-medium">{lesson.title}</span>
-          </div>
+          </div> */}
 
           {/* Lesson Title */}
           <h1 className="text-5xl font-black text-slate-900 mb-24" style={{ letterSpacing: '-0.02em' }}>
