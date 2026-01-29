@@ -59,8 +59,75 @@ export function LessonPage() {
     );
   }
 
+  const convertHtmlToText = (html) => {
+    // Create a temporary DOM element to parse HTML
+    const temp = document.createElement('div');
+    temp.innerHTML = html;
+
+    let text = '';
+
+    // Process each child node
+    const processNode = (node, indent = '') => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const trimmed = node.textContent.trim();
+        if (trimmed) {
+          text += trimmed + ' ';
+        }
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        const tagName = node.tagName.toLowerCase();
+
+        if (tagName === 'h3' || tagName === 'h2') {
+          // Add heading with line breaks
+          if (text.trim()) text = text.trim() + '\n\n';
+          text += node.textContent.trim().toUpperCase() + '\n\n';
+        } else if (tagName === 'ul') {
+          // Process unordered list
+          if (text.trim()) text = text.trim() + '\n';
+          Array.from(node.children).forEach(li => {
+            if (li.tagName.toLowerCase() === 'li') {
+              text += '• ' + li.textContent.trim() + '\n';
+            }
+          });
+          text += '\n';
+        } else if (tagName === 'ol') {
+          // Process ordered list
+          if (text.trim()) text = text.trim() + '\n';
+          Array.from(node.children).forEach((li, index) => {
+            if (li.tagName.toLowerCase() === 'li') {
+              text += `${index + 1}. ${li.textContent.trim()}\n`;
+            }
+          });
+          text += '\n';
+        } else if (tagName === 'p') {
+          // Add paragraph with line breaks
+          if (text.trim()) text = text.trim() + '\n\n';
+          Array.from(node.childNodes).forEach(child => processNode(child));
+          text = text.trim() + '\n';
+        } else if (tagName === 'br') {
+          text += '\n';
+        } else if (tagName === 'div') {
+          // Process div children
+          Array.from(node.childNodes).forEach(child => processNode(child));
+        } else {
+          // For other elements, just process children
+          Array.from(node.childNodes).forEach(child => processNode(child));
+        }
+      }
+    };
+
+    Array.from(temp.childNodes).forEach(child => processNode(child));
+
+    // Clean up extra whitespace and normalize line breaks
+    text = text.replace(/[ \t]+/g, ' '); // Replace multiple spaces with single space
+    text = text.replace(/\n\s+/g, '\n'); // Remove spaces at beginning of lines
+    text = text.replace(/\n{3,}/g, '\n\n'); // Replace multiple line breaks with double
+
+    return text.trim();
+  };
+
   const handleCopySummary = () => {
-    navigator.clipboard.writeText(lessonMedia_.summary);
+    const plainText = convertHtmlToText(lessonMedia_.summary);
+    navigator.clipboard.writeText(plainText);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
