@@ -71,3 +71,48 @@ export function getModuleState(moduleId, moduleProgresses) {
   if (module.progress > 0) return 'in-progress';
   return 'available';
 }
+
+// Parse markdown text and convert to formatted HTML
+export function parseMarkdownToHTML(text) {
+  if (!text) return '';
+
+  // Split into lines
+  let lines = text.split('\n');
+  let html = '';
+  let inList = false;
+
+  lines.forEach((line, index) => {
+    // Handle bold text with **
+    line = line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+    // Check if line starts with dash (bullet point)
+    if (line.trim().startsWith('-')) {
+      // Start list if not already in one
+      if (!inList) {
+        html += '<ul class="space-y-2 my-4">';
+        inList = true;
+      }
+      // Remove the dash and add list item
+      const content = line.trim().substring(1).trim();
+      html += `<li class="ml-6">${content}</li>`;
+    } else {
+      // Close list if we were in one
+      if (inList) {
+        html += '</ul>';
+        inList = false;
+      }
+
+      // Add paragraph for non-empty lines
+      if (line.trim()) {
+        html += `<p class="mb-4">${line}</p>`;
+      }
+    }
+  });
+
+  // Close list if still open at end
+  if (inList) {
+    html += '</ul>';
+  }
+
+  return html;
+}

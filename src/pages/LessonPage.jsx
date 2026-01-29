@@ -8,7 +8,7 @@ import { Check, Copy, ChevronDown, ChevronUp } from 'lucide-react';
 import { modulesData } from '../data/modulesData';
 import { lessonMedia } from '../data/lessonMedia';
 import { activityData } from '../data/activityData';
-import { getLessonNumber } from '../lib/utils';
+import { getLessonNumber, parseMarkdownToHTML } from '../lib/utils';
 
 export function LessonPage() {
   const { user, signOut } = useAuth();
@@ -220,7 +220,10 @@ export function LessonPage() {
             onClose={() => setActiveModal(null)}
             title="For Learners"
           >
-            <div className="whitespace-pre-line">{activity?.learners}</div>
+            <div
+              className="prose prose-sm max-w-none text-slate-700"
+              dangerouslySetInnerHTML={{ __html: parseMarkdownToHTML(activity?.learners) }}
+            />
           </Modal>
 
           <Modal
@@ -228,7 +231,10 @@ export function LessonPage() {
             onClose={() => setActiveModal(null)}
             title="For Employees"
           >
-            <div className="whitespace-pre-line">{activity?.employees}</div>
+            <div
+              className="prose prose-sm max-w-none text-slate-700"
+              dangerouslySetInnerHTML={{ __html: parseMarkdownToHTML(activity?.employees) }}
+            />
           </Modal>
 
           <Modal
@@ -236,7 +242,10 @@ export function LessonPage() {
             onClose={() => setActiveModal(null)}
             title="For Self-Employed"
           >
-            <div className="whitespace-pre-line">{activity?.selfEmployed}</div>
+            <div
+              className="prose prose-sm max-w-none text-slate-700"
+              dangerouslySetInnerHTML={{ __html: parseMarkdownToHTML(activity?.selfEmployed) }}
+            />
           </Modal>
 
           <Modal
@@ -244,7 +253,10 @@ export function LessonPage() {
             onClose={() => setActiveModal(null)}
             title="For Businesses"
           >
-            <div className="whitespace-pre-line">{activity?.businesses}</div>
+            <div
+              className="prose prose-sm max-w-none text-slate-700"
+              dangerouslySetInnerHTML={{ __html: parseMarkdownToHTML(activity?.businesses) }}
+            />
           </Modal>
 
           {/* Mark Complete Button */}
