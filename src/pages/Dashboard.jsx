@@ -9,14 +9,14 @@ export function Dashboard() {
   const { isComplete, loading } = useProgress(user?.id, []);
 
   const moduleNarratives = [
-    "This module shows you how AI fits into the pattern of tools that change how humans work. It's not magic—it's just the next tool in a long line of tools.",
-    "This module shows you exactly how AI works—from the moment you type something to the moment it responds, all the way up to AI systems that can make decisions and take actions by themselves.",
-    "This module shows you that same journey for AI—how it goes from research labs into the thousands of products you see on your phone, and how to make sense of all of them.",
-    "This module shows you exactly how to use AI correctly so it becomes your superpower instead of your downfall. You'll learn when to use it, when not to, and how to protect yourself from the traps.",
-    "This module shows you how to communicate with AI so it becomes your personal expert assistant instead of a generic tool. Everyone has access to the same AI—what separates the people getting 10x better results is how they ask questions.",
-    "This module shows you how to stop collecting AI tools and start building systems that work for you. You'll learn how the best AI users actually operate and make AI part of their daily work.",
-    "This module shows you the game that's changing right now—the AI era. You'll learn how to position yourself to WIN in this changing world and what skills to build that will stay useful no matter what happens.",
-    "Build your implementation strategy and best practices for using AI effectively in your work and life."
+    "Government courses teach \"comprehensive AI fundamentals over weeks.\" We teach accelerated foundations—what AI is, how it fits in technology history, and the evolution to machine learning—condensed into focused lessons. Understanding is a necessity, not a destination. Get the foundation quickly so you can move to strategic application.",
+    "Government courses teach \"technical deep-dives into AI mechanics.\" We teach evaluation frameworks—how ChatGPT works, the autonomy ladder (LLMs → Workflows → Agents), and frameworks to evaluate ANY AI tool that emerges. Tools change constantly. Evaluation frameworks don't.",
+    "Government courses teach \"popular AI tools and productivity apps.\" We teach market structure—how AI goes from research labs to products, who controls what in the AI pyramid, the four types of AI products, and business models that determine access. When you understand market forces, you make strategic choices instead of chasing trends.",
+    "Government courses don't teach this. Their goal is \"maximizing AI adoption\"—using AI everywhere. We teach strategic restraint—when to use AI, when NOT to, which work to protect, and the five AI traps that create dependency. Using AI for everything weakens you. Strategic usage strengthens you.",
+    "Government courses teach \"prompt engineering frameworks\"—and do this well with basics like CO-STAR. We teach contextual prompting—frameworks, meta-prompting (having AI improve your prompts), and building custom prompt libraries for YOUR workflow. Everyone learns the same basics. Custom libraries create efficiency advantage.",
+    "Government courses teach \"AI tool catalogs and productivity tips.\" We teach systems thinking—building workflows around outcomes (not specific tools), creating playbooks that survive tool changes, and strategic filtering. Tools become obsolete. Systems compound value over time.",
+    "Government courses don't teach this. Their goal is \"ensuring everyone can work with AI\"—not helping you position strategically as AI literacy becomes universal. We teach competitive positioning—what skills increase in value, which advantages AI can't replicate, and building strategic assets. When everyone has AI literacy, positioning differentiates.",
+    "Government courses teach \"getting started with AI and using it productively.\" We teach systematic implementation—building workflows that last, team collaboration strategies, measuring real impact (not just activity), and continuous improvement. Implementation separates those who complete training from those who create lasting capability."
   ];
 
   // Calculate progress for all modules from modulesData
@@ -100,13 +100,27 @@ export function Dashboard() {
           </p>
         </section>
 
-        {/* ABOUT THIS COURSE SECTION */}
+        {/* STRATEGIC AI IMPLEMENTATION SECTION */}
         <section className="mb-24 p-12 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-xl">
-          <h2 className="text-3xl font-black text-slate-900 mb-6" style={{ letterSpacing: '-0.02em' }}>
-            About This Course
-          </h2>
+          <div className="mb-2">
+            <p className="text-xs font-black uppercase tracking-wider text-cyan-600 mb-1">
+              ENERGISE AI EDUCATION
+            </p>
+            <h2 className="text-3xl font-black text-slate-900 mb-6" style={{ letterSpacing: '-0.02em' }}>
+              Strategic AI Implementation
+            </h2>
+          </div>
+          <p className="text-base text-slate-700 mb-4 leading-relaxed max-w-3xl">
+            The UK government and major tech companies are investing heavily in AI literacy—aiming to train "10 million workers by 2030" with courses on "AI fundamentals," "productivity tools," and "getting everyone AI-ready."
+          </p>
+          <p className="text-base text-slate-700 mb-4 leading-relaxed max-w-3xl">
+            That's good. Do those courses. AI literacy is essential.
+          </p>
           <p className="text-base text-slate-700 mb-8 leading-relaxed max-w-3xl">
-            Energise AI Education is a premium, comprehensive course designed for learners aged 15-60 who want to master AI. Over approximately 45 hours across 8 modules, you'll move from foundational concepts to advanced strategies. This isn't about collecting information—it's about building real, actionable capability. We refuse mediocrity and focus on what's right, not what's common.
+            But here's what we've noticed: when everyone completes the same foundation, strategic application becomes the differentiator. Strategic AI Implementation is designed for what comes next—applying AI specifically to YOUR context, knowing when to use it (and when not to), and building systems that create competitive advantage instead of just completing training badges.
+          </p>
+          <p className="text-base text-slate-900 font-semibold mb-8 max-w-3xl">
+            The government creates mass literacy. We help you build strategic capability on top of it.
           </p>
 
           {/* Stats Grid */}
@@ -115,7 +129,7 @@ export function Dashboard() {
               <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
                 Total Duration
               </p>
-              <p className="text-2xl font-black text-slate-900">~45 Hours</p>
+              <p className="text-2xl font-black text-slate-900">~22 Hours</p>
             </div>
             <div className="p-6 bg-white border-l-4 border-cyan-500 rounded-lg">
               <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
@@ -137,11 +151,11 @@ export function Dashboard() {
               You'll Master:
             </p>
             <ul className="text-sm text-slate-700 space-y-2">
-              <li>• Foundational AI concepts and how they apply to your work</li>
-              <li>• Advanced prompting techniques to get 10x better results</li>
-              <li>• Strategic thinking about AI tools and when to use them</li>
-              <li>• Building systems and workflows that multiply your productivity</li>
-              <li>• Positioning yourself for success in the AI era</li>
+              <li>• How AI works IN YOUR CONTEXT (not just how AI works)</li>
+              <li>• When to use AI—and when NOT to (strategic restraint)</li>
+              <li>• Custom workflows that create independence</li>
+              <li>• The five AI traps and prevention tactics</li>
+              <li>• Systems that compound value over time</li>
             </ul>
           </div>
         </section>
@@ -188,6 +202,130 @@ export function Dashboard() {
                 {completedModules} / 8
               </p>
             </div>
+          </div>
+        </section>
+
+        {/* COMPARISON TABLE SECTION */}
+        <section className="mb-24 p-12 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-xl">
+          <h2 className="text-3xl font-black text-slate-900 mb-8" style={{ letterSpacing: '-0.02em' }}>
+            How This Differs
+          </h2>
+
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="border-b-2 border-slate-300">
+                  <th className="text-left p-4 text-sm font-black text-slate-600 uppercase tracking-wider w-1/2">
+                    "Government & Big Tech AI Training"
+                  </th>
+                  <th className="text-left p-4 text-sm font-black text-slate-900 uppercase tracking-wider w-1/2 bg-cyan-50">
+                    Energise Strategic AI Implementation
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="text-sm">
+                <tr className="border-b border-slate-200">
+                  <td className="p-4 text-slate-600">
+                    <span className="font-semibold text-slate-700">Goal:</span> "Mass AI adoption across 10M workers"
+                  </td>
+                  <td className="p-4 bg-cyan-50 text-slate-900">
+                    <span className="font-semibold">Goal:</span> Strategic competitive advantage for YOUR context
+                  </td>
+                </tr>
+                <tr className="border-b border-slate-200">
+                  <td className="p-4 text-slate-600">
+                    <span className="font-semibold text-slate-700">Audience:</span> "Everyone—generic training at scale"
+                  </td>
+                  <td className="p-4 bg-cyan-50 text-slate-900">
+                    <span className="font-semibold">Audience:</span> Those ready for strategic application
+                  </td>
+                </tr>
+                <tr className="border-b border-slate-200">
+                  <td className="p-4 text-slate-600">
+                    <span className="font-semibold text-slate-700">Focus:</span> "AI literacy and tool productivity"
+                  </td>
+                  <td className="p-4 bg-cyan-50 text-slate-900">
+                    <span className="font-semibold">Focus:</span> Strategic systems and positioning
+                  </td>
+                </tr>
+                <tr className="border-b border-slate-200">
+                  <td className="p-4 text-slate-600">
+                    <span className="font-semibold text-slate-700">Delivery:</span> "Scattered courses across platforms"
+                  </td>
+                  <td className="p-4 bg-cyan-50 text-slate-900">
+                    <span className="font-semibold">Delivery:</span> Integrated 8-module journey (44 lessons)
+                  </td>
+                </tr>
+                <tr className="border-b-2 border-slate-300">
+                  <td className="p-4 pt-6" colSpan="2">
+                    <p className="font-black text-slate-900 text-xs uppercase tracking-wider mb-3">What You Learn</p>
+                  </td>
+                </tr>
+                <tr className="border-b border-slate-200">
+                  <td className="p-4 align-top">
+                    <ul className="text-slate-600 space-y-2">
+                      <li>✓ "How AI works" (foundations)</li>
+                      <li>✓ "How to use AI tools" (ChatGPT, Copilot)</li>
+                      <li>✓ "Prompt engineering basics"</li>
+                      <li>✓ "Maximizing productivity through automation"</li>
+                      <li className="text-slate-400">✗ Strategic restraint</li>
+                      <li className="text-slate-400">✗ When NOT to use AI</li>
+                      <li className="text-slate-400">✗ Building systems</li>
+                      <li className="text-slate-400">✗ Career positioning</li>
+                    </ul>
+                  </td>
+                  <td className="p-4 bg-cyan-50 align-top">
+                    <ul className="text-slate-900 space-y-2">
+                      <li>✓ How AI works IN YOUR CONTEXT</li>
+                      <li>✓ When to use AI—and when NOT to</li>
+                      <li>✓ Custom prompt libraries for YOUR workflow</li>
+                      <li>✓ Strategic restraint and capability protection</li>
+                      <li>✓ The five AI traps and prevention tactics</li>
+                      <li>✓ Decision frameworks for YOUR context</li>
+                      <li>✓ Playbooks and workflows that compound</li>
+                      <li>✓ Strategic assets for lasting advantage</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr className="border-b-2 border-slate-300">
+                  <td className="p-4 pt-6" colSpan="2">
+                    <p className="font-black text-slate-900 text-xs uppercase tracking-wider mb-3">The Result</p>
+                  </td>
+                </tr>
+                <tr className="border-b border-slate-200">
+                  <td className="p-4 align-top">
+                    <ul className="text-slate-600 space-y-2">
+                      <li>• "You can use AI tools"</li>
+                      <li>• "You're AI ready" (badge of completion)</li>
+                      <li>• "You're productive" (like everyone else)</li>
+                    </ul>
+                  </td>
+                  <td className="p-4 bg-cyan-50 align-top">
+                    <ul className="text-slate-900 space-y-2">
+                      <li>• You know WHERE AI creates advantage in YOUR context</li>
+                      <li>• You're strategically positioned (actual capability)</li>
+                      <li>• You're independent (with systems)</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr className="border-b border-slate-200">
+                  <td className="p-4 text-slate-600">
+                    <span className="font-semibold text-slate-700">Investment:</span> Free (government-backed)
+                  </td>
+                  <td className="p-4 bg-cyan-50 text-slate-900">
+                    <span className="font-semibold">Investment:</span> Strategic capability investment
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-4 text-slate-600">
+                    <span className="font-semibold text-slate-700">Best For:</span> "Getting the foundation everyone needs"
+                  </td>
+                  <td className="p-4 bg-cyan-50 text-slate-900">
+                    <span className="font-semibold">Best For:</span> Building competitive advantage after foundations
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </section>
 
@@ -251,7 +389,7 @@ export function Dashboard() {
                       {module.completedLessons} / {module.totalLessons} lessons
                     </span>
                     <span className="text-sm font-black text-slate-900">
-                      ~{Math.ceil(module.totalLessons / 8 * 5)} hours
+                      ~{Math.ceil(module.totalLessons * 0.5)} hours
                     </span>
                   </div>
 
