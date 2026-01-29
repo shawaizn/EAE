@@ -11,7 +11,7 @@ export const modulesData = [
   },
   {
     id: 2,
-    title: "Today's AI - From Chatbots to Agents",
+    title: "Modern AI Systems",
     lessons: [
       { id: 1, title: "How ChatGPT Generates Answers" },
       { id: 2, title: "Training, Fine-Tuning and RLHF" },
@@ -34,7 +34,7 @@ export const modulesData = [
   },
   {
     id: 4,
-    title: "When to Use AI (and When Not)",
+    title: "When to Use AI",
     lessons: [
       { id: 1, title: "AI as Superpower or Downfall" },
       { id: 2, title: "Patterns, Head Work and AI" },
@@ -46,7 +46,7 @@ export const modulesData = [
   },
   {
     id: 5,
-    title: "Speaking AI - Prompting Mastery",
+    title: "Prompting Mastery",
     lessons: [
       { id: 1, title: "Why Communication Matters" },
       { id: 2, title: "Core Prompting Principles" },
@@ -58,7 +58,7 @@ export const modulesData = [
   },
   {
     id: 6,
-    title: "Using AI Like the Top 1%",
+    title: "Elite AI Usage",
     lessons: [
       { id: 1, title: "Three Levels of AI Users" },
       { id: 2, title: "Strategic Filtering and Staying Current" },
@@ -71,7 +71,7 @@ export const modulesData = [
   },
   {
     id: 7,
-    title: "Your Future Strategy in the AI Era",
+    title: "Your AI Strategy",
     lessons: [
       { id: 1, title: "Understanding the AI Landscape" },
       { id: 2, title: "Skills for Tomorrow" },
@@ -81,7 +81,7 @@ export const modulesData = [
   },
   {
     id: 8,
-    title: "AI Implementation and Best Practices",
+    title: "AI Best Practices",
     lessons: [
       { id: 1, title: "Getting Started with AI Tools" },
       { id: 2, title: "Building AI Workflows" },

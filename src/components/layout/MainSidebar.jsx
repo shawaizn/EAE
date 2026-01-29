@@ -148,7 +148,7 @@ export function MainSidebar({ user, onSignOut }) {
                         className={`block px-4 py-2.5 rounded-lg transition-colors text-sm border-l-2 font-medium ${
                           isModuleActive
                             ? `${tier.color.activeBg} ${tier.color.text} ${tier.color.border}`
-                            : `text-slate-600 hover:bg-slate-100 border-transparent`
+                            : `${tier.color.bg} text-slate-600 ${tier.color.hover} ${tier.color.border}`
                         }`}
                       >
                         {shortenTitle(module.title)}
