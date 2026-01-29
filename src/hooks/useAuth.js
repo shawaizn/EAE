@@ -9,13 +9,8 @@ export function useAuth() {
   const bypassAuth = import.meta.env.VITE_AUTH_BYPASS === 'true';
 
   useEffect(() => {
-    // If bypass mode is enabled, set a mock user and skip Supabase
+    // If bypass mode is enabled, just set loading to false
     if (bypassAuth) {
-      setUser({
-        id: 'bypass-user-id',
-        email: 'bypass@local.dev',
-        user_metadata: { full_name: 'Bypass User' }
-      });
       setLoading(false);
       return; // Skip Supabase auth setup
     }
@@ -37,13 +32,13 @@ export function useAuth() {
   const signIn = async (email, password) => {
     // In bypass mode, simulate successful sign in
     if (bypassAuth) {
-      return {
-        user: {
-          id: 'bypass-user-id',
-          email: 'bypass@local.dev',
-          user_metadata: { full_name: 'Bypass User' }
-        }
+      const mockUser = {
+        id: 'bypass-user-id',
+        email: 'bypass@local.dev',
+        user_metadata: { full_name: 'Bypass User' }
       };
+      setUser(mockUser); // Set the user state
+      return { user: mockUser };
     }
 
     const { data, error } = await supabase.auth.signInWithPassword({
@@ -56,8 +51,9 @@ export function useAuth() {
   };
 
   const signOut = async () => {
-    // In bypass mode, just reload the page
+    // In bypass mode, clear user state
     if (bypassAuth) {
+      setUser(null);
       return;
     }
 
