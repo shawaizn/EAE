@@ -3,7 +3,7 @@ import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { getLessonNumber } from '../lib/utils';
 import { Link } from 'react-router-dom';
-import { EnergeticBackground } from '../components/branding/EnergeticBackground';
+import { NeuralNetworkBackground } from '../components/branding/NeuralNetworkBackground';
 
 export function Dashboard() {
   const { user } = useAuth();
@@ -90,109 +90,125 @@ export function Dashboard() {
 
   return (
     <div className="w-full h-full overflow-y-auto relative">
-      {/* Animated Background */}
-      <EnergeticBackground />
+      {/* Neural Network Background */}
+      <NeuralNetworkBackground />
 
       <div className="max-w-7xl mx-auto px-8 py-8 relative z-10">
         {/* WELCOME SECTION */}
         <section className="mb-24 animate-fade-in-up">
-          <p className="text-xl text-slate-400 font-light mb-2">
-            Welcome back
+          <p className="text-base text-cyan-400 font-semibold mb-2 tracking-widest uppercase" style={{ fontFamily: 'monospace' }}>
+            // Welcome back
           </p>
-          <h1 className="text-6xl font-black text-slate-900 mb-4" style={{ letterSpacing: '-0.02em' }}>
+          <h1 className="text-6xl font-black text-white mb-4" style={{ letterSpacing: '-0.02em' }}>
             Learn To Leverage AI
           </h1>
-          <p className="text-lg text-slate-600 font-semibold">
+          <p className="text-lg text-slate-300 font-semibold">
             Save time. Save effort. Achieve more.
           </p>
         </section>
 
         {/* STRATEGIC AI IMPLEMENTATION SECTION */}
-        <section className="mb-24 p-12 bg-white/80 backdrop-blur-sm border-2 border-slate-200 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-cyan-400/50 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+        <section className="mb-24 p-12 bg-[#1a1f3a] border border-slate-700/50 rounded-md shadow-2xl transition-all duration-200 hover:shadow-cyan-500/20 hover:border-cyan-400/50 animate-fade-in-up relative group" style={{ animationDelay: '0.1s' }}>
+          {/* Geometric corner accents */}
+          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-400/0 group-hover:border-cyan-400/60 transition-all duration-200" />
+          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-400/0 group-hover:border-cyan-400/60 transition-all duration-200" />
+
           <div className="mb-2">
-            <p className="text-xs font-black uppercase tracking-wider text-cyan-600 mb-1">
-              ENERGISE AI EDUCATION
+            <p className="text-xs font-black uppercase tracking-widest text-cyan-400 mb-1" style={{ fontFamily: 'monospace' }}>
+              // ENERGISE AI EDUCATION
             </p>
-            <h2 className="text-3xl font-black text-slate-900 mb-6" style={{ letterSpacing: '-0.02em' }}>
+            <h2 className="text-3xl font-black text-white mb-6" style={{ letterSpacing: '-0.02em' }}>
               Strategic AI Implementation
             </h2>
           </div>
-          <p className="text-base text-slate-700 mb-4 leading-relaxed max-w-3xl">
+          <p className="text-base text-slate-300 mb-4 leading-relaxed max-w-3xl">
             The UK government and major tech companies are investing heavily in AI literacy—aiming to train "10 million workers by 2030" with courses on "AI fundamentals," "productivity tools," and "getting everyone AI-ready."
           </p>
-          <p className="text-base text-slate-700 mb-4 leading-relaxed max-w-3xl">
+          <p className="text-base text-slate-300 mb-4 leading-relaxed max-w-3xl">
             That's good. Do those courses. AI literacy is essential.
           </p>
-          <p className="text-base text-slate-700 mb-8 leading-relaxed max-w-3xl">
+          <p className="text-base text-slate-300 mb-8 leading-relaxed max-w-3xl">
             But here's what we've noticed: when everyone completes the same foundation, strategic application becomes the differentiator. Strategic AI Implementation is designed for what comes next—applying AI specifically to YOUR context, knowing when to use it (and when not to), and building systems that create competitive advantage instead of just completing training badges.
           </p>
-          <p className="text-base text-slate-900 font-semibold mb-8 max-w-3xl">
+          <p className="text-base text-white font-semibold mb-8 max-w-3xl">
             The government creates mass literacy. We help you build strategic capability on top of it.
           </p>
 
           {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="p-6 bg-white border-l-4 border-cyan-500 rounded-lg">
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
+            <div className="p-6 bg-slate-900/50 border-l-2 border-cyan-400 rounded-sm shadow-lg shadow-cyan-500/10">
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2" style={{ fontFamily: 'monospace' }}>
                 Total Duration
               </p>
-              <p className="text-2xl font-black text-slate-900">~22 Hours</p>
+              <p className="text-2xl font-black text-white">~22 Hours</p>
             </div>
-            <div className="p-6 bg-white border-l-4 border-cyan-500 rounded-lg">
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
+            <div className="p-6 bg-slate-900/50 border-l-2 border-cyan-400 rounded-sm shadow-lg shadow-cyan-500/10">
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2" style={{ fontFamily: 'monospace' }}>
                 Modules
               </p>
-              <p className="text-2xl font-black text-slate-900">8 Modules</p>
+              <p className="text-2xl font-black text-white">8 Modules</p>
             </div>
-            <div className="p-6 bg-white border-l-4 border-cyan-500 rounded-lg">
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
+            <div className="p-6 bg-slate-900/50 border-l-2 border-cyan-400 rounded-sm shadow-lg shadow-cyan-500/10">
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2" style={{ fontFamily: 'monospace' }}>
                 Format
               </p>
-              <p className="text-2xl font-black text-slate-900">Self-Paced</p>
+              <p className="text-2xl font-black text-white">Self-Paced</p>
             </div>
           </div>
 
         </section>
 
         {/* YOUR PROGRESS SECTION */}
-        <section className="mb-24 p-12 bg-white/80 backdrop-blur-sm border-2 border-slate-200 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-violet-400/50 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-          <h2 className="text-3xl font-black text-slate-900 mb-8" style={{ letterSpacing: '-0.02em' }}>
+        <section className="mb-24 p-12 bg-[#1a1f3a] border border-slate-700/50 rounded-md shadow-2xl transition-all duration-200 hover:shadow-cyan-500/20 hover:border-cyan-400/50 animate-fade-in-up relative group" style={{ animationDelay: '0.2s' }}>
+          {/* Geometric corner accents */}
+          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-400/0 group-hover:border-cyan-400/60 transition-all duration-200" />
+          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-400/0 group-hover:border-cyan-400/60 transition-all duration-200" />
+
+          <h2 className="text-3xl font-black text-white mb-8" style={{ letterSpacing: '-0.02em' }}>
             Your Progress
           </h2>
 
           {/* Overall Progress */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-sm font-semibold text-slate-700">
+              <span className="text-sm font-semibold text-slate-300 tracking-wide" style={{ fontFamily: 'monospace' }}>
                 Overall Completion
               </span>
-              <span className="text-2xl font-black text-slate-900">
+              <span className="text-2xl font-black text-cyan-400">
                 {totalProgress}%
               </span>
             </div>
-            <div className="h-4 bg-slate-200 rounded-full overflow-hidden">
+            <div className="h-4 bg-slate-800/50 rounded-sm overflow-hidden border border-slate-700/30">
               <div
-                className="h-full bg-cyan-500 transition-all duration-500"
-                style={{ width: `${totalProgress}%` }}
-              />
+                className="h-full transition-all duration-500 relative"
+                style={{
+                  width: `${totalProgress}%`,
+                  background: 'linear-gradient(90deg, #00B8D4 0%, #06b6d4 100%)',
+                  boxShadow: '0 0 10px rgba(0, 184, 212, 0.5)',
+                }}
+              >
+                {totalProgress > 0 && (
+                  <div className="absolute right-0 top-0 bottom-0 w-1 bg-white/80 shadow-lg shadow-cyan-400/50" />
+                )}
+              </div>
             </div>
           </div>
 
           {/* Lesson Stats */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 bg-white border border-slate-200 rounded-lg">
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
+            <div className="p-6 bg-slate-900/50 border border-slate-700/50 rounded-sm">
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2" style={{ fontFamily: 'monospace' }}>
                 Lessons Completed
               </p>
-              <p className="text-2xl font-black text-slate-900">
+              <p className="text-2xl font-black text-white">
                 {completedLessons} / {totalLessons}
               </p>
             </div>
-            <div className="p-6 bg-white border border-slate-200 rounded-lg">
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 mb-2">
+            <div className="p-6 bg-slate-900/50 border border-slate-700/50 rounded-sm">
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2" style={{ fontFamily: 'monospace' }}>
                 Modules Completed
               </p>
-              <p className="text-2xl font-black text-slate-900">
+              <p className="text-2xl font-black text-white">
                 {completedModules} / 8
               </p>
             </div>
@@ -200,76 +216,80 @@ export function Dashboard() {
         </section>
 
         {/* COMPARISON TABLE SECTION */}
-        <section className="mb-24 p-12 bg-white/80 backdrop-blur-sm border-2 border-slate-200 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-orange-400/50 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-          <h2 className="text-3xl font-black text-slate-900 mb-8" style={{ letterSpacing: '-0.02em' }}>
+        <section className="mb-24 p-12 bg-[#1a1f3a] border border-slate-700/50 rounded-md shadow-2xl transition-all duration-200 hover:shadow-cyan-500/20 hover:border-cyan-400/50 animate-fade-in-up relative group" style={{ animationDelay: '0.3s' }}>
+          {/* Geometric corner accents */}
+          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-400/0 group-hover:border-cyan-400/60 transition-all duration-200" />
+          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-400/0 group-hover:border-cyan-400/60 transition-all duration-200" />
+
+          <h2 className="text-3xl font-black text-white mb-8" style={{ letterSpacing: '-0.02em' }}>
             How This Differs
           </h2>
 
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b-2 border-slate-300">
-                  <th className="text-left p-4 text-sm font-black text-slate-600 uppercase tracking-wider w-1/2">
+                <tr className="border-b border-cyan-400/30">
+                  <th className="text-left p-4 text-xs font-black text-slate-400 uppercase tracking-widest w-1/2" style={{ fontFamily: 'monospace' }}>
                     "Government & Big Tech AI Training"
                   </th>
-                  <th className="text-left p-4 text-sm font-black text-slate-900 uppercase tracking-wider w-1/2 bg-cyan-50">
+                  <th className="text-left p-4 text-xs font-black text-cyan-400 uppercase tracking-widest w-1/2 bg-slate-900/30" style={{ fontFamily: 'monospace' }}>
                     Energise Strategic AI Implementation
                   </th>
                 </tr>
               </thead>
               <tbody className="text-sm">
-                <tr className="border-b border-slate-200">
-                  <td className="p-4 text-slate-600">
-                    <span className="font-semibold text-slate-700">Goal:</span> "Mass AI adoption across 10M workers"
+                <tr className="border-b border-slate-700/30">
+                  <td className="p-4 text-slate-400">
+                    <span className="font-semibold text-slate-300">Goal:</span> "Mass AI adoption across 10M workers"
                   </td>
-                  <td className="p-4 bg-cyan-50 text-slate-900">
-                    <span className="font-semibold">Goal:</span> Strategic competitive advantage for YOUR context
-                  </td>
-                </tr>
-                <tr className="border-b border-slate-200">
-                  <td className="p-4 text-slate-600">
-                    <span className="font-semibold text-slate-700">Audience:</span> "Everyone—generic training at scale"
-                  </td>
-                  <td className="p-4 bg-cyan-50 text-slate-900">
-                    <span className="font-semibold">Audience:</span> Those ready for strategic application
+                  <td className="p-4 bg-slate-900/30 text-white">
+                    <span className="font-semibold text-cyan-400">Goal:</span> Strategic competitive advantage for YOUR context
                   </td>
                 </tr>
-                <tr className="border-b border-slate-200">
-                  <td className="p-4 text-slate-600">
-                    <span className="font-semibold text-slate-700">Focus:</span> "AI literacy and tool productivity"
+                <tr className="border-b border-slate-700/30">
+                  <td className="p-4 text-slate-400">
+                    <span className="font-semibold text-slate-300">Audience:</span> "Everyone—generic training at scale"
                   </td>
-                  <td className="p-4 bg-cyan-50 text-slate-900">
-                    <span className="font-semibold">Focus:</span> Strategic systems and positioning
-                  </td>
-                </tr>
-                <tr className="border-b border-slate-200">
-                  <td className="p-4 text-slate-600">
-                    <span className="font-semibold text-slate-700">Delivery:</span> "Scattered courses across platforms"
-                  </td>
-                  <td className="p-4 bg-cyan-50 text-slate-900">
-                    <span className="font-semibold">Delivery:</span> Integrated 8-module journey (44 lessons)
+                  <td className="p-4 bg-slate-900/30 text-white">
+                    <span className="font-semibold text-cyan-400">Audience:</span> Those ready for strategic application
                   </td>
                 </tr>
-                <tr className="border-b-2 border-slate-300">
+                <tr className="border-b border-slate-700/30">
+                  <td className="p-4 text-slate-400">
+                    <span className="font-semibold text-slate-300">Focus:</span> "AI literacy and tool productivity"
+                  </td>
+                  <td className="p-4 bg-slate-900/30 text-white">
+                    <span className="font-semibold text-cyan-400">Focus:</span> Strategic systems and positioning
+                  </td>
+                </tr>
+                <tr className="border-b border-slate-700/30">
+                  <td className="p-4 text-slate-400">
+                    <span className="font-semibold text-slate-300">Delivery:</span> "Scattered courses across platforms"
+                  </td>
+                  <td className="p-4 bg-slate-900/30 text-white">
+                    <span className="font-semibold text-cyan-400">Delivery:</span> Integrated 8-module journey (44 lessons)
+                  </td>
+                </tr>
+                <tr className="border-b border-cyan-400/30">
                   <td className="p-4 pt-6" colSpan="2">
-                    <p className="font-black text-slate-900 text-xs uppercase tracking-wider mb-3">What You Learn</p>
+                    <p className="font-black text-cyan-400 text-xs uppercase tracking-widest mb-3" style={{ fontFamily: 'monospace' }}>What You Learn</p>
                   </td>
                 </tr>
-                <tr className="border-b border-slate-200">
+                <tr className="border-b border-slate-700/30">
                   <td className="p-4 align-top">
-                    <ul className="text-slate-600 space-y-2">
+                    <ul className="text-slate-400 space-y-2">
                       <li>✓ "How AI works" (foundations)</li>
                       <li>✓ "How to use AI tools" (ChatGPT, Copilot)</li>
                       <li>✓ "Prompt engineering basics"</li>
                       <li>✓ "Maximizing productivity through automation"</li>
-                      <li className="text-slate-400">✗ Strategic restraint</li>
-                      <li className="text-slate-400">✗ When NOT to use AI</li>
-                      <li className="text-slate-400">✗ Building systems</li>
-                      <li className="text-slate-400">✗ Career positioning</li>
+                      <li className="text-slate-600">✗ Strategic restraint</li>
+                      <li className="text-slate-600">✗ When NOT to use AI</li>
+                      <li className="text-slate-600">✗ Building systems</li>
+                      <li className="text-slate-600">✗ Career positioning</li>
                     </ul>
                   </td>
-                  <td className="p-4 bg-cyan-50 align-top">
-                    <ul className="text-slate-900 space-y-2">
+                  <td className="p-4 bg-slate-900/30 align-top">
+                    <ul className="text-white space-y-2">
                       <li>✓ How AI works IN YOUR CONTEXT</li>
                       <li>✓ When to use AI—and when NOT to</li>
                       <li>✓ Custom prompt libraries for YOUR workflow</li>
@@ -281,41 +301,41 @@ export function Dashboard() {
                     </ul>
                   </td>
                 </tr>
-                <tr className="border-b-2 border-slate-300">
+                <tr className="border-b border-cyan-400/30">
                   <td className="p-4 pt-6" colSpan="2">
-                    <p className="font-black text-slate-900 text-xs uppercase tracking-wider mb-3">The Result</p>
+                    <p className="font-black text-cyan-400 text-xs uppercase tracking-widest mb-3" style={{ fontFamily: 'monospace' }}>The Result</p>
                   </td>
                 </tr>
-                <tr className="border-b border-slate-200">
+                <tr className="border-b border-slate-700/30">
                   <td className="p-4 align-top">
-                    <ul className="text-slate-600 space-y-2">
+                    <ul className="text-slate-400 space-y-2">
                       <li>• "You can use AI tools"</li>
                       <li>• "You're AI ready" (badge of completion)</li>
                       <li>• "You're productive" (like everyone else)</li>
                     </ul>
                   </td>
-                  <td className="p-4 bg-cyan-50 align-top">
-                    <ul className="text-slate-900 space-y-2">
+                  <td className="p-4 bg-slate-900/30 align-top">
+                    <ul className="text-white space-y-2">
                       <li>• You know WHERE AI creates advantage in YOUR context</li>
                       <li>• You're strategically positioned (actual capability)</li>
                       <li>• You're independent (with systems)</li>
                     </ul>
                   </td>
                 </tr>
-                <tr className="border-b border-slate-200">
-                  <td className="p-4 text-slate-600">
-                    <span className="font-semibold text-slate-700">Investment:</span> Free (government-backed)
+                <tr className="border-b border-slate-700/30">
+                  <td className="p-4 text-slate-400">
+                    <span className="font-semibold text-slate-300">Investment:</span> Free (government-backed)
                   </td>
-                  <td className="p-4 bg-cyan-50 text-slate-900">
-                    <span className="font-semibold">Investment:</span> Strategic capability investment
+                  <td className="p-4 bg-slate-900/30 text-white">
+                    <span className="font-semibold text-cyan-400">Investment:</span> Strategic capability investment
                   </td>
                 </tr>
                 <tr>
-                  <td className="p-4 text-slate-600">
-                    <span className="font-semibold text-slate-700">Best For:</span> "Getting the foundation everyone needs"
+                  <td className="p-4 text-slate-400">
+                    <span className="font-semibold text-slate-300">Best For:</span> "Getting the foundation everyone needs"
                   </td>
-                  <td className="p-4 bg-cyan-50 text-slate-900">
-                    <span className="font-semibold">Best For:</span> Building competitive advantage after foundations
+                  <td className="p-4 bg-slate-900/30 text-white">
+                    <span className="font-semibold text-cyan-400">Best For:</span> Building competitive advantage after foundations
                   </td>
                 </tr>
               </tbody>
@@ -324,8 +344,12 @@ export function Dashboard() {
         </section>
 
         {/* MODULE TIMELINE SECTION */}
-        <section className="mb-24 p-12 bg-white/80 backdrop-blur-sm border-2 border-slate-200 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-cyan-400/50 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-          <h2 className="text-3xl font-black text-slate-900 mb-8" style={{ letterSpacing: '-0.02em' }}>
+        <section className="mb-24 p-12 bg-[#1a1f3a] border border-slate-700/50 rounded-md shadow-2xl transition-all duration-200 hover:shadow-cyan-500/20 hover:border-cyan-400/50 animate-fade-in-up relative group" style={{ animationDelay: '0.4s' }}>
+          {/* Geometric corner accents */}
+          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-400/0 group-hover:border-cyan-400/60 transition-all duration-200" />
+          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-400/0 group-hover:border-cyan-400/60 transition-all duration-200" />
+
+          <h2 className="text-3xl font-black text-white mb-8" style={{ letterSpacing: '-0.02em' }}>
             Module Timeline
           </h2>
 
@@ -336,24 +360,24 @@ export function Dashboard() {
               const isInProgress = state === 'in-progress';
               const isIncomplete = state === 'incomplete';
 
-              let borderClass = 'border-slate-200';
-              let bgClass = 'bg-white';
+              let borderClass = 'border-slate-700/30';
+              let bgClass = 'bg-slate-900/30';
               let ringClass = '';
-              let badgeClass = 'bg-slate-100 text-slate-700';
+              let badgeClass = 'bg-slate-800 text-slate-400';
               let badgeText = 'Incomplete';
-              let opacityClass = 'opacity-60';
+              let opacityClass = 'opacity-50';
 
               if (isCompleted) {
-                borderClass = 'border-cyan-400';
-                bgClass = 'bg-white';
-                badgeClass = 'bg-cyan-100 text-cyan-700';
+                borderClass = 'border-cyan-400/60';
+                bgClass = 'bg-slate-900/50';
+                badgeClass = 'bg-cyan-400/20 text-cyan-400 border border-cyan-400/40';
                 badgeText = 'Completed';
                 opacityClass = '';
               } else if (isInProgress) {
-                borderClass = 'border-slate-900';
-                bgClass = 'bg-white';
-                ringClass = 'ring-2 ring-cyan-500';
-                badgeClass = 'bg-slate-900 text-white';
+                borderClass = 'border-cyan-400';
+                bgClass = 'bg-slate-900/50';
+                ringClass = 'shadow-lg shadow-cyan-500/20';
+                badgeClass = 'bg-cyan-500 text-slate-900 font-bold';
                 badgeText = 'Current';
                 opacityClass = '';
               }
@@ -362,37 +386,45 @@ export function Dashboard() {
                 <Link
                   key={module.moduleId}
                   to={`/modules/${module.moduleId}`}
-                  className={`block p-6 rounded-lg border-2 ${borderClass} ${bgClass} ${ringClass} ${opacityClass} transition-all hover:shadow-lg`}
+                  className={`block p-6 rounded-sm border ${borderClass} ${bgClass} ${ringClass} ${opacityClass} transition-all duration-200 hover:shadow-lg hover:shadow-cyan-500/10 hover:border-cyan-400/60 group/module`}
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
-                      <h3 className="text-lg font-black text-slate-900">
+                      <h3 className="text-lg font-black text-white group-hover/module:text-cyan-400 transition-colors duration-200">
                         Module {module.moduleId}: {module.title}
                       </h3>
-                      <p className="text-sm text-slate-600 mt-2">
+                      <p className="text-sm text-slate-400 mt-2">
                         {module.narrative}
                       </p>
                     </div>
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap ml-4 ${badgeClass}`}>
+                    <span className={`px-3 py-1 rounded-sm text-xs font-semibold whitespace-nowrap ml-4 ${badgeClass}`}>
                       {badgeText}
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between mt-4">
-                    <span className="text-xs font-semibold text-slate-600">
+                    <span className="text-xs font-semibold text-slate-400 tracking-wide" style={{ fontFamily: 'monospace' }}>
                       {module.completedLessons} / {module.totalLessons} lessons
                     </span>
-                    <span className="text-sm font-black text-slate-900">
+                    <span className="text-sm font-black text-white">
                       ~{Math.ceil(module.totalLessons * 0.5)} hours
                     </span>
                   </div>
 
                   {(isCompleted || isInProgress) && (
-                    <div className="mt-4 h-2 bg-slate-200 rounded-full overflow-hidden">
+                    <div className="mt-4 h-2 bg-slate-800/50 rounded-sm overflow-hidden border border-slate-700/30">
                       <div
-                        className="h-full bg-cyan-500 transition-all duration-500"
-                        style={{ width: `${module.progress}%` }}
-                      />
+                        className="h-full transition-all duration-500 relative"
+                        style={{
+                          width: `${module.progress}%`,
+                          background: 'linear-gradient(90deg, #00B8D4 0%, #06b6d4 100%)',
+                          boxShadow: '0 0 10px rgba(0, 184, 212, 0.5)',
+                        }}
+                      >
+                        {module.progress > 0 && (
+                          <div className="absolute right-0 top-0 bottom-0 w-1 bg-white/80 shadow-lg shadow-cyan-400/50" />
+                        )}
+                      </div>
                     </div>
                   )}
                 </Link>
@@ -402,14 +434,20 @@ export function Dashboard() {
         </section>
 
         {/* NEXT STEPS SECTION */}
-        <section className="p-12 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-xl border-2 border-cyan-400 mb-24 shadow-2xl shadow-cyan-500/30 animate-fade-in-up transition-all duration-300 hover:shadow-cyan-500/50 hover:-translate-y-1" style={{ animationDelay: '0.5s' }}>
+        <section className="p-12 bg-gradient-to-r from-[#0a0e27] to-[#1a1f3a] text-white rounded-sm border border-cyan-400/80 mb-24 shadow-2xl shadow-cyan-500/40 animate-fade-in-up transition-all duration-200 hover:shadow-cyan-500/60 relative group" style={{ animationDelay: '0.5s' }}>
+          {/* Geometric corner accents */}
+          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-cyan-400/80" />
+          <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-cyan-400/80" />
+          <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-cyan-400/80" />
+          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-cyan-400/80" />
+
           <h2 className="text-3xl font-black mb-4" style={{ letterSpacing: '-0.02em' }}>
             Next Steps
           </h2>
-          <p className="text-base text-slate-200 mb-8 max-w-2xl leading-relaxed">
+          <p className="text-base text-slate-300 mb-8 max-w-2xl leading-relaxed">
             {currentLesson ? (
               <>
-                Continue with <span className="font-semibold">{currentLesson.moduleTitle}</span> to keep building your AI mastery. Every lesson completed brings you closer to becoming an AI expert who uses AI strategically to multiply your potential.
+                Continue with <span className="font-semibold text-cyan-400">{currentLesson.moduleTitle}</span> to keep building your AI mastery. Every lesson completed brings you closer to becoming an AI expert who uses AI strategically to multiply your potential.
               </>
             ) : (
               <>
@@ -420,13 +458,15 @@ export function Dashboard() {
           {currentLesson ? (
             <Link
               to={`/modules/${currentLesson.moduleId}/lessons/${currentLesson.lessonId}`}
-              className="inline-block px-12 py-4 bg-cyan-500 hover:bg-cyan-600 text-slate-900 font-black rounded-lg transition-colors"
+              className="inline-block px-12 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-black rounded-sm transition-all duration-200 hover:shadow-lg hover:shadow-cyan-500/50 border border-cyan-400/50 hover:border-cyan-300 relative group/btn overflow-hidden"
             >
-              Continue Learning
+              <span className="relative z-10">CONTINUE LEARNING</span>
+              {/* Glitch effect on hover */}
+              <div className="absolute inset-0 bg-cyan-300/20 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-300" />
             </Link>
           ) : (
-            <button disabled className="px-12 py-4 bg-gray-400 text-gray-600 font-black rounded-lg cursor-not-allowed">
-              All Modules Complete
+            <button disabled className="px-12 py-4 bg-slate-800 text-slate-600 font-black rounded-sm cursor-not-allowed border border-slate-700">
+              ALL MODULES COMPLETE
             </button>
           )}
         </section>
@@ -437,7 +477,7 @@ export function Dashboard() {
         @keyframes fade-in-up {
           from {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
@@ -446,7 +486,7 @@ export function Dashboard() {
         }
 
         .animate-fade-in-up {
-          animation: fade-in-up 0.6s ease-out forwards;
+          animation: fade-in-up 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
           opacity: 0;
         }
 
