@@ -25,14 +25,24 @@ export function Navbar({ user }) {
             </Link>
           </div>
 
-          {!user && (
-            <Link
-              to="/login"
-              className="px-6 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors font-semibold"
+          <div className="flex items-center gap-4">
+            <a
+              href="https://tally.so/r/2EPBje"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2 bg-slate-600 text-white rounded-lg hover:bg-slate-700 transition-colors font-semibold"
             >
-              Login
-            </Link>
-          )}
+              Feedback
+            </a>
+            {!user && (
+              <Link
+                to="/login"
+                className="px-6 py-2 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors font-semibold"
+              >
+                Login
+              </Link>
+            )}
+          </div>
         </div>
       </div>
     </nav>
