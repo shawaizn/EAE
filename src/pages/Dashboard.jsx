@@ -3,6 +3,7 @@ import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { getLessonNumber } from '../lib/utils';
 import { Link } from 'react-router-dom';
+import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 
 export function Dashboard() {
   const { user } = useAuth();
@@ -88,10 +89,13 @@ export function Dashboard() {
   };
 
   return (
-    <div className="w-full h-full overflow-y-auto">
-      <div className="max-w-7xl mx-auto px-8 py-8">
+    <div className="w-full h-full overflow-y-auto relative">
+      {/* Animated Background */}
+      <EnergeticBackground />
+
+      <div className="max-w-7xl mx-auto px-8 py-8 relative z-10">
         {/* WELCOME SECTION */}
-        <section className="mb-24">
+        <section className="mb-24 animate-fade-in-up">
           <p className="text-xl text-slate-400 font-light mb-2">
             Welcome back
           </p>
@@ -104,7 +108,7 @@ export function Dashboard() {
         </section>
 
         {/* STRATEGIC AI IMPLEMENTATION SECTION */}
-        <section className="mb-24 p-12 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-xl">
+        <section className="mb-24 p-12 bg-white/80 backdrop-blur-sm border-2 border-slate-200 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-cyan-400/50 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
           <div className="mb-2">
             <p className="text-xs font-black uppercase tracking-wider text-cyan-600 mb-1">
               ENERGISE AI EDUCATION
@@ -151,7 +155,7 @@ export function Dashboard() {
         </section>
 
         {/* YOUR PROGRESS SECTION */}
-        <section className="mb-24 p-12 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-xl">
+        <section className="mb-24 p-12 bg-white/80 backdrop-blur-sm border-2 border-slate-200 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-violet-400/50 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
           <h2 className="text-3xl font-black text-slate-900 mb-8" style={{ letterSpacing: '-0.02em' }}>
             Your Progress
           </h2>
@@ -196,7 +200,7 @@ export function Dashboard() {
         </section>
 
         {/* COMPARISON TABLE SECTION */}
-        <section className="mb-24 p-12 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-xl">
+        <section className="mb-24 p-12 bg-white/80 backdrop-blur-sm border-2 border-slate-200 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-orange-400/50 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
           <h2 className="text-3xl font-black text-slate-900 mb-8" style={{ letterSpacing: '-0.02em' }}>
             How This Differs
           </h2>
@@ -320,7 +324,7 @@ export function Dashboard() {
         </section>
 
         {/* MODULE TIMELINE SECTION */}
-        <section className="mb-24 p-12 bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-xl">
+        <section className="mb-24 p-12 bg-white/80 backdrop-blur-sm border-2 border-slate-200 rounded-xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-cyan-400/50 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
           <h2 className="text-3xl font-black text-slate-900 mb-8" style={{ letterSpacing: '-0.02em' }}>
             Module Timeline
           </h2>
@@ -398,7 +402,7 @@ export function Dashboard() {
         </section>
 
         {/* NEXT STEPS SECTION */}
-        <section className="p-12 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-xl border-2 border-cyan-400 mb-24">
+        <section className="p-12 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-xl border-2 border-cyan-400 mb-24 shadow-2xl shadow-cyan-500/30 animate-fade-in-up transition-all duration-300 hover:shadow-cyan-500/50 hover:-translate-y-1" style={{ animationDelay: '0.5s' }}>
           <h2 className="text-3xl font-black mb-4" style={{ letterSpacing: '-0.02em' }}>
             Next Steps
           </h2>
@@ -427,6 +431,34 @@ export function Dashboard() {
           )}
         </section>
       </div>
+
+      {/* Entrance Animations */}
+      <style>{`
+        @keyframes fade-in-up {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-fade-in-up {
+          animation: fade-in-up 0.6s ease-out forwards;
+          opacity: 0;
+        }
+
+        /* Respect prefers-reduced-motion */
+        @media (prefers-reduced-motion: reduce) {
+          .animate-fade-in-up {
+            animation: none;
+            opacity: 1;
+            transform: none;
+          }
+        }
+      `}</style>
     </div>
   );
 }

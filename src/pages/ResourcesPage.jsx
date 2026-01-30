@@ -1,13 +1,17 @@
 import { useAuth } from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import appFrameworkPdf from '../assets/app-framework.pdf';
+import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 
 export function ResourcesPage() {
   const { user, signOut } = useAuth();
 
   return (
-    <div className="flex-1 overflow-y-auto">
-      <div className="max-w-screen-xl mx-auto px-8 py-8">
+    <div className="flex-1 overflow-y-auto relative">
+      {/* Animated Background */}
+      <EnergeticBackground />
+
+      <div className="max-w-screen-xl mx-auto px-8 py-8 relative z-10">
           {/* Breadcrumb */}
           {/* <div className="mb-8">
             <Link to="/dashboard" className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
@@ -26,7 +30,7 @@ export function ResourcesPage() {
           </div>
 
           {/* Learner Profile */}
-          <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
+          <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-lg bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:border-cyan-400/50">
             <div className="p-6 bg-slate-50 border-b-2 border-slate-200">
               <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>
                 Learner Profile Templates
@@ -43,7 +47,7 @@ export function ResourcesPage() {
           </div>
 
           {/* AI Prompts */}
-          <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
+          <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-lg bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:border-violet-400/50">
             <div className="p-6 bg-slate-50 border-b-2 border-slate-200">
               <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>
                 AI Response Prompts
@@ -60,7 +64,7 @@ export function ResourcesPage() {
           </div>
 
           {/* How-To Guides */}
-          <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
+          <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-lg bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:border-orange-400/50">
             <div className="p-6 bg-slate-50 border-b-2 border-slate-200">
               <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>
                 How-To Guides
@@ -71,7 +75,7 @@ export function ResourcesPage() {
                 Step-by-step guides for getting the most out of the course.
               </p>
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-6 bg-white border-2 border-slate-200 rounded-lg hover:border-cyan-600 hover:shadow-md transition">
+                <div className="flex items-center justify-between p-6 bg-white/80 backdrop-blur-sm border-2 border-slate-200 rounded-lg hover:border-cyan-600 hover:shadow-xl hover:-translate-y-1 hover:shadow-cyan-500/20 transition-all duration-300">
                   <div className="flex-1">
                     <h3 className="text-lg font-semibold text-slate-900">The APP Framework</h3>
                     <p className="text-slate-600 mt-2">

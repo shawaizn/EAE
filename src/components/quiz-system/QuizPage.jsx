@@ -9,6 +9,7 @@ import { lesson4 } from './Lesson4Quiz';
 import { lesson5 } from './Lesson5Quiz';
 import { lesson6 } from './Lesson6Quiz';
 import { lesson7 } from './Lesson7Quiz';
+import { EnergeticBackground } from '../branding/EnergeticBackground';
 
 const lessonsMap = {
   1: lesson1,
@@ -71,7 +72,14 @@ const QuizPage = () => {
     );
   }
 
-  return <QuizEngine lessonData={lessonData} onBack={() => navigate(-1)} />;
+  return (
+    <div style={{ position: 'relative' }}>
+      <EnergeticBackground />
+      <div style={{ position: 'relative', zIndex: 10 }}>
+        <QuizEngine lessonData={lessonData} onBack={() => navigate(-1)} />
+      </div>
+    </div>
+  );
 };
 
 export default QuizPage;
