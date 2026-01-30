@@ -3,7 +3,7 @@ import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { getLessonNumber } from '../lib/utils';
 import { Link } from 'react-router-dom';
-import { EnergyFlowBackground } from '../components/branding/EnergyFlowBackground';
+import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 import { theme } from '../styles/theme';
 
 export function Dashboard() {
@@ -91,8 +91,8 @@ export function Dashboard() {
 
   return (
     <div className="w-full h-full overflow-y-auto relative">
-      {/* Energy Flow Background - Organic + Lightning */}
-      <EnergyFlowBackground />
+      {/* Energetic Background - Visible Movement + Brand Colors */}
+      <EnergeticBackground />
 
       <div className="max-w-7xl mx-auto px-8 py-8 relative z-10">
         {/* WELCOME SECTION */}
