@@ -3,7 +3,8 @@ import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { getLessonNumber } from '../lib/utils';
 import { Link } from 'react-router-dom';
-import { NeuralNetworkBackground } from '../components/branding/NeuralNetworkBackground';
+import { EnergyFlowBackground } from '../components/branding/EnergyFlowBackground';
+import { theme } from '../styles/theme';
 
 export function Dashboard() {
   const { user } = useAuth();
@@ -90,69 +91,93 @@ export function Dashboard() {
 
   return (
     <div className="w-full h-full overflow-y-auto relative">
-      {/* Neural Network Background */}
-      <NeuralNetworkBackground />
+      {/* Energy Flow Background - Organic + Lightning */}
+      <EnergyFlowBackground />
 
       <div className="max-w-7xl mx-auto px-8 py-8 relative z-10">
         {/* WELCOME SECTION */}
         <section className="mb-24 animate-fade-in-up">
-          <p className="text-base text-cyan-400 font-semibold mb-2 tracking-widest uppercase" style={{ fontFamily: 'monospace' }}>
-            // Welcome back
+          <p className="text-base font-semibold mb-2 tracking-wide" style={{ color: theme.colors.energy.sunrise }}>
+            Welcome back
           </p>
-          <h1 className="text-6xl font-black text-white mb-4" style={{ letterSpacing: '-0.02em' }}>
+          <h1 className="text-6xl font-black mb-4" style={{
+            letterSpacing: '-0.02em',
+            color: theme.colors.text.primary,
+            background: `linear-gradient(135deg, ${theme.colors.text.primary} 0%, ${theme.colors.energy.sky} 100%)`,
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}>
             Learn To Leverage AI
           </h1>
-          <p className="text-lg text-slate-300 font-semibold">
-            Save time. Save effort. Achieve more.
+          <p className="text-lg font-semibold" style={{ color: theme.colors.text.secondary }}>
+            Work doesn't have to be boring. Make it exciting and fulfilling.
           </p>
         </section>
 
         {/* STRATEGIC AI IMPLEMENTATION SECTION */}
-        <section className="mb-24 p-12 bg-[#1a1f3a] border border-slate-700/50 rounded-md shadow-2xl transition-all duration-200 hover:shadow-cyan-500/20 hover:border-cyan-400/50 animate-fade-in-up relative group" style={{ animationDelay: '0.1s' }}>
-          {/* Geometric corner accents */}
-          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-400/0 group-hover:border-cyan-400/60 transition-all duration-200" />
-          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-400/0 group-hover:border-cyan-400/60 transition-all duration-200" />
+        <section className="mb-24 p-12 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-lg shadow-lg transition-all hover:shadow-xl animate-fade-in-up relative group" style={{
+          animationDelay: '0.1s',
+          boxShadow: theme.shadows.large,
+        }}>
+          {/* Lightning strike accents (sharp, powerful) */}
+          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
+            borderColor: theme.colors.lightning.cyan,
+            boxShadow: theme.shadows.lightning.cyan,
+          }} />
+          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
+            borderColor: theme.colors.lightning.cyan,
+            boxShadow: theme.shadows.lightning.cyan,
+          }} />
 
           <div className="mb-2">
-            <p className="text-xs font-black uppercase tracking-widest text-cyan-400 mb-1" style={{ fontFamily: 'monospace' }}>
-              // ENERGISE AI EDUCATION
+            <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: theme.colors.energy.sunrise }}>
+              ENERGISE AI EDUCATION
             </p>
-            <h2 className="text-3xl font-black text-white mb-6" style={{ letterSpacing: '-0.02em' }}>
+            <h2 className="text-3xl font-black mb-6" style={{
+              letterSpacing: '-0.02em',
+              color: theme.colors.text.primary,
+            }}>
               Strategic AI Implementation
             </h2>
           </div>
-          <p className="text-base text-slate-300 mb-4 leading-relaxed max-w-3xl">
+          <p className="text-base mb-4 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
             The UK government and major tech companies are investing heavily in AI literacy—aiming to train "10 million workers by 2030" with courses on "AI fundamentals," "productivity tools," and "getting everyone AI-ready."
           </p>
-          <p className="text-base text-slate-300 mb-4 leading-relaxed max-w-3xl">
+          <p className="text-base mb-4 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
             That's good. Do those courses. AI literacy is essential.
           </p>
-          <p className="text-base text-slate-300 mb-8 leading-relaxed max-w-3xl">
+          <p className="text-base mb-8 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
             But here's what we've noticed: when everyone completes the same foundation, strategic application becomes the differentiator. Strategic AI Implementation is designed for what comes next—applying AI specifically to YOUR context, knowing when to use it (and when not to), and building systems that create competitive advantage instead of just completing training badges.
           </p>
-          <p className="text-base text-white font-semibold mb-8 max-w-3xl">
+          <p className="text-base font-semibold mb-8 max-w-3xl" style={{ color: theme.colors.text.primary }}>
             The government creates mass literacy. We help you build strategic capability on top of it.
           </p>
 
           {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="p-6 bg-slate-900/50 border-l-2 border-cyan-400 rounded-sm shadow-lg shadow-cyan-500/10">
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2" style={{ fontFamily: 'monospace' }}>
+            <div className="p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md" style={{
+              borderColor: theme.colors.energy.sunrise,
+            }}>
+              <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Total Duration
               </p>
-              <p className="text-2xl font-black text-white">~22 Hours</p>
+              <p className="text-2xl font-black" style={{ color: theme.colors.text.primary }}>~22 Hours</p>
             </div>
-            <div className="p-6 bg-slate-900/50 border-l-2 border-cyan-400 rounded-sm shadow-lg shadow-cyan-500/10">
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2" style={{ fontFamily: 'monospace' }}>
+            <div className="p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md" style={{
+              borderColor: theme.colors.energy.sky,
+            }}>
+              <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Modules
               </p>
-              <p className="text-2xl font-black text-white">8 Modules</p>
+              <p className="text-2xl font-black" style={{ color: theme.colors.text.primary }}>8 Modules</p>
             </div>
-            <div className="p-6 bg-slate-900/50 border-l-2 border-cyan-400 rounded-sm shadow-lg shadow-cyan-500/10">
-              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-2" style={{ fontFamily: 'monospace' }}>
+            <div className="p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md" style={{
+              borderColor: theme.colors.energy.fresh,
+            }}>
+              <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Format
               </p>
-              <p className="text-2xl font-black text-white">Self-Paced</p>
+              <p className="text-2xl font-black" style={{ color: theme.colors.text.primary }}>Self-Paced</p>
             </div>
           </div>
 
