@@ -2,24 +2,20 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useSidebar } from '../../context/SidebarContext';
 import { LogoHorizontal } from '../branding/Logo';
+import { theme } from '../../styles/theme';
 
 export function Navbar({ user }) {
   const { sidebarOpen, setSidebarOpen } = useSidebar();
 
   return (
-    <nav className="bg-[#0a0e27] shadow-lg border-b border-cyan-400/30 sticky top-0 z-20 relative">
-      {/* Scan-line effect */}
-      <div className="absolute inset-0 opacity-[0.02] pointer-events-none">
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage: 'repeating-linear-gradient(0deg, rgba(0, 184, 212, 0.1) 0px, transparent 1px, transparent 2px, rgba(0, 184, 212, 0.1) 3px)',
-          }}
-        />
-      </div>
-
-      {/* Bottom accent line */}
-      <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+    <nav className="bg-white/95 backdrop-blur-md shadow-md border-b-2 sticky top-0 z-20 relative" style={{
+      borderColor: theme.colors.border.subtle,
+      boxShadow: theme.shadows.medium,
+    }}>
+      {/* Subtle energy gradient at bottom (lightning strike accent) */}
+      <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{
+        background: `linear-gradient(90deg, transparent, ${theme.colors.energy.sky}80, ${theme.colors.energy.sunrise}80, transparent)`,
+      }} />
 
       <div className="max-w-7xl mx-auto px-8 relative">
         <div className="flex justify-between items-center h-16">
@@ -27,12 +23,24 @@ export function Navbar({ user }) {
             {user && (
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="p-2 hover:bg-slate-800/50 rounded-sm transition-all duration-200 text-slate-200 hover:text-cyan-400 border border-transparent hover:border-cyan-400/30 group relative"
+                className="p-2 rounded-md transition-all group relative border border-transparent"
+                style={{
+                  color: theme.colors.text.secondary,
+                  transition: theme.transitions.fast,
+                }}
                 title={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = theme.colors.energy.sky;
+                  e.currentTarget.style.borderColor = `${theme.colors.energy.sky}30`;
+                  e.currentTarget.style.backgroundColor = `${theme.colors.energy.sky}10`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = theme.colors.text.secondary;
+                  e.currentTarget.style.borderColor = 'transparent';
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                }}
               >
                 {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
-                {/* Hover glow effect */}
-                <div className="absolute inset-0 bg-cyan-400/0 group-hover:bg-cyan-400/10 rounded-sm transition-all duration-200" />
               </button>
             )}
             <Link to={user ? '/dashboard' : '/'} className="flex items-center">
@@ -45,20 +53,39 @@ export function Navbar({ user }) {
               href="https://tally.so/r/2EPBje"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2 bg-slate-800/80 text-slate-200 rounded-sm hover:bg-slate-700 transition-all duration-200 font-semibold border border-slate-700/50 hover:border-slate-600 text-sm tracking-wide relative group overflow-hidden"
+              className="px-5 py-2 rounded-md font-semibold text-sm relative group overflow-hidden border"
+              style={{
+                backgroundColor: theme.colors.background.subtle,
+                color: theme.colors.text.secondary,
+                borderColor: theme.colors.border.default,
+                transition: theme.transitions.fast,
+              }}
             >
-              <span className="relative z-10">FEEDBACK</span>
-              {/* Subtle glow on hover */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-slate-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <span className="relative z-10">Feedback</span>
             </a>
             {!user && (
               <Link
                 to="/login"
-                className="px-5 py-2 bg-cyan-500 text-slate-900 rounded-sm hover:bg-cyan-400 transition-all duration-200 font-bold border border-cyan-400/50 hover:border-cyan-300 hover:shadow-lg hover:shadow-cyan-500/30 text-sm tracking-wide relative group overflow-hidden"
+                className="px-5 py-2 rounded-md font-bold text-sm relative group overflow-hidden border"
+                style={{
+                  backgroundColor: theme.colors.energy.sky,
+                  color: 'white',
+                  borderColor: theme.colors.energy.sky,
+                  boxShadow: `0 0 0 rgba(0, 184, 212, 0.3)`,
+                  transition: theme.transitions.fast,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = theme.shadows.lightning.cyan;
+                  e.currentTarget.style.transform = 'translateY(-1px)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 0 0 rgba(0, 184, 212, 0.3)';
+                  e.currentTarget.style.transform = 'translateY(0)';
+                }}
               >
-                <span className="relative z-10">LOGIN</span>
-                {/* Glitch effect on hover */}
-                <div className="absolute inset-0 bg-cyan-300/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-300" />
+                <span className="relative z-10">Login</span>
+                {/* Lightning flash on hover */}
+                <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-300" />
               </Link>
             )}
           </div>
