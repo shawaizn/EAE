@@ -26,6 +26,12 @@ export function LogoHorizontal({ size = 'md' }) {
         <line x1="48" y1="14" x2="48" y2="6" stroke="#0891b2" strokeWidth="1.5" strokeLinecap="round" />
         <line x1="52" y1="18" x2="60" y2="18" stroke="#0891b2" strokeWidth="1.5" strokeLinecap="round" />
         <line x1="51" y1="15" x2="57" y2="9" stroke="#0891b2" strokeWidth="1.5" strokeLinecap="round" />
+
+        {/* E letter inside the loop */}
+        <rect x="24" y="24" width="3.5" height="16" fill="#1e293b" rx="0.5" />
+        <rect x="24" y="24" width="13" height="3" fill="#1e293b" rx="0.5" />
+        <rect x="24" y="30.5" width="11" height="2.5" fill="#1e293b" rx="0.5" />
+        <rect x="24" y="37" width="13" height="3" fill="#1e293b" rx="0.5" />
       </svg>
 
       <div>
