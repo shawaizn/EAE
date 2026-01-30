@@ -7,6 +7,7 @@ import { ProgressBar } from '../components/ui/ProgressBar';
 import { Check } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
 import { BRAND } from '../lib/brandConstants';
+import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 
 export function ModulePage() {
   const { user, signOut } = useAuth();
@@ -39,8 +40,11 @@ export function ModulePage() {
   const progress = (completedLessons / module.lessons.length) * 100;
 
   return (
-    <div className="flex-1 overflow-y-auto">
-      <div className="max-w-screen-xl mx-auto px-8 py-8">
+    <div className="flex-1 overflow-y-auto relative">
+      {/* Animated Background */}
+      <EnergeticBackground />
+
+      <div className="max-w-screen-xl mx-auto px-8 py-8 relative z-10">
           {/* Breadcrumb */}
           {/* <div className="mb-8">
             <Link to="/dashboard" className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
@@ -59,7 +63,7 @@ export function ModulePage() {
           </div>
 
           {/* Progress */}
-          <div className="mb-24 border-2 border-slate-200 rounded-lg p-8 shadow-sm">
+          <div className="mb-24 border-2 border-slate-200 rounded-lg p-8 shadow-lg bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-xl hover:border-violet-400/50">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Your Progress</h2>
               <span className="text-slate-700 font-semibold">
@@ -71,7 +75,7 @@ export function ModulePage() {
 
           {/* Module Introduction */}
           {moduleIntros[moduleIdNum] && (
-            <div className="mb-24 border-2 border-cyan-600 rounded-lg overflow-hidden shadow-sm">
+            <div className="mb-24 border-2 border-cyan-600 rounded-lg overflow-hidden shadow-lg bg-white/80 backdrop-blur-sm transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/20">
               <div className="p-6 bg-cyan-50 border-b-2 border-cyan-600">
                 <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>
                   Module Overview
@@ -110,7 +114,7 @@ export function ModulePage() {
                   <Link
                     key={lesson.id}
                     to={`/modules/${moduleIdNum}/lessons/${lesson.id}`}
-                    className="block p-6 border-2 border-slate-200 rounded-lg hover:border-cyan-600 hover:shadow-md transition"
+                    className="block p-6 border-2 border-slate-200 rounded-lg bg-white/80 backdrop-blur-sm hover:border-cyan-600 hover:shadow-xl hover:-translate-y-1 hover:shadow-cyan-500/20 transition-all duration-300"
                   >
                     <div className="flex items-center justify-between">
                       <div>

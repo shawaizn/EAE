@@ -15,11 +15,40 @@ export const BRAND = {
     border: 'slate-200',
     subtleBg: 'slate-50',
     neutralBg: 'slate-100',
+    // NEW: Energetic complementary colors
+    electricPurple: 'violet-500',    // #8B5CF6 - Secondary energy color
+    electricPurpleHover: 'violet-600', // #7C3AED
+    deepPurple: 'violet-700',        // #6D28D9 - Depth variant
+    vibrantOrange: 'orange-500',     // #F97316 - Accent highlights
+    vibrantOrangeHover: 'orange-600', // #EA580C
     text: {
       primary: 'slate-900',
       secondary: 'slate-700',
       tertiary: 'slate-600',
       light: 'slate-400',
+    }
+  },
+
+  // Gradient combinations for animated backgrounds
+  gradients: {
+    energetic: 'from-cyan-500 via-violet-500 to-orange-500',
+    cyanPurple: 'from-cyan-600 to-violet-600',
+    purpleOrange: 'from-violet-600 to-orange-600',
+    deepEnergy: 'from-cyan-700 via-violet-700 to-orange-700',
+  },
+
+  // Animation settings
+  animations: {
+    duration: {
+      fast: '200ms',
+      normal: '300ms',
+      slow: '500ms',
+      gradient: '15s',
+    },
+    easing: {
+      default: 'ease-in-out',
+      bounce: 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+      smooth: 'cubic-bezier(0.4, 0, 0.2, 1)',
     }
   },
 
