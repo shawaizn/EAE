@@ -20,7 +20,7 @@ export function Layout({ children, user, onSignOut }) {
       <div className="flex h-[calc(100vh-4rem)]">
         {/* Sidebar */}
         {sidebarOpen && (
-          <aside className="w-64 bg-white border-r border-gray-300 h-[calc(100vh-4rem)] overflow-y-auto flex-shrink-0 fixed left-0 top-16 z-10">
+          <aside className="w-64 bg-white border-r border-gray-300 h-screen overflow-y-auto flex-shrink-0 fixed left-0 top-0 z-10 pt-16">
             <MainSidebar user={user} onSignOut={onSignOut} />
           </aside>
         )}
