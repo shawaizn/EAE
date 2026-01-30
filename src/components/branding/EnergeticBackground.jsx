@@ -13,18 +13,20 @@ export function EnergeticBackground() {
   // Generate random positions for energy orbs
   const generateOrbs = () => {
     const orbs = [];
-    const count = 20; // Number of floating orbs
+    const count = 40; // Number of floating orbs - increased for more energy
 
     for (let i = 0; i < count; i++) {
       orbs.push({
         id: i,
         x: Math.random() * 100,
         y: Math.random() * 100,
-        size: 60 + Math.random() * 120, // 60-180px
-        animationDelay: Math.random() * 8,
-        floatDuration: 20 + Math.random() * 15, // 20-35s
-        opacity: 0.15 + Math.random() * 0.25, // 0.15-0.4
+        size: 40 + Math.random() * 160, // 40-200px - wider range
+        animationDelay: Math.random() * 6,
+        floatDuration: 12 + Math.random() * 12, // 12-24s - faster animations
+        opacity: 0.1 + Math.random() * 0.35, // 0.1-0.45 - more variety
         color: ['cyan', 'violet', 'orange'][Math.floor(Math.random() * 3)],
+        pulseDelay: Math.random() * 5,
+        pulseDuration: 3 + Math.random() * 4, // 3-7s pulse
       });
     }
     return orbs;
@@ -67,15 +69,15 @@ export function EnergeticBackground() {
         {orbs.map((orb) => (
           <div
             key={orb.id}
-            className="absolute rounded-full blur-2xl animate-float-orb"
+            className="absolute rounded-full blur-2xl animate-float-orb animate-pulse-orb"
             style={{
               left: `${orb.x}%`,
               top: `${orb.y}%`,
               width: `${orb.size}px`,
               height: `${orb.size}px`,
               opacity: orb.opacity,
-              animationDuration: `${orb.floatDuration}s`,
-              animationDelay: `${orb.animationDelay}s`,
+              animationDuration: `${orb.floatDuration}s, ${orb.pulseDuration}s`,
+              animationDelay: `${orb.animationDelay}s, ${orb.pulseDelay}s`,
               backgroundColor:
                 orb.color === 'cyan' ? '#06b6d4' :
                 orb.color === 'violet' ? '#8b5cf6' :
@@ -92,74 +94,93 @@ export function EnergeticBackground() {
       <style>{`
         @keyframes gradient-shift {
           0%, 100% {
-            transform: translate(0, 0) scale(1);
+            transform: translate(0, 0) scale(1) rotate(0deg);
             opacity: 1;
           }
           25% {
-            transform: translate(5%, -5%) scale(1.05);
+            transform: translate(8%, -8%) scale(1.1) rotate(1deg);
             opacity: 0.9;
           }
           50% {
-            transform: translate(-5%, 5%) scale(1.1);
-            opacity: 0.8;
+            transform: translate(-8%, 8%) scale(1.15) rotate(-1deg);
+            opacity: 0.85;
           }
           75% {
-            transform: translate(3%, 3%) scale(1.05);
-            opacity: 0.9;
+            transform: translate(5%, 5%) scale(1.08) rotate(0.5deg);
+            opacity: 0.92;
           }
         }
 
         @keyframes gradient-shift-reverse {
           0%, 100% {
-            transform: translate(0, 0) scale(1);
+            transform: translate(0, 0) scale(1) rotate(0deg);
             opacity: 1;
           }
           25% {
-            transform: translate(-5%, 5%) scale(1.05);
-            opacity: 0.8;
+            transform: translate(-8%, 8%) scale(1.08) rotate(-1deg);
+            opacity: 0.85;
           }
           50% {
-            transform: translate(5%, -5%) scale(1.1);
+            transform: translate(8%, -8%) scale(1.15) rotate(1deg);
             opacity: 0.9;
           }
           75% {
-            transform: translate(-3%, -3%) scale(1.05);
-            opacity: 0.85;
+            transform: translate(-5%, -5%) scale(1.1) rotate(-0.5deg);
+            opacity: 0.88;
           }
         }
 
         @keyframes float-orb {
           0%, 100% {
-            transform: translate(0, 0) scale(1);
+            transform: translate(0, 0) scale(1) rotate(0deg);
           }
-          25% {
-            transform: translate(50px, -80px) scale(1.1);
+          20% {
+            transform: translate(80px, -100px) scale(1.15) rotate(15deg);
+          }
+          40% {
+            transform: translate(-70px, -150px) scale(0.85) rotate(-20deg);
+          }
+          60% {
+            transform: translate(-90px, -80px) scale(1.1) rotate(10deg);
+          }
+          80% {
+            transform: translate(60px, -120px) scale(0.95) rotate(-15deg);
+          }
+        }
+
+        @keyframes pulse-orb {
+          0%, 100% {
+            opacity: var(--orb-opacity, 0.3);
+            filter: blur(2rem);
           }
           50% {
-            transform: translate(-40px, -120px) scale(0.9);
-          }
-          75% {
-            transform: translate(-60px, -60px) scale(1.05);
+            opacity: calc(var(--orb-opacity, 0.3) * 1.5);
+            filter: blur(3rem);
           }
         }
 
         .animate-gradient-shift {
-          animation: gradient-shift 25s ease-in-out infinite;
+          animation: gradient-shift 18s ease-in-out infinite;
         }
 
         .animate-gradient-shift-reverse {
-          animation: gradient-shift-reverse 30s ease-in-out infinite;
+          animation: gradient-shift-reverse 22s ease-in-out infinite;
         }
 
         .animate-float-orb {
-          animation: float-orb var(--duration, 25s) ease-in-out infinite;
+          animation: float-orb var(--duration, 20s) ease-in-out infinite;
+        }
+
+        .animate-pulse-orb {
+          animation: pulse-orb var(--pulse-duration, 5s) ease-in-out infinite;
         }
 
         /* Accessibility: Respect prefers-reduced-motion */
         @media (prefers-reduced-motion: reduce) {
           .animate-gradient-shift,
           .animate-gradient-shift-reverse,
-          .animate-float-orb {
+          .animate-float-orb,
+          .animate-pulse-orb {
             animation: none;
           }
         }
