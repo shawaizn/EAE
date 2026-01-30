@@ -148,19 +148,6 @@ export function Dashboard() {
             </div>
           </div>
 
-          {/* Info Box */}
-          <div className="p-6 bg-cyan-50 border-l-4 border-cyan-500">
-            <p className="text-sm font-black uppercase tracking-wider text-slate-900 mb-3">
-              You'll Master:
-            </p>
-            <ul className="text-sm text-slate-700 space-y-2">
-              <li>• How AI works IN YOUR CONTEXT (not just how AI works)</li>
-              <li>• When to use AI—and when NOT to (strategic restraint)</li>
-              <li>• Custom workflows that create independence</li>
-              <li>• The five AI traps and prevention tactics</li>
-              <li>• Systems that compound value over time</li>
-            </ul>
-          </div>
         </section>
 
         {/* YOUR PROGRESS SECTION */}
