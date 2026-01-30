@@ -92,11 +92,14 @@ export function Dashboard() {
       <div className="max-w-7xl mx-auto px-8 py-8">
         {/* WELCOME SECTION */}
         <section className="mb-24">
+          <p className="text-xl text-slate-400 font-light mb-2">
+            Welcome back
+          </p>
           <h1 className="text-6xl font-black text-slate-900 mb-4" style={{ letterSpacing: '-0.02em' }}>
-            Welcome Back
+            Learn To Leverage AI
           </h1>
           <p className="text-lg text-slate-600 font-semibold">
-            Continue your journey through AI education
+            Save time. Save effort. Achieve more.
           </p>
         </section>
 
