@@ -3,6 +3,7 @@ import { MainSidebar } from './MainSidebar';
 import { useSidebar } from '../../context/SidebarContext';
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
+import { StaticGradientBackground } from '../branding/StaticGradientBackground';
 
 export function Layout({ children, user, onSignOut }) {
   const { sidebarOpen, setSidebarOpen } = useSidebar();
@@ -15,19 +16,22 @@ export function Layout({ children, user, onSignOut }) {
   }, [location.pathname, setSidebarOpen]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen relative">
+      {/* Static gradient background for all pages */}
+      <StaticGradientBackground />
+
       <Navbar user={user} />
       <div className="flex h-[calc(100vh-4rem)]">
         {/* Sidebar */}
         {sidebarOpen && (
-          <aside className="w-64 bg-white border-r border-gray-300 h-screen overflow-y-auto flex-shrink-0 fixed left-0 top-0 z-10 pt-16">
+          <aside className="w-64 bg-white/70 backdrop-blur-md border-r border-slate-200/50 h-screen overflow-y-auto flex-shrink-0 fixed left-0 top-0 z-10 pt-16 shadow-lg">
             <MainSidebar user={user} onSignOut={onSignOut} />
           </aside>
         )}
         {sidebarOpen && <div className="w-64 flex-shrink-0" />}
 
         {/* Main Content */}
-        <main className="flex-1 min-w-0 bg-white">
+        <main className="flex-1 min-w-0 relative">
           {children}
         </main>
       </div>

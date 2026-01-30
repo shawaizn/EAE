@@ -7,7 +7,6 @@ import { ProgressBar } from '../components/ui/ProgressBar';
 import { Check } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
 import { BRAND } from '../lib/brandConstants';
-import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 
 export function ModulePage() {
   const { user, signOut } = useAuth();
@@ -41,9 +40,6 @@ export function ModulePage() {
 
   return (
     <div className="flex-1 overflow-y-auto relative">
-      {/* Animated Background */}
-      <EnergeticBackground />
-
       <div className="max-w-screen-xl mx-auto px-8 py-8 relative z-10">
           {/* Breadcrumb */}
           {/* <div className="mb-8">
