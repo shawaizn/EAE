@@ -94,13 +94,13 @@ export function Dashboard() {
       {/* Energetic Background - Visible Movement + Brand Colors */}
       <EnergeticBackground />
 
-      <div className="max-w-7xl mx-auto px-8 py-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 relative z-10">
         {/* WELCOME SECTION */}
-        <section className="mb-24 animate-fade-in-up">
-          <p className="text-base font-semibold mb-2 tracking-wide" style={{ color: theme.colors.energy.sunrise }}>
+        <section className="mb-16 sm:mb-24 animate-fade-in-up">
+          <p className="text-sm sm:text-base font-semibold mb-2 tracking-wide" style={{ color: theme.colors.energy.sunrise }}>
             Welcome back
           </p>
-          <h1 className="text-6xl font-black mb-4" style={{
+          <h1 className="text-3xl sm:text-4xl lg:text-6xl font-black mb-4" style={{
             letterSpacing: '-0.02em',
             color: theme.colors.text.primary,
             background: `linear-gradient(135deg, ${theme.colors.text.primary} 0%, ${theme.colors.energy.sky} 100%)`,
@@ -109,22 +109,22 @@ export function Dashboard() {
           }}>
             Learn To Leverage AI
           </h1>
-          <p className="text-lg font-semibold" style={{ color: theme.colors.text.secondary }}>
+          <p className="text-base sm:text-lg font-semibold" style={{ color: theme.colors.text.secondary }}>
             Work doesn't have to be boring. Make it exciting and fulfilling.
           </p>
         </section>
 
         {/* STRATEGIC AI IMPLEMENTATION SECTION */}
-        <section className="mb-24 p-12 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-lg shadow-lg transition-all hover:shadow-xl animate-fade-in-up relative group" style={{
+        <section className="mb-16 sm:mb-24 p-4 sm:p-8 lg:p-12 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-lg shadow-lg transition-all hover:shadow-xl animate-fade-in-up relative group" style={{
           animationDelay: '0.1s',
           boxShadow: theme.shadows.large,
         }}>
           {/* Lightning strike accents (sharp, powerful) */}
-          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
+          <div className="hidden lg:block absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
             borderColor: theme.colors.lightning.cyan,
             boxShadow: theme.shadows.lightning.cyan,
           }} />
-          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
+          <div className="hidden lg:block absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
             borderColor: theme.colors.lightning.cyan,
             boxShadow: theme.shadows.lightning.cyan,
           }} />
@@ -133,72 +133,72 @@ export function Dashboard() {
             <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: theme.colors.energy.sunrise }}>
               ENERGISE AI EDUCATION
             </p>
-            <h2 className="text-3xl font-black mb-6" style={{
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black mb-4 sm:mb-6" style={{
               letterSpacing: '-0.02em',
               color: theme.colors.text.primary,
             }}>
               Strategic AI Implementation
             </h2>
           </div>
-          <p className="text-base mb-4 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
+          <p className="text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
             The UK government and major tech companies are investing heavily in AI literacy—aiming to train "10 million workers by 2030" with courses on "AI fundamentals," "productivity tools," and "getting everyone AI-ready."
           </p>
-          <p className="text-base mb-4 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
+          <p className="text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
             That's good. Do those courses. AI literacy is essential.
           </p>
-          <p className="text-base mb-8 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
+          <p className="text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
             But here's what we've noticed: when everyone completes the same foundation, strategic application becomes the differentiator. Strategic AI Implementation is designed for what comes next—applying AI specifically to YOUR context, knowing when to use it (and when not to), and building systems that create competitive advantage instead of just completing training badges.
           </p>
-          <p className="text-base font-semibold mb-8 max-w-3xl" style={{ color: theme.colors.text.primary }}>
+          <p className="text-sm sm:text-base font-semibold mb-6 sm:mb-8 max-w-3xl" style={{ color: theme.colors.text.primary }}>
             The government creates mass literacy. We help you build strategic capability on top of it.
           </p>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md" style={{
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
+            <div className="p-4 sm:p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md" style={{
               borderColor: theme.colors.energy.sunrise,
             }}>
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Total Duration
               </p>
-              <p className="text-2xl font-black" style={{ color: theme.colors.text.primary }}>~22 Hours</p>
+              <p className="text-xl sm:text-2xl font-black" style={{ color: theme.colors.text.primary }}>~22 Hours</p>
             </div>
-            <div className="p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md" style={{
+            <div className="p-4 sm:p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md" style={{
               borderColor: theme.colors.energy.sky,
             }}>
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Modules
               </p>
-              <p className="text-2xl font-black" style={{ color: theme.colors.text.primary }}>8 Modules</p>
+              <p className="text-xl sm:text-2xl font-black" style={{ color: theme.colors.text.primary }}>8 Modules</p>
             </div>
-            <div className="p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md" style={{
+            <div className="p-4 sm:p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md" style={{
               borderColor: theme.colors.energy.fresh,
             }}>
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Format
               </p>
-              <p className="text-2xl font-black" style={{ color: theme.colors.text.primary }}>Self-Paced</p>
+              <p className="text-xl sm:text-2xl font-black" style={{ color: theme.colors.text.primary }}>Self-Paced</p>
             </div>
           </div>
 
         </section>
 
         {/* YOUR PROGRESS SECTION */}
-        <section className="mb-24 p-12 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-lg shadow-lg transition-all hover:shadow-xl hover:scale-[1.01] animate-fade-in-up animate-pulse-glow relative group" style={{
+        <section className="mb-16 sm:mb-24 p-4 sm:p-8 lg:p-12 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-lg shadow-lg transition-all hover:shadow-xl hover:scale-[1.01] animate-fade-in-up animate-pulse-glow relative group" style={{
           animationDelay: '0.2s',
           boxShadow: theme.shadows.large,
         }}>
           {/* Lightning strike accents */}
-          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
+          <div className="hidden lg:block absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
             borderColor: theme.colors.energy.fresh,
             boxShadow: theme.shadows.lightning.cyan,
           }} />
-          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
+          <div className="hidden lg:block absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
             borderColor: theme.colors.energy.fresh,
             boxShadow: theme.shadows.lightning.cyan,
           }} />
 
-          <h2 className="text-3xl font-black mb-8" style={{
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-black mb-6 sm:mb-8" style={{
             letterSpacing: '-0.02em',
             color: theme.colors.text.primary,
           }}>
@@ -251,14 +251,14 @@ export function Dashboard() {
           </div>
 
           {/* Lesson Stats - animated cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md transform transition-all hover:scale-105 hover:shadow-lg" style={{
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <div className="p-4 sm:p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md transform transition-all hover:scale-105 hover:shadow-lg" style={{
               borderColor: theme.colors.energy.sky,
             }}>
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Lessons Completed
               </p>
-              <p className="text-3xl font-black" style={{
+              <p className="text-2xl sm:text-3xl font-black" style={{
                 background: `linear-gradient(135deg, ${theme.colors.energy.sky}, ${theme.colors.energy.golden})`,
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
@@ -266,13 +266,13 @@ export function Dashboard() {
                 {completedLessons} / {totalLessons}
               </p>
             </div>
-            <div className="p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md transform transition-all hover:scale-105 hover:shadow-lg" style={{
+            <div className="p-4 sm:p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md transform transition-all hover:scale-105 hover:shadow-lg" style={{
               borderColor: theme.colors.energy.fresh,
             }}>
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Modules Completed
               </p>
-              <p className="text-3xl font-black" style={{
+              <p className="text-2xl sm:text-3xl font-black" style={{
                 background: `linear-gradient(135deg, ${theme.colors.energy.fresh}, ${theme.colors.energy.sky})`,
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
@@ -284,21 +284,21 @@ export function Dashboard() {
         </section>
 
         {/* COMPARISON TABLE SECTION */}
-        <section className="mb-24 p-12 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-lg shadow-lg transition-all hover:shadow-xl animate-fade-in-up relative group" style={{
+        <section className="mb-16 sm:mb-24 p-4 sm:p-8 lg:p-12 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-lg shadow-lg transition-all hover:shadow-xl animate-fade-in-up relative group" style={{
           animationDelay: '0.3s',
           boxShadow: theme.shadows.large,
         }}>
           {/* Lightning strike accents */}
-          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
+          <div className="hidden lg:block absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
             borderColor: theme.colors.energy.sunrise,
             boxShadow: theme.shadows.lightning.cyan,
           }} />
-          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
+          <div className="hidden lg:block absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
             borderColor: theme.colors.energy.sunrise,
             boxShadow: theme.shadows.lightning.cyan,
           }} />
 
-          <h2 className="text-3xl font-black mb-8" style={{
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-black mb-6 sm:mb-8" style={{
             letterSpacing: '-0.02em',
             color: theme.colors.text.primary,
           }}>
@@ -424,21 +424,21 @@ export function Dashboard() {
         </section>
 
         {/* MODULE TIMELINE SECTION */}
-        <section className="mb-24 p-12 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-lg shadow-lg transition-all hover:shadow-xl animate-fade-in-up relative group" style={{
+        <section className="mb-16 sm:mb-24 p-4 sm:p-8 lg:p-12 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-lg shadow-lg transition-all hover:shadow-xl animate-fade-in-up relative group" style={{
           animationDelay: '0.4s',
           boxShadow: theme.shadows.large,
         }}>
           {/* Lightning strike accents */}
-          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
+          <div className="hidden lg:block absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
             borderColor: theme.colors.energy.golden,
             boxShadow: theme.shadows.lightning.cyan,
           }} />
-          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
+          <div className="hidden lg:block absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
             borderColor: theme.colors.energy.golden,
             boxShadow: theme.shadows.lightning.cyan,
           }} />
 
-          <h2 className="text-3xl font-black mb-8" style={{
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-black mb-6 sm:mb-8" style={{
             letterSpacing: '-0.02em',
             color: theme.colors.text.primary,
           }}>
@@ -489,21 +489,21 @@ export function Dashboard() {
                 <Link
                   key={module.moduleId}
                   to={`/modules/${module.moduleId}`}
-                  className={`block p-6 rounded-lg border-2 ${opacityClass} transition-all duration-300 hover:shadow-xl hover:scale-[1.01] hover:-translate-y-1 group/module`}
+                  className={`block p-3 sm:p-6 rounded-lg border-2 ${opacityClass} transition-all duration-300 hover:shadow-xl hover:scale-[1.01] hover:-translate-y-1 group/module`}
                   style={{ ...bgStyle, borderColor, ...shadowStyle }}
                 >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex-1">
-                      <h3 className="text-lg font-black transition-colors duration-200 group-hover/module:opacity-80" style={{
+                  <div className="flex flex-col sm:flex-row items-start justify-between gap-2 sm:gap-4 sm:mb-3">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-base sm:text-lg font-black transition-colors duration-200 group-hover/module:opacity-80 break-words" style={{
                         color: theme.colors.text.primary,
                       }}>
                         Module {module.moduleId}: {module.title}
                       </h3>
-                      <p className="text-sm mt-2" style={{ color: theme.colors.text.secondary }}>
+                      <p className="text-xs sm:text-sm mt-1 sm:mt-2 line-clamp-2" style={{ color: theme.colors.text.secondary }}>
                         {module.narrative}
                       </p>
                     </div>
-                    <span className="px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap ml-4" style={badgeStyle}>
+                    <span className="px-2 sm:px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap flex-shrink-0" style={badgeStyle}>
                       {badgeText}
                     </span>
                   </div>
@@ -546,7 +546,7 @@ export function Dashboard() {
         </section>
 
         {/* NEXT STEPS SECTION - Energized CTA */}
-        <section className="p-12 bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-xl border-2 mb-24 shadow-2xl animate-fade-in-up transition-all hover:shadow-3xl hover:scale-[1.01] relative group overflow-hidden" style={{
+        <section className="p-4 sm:p-8 lg:p-12 bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-xl border-2 mb-16 sm:mb-24 shadow-2xl animate-fade-in-up transition-all hover:shadow-3xl hover:scale-[1.01] relative group overflow-hidden" style={{
           animationDelay: '0.5s',
           borderColor: theme.colors.energy.sky,
           boxShadow: `0 20px 40px ${theme.colors.energy.sky}30`,
@@ -554,25 +554,25 @@ export function Dashboard() {
           {/* Animated gradient overlay for energy */}
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-shimmer opacity-30" />
 
-          {/* Lightning corner accents - always visible, animated */}
-          <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 animate-pulse-corner" style={{
+          {/* Lightning corner accents - always visible, animated - hide on mobile */}
+          <div className="hidden lg:block absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 animate-pulse-corner" style={{
             borderColor: theme.colors.energy.sunrise,
           }} />
-          <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 animate-pulse-corner" style={{
+          <div className="hidden lg:block absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 animate-pulse-corner" style={{
             borderColor: theme.colors.energy.sky,
             animationDelay: '0.5s',
           }} />
-          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 animate-pulse-corner" style={{
+          <div className="hidden lg:block absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 animate-pulse-corner" style={{
             borderColor: theme.colors.energy.fresh,
             animationDelay: '1s',
           }} />
-          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 animate-pulse-corner" style={{
+          <div className="hidden lg:block absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 animate-pulse-corner" style={{
             borderColor: theme.colors.energy.golden,
             animationDelay: '1.5s',
           }} />
 
           <div className="relative z-10">
-            <h2 className="text-4xl font-black mb-4" style={{
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black mb-3 sm:mb-4" style={{
               letterSpacing: '-0.02em',
               background: `linear-gradient(135deg, ${theme.colors.energy.sunrise}, ${theme.colors.energy.sky})`,
               WebkitBackgroundClip: 'text',
@@ -580,7 +580,7 @@ export function Dashboard() {
             }}>
               Next Steps
             </h2>
-            <p className="text-base mb-8 max-w-2xl leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+            <p className="text-sm sm:text-base mb-6 sm:mb-8 max-w-2xl leading-relaxed" style={{ color: theme.colors.text.secondary }}>
               {currentLesson ? (
                 <>
                   Continue with <span className="font-bold" style={{ color: theme.colors.energy.sky }}>{currentLesson.moduleTitle}</span> to keep building your capabilities. Every lesson completed brings you closer to transforming repetitive work into exciting possibilities.
@@ -594,7 +594,7 @@ export function Dashboard() {
             {currentLesson ? (
               <Link
                 to={`/modules/${currentLesson.moduleId}/lessons/${currentLesson.lessonId}`}
-                className="inline-block px-12 py-4 font-black rounded-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 border-2 relative group/btn overflow-hidden"
+                className="inline-block px-8 sm:px-12 py-3 sm:py-4 font-black text-sm sm:text-base rounded-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 border-2 relative group/btn overflow-hidden w-full sm:w-auto text-center"
                 style={{
                   backgroundColor: theme.colors.energy.sky,
                   color: 'white',
@@ -607,7 +607,7 @@ export function Dashboard() {
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-700" />
               </Link>
             ) : (
-              <button disabled className="px-12 py-4 font-black rounded-lg cursor-not-allowed border-2" style={{
+              <button disabled className="px-8 sm:px-12 py-3 sm:py-4 font-black text-sm sm:text-base rounded-lg cursor-not-allowed border-2 w-full sm:w-auto" style={{
                 backgroundColor: theme.colors.background.subtle,
                 color: theme.colors.text.muted,
                 borderColor: theme.colors.border.default,

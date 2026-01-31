@@ -147,7 +147,7 @@ export function LessonPage() {
 
   return (
     <div className="flex-1 overflow-y-auto">
-      <div className="max-w-screen-xl mx-auto px-8 py-8">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           {/* Breadcrumb */}
           {/* <div className="mb-8">
             <Link to="/dashboard" className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
@@ -162,23 +162,23 @@ export function LessonPage() {
           </div> */}
 
           {/* Lesson Title */}
-          <h1 className="text-5xl font-black text-slate-900 mb-24" style={{ letterSpacing: '-0.02em' }}>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-12 sm:mb-24" style={{ letterSpacing: '-0.02em' }}>
             {lesson.title}
           </h1>
 
           {/* Video */}
-          <div className="mb-24 bg-black rounded-lg overflow-hidden shadow-lg">
+          <div className="mb-12 sm:mb-24 bg-black rounded-lg overflow-hidden shadow-lg">
             <div dangerouslySetInnerHTML={{ __html: lessonMedia_.video }} />
           </div>
 
           {/* Summary Section */}
-          <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
+          <div className="mb-12 sm:mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
             <button
               onClick={() => setShowSummary(!showSummary)}
-              className="w-full flex items-center justify-between p-6 bg-slate-50 hover:bg-slate-100 transition"
+              className="w-full flex items-center justify-between p-4 sm:p-6 bg-slate-50 hover:bg-slate-100 transition"
             >
-              <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Lesson Summary</h2>
-              <div className="flex items-center gap-3">
+              <h2 className="text-lg sm:text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Lesson Summary</h2>
+              <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
                 {!showSummary && (
                   <button
                     onClick={(e) => {
@@ -188,20 +188,20 @@ export function LessonPage() {
                     className="p-2 hover:bg-slate-200 rounded transition"
                     title="Copy summary"
                   >
-                    <Copy size={20} className={copied ? 'text-cyan-600' : 'text-slate-600'} />
+                    <Copy size={18} className={`${copied ? 'text-cyan-600' : 'text-slate-600'} sm:w-5 sm:h-5`} />
                   </button>
                 )}
-                {showSummary ? <ChevronUp size={24} className="text-slate-600" /> : <ChevronDown size={24} className="text-slate-600" />}
+                {showSummary ? <ChevronUp size={20} className="text-slate-600 sm:w-6 sm:h-6" /> : <ChevronDown size={20} className="text-slate-600 sm:w-6 sm:h-6" />}
               </div>
             </button>
             {showSummary && (
-              <div className="p-6 border-t-2 border-slate-200">
-                <div className="prose prose-sm max-w-none text-slate-700 mb-6" dangerouslySetInnerHTML={{ __html: lessonMedia_.summary }} />
+              <div className="p-4 sm:p-6 border-t-2 border-slate-200">
+                <div className="prose prose-sm max-w-none text-slate-700 mb-4 sm:mb-6" dangerouslySetInnerHTML={{ __html: lessonMedia_.summary }} />
                 <button
                   onClick={handleCopySummary}
-                  className="flex items-center gap-2 px-6 py-3 bg-slate-100 text-slate-800 rounded-lg hover:bg-slate-200 transition font-medium"
+                  className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-slate-100 text-slate-800 rounded-lg hover:bg-slate-200 transition font-medium text-sm sm:text-base w-full sm:w-auto justify-center sm:justify-start"
                 >
-                  <Copy size={18} />
+                  <Copy size={16} />
                   {copied ? 'Copied!' : 'Copy Summary'}
                 </button>
               </div>
@@ -210,67 +210,67 @@ export function LessonPage() {
 
           {/* Activity Section */}
           {activity && (
-            <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
+            <div className="mb-12 sm:mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
               <button
                 onClick={() => setShowSkill(!showSkill)}
-                className="w-full flex items-center justify-between p-6 bg-slate-50 hover:bg-slate-100 transition"
+                className="w-full flex items-center justify-between p-4 sm:p-6 bg-slate-50 hover:bg-slate-100 transition"
               >
-                <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>
+                <h2 className="text-lg sm:text-2xl font-black text-slate-900 break-words" style={{ letterSpacing: '-0.02em' }}>
                   Skill{activity.skill && `: ${activity.skill}`}
                 </h2>
-                {showSkill ? <ChevronUp size={24} className="text-slate-600" /> : <ChevronDown size={24} className="text-slate-600" />}
+                {showSkill ? <ChevronUp size={20} className="text-slate-600 flex-shrink-0 sm:w-6 sm:h-6" /> : <ChevronDown size={20} className="text-slate-600 flex-shrink-0 sm:w-6 sm:h-6" />}
               </button>
               {showSkill && (
-              <div className="p-12 text-slate-700 space-y-8 border-t-2 border-slate-200">
+              <div className="p-4 sm:p-8 lg:p-12 text-slate-700 space-y-6 sm:space-y-8 border-t-2 border-slate-200">
                 {/* Skill */}
                 <div>
-                  <h3 className="text-lg font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>Skills You're Building:</h3>
-                  <p className="text-lg font-semibold text-cyan-600">{activity.skill}</p>
+                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 sm:mb-3" style={{ letterSpacing: '-0.02em' }}>Skills You're Building:</h3>
+                  <p className="text-base sm:text-lg font-semibold text-cyan-600">{activity.skill}</p>
                 </div>
 
                 {/* Connection */}
                 <div>
-                  <h3 className="text-lg font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>Connection:</h3>
-                  <p className="text-slate-700 leading-relaxed">{activity.connection}</p>
+                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 sm:mb-3" style={{ letterSpacing: '-0.02em' }}>Connection:</h3>
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed">{activity.connection}</p>
                 </div>
 
                 {/* Activity */}
                 <div>
-                  <h3 className="text-lg font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>Activity:</h3>
-                  <div className="text-slate-700 whitespace-pre-line leading-relaxed">{activity.activity}</div>
+                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 sm:mb-3" style={{ letterSpacing: '-0.02em' }}>Activity:</h3>
+                  <div className="text-sm sm:text-base text-slate-700 whitespace-pre-line leading-relaxed">{activity.activity}</div>
                 </div>
 
                 {/* Why this matters */}
                 <div>
-                  <h3 className="text-lg font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>Why this matters:</h3>
-                  <p className="text-slate-700 leading-relaxed">{activity.whyMatters}</p>
+                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 sm:mb-3" style={{ letterSpacing: '-0.02em' }}>Why this matters:</h3>
+                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed">{activity.whyMatters}</p>
                 </div>
 
                 {/* Audience Buttons */}
-                <div className="pt-6 border-t-2 border-slate-200">
-                  <h3 className="text-lg font-black text-slate-900 mb-6" style={{ letterSpacing: '-0.02em' }}>Apply this as:</h3>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="pt-4 sm:pt-6 border-t-2 border-slate-200">
+                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-4 sm:mb-6" style={{ letterSpacing: '-0.02em' }}>Apply this as:</h3>
+                  <div className="grid grid-cols-2 gap-2 sm:gap-4">
                     <button
                       onClick={() => setActiveModal('learners')}
-                      className="px-6 py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200"
+                      className="px-3 sm:px-6 py-2 sm:py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200 text-xs sm:text-sm"
                     >
                       📚 Learners
                     </button>
                     <button
                       onClick={() => setActiveModal('employees')}
-                      className="px-6 py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200"
+                      className="px-3 sm:px-6 py-2 sm:py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200 text-xs sm:text-sm"
                     >
                       💼 Employees
                     </button>
                     <button
                       onClick={() => setActiveModal('selfEmployed')}
-                      className="px-6 py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200"
+                      className="px-3 sm:px-6 py-2 sm:py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200 text-xs sm:text-sm"
                     >
                       🚀 Self-Employed
                     </button>
                     <button
                       onClick={() => setActiveModal('businesses')}
-                      className="px-6 py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200"
+                      className="px-3 sm:px-6 py-2 sm:py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200 text-xs sm:text-sm"
                     >
                       🏢 Businesses
                     </button>
@@ -282,16 +282,16 @@ export function LessonPage() {
           )}
 
           {/* Guide Section */}
-          <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
+          <div className="mb-12 sm:mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
             <button
               onClick={() => setShowGuide(!showGuide)}
-              className="w-full flex items-center justify-between p-6 bg-slate-50 hover:bg-slate-100 transition"
+              className="w-full flex items-center justify-between p-4 sm:p-6 bg-slate-50 hover:bg-slate-100 transition"
             >
-              <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Guide</h2>
-              {showGuide ? <ChevronUp size={24} className="text-slate-600" /> : <ChevronDown size={24} className="text-slate-600" />}
+              <h2 className="text-lg sm:text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Guide</h2>
+              {showGuide ? <ChevronUp size={20} className="text-slate-600 flex-shrink-0 sm:w-6 sm:h-6" /> : <ChevronDown size={20} className="text-slate-600 flex-shrink-0 sm:w-6 sm:h-6" />}
             </button>
             {showGuide && (
-              <div className="p-12 bg-white border-t-2 border-slate-200">
+              <div className="p-4 sm:p-8 lg:p-12 bg-white border-t-2 border-slate-200 prose prose-sm max-w-none" style={{ fontSize: '0.875rem' }}>
                 <div dangerouslySetInnerHTML={{ __html: lessonMedia_.guide }} />
               </div>
             )}
@@ -343,17 +343,17 @@ export function LessonPage() {
           </Modal>
 
           {/* Mark Complete Button */}
-          <div className="pt-12 border-t-2 border-slate-200">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <div className="pt-6 sm:pt-12 border-t-2 border-slate-200">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4">
               <Button
                 variant={completed ? 'success' : 'primary'}
                 onClick={handleToggleComplete}
                 disabled={isMarking}
-                className="flex items-center gap-2"
+                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 text-sm sm:text-base flex-1 sm:flex-none"
               >
                 {completed ? (
                   <>
-                    <Check size={20} /> Completed
+                    <Check size={18} /> Completed
                   </>
                 ) : (
                   'Mark as Complete'
@@ -370,7 +370,7 @@ export function LessonPage() {
                   return (
                     <Link
                       to={`/modules/${moduleIdNum}/lessons/${nextLesson.id}`}
-                      className="px-6 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors"
+                      className="px-4 sm:px-6 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors text-sm sm:text-base text-center flex-1 sm:flex-none"
                     >
                       Next Lesson →
                     </Link>
@@ -380,7 +380,7 @@ export function LessonPage() {
                   return (
                     <Link
                       to={`/modules/${moduleIdNum}/recap`}
-                      className="px-6 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors"
+                      className="px-4 sm:px-6 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors text-sm sm:text-base text-center flex-1 sm:flex-none"
                     >
                       View Module Recap →
                     </Link>

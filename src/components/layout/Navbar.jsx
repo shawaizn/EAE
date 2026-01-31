@@ -17,13 +17,13 @@ export function Navbar({ user }) {
         background: `linear-gradient(90deg, transparent, ${theme.colors.energy.sky}80, ${theme.colors.energy.sunrise}80, transparent)`,
       }} />
 
-      <div className="max-w-7xl mx-auto px-8 relative">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center gap-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="flex justify-between items-center h-14 sm:h-16">
+          <div className="flex items-center gap-2 sm:gap-4 min-w-0">
             {user && (
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="p-2 rounded-md transition-all group relative border border-transparent"
+                className="p-2 rounded-md transition-all group relative border border-transparent flex-shrink-0 min-h-10 min-w-10 flex items-center justify-center"
                 style={{
                   color: theme.colors.text.secondary,
                   transition: theme.transitions.fast,
@@ -40,20 +40,20 @@ export function Navbar({ user }) {
                   e.currentTarget.style.backgroundColor = 'transparent';
                 }}
               >
-                {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+                {sidebarOpen ? <X size={18} className="sm:w-5 sm:h-5" /> : <Menu size={18} className="sm:w-5 sm:h-5" />}
               </button>
             )}
-            <Link to={user ? '/dashboard' : '/'} className="flex items-center">
+            <Link to={user ? '/dashboard' : '/'} className="flex items-center flex-shrink-0">
               <LogoHorizontal size="sm" />
             </Link>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
             <a
               href="https://tally.so/r/2EPBje"
               target="_blank"
               rel="noopener noreferrer"
-              className="px-5 py-2 rounded-md font-semibold text-sm relative group overflow-hidden border"
+              className="px-3 sm:px-5 py-2 rounded-md font-semibold text-xs sm:text-sm relative group overflow-hidden border min-h-10 flex items-center"
               style={{
                 backgroundColor: theme.colors.background.subtle,
                 color: theme.colors.text.secondary,
@@ -66,7 +66,7 @@ export function Navbar({ user }) {
             {!user && (
               <Link
                 to="/login"
-                className="px-5 py-2 rounded-md font-bold text-sm relative group overflow-hidden border"
+                className="px-3 sm:px-5 py-2 rounded-md font-bold text-xs sm:text-sm relative group overflow-hidden border min-h-10 flex items-center"
                 style={{
                   backgroundColor: theme.colors.energy.sky,
                   color: 'white',
