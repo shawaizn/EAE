@@ -15,10 +15,9 @@ export function Card({
     : '';
 
   const accentColors = {
-    cyan: theme.colors.energy.sky,
-    sunrise: theme.colors.energy.sunrise,
-    golden: theme.colors.energy.golden,
-    fresh: theme.colors.energy.fresh,
+    cyan: theme.colors.accent.cyan,
+    coral: theme.colors.accent.coral,
+    blue: theme.colors.primary.deep,
   };
 
   const accentColor = accentColors[accent] || accentColors.cyan;
@@ -39,16 +38,16 @@ export function Card({
             className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 opacity-0 group-hover:opacity-100 transition-all"
             style={{
               borderColor: accentColor,
-              boxShadow: theme.shadows.lightning.cyan,
-              transition: theme.transitions.lightning,
+              boxShadow: theme.shadows.glow.cyan,
+              transition: theme.transitions.default,
             }}
           />
           <div
             className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 opacity-0 group-hover:opacity-100 transition-all"
             style={{
               borderColor: accentColor,
-              boxShadow: theme.shadows.lightning.cyan,
-              transition: theme.transitions.lightning,
+              boxShadow: theme.shadows.glow.cyan,
+              transition: theme.transitions.default,
             }}
           />
         </>
