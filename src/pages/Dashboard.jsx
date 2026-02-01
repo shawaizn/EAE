@@ -3,7 +3,7 @@ import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { getLessonNumber } from '../lib/utils';
 import { Link } from 'react-router-dom';
-import { EnergeticBackground } from '../components/branding/EnergeticBackground';
+import { ProfessionalBackground } from '../components/branding/ProfessionalBackground';
 import { theme } from '../styles/theme';
 
 export function Dashboard() {
@@ -91,50 +91,44 @@ export function Dashboard() {
 
   return (
     <div className="w-full h-full overflow-y-auto relative">
-      {/* Energetic Background - Visible Movement + Brand Colors */}
-      <EnergeticBackground />
+      {/* Professional Background - Clean + Technical Authority */}
+      <ProfessionalBackground />
 
       <div className="max-w-7xl mx-auto px-8 py-8 relative z-10">
         {/* WELCOME SECTION */}
         <section className="mb-24 animate-fade-in-up">
-          <p className="text-base font-semibold mb-2 tracking-wide" style={{ color: theme.colors.energy.sunrise }}>
+          <p className="text-base font-semibold mb-2 tracking-wide" style={{ color: theme.colors.accent.coral }}>
             Welcome back
           </p>
-          <h1 className="text-6xl font-black mb-4" style={{
+          <h1 className="text-5xl mb-4" style={{
             letterSpacing: '-0.02em',
-            color: theme.colors.text.primary,
-            background: `linear-gradient(135deg, ${theme.colors.text.primary} 0%, ${theme.colors.energy.sky} 100%)`,
+            fontWeight: theme.typography.heading.weight,
+            background: `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.accent.cyan} 100%)`,
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
           }}>
             Learn To Leverage AI
           </h1>
-          <p className="text-lg font-semibold" style={{ color: theme.colors.text.secondary }}>
-            Work doesn't have to be boring. Make it exciting and fulfilling.
+          <p className="text-lg" style={{ color: theme.colors.text.secondary }}>
+            Strategic AI implementation for professional results.
           </p>
         </section>
 
         {/* STRATEGIC AI IMPLEMENTATION SECTION */}
-        <section className="mb-24 p-12 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-lg shadow-lg transition-all hover:shadow-xl animate-fade-in-up relative group" style={{
+        <section className="mb-24 p-12 bg-white backdrop-blur-sm border rounded-xl transition-all animate-fade-in-up" style={{
           animationDelay: '0.1s',
-          boxShadow: theme.shadows.large,
+          borderColor: theme.colors.border.subtle,
+          borderRadius: theme.radius.default,
+          boxShadow: theme.shadows.medium,
         }}>
-          {/* Lightning strike accents (sharp, powerful) */}
-          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
-            borderColor: theme.colors.lightning.cyan,
-            boxShadow: theme.shadows.lightning.cyan,
-          }} />
-          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
-            borderColor: theme.colors.lightning.cyan,
-            boxShadow: theme.shadows.lightning.cyan,
-          }} />
 
           <div className="mb-2">
-            <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: theme.colors.energy.sunrise }}>
+            <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: theme.colors.accent.cyan }}>
               ENERGISE AI EDUCATION
             </p>
-            <h2 className="text-3xl font-black mb-6" style={{
+            <h2 className="text-3xl mb-6" style={{
               letterSpacing: '-0.02em',
+              fontWeight: theme.typography.heading.weight,
               color: theme.colors.text.primary,
             }}>
               Strategic AI Implementation
@@ -155,51 +149,53 @@ export function Dashboard() {
 
           {/* Stats Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md" style={{
-              borderColor: theme.colors.energy.sunrise,
+            <div className="p-6 border-l-4 rounded-md" style={{
+              backgroundColor: theme.colors.background.card,
+              borderColor: theme.colors.primary.electric,
+              borderRadius: theme.radius.default,
+              boxShadow: theme.shadows.subtle,
             }}>
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Total Duration
               </p>
-              <p className="text-2xl font-black" style={{ color: theme.colors.text.primary }}>~22 Hours</p>
+              <p className="text-2xl" style={{ color: theme.colors.text.primary, fontWeight: theme.typography.heading.weight }}>~22 Hours</p>
             </div>
-            <div className="p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md" style={{
-              borderColor: theme.colors.energy.sky,
+            <div className="p-6 border-l-4 rounded-md" style={{
+              backgroundColor: theme.colors.background.card,
+              borderColor: theme.colors.accent.cyan,
+              borderRadius: theme.radius.default,
+              boxShadow: theme.shadows.subtle,
             }}>
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Modules
               </p>
-              <p className="text-2xl font-black" style={{ color: theme.colors.text.primary }}>8 Modules</p>
+              <p className="text-2xl" style={{ color: theme.colors.text.primary, fontWeight: theme.typography.heading.weight }}>8 Modules</p>
             </div>
-            <div className="p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md" style={{
-              borderColor: theme.colors.energy.fresh,
+            <div className="p-6 border-l-4 rounded-md" style={{
+              backgroundColor: theme.colors.background.card,
+              borderColor: theme.colors.accent.coral,
+              borderRadius: theme.radius.default,
+              boxShadow: theme.shadows.subtle,
             }}>
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Format
               </p>
-              <p className="text-2xl font-black" style={{ color: theme.colors.text.primary }}>Self-Paced</p>
+              <p className="text-2xl" style={{ color: theme.colors.text.primary, fontWeight: theme.typography.heading.weight }}>Self-Paced</p>
             </div>
           </div>
 
         </section>
 
         {/* YOUR PROGRESS SECTION */}
-        <section className="mb-24 p-12 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-lg shadow-lg transition-all hover:shadow-xl hover:scale-[1.01] animate-fade-in-up animate-pulse-glow relative group" style={{
+        <section className="mb-24 p-12 bg-white backdrop-blur-sm border rounded-xl transition-all animate-fade-in-up" style={{
           animationDelay: '0.2s',
-          boxShadow: theme.shadows.large,
+          borderColor: theme.colors.border.subtle,
+          borderRadius: theme.radius.default,
+          boxShadow: theme.shadows.medium,
         }}>
-          {/* Lightning strike accents */}
-          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
-            borderColor: theme.colors.energy.fresh,
-            boxShadow: theme.shadows.lightning.cyan,
-          }} />
-          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
-            borderColor: theme.colors.energy.fresh,
-            boxShadow: theme.shadows.lightning.cyan,
-          }} />
-
-          <h2 className="text-3xl font-black mb-8" style={{
+          <h2 className="text-3xl mb-8" style={{
             letterSpacing: '-0.02em',
+            fontWeight: theme.typography.heading.weight,
             color: theme.colors.text.primary,
           }}>
             Your Progress
@@ -211,71 +207,65 @@ export function Dashboard() {
               <span className="text-sm font-semibold tracking-wide" style={{ color: theme.colors.text.secondary }}>
                 Overall Completion
               </span>
-              <span className="text-3xl font-black animate-count-up" style={{
-                background: `linear-gradient(135deg, ${theme.colors.energy.sky}, ${theme.colors.energy.fresh})`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+              <span className="text-3xl" style={{
+                fontWeight: theme.typography.heading.weight,
+                color: theme.colors.primary.deep,
               }}>
                 {totalProgress}%
               </span>
             </div>
-            {/* Use the ProgressBar component */}
-            <div className="transform transition-all hover:scale-[1.02]">
+            {/* Progress bar */}
+            <div className="transition-all">
               <div
                 className="w-full h-4 overflow-hidden border rounded-md"
                 style={{
-                  backgroundColor: `${theme.colors.background.subtle}`,
+                  backgroundColor: theme.colors.background.subtle,
                   borderColor: theme.colors.border.subtle,
+                  borderRadius: theme.radius.sm,
                 }}
               >
                 <div
-                  className="h-full transition-all duration-1000 relative animate-progress-fill"
+                  className="h-full transition-all"
                   style={{
                     width: `${totalProgress}%`,
-                    background: `linear-gradient(90deg, ${theme.colors.energy.sky} 0%, ${theme.colors.energy.fresh} 100%)`,
-                    boxShadow: `0 0 15px ${theme.colors.energy.sky}60`,
+                    background: `linear-gradient(90deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
+                    transitionDuration: '1000ms',
                   }}
-                >
-                  {totalProgress > 0 && (
-                    <div
-                      className="absolute right-0 top-0 bottom-0 w-1 animate-pulse"
-                      style={{
-                        backgroundColor: theme.colors.lightning.white,
-                        boxShadow: theme.shadows.lightning.white,
-                      }}
-                    />
-                  )}
-                </div>
+                />
               </div>
             </div>
           </div>
 
-          {/* Lesson Stats - animated cards */}
+          {/* Lesson Stats */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md transform transition-all hover:scale-105 hover:shadow-lg" style={{
-              borderColor: theme.colors.energy.sky,
+            <div className="p-6 border-l-4 rounded-md transition-all" style={{
+              backgroundColor: theme.colors.background.card,
+              borderColor: theme.colors.accent.cyan,
+              borderRadius: theme.radius.default,
+              boxShadow: theme.shadows.subtle,
             }}>
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Lessons Completed
               </p>
-              <p className="text-3xl font-black" style={{
-                background: `linear-gradient(135deg, ${theme.colors.energy.sky}, ${theme.colors.energy.golden})`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+              <p className="text-3xl" style={{
+                fontWeight: theme.typography.heading.weight,
+                color: theme.colors.primary.deep,
               }}>
                 {completedLessons} / {totalLessons}
               </p>
             </div>
-            <div className="p-6 bg-gradient-to-br from-white to-slate-50 border-l-4 rounded-md shadow-md transform transition-all hover:scale-105 hover:shadow-lg" style={{
-              borderColor: theme.colors.energy.fresh,
+            <div className="p-6 border-l-4 rounded-md transition-all" style={{
+              backgroundColor: theme.colors.background.card,
+              borderColor: theme.colors.accent.coral,
+              borderRadius: theme.radius.default,
+              boxShadow: theme.shadows.subtle,
             }}>
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Modules Completed
               </p>
-              <p className="text-3xl font-black" style={{
-                background: `linear-gradient(135deg, ${theme.colors.energy.fresh}, ${theme.colors.energy.sky})`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
+              <p className="text-3xl" style={{
+                fontWeight: theme.typography.heading.weight,
+                color: theme.colors.primary.deep,
               }}>
                 {completedModules} / 8
               </p>
@@ -284,22 +274,15 @@ export function Dashboard() {
         </section>
 
         {/* COMPARISON TABLE SECTION */}
-        <section className="mb-24 p-12 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-lg shadow-lg transition-all hover:shadow-xl animate-fade-in-up relative group" style={{
+        <section className="mb-24 p-12 bg-white backdrop-blur-sm border rounded-xl transition-all animate-fade-in-up" style={{
           animationDelay: '0.3s',
-          boxShadow: theme.shadows.large,
+          borderColor: theme.colors.border.subtle,
+          borderRadius: theme.radius.default,
+          boxShadow: theme.shadows.medium,
         }}>
-          {/* Lightning strike accents */}
-          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
-            borderColor: theme.colors.energy.sunrise,
-            boxShadow: theme.shadows.lightning.cyan,
-          }} />
-          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
-            borderColor: theme.colors.energy.sunrise,
-            boxShadow: theme.shadows.lightning.cyan,
-          }} />
-
-          <h2 className="text-3xl font-black mb-8" style={{
+          <h2 className="text-3xl mb-8" style={{
             letterSpacing: '-0.02em',
+            fontWeight: theme.typography.heading.weight,
             color: theme.colors.text.primary,
           }}>
             How This Differs
@@ -308,11 +291,14 @@ export function Dashboard() {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse">
               <thead>
-                <tr className="border-b-2" style={{ borderColor: theme.colors.energy.sky }}>
-                  <th className="text-left p-4 text-xs font-bold uppercase tracking-wider w-1/2" style={{ color: theme.colors.text.secondary }}>
+                <tr className="border-b-2" style={{ borderColor: theme.colors.primary.electric }}>
+                  <th className="text-left p-4 text-xs font-semibold uppercase tracking-wider w-1/2" style={{ color: theme.colors.text.secondary }}>
                     "Government & Big Tech AI Training"
                   </th>
-                  <th className="text-left p-4 text-xs font-bold uppercase tracking-wider w-1/2 bg-gradient-to-br from-sky-50 to-cyan-50" style={{ color: theme.colors.energy.sky }}>
+                  <th className="text-left p-4 text-xs font-semibold uppercase tracking-wider w-1/2" style={{
+                    color: theme.colors.primary.deep,
+                    backgroundColor: theme.colors.primary.light,
+                  }}>
                     Energise Strategic AI Implementation
                   </th>
                 </tr>
@@ -322,37 +308,37 @@ export function Dashboard() {
                   <td className="p-4" style={{ color: theme.colors.text.secondary }}>
                     <span className="font-semibold" style={{ color: theme.colors.text.primary }}>Goal:</span> "Mass AI adoption across 10M workers"
                   </td>
-                  <td className="p-4 bg-gradient-to-br from-white to-sky-50" style={{ color: theme.colors.text.primary }}>
-                    <span className="font-semibold" style={{ color: theme.colors.energy.sky }}>Goal:</span> Strategic competitive advantage for YOUR context
+                  <td className="p-4" style={{ color: theme.colors.text.primary, backgroundColor: theme.colors.primary.light }}>
+                    <span className="font-semibold" style={{ color: theme.colors.primary.deep }}>Goal:</span> Strategic competitive advantage for YOUR context
                   </td>
                 </tr>
                 <tr className="border-b border-slate-200 transition-all hover:bg-slate-50">
                   <td className="p-4" style={{ color: theme.colors.text.secondary }}>
                     <span className="font-semibold" style={{ color: theme.colors.text.primary }}>Audience:</span> "Everyone—generic training at scale"
                   </td>
-                  <td className="p-4 bg-gradient-to-br from-white to-sky-50" style={{ color: theme.colors.text.primary }}>
-                    <span className="font-semibold" style={{ color: theme.colors.energy.sky }}>Audience:</span> Those ready for strategic application
+                  <td className="p-4" style={{ color: theme.colors.text.primary, backgroundColor: theme.colors.primary.light }}>
+                    <span className="font-semibold" style={{ color: theme.colors.primary.deep }}>Audience:</span> Those ready for strategic application
                   </td>
                 </tr>
                 <tr className="border-b border-slate-200 transition-all hover:bg-slate-50">
                   <td className="p-4" style={{ color: theme.colors.text.secondary }}>
                     <span className="font-semibold" style={{ color: theme.colors.text.primary }}>Focus:</span> "AI literacy and tool productivity"
                   </td>
-                  <td className="p-4 bg-gradient-to-br from-white to-sky-50" style={{ color: theme.colors.text.primary }}>
-                    <span className="font-semibold" style={{ color: theme.colors.energy.sky }}>Focus:</span> Strategic systems and positioning
+                  <td className="p-4" style={{ color: theme.colors.text.primary, backgroundColor: theme.colors.primary.light }}>
+                    <span className="font-semibold" style={{ color: theme.colors.primary.deep }}>Focus:</span> Strategic systems and positioning
                   </td>
                 </tr>
                 <tr className="border-b border-slate-200 transition-all hover:bg-slate-50">
                   <td className="p-4" style={{ color: theme.colors.text.secondary }}>
                     <span className="font-semibold" style={{ color: theme.colors.text.primary }}>Delivery:</span> "Scattered courses across platforms"
                   </td>
-                  <td className="p-4 bg-gradient-to-br from-white to-sky-50" style={{ color: theme.colors.text.primary }}>
-                    <span className="font-semibold" style={{ color: theme.colors.energy.sky }}>Delivery:</span> Integrated 8-module journey (44 lessons)
+                  <td className="p-4" style={{ color: theme.colors.text.primary, backgroundColor: theme.colors.primary.light }}>
+                    <span className="font-semibold" style={{ color: theme.colors.primary.deep }}>Delivery:</span> Integrated 8-module journey (44 lessons)
                   </td>
                 </tr>
-                <tr className="border-b-2" style={{ borderColor: theme.colors.energy.sunrise }}>
+                <tr className="border-b-2" style={{ borderColor: theme.colors.accent.cyan }}>
                   <td className="p-4 pt-6" colSpan="2">
-                    <p className="font-bold text-xs uppercase tracking-wider mb-3" style={{ color: theme.colors.energy.sunrise }}>What You Learn</p>
+                    <p className="font-semibold text-xs uppercase tracking-wider mb-3" style={{ color: theme.colors.accent.cyan }}>What You Learn</p>
                   </td>
                 </tr>
                 <tr className="border-b border-slate-200 transition-all hover:bg-slate-50">
@@ -368,7 +354,7 @@ export function Dashboard() {
                       <li className="opacity-40">✗ Career positioning</li>
                     </ul>
                   </td>
-                  <td className="p-4 bg-gradient-to-br from-white to-sky-50 align-top">
+                  <td className="p-4 align-top" style={{ color: theme.colors.text.primary, backgroundColor: theme.colors.primary.light }}>
                     <ul className="space-y-2" style={{ color: theme.colors.text.primary }}>
                       <li>✓ How AI works IN YOUR CONTEXT</li>
                       <li>✓ When to use AI—and when NOT to</li>
@@ -381,9 +367,9 @@ export function Dashboard() {
                     </ul>
                   </td>
                 </tr>
-                <tr className="border-b-2" style={{ borderColor: theme.colors.energy.fresh }}>
+                <tr className="border-b-2" style={{ borderColor: theme.colors.accent.coral }}>
                   <td className="p-4 pt-6" colSpan="2">
-                    <p className="font-bold text-xs uppercase tracking-wider mb-3" style={{ color: theme.colors.energy.fresh }}>The Result</p>
+                    <p className="font-semibold text-xs uppercase tracking-wider mb-3" style={{ color: theme.colors.accent.coral }}>The Result</p>
                   </td>
                 </tr>
                 <tr className="border-b border-slate-200 transition-all hover:bg-slate-50">
@@ -394,7 +380,7 @@ export function Dashboard() {
                       <li>• "You're productive" (like everyone else)</li>
                     </ul>
                   </td>
-                  <td className="p-4 bg-gradient-to-br from-white to-sky-50 align-top">
+                  <td className="p-4 align-top" style={{ color: theme.colors.text.primary, backgroundColor: theme.colors.primary.light }}>
                     <ul className="space-y-2" style={{ color: theme.colors.text.primary }}>
                       <li>• You know WHERE AI creates advantage in YOUR context</li>
                       <li>• You're strategically positioned (actual capability)</li>
@@ -406,16 +392,16 @@ export function Dashboard() {
                   <td className="p-4" style={{ color: theme.colors.text.secondary }}>
                     <span className="font-semibold" style={{ color: theme.colors.text.primary }}>Investment:</span> Free (government-backed)
                   </td>
-                  <td className="p-4 bg-gradient-to-br from-white to-sky-50" style={{ color: theme.colors.text.primary }}>
-                    <span className="font-semibold" style={{ color: theme.colors.energy.sky }}>Investment:</span> Strategic capability investment
+                  <td className="p-4" style={{ color: theme.colors.text.primary, backgroundColor: theme.colors.primary.light }}>
+                    <span className="font-semibold" style={{ color: theme.colors.primary.deep }}>Investment:</span> Strategic capability investment
                   </td>
                 </tr>
                 <tr className="transition-all hover:bg-slate-50">
                   <td className="p-4" style={{ color: theme.colors.text.secondary }}>
                     <span className="font-semibold" style={{ color: theme.colors.text.primary }}>Best For:</span> "Getting the foundation everyone needs"
                   </td>
-                  <td className="p-4 bg-gradient-to-br from-white to-sky-50" style={{ color: theme.colors.text.primary }}>
-                    <span className="font-semibold" style={{ color: theme.colors.energy.sky }}>Best For:</span> Building competitive advantage after foundations
+                  <td className="p-4" style={{ color: theme.colors.text.primary, backgroundColor: theme.colors.primary.light }}>
+                    <span className="font-semibold" style={{ color: theme.colors.primary.deep }}>Best For:</span> Building competitive advantage after foundations
                   </td>
                 </tr>
               </tbody>
@@ -424,22 +410,15 @@ export function Dashboard() {
         </section>
 
         {/* MODULE TIMELINE SECTION */}
-        <section className="mb-24 p-12 bg-white/95 backdrop-blur-sm border border-slate-200 rounded-lg shadow-lg transition-all hover:shadow-xl animate-fade-in-up relative group" style={{
+        <section className="mb-24 p-12 bg-white backdrop-blur-sm border rounded-xl transition-all animate-fade-in-up" style={{
           animationDelay: '0.4s',
-          boxShadow: theme.shadows.large,
+          borderColor: theme.colors.border.subtle,
+          borderRadius: theme.radius.default,
+          boxShadow: theme.shadows.medium,
         }}>
-          {/* Lightning strike accents */}
-          <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
-            borderColor: theme.colors.energy.golden,
-            boxShadow: theme.shadows.lightning.cyan,
-          }} />
-          <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-all duration-200 opacity-0 group-hover:opacity-100" style={{
-            borderColor: theme.colors.energy.golden,
-            boxShadow: theme.shadows.lightning.cyan,
-          }} />
-
-          <h2 className="text-3xl font-black mb-8" style={{
+          <h2 className="text-3xl mb-8" style={{
             letterSpacing: '-0.02em',
+            fontWeight: theme.typography.heading.weight,
             color: theme.colors.text.primary,
           }}>
             Module Timeline
@@ -463,23 +442,23 @@ export function Dashboard() {
               let opacityClass = 'opacity-60';
 
               if (isCompleted) {
-                borderColor = theme.colors.energy.fresh;
-                bgStyle = { background: 'linear-gradient(to bottom right, white, rgb(240, 253, 244))' };
+                borderColor = theme.colors.status.success;
+                bgStyle = { backgroundColor: theme.colors.background.card };
                 badgeStyle = {
-                  backgroundColor: `${theme.colors.energy.fresh}20`,
-                  color: theme.colors.energy.fresh,
-                  border: `1px solid ${theme.colors.energy.fresh}40`,
+                  backgroundColor: `${theme.colors.status.success}15`,
+                  color: theme.colors.status.success,
+                  border: `1px solid ${theme.colors.status.success}40`,
                 };
                 badgeText = 'Completed';
                 opacityClass = '';
               } else if (isInProgress) {
-                borderColor = theme.colors.energy.sky;
-                bgStyle = { background: 'linear-gradient(to bottom right, white, rgb(240, 249, 255))' };
-                shadowStyle = { boxShadow: `0 4px 20px ${theme.colors.energy.sky}20` };
+                borderColor = theme.colors.primary.electric;
+                bgStyle = { backgroundColor: theme.colors.background.card };
+                shadowStyle = { boxShadow: theme.shadows.medium };
                 badgeStyle = {
-                  backgroundColor: theme.colors.energy.sky,
+                  backgroundColor: theme.colors.primary.electric,
                   color: 'white',
-                  fontWeight: 'bold',
+                  fontWeight: '600',
                 };
                 badgeText = 'Current';
                 opacityClass = '';
@@ -489,13 +468,19 @@ export function Dashboard() {
                 <Link
                   key={module.moduleId}
                   to={`/modules/${module.moduleId}`}
-                  className={`block p-6 rounded-lg border-2 ${opacityClass} transition-all duration-300 hover:shadow-xl hover:scale-[1.01] hover:-translate-y-1 group/module`}
-                  style={{ ...bgStyle, borderColor, ...shadowStyle }}
+                  className={`block p-6 border-2 ${opacityClass} transition-all`}
+                  style={{
+                    ...bgStyle,
+                    borderColor,
+                    ...shadowStyle,
+                    borderRadius: theme.radius.default,
+                  }}
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex-1">
-                      <h3 className="text-lg font-black transition-colors duration-200 group-hover/module:opacity-80" style={{
+                      <h3 className="text-lg transition-colors" style={{
                         color: theme.colors.text.primary,
+                        fontWeight: theme.typography.heading.weight,
                       }}>
                         Module {module.moduleId}: {module.title}
                       </h3>
@@ -512,7 +497,10 @@ export function Dashboard() {
                     <span className="text-xs font-semibold tracking-wide" style={{ color: theme.colors.text.muted }}>
                       {module.completedLessons} / {module.totalLessons} lessons
                     </span>
-                    <span className="text-sm font-black" style={{ color: theme.colors.text.primary }}>
+                    <span className="text-sm" style={{
+                      color: theme.colors.text.primary,
+                      fontWeight: theme.typography.label.weight,
+                    }}>
                       ~{Math.ceil(module.totalLessons * 0.5)} hours
                     </span>
                   </div>
@@ -521,22 +509,16 @@ export function Dashboard() {
                     <div className="mt-4 h-3 overflow-hidden border rounded-md" style={{
                       backgroundColor: theme.colors.background.subtle,
                       borderColor: theme.colors.border.subtle,
+                      borderRadius: theme.radius.sm,
                     }}>
                       <div
-                        className="h-full transition-all duration-1000 relative"
+                        className="h-full transition-all"
                         style={{
                           width: `${module.progress}%`,
-                          background: `linear-gradient(90deg, ${theme.colors.energy.sky} 0%, ${theme.colors.energy.fresh} 100%)`,
-                          boxShadow: `0 0 12px ${theme.colors.energy.sky}50`,
+                          background: `linear-gradient(90deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
+                          transitionDuration: '1000ms',
                         }}
-                      >
-                        {module.progress > 0 && (
-                          <div className="absolute right-0 top-0 bottom-0 w-1 animate-pulse" style={{
-                            backgroundColor: theme.colors.lightning.white,
-                            boxShadow: theme.shadows.lightning.white,
-                          }} />
-                        )}
-                      </div>
+                      />
                     </div>
                   )}
                 </Link>
@@ -545,72 +527,52 @@ export function Dashboard() {
           </div>
         </section>
 
-        {/* NEXT STEPS SECTION - Energized CTA */}
-        <section className="p-12 bg-gradient-to-br from-white via-sky-50 to-cyan-50 rounded-xl border-2 mb-24 shadow-2xl animate-fade-in-up transition-all hover:shadow-3xl hover:scale-[1.01] relative group overflow-hidden" style={{
+        {/* NEXT STEPS SECTION - Professional CTA */}
+        <section className="p-12 bg-white rounded-xl border-2 mb-24 animate-fade-in-up transition-all" style={{
           animationDelay: '0.5s',
-          borderColor: theme.colors.energy.sky,
-          boxShadow: `0 20px 40px ${theme.colors.energy.sky}30`,
+          borderColor: theme.colors.primary.electric,
+          borderRadius: theme.radius.default,
+          boxShadow: theme.shadows.large,
         }}>
-          {/* Animated gradient overlay for energy */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-shimmer opacity-30" />
-
-          {/* Lightning corner accents - always visible, animated */}
-          <div className="absolute top-0 left-0 w-8 h-8 border-t-4 border-l-4 animate-pulse-corner" style={{
-            borderColor: theme.colors.energy.sunrise,
-          }} />
-          <div className="absolute top-0 right-0 w-8 h-8 border-t-4 border-r-4 animate-pulse-corner" style={{
-            borderColor: theme.colors.energy.sky,
-            animationDelay: '0.5s',
-          }} />
-          <div className="absolute bottom-0 left-0 w-8 h-8 border-b-4 border-l-4 animate-pulse-corner" style={{
-            borderColor: theme.colors.energy.fresh,
-            animationDelay: '1s',
-          }} />
-          <div className="absolute bottom-0 right-0 w-8 h-8 border-b-4 border-r-4 animate-pulse-corner" style={{
-            borderColor: theme.colors.energy.golden,
-            animationDelay: '1.5s',
-          }} />
-
-          <div className="relative z-10">
-            <h2 className="text-4xl font-black mb-4" style={{
+          <div>
+            <h2 className="text-3xl mb-4" style={{
               letterSpacing: '-0.02em',
-              background: `linear-gradient(135deg, ${theme.colors.energy.sunrise}, ${theme.colors.energy.sky})`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
+              fontWeight: theme.typography.heading.weight,
+              color: theme.colors.primary.deep,
             }}>
               Next Steps
             </h2>
             <p className="text-base mb-8 max-w-2xl leading-relaxed" style={{ color: theme.colors.text.secondary }}>
               {currentLesson ? (
                 <>
-                  Continue with <span className="font-bold" style={{ color: theme.colors.energy.sky }}>{currentLesson.moduleTitle}</span> to keep building your capabilities. Every lesson completed brings you closer to transforming repetitive work into exciting possibilities.
+                  Continue with <span className="font-semibold" style={{ color: theme.colors.primary.electric }}>{currentLesson.moduleTitle}</span> to build strategic AI capabilities.
                 </>
               ) : (
                 <>
-                  You've completed all modules! Congratulations on your journey. Keep applying these concepts to create work that's fulfilling, not monotonous.
+                  You've completed all modules. Continue applying these frameworks to maintain your competitive advantage.
                 </>
               )}
             </p>
             {currentLesson ? (
               <Link
                 to={`/modules/${currentLesson.moduleId}/lessons/${currentLesson.lessonId}`}
-                className="inline-block px-12 py-4 font-black rounded-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 border-2 relative group/btn overflow-hidden"
+                className="inline-block px-10 py-3 rounded-lg transition-all"
                 style={{
-                  backgroundColor: theme.colors.energy.sky,
+                  backgroundColor: theme.colors.primary.electric,
                   color: 'white',
-                  borderColor: theme.colors.energy.sky,
-                  boxShadow: `0 8px 24px ${theme.colors.energy.sky}40`,
+                  fontWeight: theme.typography.label.weight,
+                  borderRadius: theme.radius.default,
+                  boxShadow: theme.shadows.medium,
                 }}
               >
-                <span className="relative z-10">Continue Learning →</span>
-                {/* Lightning sweep effect */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent translate-x-[-200%] group-hover/btn:translate-x-[200%] transition-transform duration-700" />
+                Continue Learning →
               </Link>
             ) : (
-              <button disabled className="px-12 py-4 font-black rounded-lg cursor-not-allowed border-2" style={{
+              <button disabled className="px-10 py-3 rounded-lg cursor-not-allowed" style={{
                 backgroundColor: theme.colors.background.subtle,
                 color: theme.colors.text.muted,
-                borderColor: theme.colors.border.default,
+                fontWeight: theme.typography.label.weight,
+                borderRadius: theme.radius.default,
               }}>
                 All Modules Complete ✓
               </button>
@@ -619,124 +581,28 @@ export function Dashboard() {
         </section>
       </div>
 
-      {/* Energetic Animations */}
+      {/* Professional Animations - Minimal */}
       <style>{`
-        /* Entrance - energetic bounce */
+        /* Entrance - subtle fade */
         @keyframes fade-in-up {
           from {
             opacity: 0;
-            transform: translateY(30px) scale(0.95);
+            transform: translateY(20px);
           }
           to {
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
           }
         }
 
         .animate-fade-in-up {
-          animation: fade-in-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+          animation: fade-in-up 0.4s ease-out forwards;
           opacity: 0;
-        }
-
-        /* Shimmer effect - energy sweep */
-        @keyframes shimmer {
-          0% {
-            transform: translateX(-100%) skewX(-15deg);
-          }
-          100% {
-            transform: translateX(200%) skewX(-15deg);
-          }
-        }
-
-        .animate-shimmer {
-          animation: shimmer 3s ease-in-out infinite;
-        }
-
-        /* Pulse corner - lightning strikes */
-        @keyframes pulse-corner {
-          0%, 100% {
-            opacity: 0.6;
-            transform: scale(1);
-          }
-          50% {
-            opacity: 1;
-            transform: scale(1.1);
-          }
-        }
-
-        .animate-pulse-corner {
-          animation: pulse-corner 2s ease-in-out infinite;
-        }
-
-        /* Pulse glow - card energy */
-        @keyframes pulse-glow {
-          0%, 100% {
-            box-shadow: 0 0 20px rgba(0, 184, 212, 0.1);
-          }
-          50% {
-            box-shadow: 0 0 40px rgba(0, 184, 212, 0.3);
-          }
-        }
-
-        .animate-pulse-glow {
-          animation: pulse-glow 3s ease-in-out infinite;
-        }
-
-        /* Progress fill - energetic growth */
-        @keyframes progress-fill {
-          0% {
-            transform: scaleX(0);
-            transform-origin: left;
-          }
-          100% {
-            transform: scaleX(1);
-            transform-origin: left;
-          }
-        }
-
-        .animate-progress-fill {
-          animation: progress-fill 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        /* Count up effect */
-        @keyframes count-up {
-          0% {
-            transform: translateY(10px);
-            opacity: 0;
-          }
-          100% {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
-
-        .animate-count-up {
-          animation: count-up 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        /* Floating animation - gentle energy */
-        @keyframes float {
-          0%, 100% {
-            transform: translateY(0px);
-          }
-          50% {
-            transform: translateY(-10px);
-          }
-        }
-
-        .animate-float {
-          animation: float 3s ease-in-out infinite;
         }
 
         /* Respect prefers-reduced-motion */
         @media (prefers-reduced-motion: reduce) {
-          .animate-fade-in-up,
-          .animate-shimmer,
-          .animate-pulse-corner,
-          .animate-pulse-glow,
-          .animate-progress-fill,
-          .animate-count-up,
-          .animate-float {
+          .animate-fade-in-up {
             animation: none !important;
             opacity: 1 !important;
             transform: none !important;
