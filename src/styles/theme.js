@@ -55,19 +55,21 @@ export const theme = {
     },
   },
 
-  // Shadows (professional, subtle)
+  // Shadows (premium, layered depth)
   shadows: {
-    subtle: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-    default: '0 2px 4px 0 rgba(0, 0, 0, 0.08)',
-    medium: '0 4px 12px rgba(0, 0, 0, 0.08)',
-    large: '0 8px 24px rgba(0, 0, 0, 0.12)',
-    xl: '0 12px 32px rgba(0, 0, 0, 0.16)',
+    subtle: '0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04)',
+    default: '0 2px 4px 0 rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.06)',
+    medium: '0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.08)',
+    large: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.12), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+    '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.15)',
+    '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.18)',
 
-    // Accent glows (minimal, professional)
+    // Accent glows (premium, sophisticated)
     glow: {
-      cyan: '0 0 16px rgba(6, 182, 212, 0.2)',
-      coral: '0 0 16px rgba(249, 115, 22, 0.2)',
-      blue: '0 0 16px rgba(30, 64, 175, 0.2)',
+      cyan: '0 0 20px rgba(6, 182, 212, 0.25), 0 0 40px rgba(6, 182, 212, 0.12)',
+      coral: '0 0 20px rgba(249, 115, 22, 0.25), 0 0 40px rgba(249, 115, 22, 0.12)',
+      blue: '0 0 20px rgba(30, 64, 175, 0.25), 0 0 40px rgba(30, 64, 175, 0.12)',
     },
   },
 
@@ -92,11 +94,12 @@ export const theme = {
     '2xl': '4rem', // 64px
   },
 
-  // Transitions (minimal, professional - 200ms standard)
+  // Transitions (premium, refined easing)
   transitions: {
-    fast: '150ms cubic-bezier(0.4, 0, 0.2, 1)',
-    default: '200ms cubic-bezier(0.4, 0, 0.2, 1)', // Professional standard
-    slow: '400ms cubic-bezier(0.4, 0, 0.2, 1)',
+    fast: '150ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+    default: '200ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+    slow: '400ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+    smooth: '300ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
   },
 
   // Typography (Professional: Inter or Public Sans)

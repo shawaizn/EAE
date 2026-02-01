@@ -3,27 +3,25 @@ import { theme } from '../../styles/theme';
 export function ProgressBar({ progress, className = '' }) {
   return (
     <div
-      className={`w-full h-4 overflow-hidden border rounded-md ${className}`}
+      className={`w-full h-3 overflow-hidden rounded-full ${className}`}
       style={{
-        backgroundColor: `${theme.colors.background.subtle}`,
-        borderColor: theme.colors.border.subtle,
+        backgroundColor: theme.colors.background.subtle,
       }}
     >
       <div
         className="h-full transition-all duration-500 relative"
         style={{
           width: `${progress}%`,
-          background: `linear-gradient(90deg, ${theme.colors.accent.cyan} 0%, ${theme.colors.primary.electric} 100%)`,
-          boxShadow: `0 0 10px ${theme.colors.accent.cyan}60`,
+          background: `linear-gradient(90deg, ${theme.colors.accent.cyan} 0%, ${theme.colors.primary.electric} 50%, ${theme.colors.accent.cyan} 100%)`,
+          boxShadow: `0 0 20px ${theme.colors.accent.cyan}50, inset 0 1px 2px rgba(255, 255, 255, 0.5)`,
         }}
       >
-        {/* Lightning strike end cap (sharp power point) */}
         {progress > 0 && (
           <div
-            className="absolute right-0 top-0 bottom-0 w-1"
+            className="absolute right-0 top-0 bottom-0 w-0.5"
             style={{
-              backgroundColor: 'white',
-              boxShadow: 'none',
+              backgroundColor: 'rgba(255, 255, 255, 0.8)',
+              boxShadow: `0 0 8px ${theme.colors.accent.cyan}80`,
             }}
           />
         )}

@@ -11,8 +11,8 @@ export function Sidebar({ lessonNumber, currentCategory, isComplete }) {
 
   const SidebarContent = () => (
     <div className="p-6">
-      <h3 className="text-lg font-bold mb-4">Lesson {lessonNumber}</h3>
-      <nav className="space-y-2">
+      <h3 className="text-lg font-bold mb-6 text-slate-900">Lesson {lessonNumber}</h3>
+      <nav className="space-y-1">
         {CATEGORIES.map(category => {
           const categoryKey = category.id === 'practice-questions' ? 'practice_questions' : category.id;
           const isActive = currentCategory === category.id;
@@ -23,10 +23,10 @@ export function Sidebar({ lessonNumber, currentCategory, isComplete }) {
               key={category.id}
               to={`${category.path}/lesson/${lessonNumber}`}
               onClick={() => setIsOpen(false)}
-              className={`flex items-center justify-between px-4 py-3 rounded-lg ${
+              className={`flex items-center justify-between px-4 py-3 rounded-md transition-all duration-200 ${
                 isActive
-                  ? 'bg-blue-100 text-blue-700 font-medium'
-                  : 'hover:bg-gray-100'
+                  ? 'bg-cyan-50 text-cyan-700 font-medium shadow-sm'
+                  : 'text-slate-600 hover:bg-slate-50'
               }`}
             >
               <span>{category.label}</span>

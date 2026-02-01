@@ -8,17 +8,15 @@ export function Navbar({ user }) {
   const { sidebarOpen, setSidebarOpen } = useSidebar();
 
   return (
-    <nav className="bg-white/95 backdrop-blur-md shadow-md border-b-2 sticky top-0 z-20 relative" style={{
-      borderColor: theme.colors.border.subtle,
+    <nav className="bg-white/98 backdrop-blur-md shadow-lg border-b border-slate-100 sticky top-0 z-20 relative" style={{
       boxShadow: theme.shadows.medium,
     }}>
-      {/* Subtle energy gradient at bottom (lightning strike accent) */}
-      <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{
-        background: `linear-gradient(90deg, transparent, ${theme.colors.accent.cyan}80, ${theme.colors.accent.coral}80, transparent)`,
+      <div className="absolute bottom-0 left-0 right-0 h-px" style={{
+        background: `linear-gradient(90deg, transparent, ${theme.colors.accent.cyan}60, ${theme.colors.accent.coral}60, transparent)`,
       }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex justify-between items-center h-14 sm:h-16">
+        <div className="flex justify-between items-center h-16 sm:h-18">
           <div className="flex items-center gap-2 sm:gap-4 min-w-0">
             {user && (
               <button

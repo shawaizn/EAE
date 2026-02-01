@@ -7,11 +7,10 @@ export function Card({
   accent = 'cyan',
   onClick
 }) {
-  // Light organic cards with lightning strike accents
-  const baseStyles = 'bg-white/95 backdrop-blur-sm rounded-lg border border-slate-200 p-8 transition-all';
+  const baseStyles = 'bg-white/98 backdrop-blur-md rounded-md border border-slate-100 p-8 transition-all duration-200';
 
   const interactiveStyles = interactive
-    ? 'hover:shadow-xl cursor-pointer'
+    ? 'hover:shadow-2xl hover:-translate-y-1 cursor-pointer'
     : '';
 
   const accentColors = {
@@ -27,15 +26,14 @@ export function Card({
       className={`${baseStyles} ${interactiveStyles} ${className} relative group`}
       onClick={onClick}
       style={{
-        boxShadow: theme.shadows.large,
+        boxShadow: interactive ? theme.shadows.large : theme.shadows.medium,
         transition: theme.transitions.default,
       }}
     >
-      {/* Lightning strike corner accents (sharp power moments) */}
       {interactive && (
         <>
           <div
-            className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 opacity-0 group-hover:opacity-100 transition-all"
+            className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 opacity-0 group-hover:opacity-100 transition-all"
             style={{
               borderColor: accentColor,
               boxShadow: theme.shadows.glow.cyan,
@@ -43,7 +41,7 @@ export function Card({
             }}
           />
           <div
-            className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 opacity-0 group-hover:opacity-100 transition-all"
+            className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 opacity-0 group-hover:opacity-100 transition-all"
             style={{
               borderColor: accentColor,
               boxShadow: theme.shadows.glow.cyan,

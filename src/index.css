@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50;
+  }
+
+  button:focus-visible {
+    @apply outline-none;
+  }
+}
+
 @layer components {
   .prose {
     @apply max-w-none text-slate-700 leading-relaxed;
@@ -149,6 +163,23 @@
 
   article h5 + ul {
     @apply mt-2;
+  }
+
+  input:focus {
+    @apply outline-none ring-2 ring-cyan-500 ring-offset-2;
+  }
+
+  textarea:focus {
+    @apply outline-none ring-2 ring-cyan-500 ring-offset-2;
+  }
+
+  select:focus {
+    @apply outline-none ring-2 ring-cyan-500 ring-offset-2;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  button, a, input, select, textarea {
+    transition: all 200ms cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   /* Notes-specific styling: larger typography for better readability */
