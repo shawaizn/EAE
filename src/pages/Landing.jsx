@@ -3,6 +3,7 @@ import { Zap, Target, Award, Check } from 'lucide-react';
 import { landingContent } from '../data/landing';
 import { Button } from '../components/ui/Button';
 import CurriculumJourney from '../components/features/CurriculumJourney';
+import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 const iconMap = {
   'Zap': Zap,
   'Target': Target,
@@ -13,8 +14,9 @@ export function Landing() {
   const { hero, features, curriculum, howItWorks, audience, pricing, instructor, faq, finalCta, contact } = landingContent;
 
   return (
-    <div className="bg-white">
-      <section className="bg-gradient-to-b from-blue-50 to-white py-12 sm:py-20">
+    <div className="bg-white relative">
+      <EnergeticBackground />
+      <section className="relative py-12 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
             {hero.title}
@@ -31,7 +33,7 @@ export function Landing() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-20">
+      <section className="relative py-12 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {features.map((feature, idx) => {
@@ -52,7 +54,7 @@ export function Landing() {
 
       <CurriculumJourney />
 
-      <section className="py-12 sm:py-20">
+      <section className="relative py-12 sm:py-20">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">{howItWorks.heading}</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -67,7 +69,7 @@ export function Landing() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-20 bg-gray-50">
+      <section className="relative py-12 sm:py-20 bg-white/70 backdrop-blur-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">{audience.heading}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
@@ -97,7 +99,7 @@ export function Landing() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-20">
+      <section className="relative py-12 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">{pricing.heading}</h2>
           <div className="bg-white border-2 border-blue-600 rounded-lg p-6 sm:p-8 text-center">
@@ -118,7 +120,7 @@ export function Landing() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-20 bg-gray-50">
+      <section className="relative py-12 sm:py-20 bg-white/70 backdrop-blur-sm">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">{instructor.heading}</h2>
           <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-center sm:items-start">
@@ -135,7 +137,7 @@ export function Landing() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-20">
+      <section className="relative py-12 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">{faq.heading}</h2>
           <div className="space-y-4 sm:space-y-6">
@@ -149,7 +151,7 @@ export function Landing() {
         </div>
       </section>
 
-      <section className="py-12 sm:py-20 bg-blue-600 text-white">
+      <section className="relative py-12 sm:py-20 bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">{finalCta.heading}</h2>
           <p className="text-base sm:text-lg lg:text-xl mb-6 sm:mb-8">{finalCta.description}</p>
@@ -159,7 +161,7 @@ export function Landing() {
         </div>
       </section>
 
-      <footer className="py-6 sm:py-8 bg-gray-900 text-white text-center">
+      <footer className="relative py-6 sm:py-8 bg-gray-900 text-white text-center">
         <p className="text-sm sm:text-base">Contact: {contact.email}</p>
       </footer>
     </div>

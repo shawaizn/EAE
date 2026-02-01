@@ -3,7 +3,7 @@ import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { getLessonNumber } from '../lib/utils';
 import { Link } from 'react-router-dom';
-import { ProfessionalBackground } from '../components/branding/ProfessionalBackground';
+import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 import { theme } from '../styles/theme';
 
 export function Dashboard() {
@@ -91,8 +91,8 @@ export function Dashboard() {
 
   return (
     <div className="w-full h-full overflow-y-auto relative">
-      {/* Professional Background - Clean + Technical Authority */}
-      <ProfessionalBackground />
+      {/* Energetic Background - Dynamic + Visible Movement */}
+      <EnergeticBackground />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 relative z-10">
         {/* WELCOME SECTION */}
