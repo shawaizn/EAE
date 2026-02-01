@@ -14,7 +14,7 @@ export function Navbar({ user }) {
     }}>
       {/* Subtle energy gradient at bottom (lightning strike accent) */}
       <div className="absolute bottom-0 left-0 right-0 h-[2px]" style={{
-        background: `linear-gradient(90deg, transparent, ${theme.colors.energy.sky}80, ${theme.colors.energy.sunrise}80, transparent)`,
+        background: `linear-gradient(90deg, transparent, ${theme.colors.accent.cyan}80, ${theme.colors.accent.coral}80, transparent)`,
       }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -30,9 +30,9 @@ export function Navbar({ user }) {
                 }}
                 title={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = theme.colors.energy.sky;
-                  e.currentTarget.style.borderColor = `${theme.colors.energy.sky}30`;
-                  e.currentTarget.style.backgroundColor = `${theme.colors.energy.sky}10`;
+                  e.currentTarget.style.color = theme.colors.accent.cyan;
+                  e.currentTarget.style.borderColor = `${theme.colors.accent.cyan}30`;
+                  e.currentTarget.style.backgroundColor = `${theme.colors.accent.cyan}10`;
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.color = theme.colors.text.secondary;
@@ -68,18 +68,18 @@ export function Navbar({ user }) {
                 to="/login"
                 className="px-3 sm:px-5 py-2 rounded-md font-bold text-xs sm:text-sm relative group overflow-hidden border min-h-10 flex items-center"
                 style={{
-                  backgroundColor: theme.colors.energy.sky,
+                  backgroundColor: theme.colors.accent.cyan,
                   color: 'white',
-                  borderColor: theme.colors.energy.sky,
-                  boxShadow: `0 0 0 rgba(0, 184, 212, 0.3)`,
+                  borderColor: theme.colors.accent.cyan,
+                  boxShadow: `0 0 0 rgba(6, 182, 212, 0.3)`,
                   transition: theme.transitions.fast,
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = theme.shadows.lightning.cyan;
+                  e.currentTarget.style.boxShadow = theme.shadows.glow.cyan;
                   e.currentTarget.style.transform = 'translateY(-1px)';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 0 0 rgba(0, 184, 212, 0.3)';
+                  e.currentTarget.style.boxShadow = '0 0 0 rgba(6, 182, 212, 0.3)';
                   e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >

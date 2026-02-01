@@ -26,9 +26,9 @@ export function EnergyFlowBackground() {
         delay: Math.random() * 8,
         duration: 15 + Math.random() * 10,
         opacity: 0.15 + Math.random() * 0.25,
-        color: i % 3 === 0 ? theme.colors.energy.sunrise :
-               i % 3 === 1 ? theme.colors.energy.sky :
-               theme.colors.energy.golden,
+        color: i % 3 === 0 ? theme.colors.accent.coral :
+               i % 3 === 1 ? theme.colors.accent.cyan :
+               theme.colors.primary.electric,
       });
     }
     return particles;
@@ -64,9 +64,9 @@ export function EnergyFlowBackground() {
         <div
           className="absolute inset-0 animate-flow-gradient"
           style={{
-            background: `radial-gradient(circle at 20% 30%, ${theme.colors.energy.sunrise}15 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, ${theme.colors.energy.sky}15 0%, transparent 50%),
-                        radial-gradient(circle at 50% 50%, ${theme.colors.energy.golden}10 0%, transparent 60%)`,
+            background: `radial-gradient(circle at 20% 30%, ${theme.colors.accent.coral}15 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, ${theme.colors.accent.cyan}15 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, ${theme.colors.primary.electric}10 0%, transparent 60%)`,
           }}
         />
       </div>
@@ -102,7 +102,7 @@ export function EnergyFlowBackground() {
               top: `${strike.y}%`,
               width: `${strike.length}px`,
               height: `${strike.width}px`,
-              background: `linear-gradient(90deg, transparent, ${theme.colors.lightning.cyan}, transparent)`,
+              background: `linear-gradient(90deg, transparent, ${theme.colors.accent.cyan}, transparent)`,
               transform: `rotate(${strike.rotation}deg)`,
               transformOrigin: 'left center',
               animationDelay: `${strike.delay}s`,
@@ -118,8 +118,8 @@ export function EnergyFlowBackground() {
           className="w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(${theme.colors.lightning.cyan} 1px, transparent 1px),
-              linear-gradient(90deg, ${theme.colors.lightning.cyan} 1px, transparent 1px)
+              linear-gradient(${theme.colors.accent.cyan} 1px, transparent 1px),
+              linear-gradient(90deg, ${theme.colors.accent.cyan} 1px, transparent 1px)
             `,
             backgroundSize: '60px 60px',
           }}

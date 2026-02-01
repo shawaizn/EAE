@@ -21,10 +21,10 @@ export function EnergeticBackground() {
   const generateEnergyOrbs = () => {
     const orbs = [];
     const brandColors = [
-      theme.colors.energy.sunrise,
-      theme.colors.energy.sky,
-      theme.colors.energy.golden,
-      theme.colors.energy.fresh,
+      theme.colors.accent.coral,
+      theme.colors.accent.cyan,
+      theme.colors.primary.electric,
+      theme.colors.accent.cyan,
     ];
 
     for (let i = 0; i < 12; i++) {
@@ -47,10 +47,10 @@ export function EnergeticBackground() {
   const generateGeometricShapes = () => {
     const shapes = [];
     const brandColors = [
-      theme.colors.energy.sunrise,
-      theme.colors.energy.sky,
-      theme.colors.energy.golden,
-      theme.colors.energy.fresh,
+      theme.colors.accent.coral,
+      theme.colors.accent.cyan,
+      theme.colors.primary.electric,
+      theme.colors.accent.cyan,
     ];
 
     for (let i = 0; i < 8; i++) {
@@ -99,7 +99,7 @@ export function EnergeticBackground() {
         <div
           className="absolute w-[800px] h-[800px] rounded-full blur-3xl opacity-20 animate-pulse-glow-1"
           style={{
-            background: `radial-gradient(circle, ${theme.colors.energy.sunrise}40 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${theme.colors.accent.coral}40 0%, transparent 70%)`,
             top: '10%',
             left: '15%',
           }}
@@ -109,7 +109,7 @@ export function EnergeticBackground() {
         <div
           className="absolute w-[900px] h-[900px] rounded-full blur-3xl opacity-20 animate-pulse-glow-2"
           style={{
-            background: `radial-gradient(circle, ${theme.colors.energy.sky}40 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${theme.colors.accent.cyan}40 0%, transparent 70%)`,
             top: '50%',
             right: '10%',
           }}
@@ -119,7 +119,7 @@ export function EnergeticBackground() {
         <div
           className="absolute w-[700px] h-[700px] rounded-full blur-3xl opacity-15 animate-pulse-glow-3"
           style={{
-            background: `radial-gradient(circle, ${theme.colors.energy.golden}40 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${theme.colors.primary.electric}40 0%, transparent 70%)`,
             bottom: '15%',
             left: '40%',
           }}
@@ -129,7 +129,7 @@ export function EnergeticBackground() {
         <div
           className="absolute w-[750px] h-[750px] rounded-full blur-3xl opacity-15 animate-pulse-glow-4"
           style={{
-            background: `radial-gradient(circle, ${theme.colors.energy.fresh}40 0%, transparent 70%)`,
+            background: `radial-gradient(circle, ${theme.colors.accent.cyan}40 0%, transparent 70%)`,
             top: '30%',
             left: '5%',
           }}
@@ -189,10 +189,10 @@ export function EnergeticBackground() {
               top: `${bolt.y}%`,
               width: `${bolt.length}px`,
               height: '3px',
-              background: `linear-gradient(90deg, transparent, ${theme.colors.lightning.cyan}, ${theme.colors.lightning.white}, ${theme.colors.lightning.cyan}, transparent)`,
+              background: `linear-gradient(90deg, transparent, ${theme.colors.accent.cyan}, white, ${theme.colors.accent.cyan}, transparent)`,
               transform: `rotate(${bolt.rotation}deg)`,
               transformOrigin: 'left center',
-              boxShadow: `0 0 10px ${theme.colors.lightning.cyan}`,
+              boxShadow: `0 0 10px ${theme.colors.accent.cyan}`,
               animationDelay: `${bolt.delay}s`,
               animationDuration: `${bolt.duration}s`,
             }}
@@ -206,13 +206,13 @@ export function EnergeticBackground() {
           <path
             className="animate-wave"
             d="M0,100 Q300,150 600,100 T1200,100 L1200,300 L0,300 Z"
-            fill={theme.colors.energy.sky}
+            fill={theme.colors.accent.cyan}
             opacity="0.3"
           />
           <path
             className="animate-wave-reverse"
             d="M0,150 Q300,100 600,150 T1200,150 L1200,300 L0,300 Z"
-            fill={theme.colors.energy.sunrise}
+            fill={theme.colors.accent.coral}
             opacity="0.2"
           />
         </svg>
