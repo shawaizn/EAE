@@ -1,5 +1,5 @@
 export function Button({ children, variant = 'primary', onClick, disabled, type = 'button', className = '' }) {
-  const baseStyles = 'px-6 py-3 rounded-lg font-medium transition-all duration-300 transform active:scale-95';
+  const baseStyles = 'px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-medium transition-all duration-300 transform active:scale-95 min-h-10 sm:min-h-11';
 
   const variants = {
     primary: 'bg-cyan-600 text-white hover:bg-cyan-700 hover:shadow-lg hover:shadow-cyan-500/30 hover:-translate-y-0.5 disabled:bg-gray-400 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none',

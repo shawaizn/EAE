@@ -94,13 +94,13 @@ export function Dashboard() {
       {/* Professional Background - Clean + Technical Authority */}
       <ProfessionalBackground />
 
-      <div className="max-w-7xl mx-auto px-8 py-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 relative z-10">
         {/* WELCOME SECTION */}
-        <section className="mb-24 animate-fade-in-up">
-          <p className="text-base font-semibold mb-2 tracking-wide" style={{ color: theme.colors.accent.coral }}>
+        <section className="mb-16 sm:mb-24 animate-fade-in-up">
+          <p className="text-sm sm:text-base font-semibold mb-2 tracking-wide" style={{ color: theme.colors.accent.coral }}>
             Welcome back
           </p>
-          <h1 className="text-5xl mb-4" style={{
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl mb-4" style={{
             letterSpacing: '-0.02em',
             fontWeight: theme.typography.heading.weight,
             background: `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.accent.cyan} 100%)`,
@@ -115,7 +115,7 @@ export function Dashboard() {
         </section>
 
         {/* STRATEGIC AI IMPLEMENTATION SECTION */}
-        <section className="mb-24 p-12 bg-white backdrop-blur-sm border rounded-xl transition-all animate-fade-in-up" style={{
+        <section className="mb-16 sm:mb-24 p-4 sm:p-8 lg:p-12 bg-white backdrop-blur-sm border rounded-xl transition-all animate-fade-in-up" style={{
           animationDelay: '0.1s',
           borderColor: theme.colors.border.subtle,
           borderRadius: theme.radius.default,
@@ -126,7 +126,7 @@ export function Dashboard() {
             <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: theme.colors.accent.cyan }}>
               ENERGISE AI EDUCATION
             </p>
-            <h2 className="text-3xl mb-6" style={{
+            <h2 className="text-xl sm:text-2xl lg:text-3xl mb-4 sm:mb-6" style={{
               letterSpacing: '-0.02em',
               fontWeight: theme.typography.heading.weight,
               color: theme.colors.text.primary,
@@ -134,22 +134,22 @@ export function Dashboard() {
               Strategic AI Implementation
             </h2>
           </div>
-          <p className="text-base mb-4 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
+          <p className="text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
             The UK government and major tech companies are investing heavily in AI literacy—aiming to train "10 million workers by 2030" with courses on "AI fundamentals," "productivity tools," and "getting everyone AI-ready."
           </p>
-          <p className="text-base mb-4 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
+          <p className="text-sm sm:text-base mb-3 sm:mb-4 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
             That's good. Do those courses. AI literacy is essential.
           </p>
-          <p className="text-base mb-8 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
+          <p className="text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed max-w-3xl" style={{ color: theme.colors.text.secondary }}>
             But here's what we've noticed: when everyone completes the same foundation, strategic application becomes the differentiator. Strategic AI Implementation is designed for what comes next—applying AI specifically to YOUR context, knowing when to use it (and when not to), and building systems that create competitive advantage instead of just completing training badges.
           </p>
-          <p className="text-base font-semibold mb-8 max-w-3xl" style={{ color: theme.colors.text.primary }}>
+          <p className="text-sm sm:text-base font-semibold mb-6 sm:mb-8 max-w-3xl" style={{ color: theme.colors.text.primary }}>
             The government creates mass literacy. We help you build strategic capability on top of it.
           </p>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div className="p-6 border-l-4 rounded-md" style={{
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
+            <div className="p-4 sm:p-6 border-l-4 rounded-md" style={{
               backgroundColor: theme.colors.background.card,
               borderColor: theme.colors.primary.electric,
               borderRadius: theme.radius.default,
@@ -158,9 +158,9 @@ export function Dashboard() {
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Total Duration
               </p>
-              <p className="text-2xl" style={{ color: theme.colors.text.primary, fontWeight: theme.typography.heading.weight }}>~22 Hours</p>
+              <p className="text-xl sm:text-2xl" style={{ color: theme.colors.text.primary, fontWeight: theme.typography.heading.weight }}>~22 Hours</p>
             </div>
-            <div className="p-6 border-l-4 rounded-md" style={{
+            <div className="p-4 sm:p-6 border-l-4 rounded-md" style={{
               backgroundColor: theme.colors.background.card,
               borderColor: theme.colors.accent.cyan,
               borderRadius: theme.radius.default,
@@ -169,9 +169,9 @@ export function Dashboard() {
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Modules
               </p>
-              <p className="text-2xl" style={{ color: theme.colors.text.primary, fontWeight: theme.typography.heading.weight }}>8 Modules</p>
+              <p className="text-xl sm:text-2xl" style={{ color: theme.colors.text.primary, fontWeight: theme.typography.heading.weight }}>8 Modules</p>
             </div>
-            <div className="p-6 border-l-4 rounded-md" style={{
+            <div className="p-4 sm:p-6 border-l-4 rounded-md" style={{
               backgroundColor: theme.colors.background.card,
               borderColor: theme.colors.accent.coral,
               borderRadius: theme.radius.default,
@@ -180,20 +180,20 @@ export function Dashboard() {
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Format
               </p>
-              <p className="text-2xl" style={{ color: theme.colors.text.primary, fontWeight: theme.typography.heading.weight }}>Self-Paced</p>
+              <p className="text-xl sm:text-2xl" style={{ color: theme.colors.text.primary, fontWeight: theme.typography.heading.weight }}>Self-Paced</p>
             </div>
           </div>
 
         </section>
 
         {/* YOUR PROGRESS SECTION */}
-        <section className="mb-24 p-12 bg-white backdrop-blur-sm border rounded-xl transition-all animate-fade-in-up" style={{
+        <section className="mb-16 sm:mb-24 p-4 sm:p-8 lg:p-12 bg-white backdrop-blur-sm border rounded-xl transition-all animate-fade-in-up" style={{
           animationDelay: '0.2s',
           borderColor: theme.colors.border.subtle,
           borderRadius: theme.radius.default,
           boxShadow: theme.shadows.medium,
         }}>
-          <h2 className="text-3xl mb-8" style={{
+          <h2 className="text-xl sm:text-2xl lg:text-3xl mb-6 sm:mb-8" style={{
             letterSpacing: '-0.02em',
             fontWeight: theme.typography.heading.weight,
             color: theme.colors.text.primary,
@@ -237,8 +237,8 @@ export function Dashboard() {
           </div>
 
           {/* Lesson Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-6 border-l-4 rounded-md transition-all" style={{
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <div className="p-4 sm:p-6 border-l-4 rounded-md transition-all" style={{
               backgroundColor: theme.colors.background.card,
               borderColor: theme.colors.accent.cyan,
               borderRadius: theme.radius.default,
@@ -247,14 +247,14 @@ export function Dashboard() {
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Lessons Completed
               </p>
-              <p className="text-3xl" style={{
+              <p className="text-2xl sm:text-3xl" style={{
                 fontWeight: theme.typography.heading.weight,
                 color: theme.colors.primary.deep,
               }}>
                 {completedLessons} / {totalLessons}
               </p>
             </div>
-            <div className="p-6 border-l-4 rounded-md transition-all" style={{
+            <div className="p-4 sm:p-6 border-l-4 rounded-md transition-all" style={{
               backgroundColor: theme.colors.background.card,
               borderColor: theme.colors.accent.coral,
               borderRadius: theme.radius.default,
@@ -263,7 +263,7 @@ export function Dashboard() {
               <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.muted }}>
                 Modules Completed
               </p>
-              <p className="text-3xl" style={{
+              <p className="text-2xl sm:text-3xl" style={{
                 fontWeight: theme.typography.heading.weight,
                 color: theme.colors.primary.deep,
               }}>
@@ -274,13 +274,13 @@ export function Dashboard() {
         </section>
 
         {/* COMPARISON TABLE SECTION */}
-        <section className="mb-24 p-12 bg-white backdrop-blur-sm border rounded-xl transition-all animate-fade-in-up" style={{
+        <section className="mb-16 sm:mb-24 p-4 sm:p-8 lg:p-12 bg-white backdrop-blur-sm border rounded-xl transition-all animate-fade-in-up" style={{
           animationDelay: '0.3s',
           borderColor: theme.colors.border.subtle,
           borderRadius: theme.radius.default,
           boxShadow: theme.shadows.medium,
         }}>
-          <h2 className="text-3xl mb-8" style={{
+          <h2 className="text-xl sm:text-2xl lg:text-3xl mb-6 sm:mb-8" style={{
             letterSpacing: '-0.02em',
             fontWeight: theme.typography.heading.weight,
             color: theme.colors.text.primary,
@@ -410,13 +410,13 @@ export function Dashboard() {
         </section>
 
         {/* MODULE TIMELINE SECTION */}
-        <section className="mb-24 p-12 bg-white backdrop-blur-sm border rounded-xl transition-all animate-fade-in-up" style={{
+        <section className="mb-16 sm:mb-24 p-4 sm:p-8 lg:p-12 bg-white backdrop-blur-sm border rounded-xl transition-all animate-fade-in-up" style={{
           animationDelay: '0.4s',
           borderColor: theme.colors.border.subtle,
           borderRadius: theme.radius.default,
           boxShadow: theme.shadows.medium,
         }}>
-          <h2 className="text-3xl mb-8" style={{
+          <h2 className="text-xl sm:text-2xl lg:text-3xl mb-6 sm:mb-8" style={{
             letterSpacing: '-0.02em',
             fontWeight: theme.typography.heading.weight,
             color: theme.colors.text.primary,
@@ -468,7 +468,7 @@ export function Dashboard() {
                 <Link
                   key={module.moduleId}
                   to={`/modules/${module.moduleId}`}
-                  className={`block p-6 border-2 ${opacityClass} transition-all`}
+                  className={`block p-3 sm:p-6 border-2 ${opacityClass} transition-all`}
                   style={{
                     ...bgStyle,
                     borderColor,
@@ -476,19 +476,19 @@ export function Dashboard() {
                     borderRadius: theme.radius.default,
                   }}
                 >
-                  <div className="flex items-start justify-between mb-3">
-                    <div className="flex-1">
-                      <h3 className="text-lg transition-colors" style={{
+                  <div className="flex flex-col sm:flex-row items-start justify-between gap-2 sm:gap-4 sm:mb-3">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="text-base sm:text-lg transition-colors break-words" style={{
                         color: theme.colors.text.primary,
                         fontWeight: theme.typography.heading.weight,
                       }}>
                         Module {module.moduleId}: {module.title}
                       </h3>
-                      <p className="text-sm mt-2" style={{ color: theme.colors.text.secondary }}>
+                      <p className="text-xs sm:text-sm mt-1 sm:mt-2 line-clamp-2" style={{ color: theme.colors.text.secondary }}>
                         {module.narrative}
                       </p>
                     </div>
-                    <span className="px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap ml-4" style={badgeStyle}>
+                    <span className="px-2 sm:px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap flex-shrink-0" style={badgeStyle}>
                       {badgeText}
                     </span>
                   </div>
@@ -528,21 +528,21 @@ export function Dashboard() {
         </section>
 
         {/* NEXT STEPS SECTION - Professional CTA */}
-        <section className="p-12 bg-white rounded-xl border-2 mb-24 animate-fade-in-up transition-all" style={{
+        <section className="p-4 sm:p-8 lg:p-12 bg-white rounded-xl border-2 mb-16 sm:mb-24 animate-fade-in-up transition-all" style={{
           animationDelay: '0.5s',
           borderColor: theme.colors.primary.electric,
           borderRadius: theme.radius.default,
           boxShadow: theme.shadows.large,
         }}>
           <div>
-            <h2 className="text-3xl mb-4" style={{
+            <h2 className="text-2xl sm:text-3xl mb-3 sm:mb-4" style={{
               letterSpacing: '-0.02em',
               fontWeight: theme.typography.heading.weight,
               color: theme.colors.primary.deep,
             }}>
               Next Steps
             </h2>
-            <p className="text-base mb-8 max-w-2xl leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+            <p className="text-sm sm:text-base mb-6 sm:mb-8 max-w-2xl leading-relaxed" style={{ color: theme.colors.text.secondary }}>
               {currentLesson ? (
                 <>
                   Continue with <span className="font-semibold" style={{ color: theme.colors.primary.electric }}>{currentLesson.moduleTitle}</span> to build strategic AI capabilities.
@@ -556,7 +556,7 @@ export function Dashboard() {
             {currentLesson ? (
               <Link
                 to={`/modules/${currentLesson.moduleId}/lessons/${currentLesson.lessonId}`}
-                className="inline-block px-10 py-3 rounded-lg transition-all"
+                className="inline-block px-8 sm:px-10 py-3 rounded-lg transition-all text-sm sm:text-base w-full sm:w-auto text-center"
                 style={{
                   backgroundColor: theme.colors.primary.electric,
                   color: 'white',
@@ -568,7 +568,7 @@ export function Dashboard() {
                 Continue Learning →
               </Link>
             ) : (
-              <button disabled className="px-10 py-3 rounded-lg cursor-not-allowed" style={{
+              <button disabled className="px-8 sm:px-10 py-3 rounded-lg cursor-not-allowed text-sm sm:text-base w-full sm:w-auto" style={{
                 backgroundColor: theme.colors.background.subtle,
                 color: theme.colors.text.muted,
                 fontWeight: theme.typography.label.weight,

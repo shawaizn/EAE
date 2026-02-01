@@ -29,16 +29,16 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 relative">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-6 sm:py-8 relative">
       <AnimatedLoginBackground />
-      <Card className="w-full max-w-md relative z-10 bg-white/90 backdrop-blur-lg border-2 border-white/20 shadow-2xl">
-        <h2 className="text-3xl font-black text-slate-900 mb-8 text-center" style={{ letterSpacing: '-0.02em' }}>
+      <Card className="w-full max-w-md relative z-10 bg-white/90 backdrop-blur-lg border-2 border-white/20 shadow-2xl p-4 sm:p-6">
+        <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-6 sm:mb-8 text-center" style={{ letterSpacing: '-0.02em' }}>
           Login to Your Account
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold text-slate-900 mb-2">
+            <label htmlFor="email" className="block text-xs sm:text-sm font-semibold text-slate-900 mb-1 sm:mb-2">
               Email
             </label>
             <input
@@ -47,13 +47,13 @@ export function Login() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600 transition"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600 transition text-sm"
               placeholder="your@email.com"
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-semibold text-slate-900 mb-2">
+            <label htmlFor="password" className="block text-xs sm:text-sm font-semibold text-slate-900 mb-1 sm:mb-2">
               Password
             </label>
             <input
@@ -62,13 +62,13 @@ export function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-4 py-3 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600 transition"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600 transition text-sm"
               placeholder="••••••••"
             />
           </div>
 
           {error && (
-            <div className="p-4 bg-red-50 border-2 border-red-200 rounded-lg text-red-700 text-sm font-medium">
+            <div className="p-3 sm:p-4 bg-red-50 border-2 border-red-200 rounded-lg text-red-700 text-xs sm:text-sm font-medium">
               {error}
             </div>
           )}
@@ -77,7 +77,7 @@ export function Login() {
             type="submit"
             variant="primary"
             disabled={loading}
-            className="w-full py-4 font-semibold"
+            className="w-full py-3 sm:py-4 font-semibold text-sm sm:text-base"
           >
             {loading ? 'Signing in...' : 'Login'}
           </Button>
