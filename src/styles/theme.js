@@ -1,39 +1,39 @@
 /**
- * Centralized Theme Configuration
+ * Centralized Theme Configuration - Technical Authority
+ *
+ * Professional design system for premium AI education platform (£400-600)
+ * Balance: Professional polish + human warmth
  *
  * Change colors, shadows, borders, etc. here and they'll update across the entire app.
- * Makes it easy to experiment with different design directions.
  */
 
 export const theme = {
-  // Color Palette - Energy = Life (Organic + Lightning)
+  // Color Palette - Technical Authority
   colors: {
-    // Base backgrounds
+    // Primary colors (trust, intelligence, innovation)
+    primary: {
+      deep: '#1E40AF', // Deep blue - trust, authority
+      electric: '#3B82F6', // Electric blue - innovation
+      light: '#DBEAFE', // Light blue - backgrounds
+    },
+
+    // Accent colors
+    accent: {
+      cyan: '#06B6D4', // Cyan - energy, highlights, interactive
+      coral: '#F97316', // Coral - human warmth, CTAs
+    },
+
+    // Base backgrounds (warm whites, not cold grays)
     background: {
-      light: '#FFFFFF',
-      subtle: '#F8FAFC', // Very light slate
-      card: '#FFFFFF',
+      base: '#FAFAF9', // Warm white
+      card: '#FFFFFF', // Pure white
+      subtle: '#F4F4F5', // Very light warm gray
       overlay: 'rgba(255, 255, 255, 0.95)',
     },
 
-    // Energy colors (warm, alive)
-    energy: {
-      sunrise: '#FF6B35', // Warm orange
-      golden: '#FFA500', // Golden yellow
-      sky: '#00B8D4', // Alive cyan (not cold)
-      fresh: '#10B981', // Growth green
-    },
-
-    // Lightning accents (sharp, powerful)
-    lightning: {
-      white: '#FFFFFF',
-      cyan: '#06b6d4',
-      bright: '#22D3EE',
-    },
-
-    // Text colors
+    // Text colors (warm slate, not cold gray)
     text: {
-      primary: '#1E293B', // Dark slate
+      primary: '#0F172A', // Deep slate
       secondary: '#64748B', // Medium slate
       muted: '#94A3B8', // Light slate
       inverse: '#FFFFFF',
@@ -55,30 +55,30 @@ export const theme = {
     },
   },
 
-  // Shadows (natural depth)
+  // Shadows (professional, subtle)
   shadows: {
     subtle: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-    default: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-    medium: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-    large: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-    xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
+    default: '0 2px 4px 0 rgba(0, 0, 0, 0.08)',
+    medium: '0 4px 12px rgba(0, 0, 0, 0.08)',
+    large: '0 8px 24px rgba(0, 0, 0, 0.12)',
+    xl: '0 12px 32px rgba(0, 0, 0, 0.16)',
 
-    // Lightning glow (sharp power moments)
-    lightning: {
-      cyan: '0 0 20px rgba(0, 184, 212, 0.4)',
-      white: '0 0 15px rgba(255, 255, 255, 0.6)',
-      sunrise: '0 0 25px rgba(255, 107, 53, 0.3)',
+    // Accent glows (minimal, professional)
+    glow: {
+      cyan: '0 0 16px rgba(6, 182, 212, 0.2)',
+      coral: '0 0 16px rgba(249, 115, 22, 0.2)',
+      blue: '0 0 16px rgba(30, 64, 175, 0.2)',
     },
   },
 
-  // Border radius (organic vs sharp)
+  // Border radius (professional, 12px standard)
   radius: {
     none: '0',
-    sm: '0.25rem', // 4px - subtle
-    default: '0.5rem', // 8px - balanced
-    md: '0.75rem', // 12px - organic
-    lg: '1rem', // 16px - flowing
-    xl: '1.5rem', // 24px - very organic
+    sm: '0.375rem', // 6px
+    default: '0.75rem', // 12px - professional standard
+    md: '0.75rem', // 12px
+    lg: '1rem', // 16px
+    xl: '1.5rem', // 24px
     full: '9999px', // pill shape
   },
 
@@ -92,20 +92,21 @@ export const theme = {
     '2xl': '4rem', // 64px
   },
 
-  // Transitions (organic flow)
+  // Transitions (minimal, professional - 200ms standard)
   transitions: {
     fast: '150ms cubic-bezier(0.4, 0, 0.2, 1)',
-    default: '300ms cubic-bezier(0.4, 0, 0.2, 1)',
-    slow: '500ms cubic-bezier(0.4, 0, 0.2, 1)',
-
-    // Lightning strikes (sharp, powerful)
-    lightning: '200ms cubic-bezier(0.4, 0, 0.2, 1)',
+    default: '200ms cubic-bezier(0.4, 0, 0.2, 1)', // Professional standard
+    slow: '400ms cubic-bezier(0.4, 0, 0.2, 1)',
   },
 
-  // Typography
+  // Typography (Professional: Inter or Public Sans)
   typography: {
+    family: {
+      primary: 'Inter, system-ui, -apple-system, sans-serif',
+      mono: 'ui-monospace, monospace',
+    },
     heading: {
-      weight: 800, // Black
+      weight: 700, // Bold (professional, not heavy)
       tracking: '-0.02em', // Tight
     },
     body: {
