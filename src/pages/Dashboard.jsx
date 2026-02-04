@@ -193,7 +193,7 @@ export function Dashboard() {
                   What Makes This Different
                 </span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-6" style={{
+              <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{
                 letterSpacing: '-0.03em',
                 color: theme.colors.text.primary,
               }}>
@@ -201,52 +201,63 @@ export function Dashboard() {
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-              <div>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: theme.colors.text.secondary }}>
-                  The UK government and major tech companies aim to train "10 million workers by 2030" with AI literacy courses. That's essential.
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-10">
+              <div className="p-6 rounded-xl border backdrop-blur-sm transition-all hover:scale-105" style={{
+                borderColor: theme.colors.accent.cyan,
+                backgroundColor: `${theme.colors.accent.cyan}05`,
+                boxShadow: theme.shadows.subtle,
+              }}>
+                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.cyan }}>
+                  £391B → £3.5T
                 </p>
-                <p className="text-sm leading-relaxed font-semibold" style={{ color: theme.colors.text.primary }}>
-                  But here's what matters: when everyone completes the same foundation, strategic application becomes the differentiator.
+                <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
+                  Global AI market growth by 2033
                 </p>
               </div>
-              <div>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: theme.colors.text.secondary }}>
-                  We've built 8 integrated modules that take you beyond literacy to strategic capability—applying AI specifically to YOUR context, knowing when to use it (and when not to), and building systems that create lasting competitive advantage.
+
+              <div className="p-6 rounded-xl border backdrop-blur-sm transition-all hover:scale-105" style={{
+                borderColor: theme.colors.primary.electric,
+                backgroundColor: `${theme.colors.primary.electric}05`,
+                boxShadow: theme.shadows.subtle,
+              }}>
+                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.primary.electric }}>
+                  10 Million Workers
                 </p>
-                <p className="text-sm leading-relaxed font-semibold" style={{ color: theme.colors.primary.deep }}>
-                  The government creates mass literacy. We help you build strategic capability on top of it.
+                <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
+                  UK government training by 2030
+                </p>
+              </div>
+
+              <div className="p-6 rounded-xl border backdrop-blur-sm transition-all hover:scale-105" style={{
+                borderColor: theme.colors.accent.coral,
+                backgroundColor: `${theme.colors.accent.coral}05`,
+                boxShadow: theme.shadows.subtle,
+              }}>
+                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.coral }}>
+                  78% of Organizations
+                </p>
+                <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
+                  Now using AI in business functions
                 </p>
               </div>
             </div>
 
-            <div className="h-px" style={{ backgroundColor: theme.colors.border.subtle, marginBottom: '2rem' }} />
+            <div className="space-y-5 text-sm sm:text-base leading-relaxed">
+              <p style={{ color: theme.colors.text.secondary }}>
+                The UK government and major tech companies aim to train 10 million workers by 2030 with AI literacy courses—that's essential. Free training from Microsoft, Google, and IBM. Thousands of LinkedIn posts, YouTube tutorials, and social media content teaching prompts and tools. AI literacy is becoming universal, not specialized.
+              </p>
 
-            <div className="grid grid-cols-3 gap-4 sm:gap-6">
-              <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.cyan }}>
-                  ~22 Hours
-                </p>
-                <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
-                  Total Duration
-                </p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.primary.electric }}>
-                  8 Modules
-                </p>
-                <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
-                  Integrated Journey
-                </p>
-              </div>
-              <div className="text-center">
-                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.coral }}>
-                  44 Lessons
-                </p>
-                <p className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
-                  Self-Paced
-                </p>
-              </div>
+              <p style={{ color: theme.colors.text.secondary }}>
+                <span className="font-semibold" style={{ color: theme.colors.text.primary }}>But here's what matters:</span> when everyone completes the same foundation, strategic application becomes the differentiator. Despite massive investment and content saturation, only 21% of UK workers feel confident using AI, and just 16% of businesses have successfully implemented it. Nearly half of small businesses report they lack the skills to use AI effectively—not because training isn't available, but because there's a gap between knowing AI and getting real benefits from it.
+              </p>
+
+              <p style={{ color: theme.colors.text.secondary }}>
+                <span className="font-semibold" style={{ color: theme.colors.text.primary }}>We solve that gap.</span> We teach AI literacy accelerated for understanding, then add strategic capability on top. The result: save time and produce higher-quality output. Everything in one place, separating literacy from leadership, foundations from frameworks that create competitive advantage.
+              </p>
+
+              <p className="font-semibold" style={{ color: theme.colors.primary.deep }}>
+                While most businesses train teams in AI tools, a small percentage are developing strategic capability. That small percentage is your future competition—or your future position. The earlier you move, the wider the gap you create.
+              </p>
             </div>
           </div>
         </section>
