@@ -1,7 +1,7 @@
 export const landingContent = {
   hero: {
     title: '10X Protocol',
-    subtitle: 'Use AI like having a £30,000/year assistant. 6 weeks. 12 live sessions. Build something real.',
+    subtitle: 'With AI, work doesn't have to be slow and repetitive. Save time. Work better. Achieve more.',
     ctaPrimary: 'Book Call',
     ctaSecondary: 'See Curriculum'
   },
