@@ -102,7 +102,7 @@ export function Dashboard() {
               color: theme.colors.text.secondary,
               animationDelay: '0.1s',
             }}>
-              When everyone has AI literacy, positioning differentiates. Learn frameworks, decision-making systems, and strategic restraint—not just tools.
+              With AI work doesn't have to be slow and repetitive. Save time. Produce better. Achieve more.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 sm:mb-20 animate-fade-in-up" style={{
