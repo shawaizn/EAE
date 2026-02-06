@@ -98,12 +98,14 @@ export function Dashboard() {
               Master AI<br />For Competitive Advantage
             </h1>
 
-            <p className="text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed animate-fade-in-up" style={{
-              color: theme.colors.text.secondary,
-              animationDelay: '0.1s',
-            }}>
-              When everyone has AI literacy, positioning differentiates. Learn frameworks, decision-making systems, and strategic restraint—not just tools.
-            </p>
+            <div className="max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+              <p className="text-lg sm:text-xl leading-relaxed tracking-wide" style={{ color: theme.colors.text.secondary }}>
+                Achieve more. Spend less. Higher quality output. Faster delivery.
+              </p>
+              <p className="text-lg sm:text-xl mt-2 font-semibold tracking-wide" style={{ color: theme.colors.text.primary }}>
+                Same team. <span style={{ color: theme.colors.accent.cyan }}>Different results.</span>
+              </p>
+            </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 sm:mb-20 animate-fade-in-up" style={{
               animationDelay: '0.2s',
