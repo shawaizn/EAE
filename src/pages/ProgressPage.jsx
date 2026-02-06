@@ -4,7 +4,7 @@ import { modulesData } from '../data/modulesData';
 import { getLessonNumber, getProgressStats } from '../lib/utils';
 import { theme } from '../styles/theme';
 import { StreakIndicator, ProgressRing, StatCard, AchievementBadge, ModuleProgressCard, LessonGrid } from '../components/progress';
-import { BookOpen, Zap, TrendingUp, CheckCircle2 } from 'lucide-react';
+import { TrendingUp, CheckCircle2 } from 'lucide-react';
 
 const moduleNarratives = [
   "Accelerated foundations -- what AI is, how it fits in technology history, and the evolution to machine learning.",
@@ -71,7 +71,7 @@ export function ProgressPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           <StatCard
             icon={TrendingUp}
             label="Overall Progress"
@@ -85,26 +85,17 @@ export function ProgressPage() {
             value={`${stats.lessonsFullyCompleted}/44`}
             color="success"
           />
-          <StatCard
-            icon={Zap}
-            label="Started"
-            value={stats.lessonsStarted}
-            color="coral"
-          />
-          <StatCard
-            icon={BookOpen}
-            label="Items Done"
-            value={stats.totalCompleted}
-            color="cyan"
-          />
-          <div className="p-4 sm:p-6 rounded-xl border transition-all" style={{
-            backgroundColor: `linear-gradient(135deg, ${theme.colors.background.card} 0%, ${theme.colors.background.subtle} 100%)`,
+          <div className="p-4 sm:p-6 rounded-xl border transition-all hover:shadow-lg hover:scale-105 group cursor-default" style={{
+            backgroundColor: `linear-gradient(135deg, ${theme.colors.primary.electric}10 0%, ${theme.colors.background.card} 100%)`,
             borderColor: `${theme.colors.primary.electric}30`,
           }}>
-            <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: theme.colors.text.secondary }}>
-              Level
+            <div className="flex items-center gap-2 p-2 rounded-lg transition-all w-fit mb-3" style={{ backgroundColor: `${theme.colors.primary.electric}15` }}>
+              <div size={20} style={{ color: theme.colors.primary.electric }} className="text-xl">⭐</div>
+            </div>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: theme.colors.text.secondary }}>
+              Your Level
             </p>
-            <p className="text-2xl sm:text-3xl font-bold" style={{ color: theme.colors.primary.electric }}>
+            <p className="text-3xl sm:text-4xl font-bold transition-colors" style={{ color: theme.colors.primary.electric }}>
               {getPowerLevel(stats.percentComplete)}
             </p>
           </div>

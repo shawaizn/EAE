@@ -20,21 +20,21 @@ export function StatCard({ icon: Icon, label, value, color = 'electric', gradien
 
   return (
     <div
-      className="p-4 sm:p-6 rounded-xl border transition-all hover:shadow-md"
+      className="p-4 sm:p-6 rounded-xl border transition-all hover:shadow-lg hover:scale-105 group cursor-default"
       style={{
         backgroundColor: gradient ? `linear-gradient(135deg, ${bgColor} 0%, ${theme.colors.background.card} 100%)` : theme.colors.background.card,
         borderColor: `${accentColor}30`,
       }}
     >
-      <div className="flex items-start justify-between gap-3 mb-2">
-        <div className="flex items-center gap-2">
-          {Icon && <Icon size={20} style={{ color: accentColor }} />}
+      <div className="flex items-start justify-between gap-3 mb-3">
+        <div className="flex items-center gap-2 p-2 rounded-lg transition-all" style={{ backgroundColor: `${accentColor}15` }}>
+          {Icon && <Icon size={20} style={{ color: accentColor }} className="transition-transform group-hover:rotate-12" />}
         </div>
       </div>
-      <p className="text-2xl sm:text-3xl font-bold mb-1" style={{ color: accentColor }}>
+      <p className="text-3xl sm:text-4xl font-bold mb-2 transition-colors" style={{ color: accentColor }}>
         {value}
       </p>
-      <p className="text-xs sm:text-sm font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
+      <p className="text-xs sm:text-sm font-semibold uppercase tracking-widest" style={{ color: theme.colors.text.secondary }}>
         {label}
       </p>
     </div>
