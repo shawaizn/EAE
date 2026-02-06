@@ -79,12 +79,12 @@ export function Landing() {
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
             }}>
-              Master AI<br />For Competitive Advantage
+              Achieve more.<br />Spend less.
             </h1>
 
             <div className="max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <p className="text-lg sm:text-xl leading-relaxed tracking-wide" style={{ color: theme.colors.text.secondary }}>
-                Achieve more. Spend less. Higher quality output. Faster delivery.
+                Higher quality output. Faster delivery.
               </p>
               <p className="text-lg sm:text-xl mt-2 font-semibold tracking-wide" style={{ color: theme.colors.text.primary }}>
                 Same team. <span style={{ color: theme.colors.accent.cyan }}>Different results.</span>

@@ -1,7 +1,7 @@
 export const landingContent = {
   hero: {
-    title: '10X Protocol',
-    subtitle: 'Achieve more. Spend less. Higher quality output. Faster delivery. Same team. Different results.',
+    title: 'Achieve more. Spend less.',
+    subtitle: 'Higher quality output. Faster delivery. Same team. Different results.',
     ctaPrimary: 'Book Call',
     ctaSecondary: 'See Curriculum'
   },
