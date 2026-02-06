@@ -82,7 +82,7 @@ export function ProgressPage() {
           <StatCard
             icon={CheckCircle2}
             label="Completed"
-            value={`${stats.lessonsFullyCompleted}/44`}
+            value={`${stats.lessonsCompleted}/44`}
             color="success"
           />
           <div className="p-4 sm:p-6 rounded-xl border transition-all hover:shadow-lg hover:scale-105 group cursor-default" style={{

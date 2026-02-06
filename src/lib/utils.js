@@ -7,39 +7,37 @@ export function calculateProgress(completions, totalLessons = null) {
   if (totalLessons === null) {
     totalLessons = modulesData.reduce((sum, m) => sum + m.lessons.length, 0);
   }
-  const totalPossible = totalLessons * 4;
 
-  if (totalPossible === 0) return 0;
+  if (totalLessons === 0) return 0;
 
-  const completed = completions.filter(c => c.completed).length;
-  return Math.round((completed / totalPossible) * 100);
+  const completedLessons = new Set(
+    completions
+      .filter(c => c.completed && c.category === 'lesson')
+      .map(c => c.lesson_number)
+  );
+
+  return Math.round((completedLessons.size / totalLessons) * 100);
 }
 
 export function getProgressStats(completions, totalLessons = 44) {
-  const totalCompleted = completions.length;
-  const percentComplete = Math.round((totalCompleted / (totalLessons * 5)) * 100);
+  const completedLessons = new Set(
+    completions
+      .filter(c => c.completed && c.category === 'lesson')
+      .map(c => c.lesson_number)
+  );
 
-  const lessonsWithAnyCompletion = new Set();
-  const lessonCompletion = {};
-
-  completions.forEach(c => {
-    lessonsWithAnyCompletion.add(c.lesson_number);
-    if (!lessonCompletion[c.lesson_number]) {
-      lessonCompletion[c.lesson_number] = [];
-    }
-    lessonCompletion[c.lesson_number].push(c.category);
-  });
-
-  const fullLessonsCompleted = Object.values(lessonCompletion).filter(
-    categories => categories.length === 5
-  ).length;
+  const lessonsCompleted = completedLessons.size;
+  const percentComplete = Math.round((lessonsCompleted / totalLessons) * 100);
 
   return {
-    totalCompleted,
+    lessonsCompleted,
     percentComplete,
-    lessonsStarted: lessonsWithAnyCompletion.size,
-    lessonsFullyCompleted: fullLessonsCompleted,
-    lessonCompletion
+    totalLessons,
+    lessonCompletion: Object.fromEntries(
+      completions
+        .filter(c => c.completed && c.category === 'lesson')
+        .map(c => [c.lesson_number, true])
+    )
   };
 }
 
