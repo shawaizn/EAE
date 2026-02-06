@@ -20,8 +20,8 @@ export function Category() {
   return (
     <div className="flex-1 max-w-5xl px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-6">
-          <Link to="/dashboard" className="text-blue-600 hover:text-blue-700">
-            Dashboard
+          <Link to="/progress" className="text-blue-600 hover:text-blue-700">
+            Progress
           </Link>
           <span className="mx-2 text-gray-400">&gt;</span>
           <span className="text-gray-600">{categoryLabel}</span>

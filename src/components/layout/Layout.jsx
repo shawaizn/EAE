@@ -10,7 +10,7 @@ export function Layout({ children, user, onSignOut }) {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === '/dashboard') {
+    if (location.pathname === '/progress') {
       setSidebarOpen(true);
     }
   }, [location.pathname, setSidebarOpen]);

@@ -20,7 +20,7 @@ export function Login() {
 
     try {
       await signIn(email, password);
-      navigate('/dashboard');
+      navigate('/progress');
     } catch (err) {
       setError(err.message || 'Failed to sign in. Please check your credentials.');
     } finally {

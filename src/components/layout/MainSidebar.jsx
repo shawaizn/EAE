@@ -81,7 +81,7 @@ export function MainSidebar({ user, onSignOut }) {
 
   const handleSignOut = async () => {
     await onSignOut();
-    navigate('/login');
+    navigate('/');
   };
 
   const toggleTier = (tierId) => {
@@ -99,14 +99,14 @@ export function MainSidebar({ user, onSignOut }) {
     <div className="flex flex-col h-full">
       <nav className="p-6 space-y-1 flex-1 overflow-y-auto">
         <Link
-          to="/dashboard"
+          to="/progress"
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold ${
-            isActive('/dashboard')
+            isActive('/progress')
               ? 'bg-cyan-100 text-cyan-700'
               : 'text-slate-700 hover:bg-slate-100'
           }`}
         >
-          Dashboard
+          Progress
         </Link>
 
         {tiers.map(tier => {

@@ -1,10 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
 import { Layout } from './components/layout/Layout';
-import { PublicLayout } from './components/layout/PublicLayout';
 import { Landing } from './pages/Landing';
 import { Login } from './pages/Login';
-import { Dashboard } from './pages/Dashboard';
+import { ProgressPage } from './pages/ProgressPage';
 import { LessonPage } from './pages/LessonPage';
 import { ModulePage } from './pages/ModulePage';
 import { RecapPage } from './pages/RecapPage';
@@ -40,20 +39,22 @@ function App() {
     <SidebarProvider>
       <BrowserRouter>
         <Routes>
-          {/* Public Routes */}
-          <Route path="/" element={<Navigate to="/login" replace />} />
-          <Route path="/login" element={<PublicLayout><Login /></PublicLayout>} />
+          <Route path="/" element={user ? <Navigate to="/progress" replace /> : <Landing />} />
+          <Route path="/login" element={user ? <Navigate to="/progress" replace /> : <Login />} />
 
-          {/* Protected Routes with Layout */}
           <Route
-            path="/dashboard"
+            path="/progress"
             element={
               <ProtectedRoute>
                 <Layout user={user} onSignOut={signOut}>
-                  <Dashboard />
+                  <ProgressPage />
                 </Layout>
               </ProtectedRoute>
             }
+          />
+          <Route
+            path="/dashboard"
+            element={<Navigate to="/progress" replace />}
           />
           <Route
             path="/modules/:moduleId"
@@ -106,7 +107,6 @@ function App() {
             }
           />
 
-          {/* Catch all */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>

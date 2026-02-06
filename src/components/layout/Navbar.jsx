@@ -41,7 +41,7 @@ export function Navbar({ user }) {
                 {sidebarOpen ? <X size={18} className="sm:w-5 sm:h-5" /> : <Menu size={18} className="sm:w-5 sm:h-5" />}
               </button>
             )}
-            <Link to={user ? '/dashboard' : '/'} className="flex items-center flex-shrink-0">
+            <Link to={user ? '/progress' : '/'} className="flex items-center flex-shrink-0">
               <LogoHorizontal size="sm" />
             </Link>
           </div>
