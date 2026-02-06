@@ -20,7 +20,8 @@ export function useProgress(userId, lessonAccess) {
       const { data, error } = await supabase
         .from('completions')
         .select('*')
-        .eq('user_id', userId);
+        .eq('user_id', userId)
+        .eq('completed', true);
 
       if (error) {
         console.error('Error fetching completions:', error);

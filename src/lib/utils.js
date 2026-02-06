@@ -15,6 +15,34 @@ export function calculateProgress(completions, totalLessons = null) {
   return Math.round((completed / totalPossible) * 100);
 }
 
+export function getProgressStats(completions, totalLessons = 44) {
+  const totalCompleted = completions.length;
+  const percentComplete = Math.round((totalCompleted / (totalLessons * 5)) * 100);
+
+  const lessonsWithAnyCompletion = new Set();
+  const lessonCompletion = {};
+
+  completions.forEach(c => {
+    lessonsWithAnyCompletion.add(c.lesson_number);
+    if (!lessonCompletion[c.lesson_number]) {
+      lessonCompletion[c.lesson_number] = [];
+    }
+    lessonCompletion[c.lesson_number].push(c.category);
+  });
+
+  const fullLessonsCompleted = Object.values(lessonCompletion).filter(
+    categories => categories.length === 5
+  ).length;
+
+  return {
+    totalCompleted,
+    percentComplete,
+    lessonsStarted: lessonsWithAnyCompletion.size,
+    lessonsFullyCompleted: fullLessonsCompleted,
+    lessonCompletion
+  };
+}
+
 export function getModuleProgress(moduleId, completions) {
   const module = modulesData.find(m => m.id === moduleId);
   if (!module) return 0;
