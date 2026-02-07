@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Zap, Target, ArrowRight, BookOpen, Users, TrendingUp, ChevronDown } from 'lucide-react';
 import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 import { LogoHorizontal } from '../components/branding/Logo';
+import { FeaturesTable } from '../components/features/FeaturesTable';
 import { modulesData } from '../data/modulesData';
 import { activityData } from '../data/activityData';
 import { theme } from '../styles/theme';
@@ -245,6 +246,8 @@ export function Landing() {
             </div>
           </div>
         </section>
+
+        <FeaturesTable />
 
         <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
           animationDelay: '0.5s',
