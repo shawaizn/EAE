@@ -250,7 +250,7 @@ export const activityData = {
     "businesses": "**Apply this to:**\nOrganizational work requiring consistent professional quality.\n\n**Why this matters:**\n- **Standardize quality** by providing teams with expert-level prompt generation\n- **Accelerate capability building** by skipping manual prompt engineering learning curve\n- **Enable scaling** through professionally optimized prompts across organization"
   },
   "6-1": {
-    "skill": "",
+    "skill": "Workflow Template Design",
     "connection": "Tools change weekly. Workflows based on outcomes don't. Create one template, use it for every repeated task forever.",
     "activity": "1. Think of your most repeated task (reports, content, analysis, anything weekly/monthly)\n2. Paste this into ChatGPT/Claude:\n\n**\"I repeatedly [describe task]. Create a 5-step workflow that:\n- Focuses on WHAT outcomes I need (not tools)\n- Works with any AI or no AI\n- Shows: Step → What I decide → What AI executes\nFormat as a simple reusable checklist.\"**\n\n3. Copy the workflow into a note titled \"My [Task] Workflow\"\n\n**Example:**\nTask: \"I repeatedly create monthly sales reports\"\nAI creates: \n1. Gather data → I decide which metrics → AI compiles\n2. Find patterns → I choose what matters → AI highlights trends\n3. Compare targets → I set context → AI calculates gaps\n4. Write insights → I provide judgment → AI formats clearly\n5. Prepare presentation → I approve final → AI structures slides\n\nSave as \"My Sales Report Workflow\" - reuse forever.",
     "whyMatters": "You build a reusable system that makes every repeated task faster, create a template you can use for other tasks, and never start from scratch again.",
@@ -260,7 +260,7 @@ export const activityData = {
     "businesses": "**Apply this to:**\nStandard operating procedures, client deliverables, internal processes, team workflows.\n\n**Extract full value:**\nDocument core business processes as tool-independent workflows that teams can follow regardless of platform changes.\n\n**Why this matters:**\nOrganization builds resilient operations that survive technology shifts, reduces dependency on specific vendors, and creates transferable systems across departments."
   },
   "6-2": {
-    "skill": "",
+    "skill": "Bottleneck-Solution Mapping",
     "connection": "Most people collect tools looking for problems. Smart approach: identify your real bottlenecks, then find AI that solves them.",
     "activity": "1. Answer these 3 questions in a note:\n   - What task takes me the most time each week?\n   - What work do I procrastinate on because it's tedious?\n   - What bottleneck slows down my best work?\n\n2. Pick ONE answer\n\n3. Use your AI tool finding skills from Module 2 Lesson 6 (search FlowGPT, Product Hunt, There's An AI For That, etc.) to find a tool for that specific problem\n\n4. Bookmark one tool to try this week\n\n**Example:**\nQuestions: \n- Most time: Meeting notes (3 hours/week)\n- Procrastinate: Formatting documents\n- Bottleneck: Research takes forever\n\nPick: Meeting notes (biggest time sink)\nSearch on Product Hunt: \"meeting notes AI\"\nFind: Otter.ai, Fireflies, Fathom\nBookmark: Otter.ai to test next meeting",
     "whyMatters": "You find AI solutions for real problems not imaginary ones, focus on tools that save actual time, and stop collecting tools you never use.",
@@ -270,7 +270,7 @@ export const activityData = {
     "businesses": "**Apply this to:**\nOrganizational bottlenecks (onboarding delays, quality inconsistencies, communication gaps, approval processes).\n\n**Extract full value:**\nTeams identify real operational constraints before tool selection, ensuring technology investments solve actual problems.\n\n**Why this matters:**\nOrganization reduces wasted budget on unused tools, solves problems that actually frustrate teams, and builds trust that leadership understands real operational challenges. Teams feel heard and supported rather than given solutions to problems they don't have."
   },
   "6-3": {
-    "skill": "",
+    "skill": "Strategic Information Filtering",
     "connection": "AI news never stops. Without boundaries, you spend hours daily and accomplish nothing. 15-30 min/week keeps you aware without overwhelm.",
     "activity": "1. Pick 1-2 AI news sources (examples: TLDR AI newsletter, Ben's Bites, The Rundown AI)\n2. Schedule 20 minutes once per week to check them\n3. This week: Read your sources, note 1-3 things worth trying\n4. Ignore everything else\n\n**Example:**\nSources: TLDR AI (newsletter), one AI YouTube channel\nSchedule: Every Monday 9am, 20 minutes\nThis week's picks: New Claude feature for documents, ignore the other 47 updates",
     "whyMatters": "You stay informed without burning out, make deliberate decisions instead of chasing every shiny tool, and actually have time to use AI instead of just reading about it.",
@@ -280,7 +280,7 @@ export const activityData = {
     "businesses": "**Apply this to:**\nKeeping leadership and teams informed about AI capabilities without creating information overload.\n\n**Extract full value:**\nAssign one person to curate weekly AI updates relevant to company operations and share condensed insights with stakeholders. Filter for developments that impact strategic objectives and competitive position.\n\n**Why this matters:**\nOrganization maintains strategic awareness without productivity loss across teams, spots opportunities and risks systematically rather than reactively, and builds informed decision-making culture without meeting overload. Leadership achieves better strategic outcomes by staying informed about AI that drives business goals. Teams feel strategically positioned rather than anxiously chasing every trend."
   },
   "6-4": {
-    "skill": "",
+    "skill": "Structured Tool Evaluation",
     "connection": "Playing with tools wastes time. Proper 30-60 minute trials on actual work reveal real value fast.",
     "activity": "1. Pick one AI tool that passed your filter\n2. Define your goal: \"Can this save me 30%+ time on [specific task] while keeping quality?\"\n3. Use it on 2-3 real examples of that task (not demo/test data)\n4. Decide: Adopt (integrate it), Park (revisit in 3 months), or Reject (doesn't deliver)\n\n**Example:**\nTool: Otter.ai for meeting notes\nGoal: Save 30% time on meeting summaries without missing key points\nTest: Use on next 3 meetings\nResult: Saves 40% time, catches everything → Adopt and integrate",
     "whyMatters": "You only invest time in tools that actually work, avoid wasting weeks on overhyped products, and build a toolkit of proven solutions instead of experiments.",
@@ -290,7 +290,7 @@ export const activityData = {
     "businesses": "**Apply this to:**\nEvaluating enterprise AI tools (workflow automation, customer service, analytics, documentation).\n\n**Extract full value:**\nRun structured pilots on actual processes with clear success metrics. Gather team feedback and performance data before rollout.\n\n**Why this matters:**\n- Avoid expensive failed implementations by validating on real operations first\n- Build internal technology evaluation capability, reducing vendor dependency\n- Create evidence-based adoption that earns team buy-in\n- Systematic evaluation becomes competitive advantage as AI tools multiply\n- Build trust by proving tools solve real problems before mandating changes"
   },
   "6-5": {
-    "skill": "",
+    "skill": "Feature Discovery & Optimization",
     "connection": "ChatGPT and Claude have features most people never explore. Spending 5 minutes in settings can unlock major improvements.",
     "activity": "1. Open the AI tool you use most (ChatGPT, Claude, Gemini, etc.)\n2. Go to Settings\n3. Spend 5 minutes exploring what features exist\n4. Turn on or try ONE thing that looks useful\n\n**Example:**\nExplored ChatGPT settings\nFound: Memory, Custom Instructions, Voice mode, GPT store access\nTurned on: Custom Instructions (set my writing style once)\nResult: Every response now matches my preferences automatically",
     "whyMatters": "You discover features that save time on every future conversation, unlock capabilities you're already paying for, and upgrade your AI without learning new tools.",
@@ -300,7 +300,7 @@ export const activityData = {
     "businesses": "**Apply this to:**\nAuditing AI features in enterprise tools organization already licenses (Microsoft 365, Google Workspace, Salesforce, Slack).\n\n**Extract full value:**\nHave teams explore settings in existing platforms. Document discovered features that could improve departmental workflows.\n\n**Why this matters:**\n- Maximize ROI on current technology investments before new purchases\n- Discover unused capabilities that solve problems teams currently face\n- Reduce software sprawl by using existing tools more effectively\n- Build culture of tool mastery rather than tool accumulation\n- Identify training opportunities that unlock value already paid for\n- Improve team satisfaction by making current tools less frustrating"
   },
   "6-6": {
-    "skill": "",
+    "skill": "High-Stakes Output Verification",
     "connection": "Most people only use AI for throwaway stuff. But AI can handle important work - you just verify before using.",
     "activity": "Next 3 times you use AI for something important (email to boss, client work, anything with consequences):\n\nBefore using the output, do a 30-second check:\n1. Read first and last sentence\n2. Scan for any numbers/facts\n3. Ask yourself: \"Would I look stupid if this was wrong?\"\n\nIf yes → read the whole thing\nIf no → use it\n\n**Example:**\nAI writes email to client about project delay\nQuick check: Opening sounds professional, closing has next steps, deadline date is correct\n\"Would I look stupid?\" → No, it's accurate\nSend. Total time: 30 seconds.",
     "whyMatters": "You catch critical mistakes without wasting time re-reading everything, build confidence using AI for important work, and develop instinct for when to verify vs when to trust.",
@@ -310,7 +310,7 @@ export const activityData = {
     "businesses": "**Apply this to:**\nDeploying AI for customer-facing or compliance-critical operations (support, documentation, communications, reports).\n\n**Extract full value:**\nImplement verification protocols matched to stakes: automated checks for low-risk, human review for high-risk. Document standards for consistent quality.\n\n**Why this matters:**\n- Scale operations with AI while protecting brand reputation and compliance\n- Build systematic quality control that enables AI adoption without increased risk\n- Develop organizational capability in risk-based AI governance\n- Create confidence in AI usage across teams through clear safety processes\n- Reduce liability exposure by having documented verification standards\n- Enable growth through AI while maintaining stakeholder trust"
   },
   "6-7": {
-    "skill": "",
+    "skill": "Reusable Playbook Creation",
     "connection": "You do some tasks repeatedly. Create the playbook once, hand it to AI every time, get consistent results forever.",
     "activity": "1. Pick one task you do repeatedly (reports, emails, content, proposals, anything weekly/monthly)\n2. Paste this into ChatGPT/Claude:\n\n**\"Create a playbook for [your task]. Format it as step-by-step instructions I can paste back to you next time, so you know exactly how to help me. Include:\n- What the end result should be\n- Key steps to follow\n- What information you need from me\n- Quality standards to meet\"**\n\n3. Save the playbook AI creates\n4. Next time you do that task: Paste the playbook + your specific details → AI executes\n\n**Example:**\nTask: Weekly team update emails\nAI creates playbook: \"When I receive this playbook + your weekly updates, I will: 1) Structure as 3 sections: Wins, Blockers, Next Week 2) Keep tone professional but friendly 3) Highlight urgent items 4) Format for easy scanning 5) Keep under 200 words\"\n\nNext week: Paste playbook + \"Wins: shipped feature X, Blockers: waiting on design, Next: user testing\" → AI writes perfect email",
     "whyMatters": "You create reusable instructions that make AI work like a trained assistant, get consistent quality on repeated tasks, and turn hours of work into 2-minute operations.",
