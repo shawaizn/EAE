@@ -3,11 +3,11 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LogOut, User, ChevronRight, ChevronDown, Zap, Award } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { modulesData } from '../../data/modulesData';
+import { lang } from '../../styles/theme';
 
 const tiers = [
   {
     id: 'beginner',
-    name: 'Beginner',
     modules: [1, 2],
     color: {
       bg: 'bg-cyan-50',
@@ -19,7 +19,6 @@ const tiers = [
   },
   {
     id: 'intermediate',
-    name: 'Intermediate',
     modules: [3, 4, 5],
     color: {
       bg: 'bg-slate-100',
@@ -31,7 +30,6 @@ const tiers = [
   },
   {
     id: 'advanced',
-    name: 'Advanced',
     modules: [6, 7, 8],
     color: {
       bg: 'bg-slate-50',
@@ -110,6 +108,7 @@ export function MainSidebar({ user, onSignOut }) {
         </Link>
 
         {tiers.map(tier => {
+          const tierLabel = lang.tierLabels[tier.id] || tier.id;
           const isExpanded = expandedTier === tier.id;
           const hasActiveModule = tier.modules.some(moduleId =>
             isActive(`/modules/${moduleId}`)
@@ -125,7 +124,7 @@ export function MainSidebar({ user, onSignOut }) {
                     : 'text-slate-700 hover:bg-slate-100'
                 }`}
               >
-                <span>{tier.name}</span>
+                <span>{tierLabel}</span>
                 {isExpanded ? (
                   <ChevronDown size={18} />
                 ) : (

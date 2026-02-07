@@ -2,7 +2,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { getLessonNumber, getProgressStats } from '../lib/utils';
-import { theme } from '../styles/theme';
+import { theme, behavior, lang } from '../styles/theme';
 import { StreakIndicator, ProgressRing, StatCard, AchievementBadge, ModuleProgressCard, LessonGrid } from '../components/progress';
 import { TrendingUp, CheckCircle2, Bookmark, X } from 'lucide-react';
 import { useBookmarks } from '../hooks/useBookmarks';
@@ -46,11 +46,11 @@ export function ProgressPage() {
   });
 
   const getPowerLevel = (percentComplete) => {
-    if (percentComplete >= 75) return 'Expert';
-    if (percentComplete >= 50) return 'Advanced';
-    if (percentComplete >= 25) return 'Intermediate';
-    if (percentComplete > 0) return 'Beginner';
-    return 'Just Starting';
+    if (percentComplete >= 75) return lang.levelLabels[75];
+    if (percentComplete >= 50) return lang.levelLabels[50];
+    if (percentComplete >= 25) return lang.levelLabels[25];
+    if (percentComplete > 0) return lang.levelLabels[10];
+    return lang.levelLabels[0];
   };
 
   return (
@@ -63,15 +63,17 @@ export function ProgressPage() {
                 letterSpacing: '-0.02em',
                 color: theme.colors.text.primary,
               }}>
-                Your Learning Journey
+                {lang.progressTitle}
               </h1>
               <p className="text-sm sm:text-base" style={{ color: theme.colors.text.secondary }}>
-                Master AI strategy across 44 lessons
+                {lang.progressSubtitle}
               </p>
             </div>
-            <div className="flex gap-3">
-              <StreakIndicator days={0} />
-            </div>
+            {behavior.showStreakIndicator && (
+              <div className="flex gap-3">
+                <StreakIndicator days={0} />
+              </div>
+            )}
           </div>
         </div>
 
@@ -89,7 +91,7 @@ export function ProgressPage() {
             value={`${stats.lessonsCompleted}/44`}
             color="success"
           />
-          <div className="p-4 sm:p-6 rounded-xl border transition-all hover:shadow-lg hover:scale-105 group cursor-default" style={{
+          <div className={`p-4 sm:p-6 rounded-xl border transition-all ${behavior.hoverScale ? 'hover:shadow-lg hover:scale-105' : 'hover:shadow-md'} group cursor-default`} style={{
             backgroundColor: `linear-gradient(135deg, ${theme.colors.primary.electric}10 0%, ${theme.colors.background.card} 100%)`,
             borderColor: `${theme.colors.primary.electric}30`,
           }}>
@@ -97,7 +99,7 @@ export function ProgressPage() {
               <div size={20} style={{ color: theme.colors.primary.electric }} className="text-xl">⭐</div>
             </div>
             <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: theme.colors.text.secondary }}>
-              Your Level
+              {behavior.gamificationLanguage ? 'Your Level' : 'Status'}
             </p>
             <p className="text-3xl sm:text-4xl font-bold transition-colors" style={{ color: theme.colors.primary.electric }}>
               {getPowerLevel(stats.percentComplete)}
@@ -105,15 +107,17 @@ export function ProgressPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
-          {[10, 25, 50, 75, 100].map(milestone => (
-            <AchievementBadge
-              key={milestone}
-              milestone={milestone}
-              unlocked={stats.percentComplete >= milestone}
-            />
-          ))}
-        </div>
+        {behavior.showAchievementBadges && (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
+            {[10, 25, 50, 75, 100].map(milestone => (
+              <AchievementBadge
+                key={milestone}
+                milestone={milestone}
+                unlocked={stats.percentComplete >= milestone}
+              />
+            ))}
+          </div>
+        )}
 
         <div className="mb-8">
           <LessonGrid lessons={allLessonsArray} stats={stats} totalLessons={totalLessons} />
@@ -122,7 +126,7 @@ export function ProgressPage() {
         {bookmarks.length > 0 && (
           <div className="mb-8">
             <h2 className="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2" style={{ color: theme.colors.text.primary }}>
-              <Bookmark size={20} className="text-cyan-600" />
+              <Bookmark size={20} style={{ color: theme.colors.accent.cyan }} />
               Bookmarked Lessons
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">

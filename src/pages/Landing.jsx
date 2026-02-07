@@ -6,7 +6,7 @@ import { LogoHorizontal } from '../components/branding/Logo';
 import { FeaturesTable } from '../components/features/FeaturesTable';
 import { modulesData } from '../data/modulesData';
 import { activityData } from '../data/activityData';
-import { theme } from '../styles/theme';
+import { theme, behavior } from '../styles/theme';
 
 const moduleNarratives = [
   "Accelerated foundations -- what AI is, how it fits in technology history, and the evolution to machine learning. Understanding is a necessity, not a destination.",
@@ -28,9 +28,13 @@ export function Landing() {
     setExpandedModule((prev) => (prev === moduleId ? null : moduleId));
   };
 
+  const hoverStatClasses = behavior.hoverScale
+    ? 'hover:scale-105 hover:shadow-xl'
+    : 'hover:shadow-md';
+
   return (
     <div className="w-full min-h-screen overflow-y-auto relative">
-      <EnergeticBackground />
+      {behavior.animatedBackground && <EnergeticBackground />}
 
       <div className="relative z-10">
         <nav className="sticky top-0 z-20 bg-white/98 backdrop-blur-md border-b" style={{
@@ -38,7 +42,9 @@ export function Landing() {
           boxShadow: theme.shadows.medium,
         }}>
           <div className="absolute bottom-0 left-0 right-0 h-px" style={{
-            background: `linear-gradient(90deg, transparent, ${theme.colors.accent.cyan}60, ${theme.colors.accent.coral}60, transparent)`,
+            background: behavior.hoverGlow
+              ? `linear-gradient(90deg, transparent, ${theme.colors.accent.cyan}60, ${theme.colors.accent.coral}60, transparent)`
+              : `linear-gradient(90deg, transparent, ${theme.colors.border.default}80, transparent)`,
           }} />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16 sm:h-18">
@@ -54,8 +60,12 @@ export function Landing() {
                   transition: theme.transitions.fast,
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = theme.shadows.glow.cyan;
-                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  if (behavior.hoverGlow) {
+                    e.currentTarget.style.boxShadow = theme.shadows.glow.cyan;
+                  }
+                  if (behavior.hoverScale) {
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                  }
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.boxShadow = '0 0 0 rgba(6, 182, 212, 0.3)';
@@ -63,7 +73,9 @@ export function Landing() {
                 }}
               >
                 <span className="relative z-10">Sign In</span>
-                <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-300" />
+                {behavior.hoverGlow && (
+                  <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-300" />
+                )}
               </Link>
             </div>
           </div>
@@ -83,10 +95,13 @@ export function Landing() {
 
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in" style={{
               letterSpacing: '-0.03em',
-              background: `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.primary.electric} 50%, ${theme.colors.accent.cyan} 100%)`,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              background: behavior.hoverGlow
+                ? `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.primary.electric} 50%, ${theme.colors.accent.cyan} 100%)`
+                : undefined,
+              WebkitBackgroundClip: behavior.hoverGlow ? 'text' : undefined,
+              WebkitTextFillColor: behavior.hoverGlow ? 'transparent' : undefined,
+              backgroundClip: behavior.hoverGlow ? 'text' : undefined,
+              color: behavior.hoverGlow ? undefined : theme.colors.text.primary,
             }}>
               Achieve more.<br />Spend less.
             </h1>
@@ -105,11 +120,11 @@ export function Landing() {
             }}>
               <Link
                 to="/login"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all hover:scale-105 group"
+                className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all ${behavior.hoverScale ? 'hover:scale-105' : 'hover:shadow-lg'} group`}
                 style={{
                   background: `linear-gradient(135deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
                   color: 'white',
-                  boxShadow: `0 0 30px ${theme.colors.accent.cyan}40`,
+                  boxShadow: behavior.hoverGlow ? `0 0 30px ${theme.colors.accent.cyan}40` : theme.shadows.medium,
                 }}
               >
                 Get Started <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -119,7 +134,7 @@ export function Landing() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 animate-fade-in-up" style={{
               animationDelay: '0.3s',
             }}>
-              <div className="p-6 rounded-xl border backdrop-blur-sm transition-all hover:scale-105 hover:shadow-xl" style={{
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
                 borderColor: theme.colors.accent.cyan,
                 backgroundColor: `${theme.colors.accent.cyan}05`,
                 boxShadow: theme.shadows.subtle,
@@ -133,7 +148,7 @@ export function Landing() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-xl border backdrop-blur-sm transition-all hover:scale-105 hover:shadow-xl" style={{
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
                 borderColor: theme.colors.primary.electric,
                 backgroundColor: `${theme.colors.primary.electric}05`,
                 boxShadow: theme.shadows.subtle,
@@ -147,7 +162,7 @@ export function Landing() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-xl border backdrop-blur-sm transition-all hover:scale-105 hover:shadow-xl" style={{
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
                 borderColor: theme.colors.accent.coral,
                 backgroundColor: `${theme.colors.accent.coral}05`,
                 boxShadow: theme.shadows.subtle,
@@ -170,7 +185,7 @@ export function Landing() {
           <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border-2 backdrop-blur-sm" style={{
             borderColor: `${theme.colors.primary.electric}40`,
             background: `linear-gradient(135deg, ${theme.colors.primary.light}30 0%, ${theme.colors.background.card} 100%)`,
-            boxShadow: `0 0 40px ${theme.colors.primary.electric}15`,
+            boxShadow: behavior.hoverGlow ? `0 0 40px ${theme.colors.primary.electric}15` : theme.shadows.large,
           }}>
             <div className="mb-8">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4" style={{
@@ -190,7 +205,7 @@ export function Landing() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-10">
-              <div className="p-6 rounded-xl border backdrop-blur-sm transition-all hover:scale-105" style={{
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
                 borderColor: theme.colors.accent.cyan,
                 backgroundColor: `${theme.colors.accent.cyan}05`,
                 boxShadow: theme.shadows.subtle,
@@ -203,7 +218,7 @@ export function Landing() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-xl border backdrop-blur-sm transition-all hover:scale-105" style={{
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
                 borderColor: theme.colors.primary.electric,
                 backgroundColor: `${theme.colors.primary.electric}05`,
                 boxShadow: theme.shadows.subtle,
@@ -216,7 +231,7 @@ export function Landing() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-xl border backdrop-blur-sm transition-all hover:scale-105" style={{
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
                 borderColor: theme.colors.accent.coral,
                 backgroundColor: `${theme.colors.accent.coral}05`,
                 boxShadow: theme.shadows.subtle,
@@ -377,7 +392,7 @@ export function Landing() {
           <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border-2 text-center" style={{
             borderColor: theme.colors.accent.coral,
             background: `linear-gradient(135deg, ${theme.colors.accent.coral}08 0%, ${theme.colors.background.card} 100%)`,
-            boxShadow: `0 0 40px ${theme.colors.accent.coral}15`,
+            boxShadow: behavior.hoverGlow ? `0 0 40px ${theme.colors.accent.coral}15` : theme.shadows.large,
           }}>
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4" style={{
               letterSpacing: '-0.03em',
@@ -390,11 +405,11 @@ export function Landing() {
             </p>
             <Link
               to="/login"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all hover:scale-105"
+              className={`inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all ${behavior.hoverScale ? 'hover:scale-105' : 'hover:shadow-lg'}`}
               style={{
                 background: `linear-gradient(135deg, ${theme.colors.accent.coral} 0%, ${theme.colors.primary.electric} 100%)`,
                 color: 'white',
-                boxShadow: `0 0 30px ${theme.colors.accent.coral}40`,
+                boxShadow: behavior.hoverGlow ? `0 0 30px ${theme.colors.accent.coral}40` : theme.shadows.medium,
               }}
             >
               Sign In to Start <ArrowRight size={20} />

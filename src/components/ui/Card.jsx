@@ -1,4 +1,4 @@
-import { theme } from '../../styles/theme';
+import { theme, behavior } from '../../styles/theme';
 
 export function Card({
   children,
@@ -10,7 +10,9 @@ export function Card({
   const baseStyles = 'bg-white/98 backdrop-blur-md rounded-md border border-slate-100 p-8 transition-all duration-200';
 
   const interactiveStyles = interactive
-    ? 'hover:shadow-2xl hover:-translate-y-1 cursor-pointer'
+    ? behavior.hoverScale
+      ? 'hover:shadow-2xl hover:-translate-y-1 cursor-pointer'
+      : 'hover:shadow-lg cursor-pointer'
     : '';
 
   const accentColors = {
@@ -30,7 +32,7 @@ export function Card({
         transition: theme.transitions.default,
       }}
     >
-      {interactive && (
+      {interactive && behavior.cornerBrackets && (
         <>
           <div
             className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 opacity-0 group-hover:opacity-100 transition-all"
