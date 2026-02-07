@@ -1,5 +1,6 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, Target, ArrowRight, BookOpen, Users, TrendingUp, ChevronRight } from 'lucide-react';
+import { Zap, Target, ArrowRight, BookOpen, Users, TrendingUp, ChevronDown } from 'lucide-react';
 import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 import { LogoHorizontal } from '../components/branding/Logo';
 import { modulesData } from '../data/modulesData';
@@ -19,6 +20,12 @@ const moduleNarratives = [
 const totalLessons = modulesData.reduce((acc, m) => acc + m.lessons.length, 0);
 
 export function Landing() {
+  const [expandedModule, setExpandedModule] = useState(null);
+
+  const toggleModule = (moduleId) => {
+    setExpandedModule((prev) => (prev === moduleId ? null : moduleId));
+  };
+
   return (
     <div className="w-full min-h-screen overflow-y-auto relative">
       <EnergeticBackground />
@@ -254,42 +261,104 @@ export function Landing() {
           </div>
 
           <div className="space-y-4">
-            {modulesData.map((module, index) => (
-              <div
-                key={module.id}
-                className="group p-6 sm:p-8 border-2 rounded-xl transition-all hover:shadow-lg"
-                style={{
-                  backgroundColor: theme.colors.background.card,
-                  borderColor: theme.colors.border.subtle,
-                  boxShadow: theme.shadows.subtle,
-                }}
-              >
-                <div className="flex items-start justify-between gap-4 mb-3">
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-lg sm:text-xl font-bold mb-2" style={{
-                      color: theme.colors.text.primary,
-                    }}>
-                      Module {module.id}: {module.title}
-                    </h3>
-                    <p className="text-sm line-clamp-2" style={{ color: theme.colors.text.secondary }}>
-                      {moduleNarratives[index]}
-                    </p>
-                  </div>
-                  <div className="inline-flex items-center gap-1 px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap flex-shrink-0" style={{
-                    backgroundColor: `${theme.colors.primary.electric}10`,
-                    color: theme.colors.primary.electric,
-                  }}>
-                    {module.lessons.length} lessons
+            {modulesData.map((module, index) => {
+              const isExpanded = expandedModule === module.id;
+              return (
+                <div
+                  key={module.id}
+                  className="border-2 rounded-xl transition-all"
+                  style={{
+                    backgroundColor: theme.colors.background.card,
+                    borderColor: isExpanded ? theme.colors.accent.cyan : theme.colors.border.subtle,
+                    boxShadow: isExpanded ? theme.shadows.medium : theme.shadows.subtle,
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleModule(module.id)}
+                    className="w-full text-left p-6 sm:p-8 cursor-pointer group"
+                  >
+                    <div className="flex items-start justify-between gap-4 mb-3">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-lg sm:text-xl font-bold mb-2" style={{
+                          color: theme.colors.text.primary,
+                        }}>
+                          Module {module.id}: {module.title}
+                        </h3>
+                        <p className="text-sm line-clamp-2" style={{ color: theme.colors.text.secondary }}>
+                          {moduleNarratives[index]}
+                        </p>
+                      </div>
+                      <div className="inline-flex items-center gap-1 px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap flex-shrink-0" style={{
+                        backgroundColor: `${theme.colors.primary.electric}10`,
+                        color: theme.colors.primary.electric,
+                      }}>
+                        {module.lessons.length} lessons
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-semibold tracking-wide" style={{ color: theme.colors.text.muted }}>
+                        ~{Math.ceil(module.lessons.length * 0.5)} hours
+                      </span>
+                      <ChevronDown
+                        size={16}
+                        style={{
+                          color: isExpanded ? theme.colors.accent.cyan : theme.colors.text.muted,
+                          transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                          transition: 'transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94), color 200ms ease',
+                        }}
+                      />
+                    </div>
+                  </button>
+
+                  <div
+                    style={{
+                      maxHeight: isExpanded ? `${module.lessons.length * 56 + 24}px` : '0px',
+                      opacity: isExpanded ? 1 : 0,
+                      overflow: 'hidden',
+                      transition: 'max-height 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 250ms ease',
+                    }}
+                  >
+                    <div className="px-6 sm:px-8 pb-6 sm:pb-8">
+                      <div className="border-t pt-4" style={{ borderColor: theme.colors.border.subtle }}>
+                        {module.lessons.map((lesson, lessonIndex) => (
+                          <div
+                            key={lesson.id}
+                            className="flex items-center gap-4 py-3"
+                            style={{
+                              borderBottom: lessonIndex < module.lessons.length - 1
+                                ? `1px solid ${theme.colors.border.subtle}20`
+                                : 'none',
+                            }}
+                          >
+                            <span
+                              className="text-xs font-bold w-6 text-right flex-shrink-0 tabular-nums"
+                              style={{ color: theme.colors.text.muted }}
+                            >
+                              {String(lesson.id).padStart(2, '0')}
+                            </span>
+                            <span className="text-sm font-medium" style={{ color: theme.colors.text.primary }}>
+                              {lesson.title}
+                            </span>
+                            {lesson.skill && (
+                              <span
+                                className="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0"
+                                style={{
+                                  backgroundColor: `${theme.colors.accent.cyan}12`,
+                                  color: theme.colors.accent.cyan,
+                                }}
+                              >
+                                {lesson.skill}
+                              </span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-semibold tracking-wide" style={{ color: theme.colors.text.muted }}>
-                    ~{Math.ceil(module.lessons.length * 0.5)} hours
-                  </span>
-                  <ChevronRight size={16} style={{ color: theme.colors.text.muted }} className="group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
