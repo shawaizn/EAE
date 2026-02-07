@@ -4,7 +4,10 @@ import { modulesData } from '../data/modulesData';
 import { getLessonNumber, getProgressStats } from '../lib/utils';
 import { theme } from '../styles/theme';
 import { StreakIndicator, ProgressRing, StatCard, AchievementBadge, ModuleProgressCard, LessonGrid } from '../components/progress';
-import { TrendingUp, CheckCircle2 } from 'lucide-react';
+import { TrendingUp, CheckCircle2, Bookmark, X } from 'lucide-react';
+import { useBookmarks } from '../hooks/useBookmarks';
+import { Link } from 'react-router-dom';
+import { getModuleAndLesson } from '../lib/utils';
 
 const moduleNarratives = [
   "Accelerated foundations -- what AI is, how it fits in technology history, and the evolution to machine learning.",
@@ -20,6 +23,7 @@ const moduleNarratives = [
 export function ProgressPage() {
   const { user } = useAuth();
   const { completions, isComplete, loading } = useProgress(user?.id, []);
+  const { bookmarks, toggleBookmark } = useBookmarks(user?.id);
 
   const stats = getProgressStats(completions);
   const totalLessons = 44;
@@ -114,6 +118,42 @@ export function ProgressPage() {
         <div className="mb-8">
           <LessonGrid lessons={allLessonsArray} stats={stats} totalLessons={totalLessons} />
         </div>
+
+        {bookmarks.length > 0 && (
+          <div className="mb-8">
+            <h2 className="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2" style={{ color: theme.colors.text.primary }}>
+              <Bookmark size={20} className="text-cyan-600" />
+              Bookmarked Lessons
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {bookmarks.map(bm => {
+                const { moduleId, lessonId } = getModuleAndLesson(bm.lesson_number);
+                const module = modulesData.find(m => m.id === moduleId);
+                const lesson = module?.lessons.find(l => l.id === lessonId);
+                if (!module || !lesson) return null;
+                return (
+                  <div key={bm.id} className="group relative p-4 rounded-xl border bg-white hover:shadow-md transition-all" style={{ borderColor: theme.colors.border.subtle }}>
+                    <button
+                      onClick={() => toggleBookmark(bm.lesson_number)}
+                      className="absolute top-3 right-3 p-1 rounded-md text-slate-300 hover:text-red-400 hover:bg-red-50 opacity-0 group-hover:opacity-100 transition-all"
+                      title="Remove bookmark"
+                    >
+                      <X size={14} />
+                    </button>
+                    <Link to={`/modules/${moduleId}/lessons/${lessonId}`} className="block">
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: theme.colors.accent.cyan }}>
+                        Module {moduleId}
+                      </p>
+                      <p className="text-sm font-bold pr-6" style={{ color: theme.colors.text.primary }}>
+                        {lesson.title}
+                      </p>
+                    </Link>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         <div className="mb-8">
           <h2 className="text-lg sm:text-xl font-bold mb-4" style={{ color: theme.colors.text.primary }}>

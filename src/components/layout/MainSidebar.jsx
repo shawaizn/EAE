@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { LogOut, User, ChevronRight, ChevronDown } from 'lucide-react';
+import { LogOut, User, ChevronRight, ChevronDown, Zap, Award } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import { modulesData } from '../../data/modulesData';
 
@@ -173,6 +173,18 @@ export function MainSidebar({ user, onSignOut }) {
         </Link>
 
         <Link
+          to="/prompts"
+          className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-colors font-semibold ${
+            isActive('/prompts')
+              ? 'bg-cyan-100 text-cyan-700'
+              : 'text-slate-700 hover:bg-slate-100'
+          }`}
+        >
+          <Zap size={16} />
+          Prompt Vault
+        </Link>
+
+        <Link
           to="/resources"
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold ${
             isActive('/resources')
@@ -181,6 +193,18 @@ export function MainSidebar({ user, onSignOut }) {
           }`}
         >
           Resources
+        </Link>
+
+        <Link
+          to="/certificate"
+          className={`flex items-center gap-2 px-4 py-3 rounded-lg transition-colors font-semibold ${
+            isActive('/certificate')
+              ? 'bg-cyan-100 text-cyan-700'
+              : 'text-slate-500 hover:bg-slate-100'
+          }`}
+        >
+          <Award size={16} />
+          Certificate
         </Link>
       </nav>
 

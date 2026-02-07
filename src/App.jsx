@@ -9,6 +9,8 @@ import { ModulePage } from './pages/ModulePage';
 import { RecapPage } from './pages/RecapPage';
 import { NotesPage } from './pages/NotesPage';
 import { ResourcesPage } from './pages/ResourcesPage';
+import { PromptsPage } from './pages/PromptsPage';
+import { CertificatePage } from './pages/CertificatePage';
 import QuizPage from './components/quiz-system/QuizPage';
 import { SidebarProvider } from './context/SidebarContext';
 
@@ -103,6 +105,26 @@ function App() {
               <ProtectedRoute>
                 <Layout user={user} onSignOut={signOut}>
                   <ResourcesPage />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/prompts"
+            element={
+              <ProtectedRoute>
+                <Layout user={user} onSignOut={signOut}>
+                  <PromptsPage />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/certificate"
+            element={
+              <ProtectedRoute>
+                <Layout user={user} onSignOut={signOut}>
+                  <CertificatePage />
                 </Layout>
               </ProtectedRoute>
             }

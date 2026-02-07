@@ -4,11 +4,12 @@ import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
 import { Button } from '../components/ui/Button';
 import { Modal } from '../components/ui/Modal';
-import { Check, Copy, ChevronDown, ChevronUp } from 'lucide-react';
+import { Check, Copy, ChevronDown, ChevronUp, Bookmark } from 'lucide-react';
 import { modulesData } from '../data/modulesData';
 import { lessonMedia } from '../data/lessonMedia';
 import { activityData } from '../data/activityData';
 import { getLessonNumber, parseMarkdownToHTML } from '../lib/utils';
+import { useBookmarks } from '../hooks/useBookmarks';
 
 export function LessonPage() {
   const { user, signOut } = useAuth();
@@ -21,6 +22,7 @@ export function LessonPage() {
   const [isMarking, setIsMarking] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
   const { isComplete, toggleComplete, loading } = useProgress(user?.id, []);
+  const { isBookmarked, toggleBookmark } = useBookmarks(user?.id);
 
   const moduleIdNum = parseInt(moduleId);
   const lessonIdNum = parseInt(lessonId);
@@ -162,9 +164,22 @@ export function LessonPage() {
           </div> */}
 
           {/* Lesson Title */}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 mb-12 sm:mb-24" style={{ letterSpacing: '-0.02em' }}>
-            {lesson.title}
-          </h1>
+          <div className="flex items-start justify-between gap-4 mb-12 sm:mb-24">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>
+              {lesson.title}
+            </h1>
+            <button
+              onClick={() => toggleBookmark(globalLessonNumber)}
+              className={`flex-shrink-0 mt-1 p-2.5 rounded-lg border-2 transition-all duration-200 ${
+                isBookmarked(globalLessonNumber)
+                  ? 'bg-cyan-50 border-cyan-300 text-cyan-600 shadow-sm'
+                  : 'bg-white border-slate-200 text-slate-400 hover:border-slate-300 hover:text-slate-600'
+              }`}
+              title={isBookmarked(globalLessonNumber) ? 'Remove bookmark' : 'Bookmark this lesson'}
+            >
+              <Bookmark size={20} fill={isBookmarked(globalLessonNumber) ? 'currentColor' : 'none'} />
+            </button>
+          </div>
 
           {/* Video */}
           <div className="mb-12 sm:mb-24 bg-black rounded-lg overflow-hidden shadow-lg">
