@@ -4,6 +4,7 @@ import { Zap, Target, ArrowRight, BookOpen, Users, TrendingUp, ChevronDown } fro
 import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 import { LogoHorizontal } from '../components/branding/Logo';
 import { modulesData } from '../data/modulesData';
+import { activityData } from '../data/activityData';
 import { theme } from '../styles/theme';
 
 const moduleNarratives = [
@@ -313,7 +314,7 @@ export function Landing() {
 
                   <div
                     style={{
-                      maxHeight: isExpanded ? `${module.lessons.length * 56 + 24}px` : '0px',
+                      maxHeight: isExpanded ? `${module.lessons.length * 64 + 32}px` : '0px',
                       opacity: isExpanded ? 1 : 0,
                       overflow: 'hidden',
                       transition: 'max-height 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 250ms ease',
@@ -340,7 +341,7 @@ export function Landing() {
                             <span className="text-sm font-medium" style={{ color: theme.colors.text.primary }}>
                               {lesson.title}
                             </span>
-                            {lesson.skill && (
+                            {activityData[`${module.id}-${lesson.id}`]?.skill && (
                               <span
                                 className="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0"
                                 style={{
@@ -348,7 +349,7 @@ export function Landing() {
                                   color: theme.colors.accent.cyan,
                                 }}
                               >
-                                {lesson.skill}
+                                {activityData[`${module.id}-${lesson.id}`].skill}
                               </span>
                             )}
                           </div>
