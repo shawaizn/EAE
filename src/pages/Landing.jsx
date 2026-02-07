@@ -314,7 +314,7 @@ export function Landing() {
 
                   <div
                     style={{
-                      maxHeight: isExpanded ? `${module.lessons.length * 64 + 32}px` : '0px',
+                      maxHeight: isExpanded ? `${module.lessons.length * 64 + 60}px` : '0px',
                       opacity: isExpanded ? 1 : 0,
                       overflow: 'hidden',
                       transition: 'max-height 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 250ms ease',
@@ -322,6 +322,11 @@ export function Landing() {
                   >
                     <div className="px-6 sm:px-8 pb-6 sm:pb-8">
                       <div className="border-t pt-4" style={{ borderColor: theme.colors.border.subtle }}>
+                        <div className="flex items-center gap-4 mb-2 px-0">
+                          <span className="text-[10px] font-semibold uppercase tracking-widest w-6 flex-shrink-0" style={{ color: theme.colors.text.muted }}></span>
+                          <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: theme.colors.text.muted }}>Lessons</span>
+                          <span className="ml-auto text-[10px] font-semibold uppercase tracking-widest flex-shrink-0" style={{ color: theme.colors.text.muted }}>Skill</span>
+                        </div>
                         {module.lessons.map((lesson, lessonIndex) => (
                           <div
                             key={lesson.id}
