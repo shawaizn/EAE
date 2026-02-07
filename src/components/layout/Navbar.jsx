@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useSidebar } from '../../context/SidebarContext';
 import { LogoHorizontal } from '../branding/Logo';
-import { theme } from '../../styles/theme';
+import { theme, behavior } from '../../styles/theme';
 
 export function Navbar({ user }) {
   const { sidebarOpen, setSidebarOpen } = useSidebar();
@@ -12,7 +12,9 @@ export function Navbar({ user }) {
       boxShadow: theme.shadows.medium,
     }}>
       <div className="absolute bottom-0 left-0 right-0 h-px" style={{
-        background: `linear-gradient(90deg, transparent, ${theme.colors.accent.cyan}60, ${theme.colors.accent.coral}60, transparent)`,
+        background: behavior.hoverGlow
+          ? `linear-gradient(90deg, transparent, ${theme.colors.accent.cyan}60, ${theme.colors.accent.coral}60, transparent)`
+          : `linear-gradient(90deg, transparent, ${theme.colors.border.default}80, transparent)`,
       }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -69,12 +71,16 @@ export function Navbar({ user }) {
                   backgroundColor: theme.colors.accent.cyan,
                   color: 'white',
                   borderColor: theme.colors.accent.cyan,
-                  boxShadow: `0 0 0 rgba(6, 182, 212, 0.3)`,
+                  boxShadow: '0 0 0 rgba(6, 182, 212, 0.3)',
                   transition: theme.transitions.fast,
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.boxShadow = theme.shadows.glow.cyan;
-                  e.currentTarget.style.transform = 'translateY(-1px)';
+                  if (behavior.hoverGlow) {
+                    e.currentTarget.style.boxShadow = theme.shadows.glow.cyan;
+                  }
+                  if (behavior.hoverScale) {
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                  }
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.boxShadow = '0 0 0 rgba(6, 182, 212, 0.3)';
@@ -82,8 +88,9 @@ export function Navbar({ user }) {
                 }}
               >
                 <span className="relative z-10">Login</span>
-                {/* Lightning flash on hover */}
-                <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-300" />
+                {behavior.hoverGlow && (
+                  <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-300" />
+                )}
               </Link>
             )}
           </div>

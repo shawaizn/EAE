@@ -1,8 +1,10 @@
 import { CheckCircle2, Circle } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { theme } from '../../styles/theme';
+import { theme, behavior } from '../../styles/theme';
 
 export function LessonGrid({ lessons, stats, totalLessons = 44 }) {
+  const hoverClasses = behavior.hoverScale ? 'hover:scale-110' : 'hover:shadow-sm';
+
   return (
     <div className="space-y-6">
       <div>
@@ -17,7 +19,7 @@ export function LessonGrid({ lessons, stats, totalLessons = 44 }) {
               <Link
                 key={lessonNum}
                 to={`/modules/${Math.ceil(lessonNum / 6)}/lessons/${((lessonNum - 1) % 6) + 1}`}
-                className="aspect-square rounded-lg border-2 flex items-center justify-center transition-all hover:scale-110 group relative"
+                className={`aspect-square rounded-lg border-2 flex items-center justify-center transition-all ${hoverClasses} group relative`}
                 style={{
                   backgroundColor: isCompleted
                     ? `${theme.colors.status.success}20`
@@ -25,7 +27,7 @@ export function LessonGrid({ lessons, stats, totalLessons = 44 }) {
                   borderColor: isCompleted
                     ? theme.colors.status.success
                     : theme.colors.border.subtle,
-                  boxShadow: isCompleted
+                  boxShadow: isCompleted && behavior.hoverGlow
                     ? `0 0 10px ${theme.colors.status.success}30`
                     : 'none',
                 }}

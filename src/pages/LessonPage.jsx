@@ -10,6 +10,7 @@ import { lessonMedia } from '../data/lessonMedia';
 import { activityData } from '../data/activityData';
 import { getLessonNumber, parseMarkdownToHTML } from '../lib/utils';
 import { useBookmarks } from '../hooks/useBookmarks';
+import { lang } from '../styles/theme';
 
 export function LessonPage() {
   const { user, signOut } = useAuth();
@@ -150,19 +151,6 @@ export function LessonPage() {
   return (
     <div className="flex-1 overflow-y-auto">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-          {/* Breadcrumb */}
-          {/* <div className="mb-8">
-            <Link to="/dashboard" className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
-              Dashboard
-            </Link>
-            <span className="mx-2 text-slate-400">/</span>
-            <Link to={`/modules/${moduleIdNum}`} className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
-              {module.title}
-            </Link>
-            <span className="mx-2 text-slate-400">/</span>
-            <span className="text-slate-600 font-medium">{lesson.title}</span>
-          </div> */}
-
           {/* Lesson Title */}
           <div className="flex items-start justify-between gap-4 mb-12 sm:mb-24">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>
@@ -269,25 +257,25 @@ export function LessonPage() {
                       onClick={() => setActiveModal('learners')}
                       className="px-3 sm:px-6 py-2 sm:py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200 text-xs sm:text-sm"
                     >
-                      📚 Learners
+                      {lang.audienceLabels.learners}
                     </button>
                     <button
                       onClick={() => setActiveModal('employees')}
                       className="px-3 sm:px-6 py-2 sm:py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200 text-xs sm:text-sm"
                     >
-                      💼 Employees
+                      {lang.audienceLabels.employees}
                     </button>
                     <button
                       onClick={() => setActiveModal('selfEmployed')}
                       className="px-3 sm:px-6 py-2 sm:py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200 text-xs sm:text-sm"
                     >
-                      🚀 Self-Employed
+                      {lang.audienceLabels.selfEmployed}
                     </button>
                     <button
                       onClick={() => setActiveModal('businesses')}
                       className="px-3 sm:px-6 py-2 sm:py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200 text-xs sm:text-sm"
                     >
-                      🏢 Businesses
+                      {lang.audienceLabels.businesses}
                     </button>
                   </div>
                 </div>
@@ -316,7 +304,7 @@ export function LessonPage() {
           <Modal
             isOpen={activeModal === 'learners'}
             onClose={() => setActiveModal(null)}
-            title="For Learners"
+            title="For Individual Learners"
           >
             <div
               className="prose prose-sm max-w-none text-slate-700"
@@ -349,7 +337,7 @@ export function LessonPage() {
           <Modal
             isOpen={activeModal === 'businesses'}
             onClose={() => setActiveModal(null)}
-            title="For Businesses"
+            title="For Business Teams"
           >
             <div
               className="prose prose-sm max-w-none text-slate-700"
