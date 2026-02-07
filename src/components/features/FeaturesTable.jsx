@@ -82,10 +82,10 @@ export function FeaturesTable() {
           letterSpacing: '-0.03em',
           color: theme.colors.text.primary,
         }}>
-          Everything You Get
+          What's Inside
         </h2>
         <p style={{ color: theme.colors.text.secondary }}>
-          12 integrated components designed to maximize learning and application
+          A few of the components built into the platform
         </p>
       </div>
 
