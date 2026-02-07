@@ -7,6 +7,7 @@ import { ProgressPage } from './pages/ProgressPage';
 import { LessonPage } from './pages/LessonPage';
 import { ModulePage } from './pages/ModulePage';
 import { RecapPage } from './pages/RecapPage';
+import { NotesPage } from './pages/NotesPage';
 import { ResourcesPage } from './pages/ResourcesPage';
 import QuizPage from './components/quiz-system/QuizPage';
 import { SidebarProvider } from './context/SidebarContext';
@@ -82,6 +83,16 @@ function App() {
               <ProtectedRoute>
                 <Layout user={user} onSignOut={signOut}>
                   <RecapPage />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/notes"
+            element={
+              <ProtectedRoute>
+                <Layout user={user} onSignOut={signOut}>
+                  <NotesPage />
                 </Layout>
               </ProtectedRoute>
             }

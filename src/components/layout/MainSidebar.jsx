@@ -162,6 +162,17 @@ export function MainSidebar({ user, onSignOut }) {
         })}
 
         <Link
+          to="/notes"
+          className={`block px-4 py-3 rounded-lg transition-colors font-semibold ${
+            isActive('/notes')
+              ? 'bg-cyan-100 text-cyan-700'
+              : 'text-slate-700 hover:bg-slate-100'
+          }`}
+        >
+          Notes
+        </Link>
+
+        <Link
           to="/resources"
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold ${
             isActive('/resources')
