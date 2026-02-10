@@ -20,14 +20,14 @@ const COLORS = {
 };
 
 const moduleNarratives = [
-  "Accelerated foundations -- what AI is, how it fits in technology history, and the evolution to machine learning.",
-  "Evaluation frameworks -- how ChatGPT works, the autonomy ladder, and frameworks to evaluate ANY AI tool.",
-  "Market structure -- how AI goes from research labs to products, who controls what, and business models.",
-  "Strategic restraint -- when to use AI, when NOT to, which work to protect, and the five AI traps.",
-  "Contextual prompting -- frameworks, meta-prompting, and building custom prompt libraries for YOUR workflow.",
-  "Systems thinking -- building workflows around outcomes, creating playbooks that survive tool changes.",
-  "Competitive positioning -- what skills increase in value, which advantages AI can't replicate.",
-  "Systematic implementation -- building workflows that last, team collaboration, measuring real impact."
+  "Learn what AI is, how it fits in technology history, and the evolution from programming to machine learning.",
+  "Understand how ChatGPT works, the autonomy ladder, and frameworks to evaluate any AI tool in your workflow.",
+  "Explore how AI moves from research labs to products, who controls what, and the business models driving development.",
+  "Discover when to use AI and when not to, which work to protect, and how to avoid the five most common AI traps.",
+  "Master contextual prompting frameworks, meta-prompting techniques, and build custom prompt libraries for your needs.",
+  "Learn systems thinking for building workflows around outcomes and creating playbooks that survive tool changes.",
+  "Identify which skills increase in value with AI and understand the competitive advantages AI cannot replicate.",
+  "Build systematic implementation strategies, enable team collaboration, and learn to measure real business impact."
 ];
 
 export function ProgressPage() {
@@ -74,7 +74,7 @@ export function ProgressPage() {
           </p>
         </div>
 
-        {/* Key Metrics: Scan-friendly summary */}
+        {/* Key Metrics */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
           <StatCard
             icon={CheckCircle2}
@@ -84,7 +84,7 @@ export function ProgressPage() {
           />
           <StatCard
             icon={CheckCircle2}
-            label="Modules In Progress"
+            label="Active Learning Modules"
             value={`${allModules.filter(m => m.progress > 0 && m.progress < 100).length}/${allModules.length}`}
             color="cyan"
           />
@@ -101,14 +101,14 @@ export function ProgressPage() {
           </div>
         </div>
 
-        {/* Next Steps: Clear call to action */}
+        {/* Next Steps */}
         {nextIncompleteModule && (
           <div className="mb-10 p-5 sm:p-6 rounded-xl border" style={{
             backgroundColor: `${COLORS.primaryElectric}08`,
             borderColor: `${COLORS.primaryElectric}30`,
           }}>
             <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: COLORS.textSecondary }}>
-              Next Module to Start
+              Continue Your Learning
             </p>
             <Link
               to={`/modules/${nextIncompleteModule.moduleId}`}
@@ -127,12 +127,12 @@ export function ProgressPage() {
           </div>
         )}
 
-        {/* Lesson Overview: Quick glance */}
+        {/* Lesson Overview */}
         <div className="mb-10">
           <LessonGrid lessons={Array.from({ length: totalLessons }, (_, i) => i + 1)} stats={stats} totalLessons={totalLessons} />
         </div>
 
-        {/* Bookmarked Lessons: Quick access */}
+        {/* Bookmarked Lessons */}
         {bookmarks.length > 0 && (
           <div className="mb-10">
             <h2 className="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2" style={{ color: COLORS.textPrimary }}>
@@ -172,10 +172,10 @@ export function ProgressPage() {
           </div>
         )}
 
-        {/* Module Curriculum: Complete view */}
+        {/* Complete Module Overview */}
         <div className="mb-8">
           <h2 className="text-lg sm:text-xl font-bold mb-4" style={{ color: COLORS.textPrimary }}>
-            Module Curriculum
+            All Training Modules
           </h2>
           <div className="space-y-3">
             {allModules.map((module) => (

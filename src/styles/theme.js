@@ -228,12 +228,12 @@ const enterpriseTheme = {
     progressBarGlow: false,
   },
   language: {
-    progressTitle: 'Training Progress',
-    progressSubtitle: '44 lessons across 8 modules',
+    progressTitle: 'Your Training Progress',
+    progressSubtitle: 'Track your learning across 44 lessons in 8 strategic modules',
     levelLabels: {
       0: 'Not Started',
       10: 'In Progress',
-      25: 'Building',
+      25: 'Building Knowledge',
       50: 'Proficient',
       75: 'Advanced',
     },
