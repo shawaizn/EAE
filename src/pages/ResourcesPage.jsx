@@ -7,53 +7,53 @@ export function ResourcesPage() {
   const { user, signOut } = useAuth();
 
   return (
-    <div className="flex-1 overflow-y-auto relative" style={{ backgroundColor: theme.colors.background.base }}>
+    <div className="flex-1 overflow-y-auto relative" style={{ backgroundColor: COLORS.bg }}>
       <div className="max-w-screen-xl mx-auto px-8 py-8 relative z-10">
           {/* Breadcrumb */}
           {/* <div className="mb-8">
-            <Link to="/dashboard" className="font-medium transition-colors" style={{ color: theme.colors.accent.cyan }}>
+            <Link to="/dashboard" className="font-medium transition-colors" style={{ color: COLORS.accent }}>
               Dashboard
             </Link>
-            <span className="mx-2" style={{ color: theme.colors.text.muted }}>/</span>
-            <span className="font-medium" style={{ color: theme.colors.text.secondary }}>Resources</span>
+            <span className="mx-2" style={{ color: COLORS.textMuted }}>/</span>
+            <span className="font-medium" style={{ color: COLORS.textSecondary }}>Resources</span>
           </div> */}
 
           {/* Header */}
           <div className="mb-24">
             <h1 className="text-5xl font-black mb-3" style={{
               letterSpacing: '-0.02em',
-              color: theme.colors.text.primary
+              color: COLORS.textPrimary
             }}>
               Resources
             </h1>
-            <p className="text-lg font-medium" style={{ color: theme.colors.text.secondary }}>
+            <p className="text-lg font-medium" style={{ color: COLORS.textSecondary }}>
               Tools, templates, and guides to support your learning
             </p>
           </div>
 
           {/* Learner Profile */}
           <div className="mb-24 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl" style={{
-            backgroundColor: theme.colors.background.card,
+            backgroundColor: COLORS.cardBg,
             borderWidth: '2px',
-            borderColor: theme.colors.border.default,
+            borderColor: COLORS.border,
           }}>
             <div className="p-6" style={{
-              backgroundColor: `${theme.colors.text.primary}08`,
+              backgroundColor: `${COLORS.textPrimary}08`,
               borderBottomWidth: '2px',
-              borderBottomColor: theme.colors.border.default,
+              borderBottomColor: COLORS.border,
             }}>
               <h2 className="text-2xl font-black" style={{
                 letterSpacing: '-0.02em',
-                color: theme.colors.text.primary
+                color: COLORS.textPrimary
               }}>
                 Learner Profile Templates
               </h2>
             </div>
             <div className="p-12">
-              <p className="mb-6 leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+              <p className="mb-6 leading-relaxed" style={{ color: COLORS.textSecondary }}>
                 Create your learner profile to personalize your AI learning experience.
               </p>
-              <p style={{ color: theme.colors.text.muted }}>
+              <p style={{ color: COLORS.textMuted }}>
                 [Learner profile templates will be displayed here]
               </p>
             </div>
@@ -61,27 +61,27 @@ export function ResourcesPage() {
 
           {/* AI Prompts */}
           <div className="mb-24 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl" style={{
-            backgroundColor: theme.colors.background.card,
+            backgroundColor: COLORS.cardBg,
             borderWidth: '2px',
-            borderColor: theme.colors.border.default,
+            borderColor: COLORS.border,
           }}>
             <div className="p-6" style={{
-              backgroundColor: `${theme.colors.text.primary}08`,
+              backgroundColor: `${COLORS.textPrimary}08`,
               borderBottomWidth: '2px',
-              borderBottomColor: theme.colors.border.default,
+              borderBottomColor: COLORS.border,
             }}>
               <h2 className="text-2xl font-black" style={{
                 letterSpacing: '-0.02em',
-                color: theme.colors.text.primary
+                color: COLORS.textPrimary
               }}>
                 AI Response Prompts
               </h2>
             </div>
             <div className="p-12">
-              <p className="mb-6 leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+              <p className="mb-6 leading-relaxed" style={{ color: COLORS.textSecondary }}>
                 Pre-built prompts to use with AI for explaining course content.
               </p>
-              <p style={{ color: theme.colors.text.muted }}>
+              <p style={{ color: COLORS.textMuted }}>
                 [AI prompt templates will be displayed here]
               </p>
             </div>
@@ -89,37 +89,37 @@ export function ResourcesPage() {
 
           {/* How-To Guides */}
           <div className="mb-24 rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl" style={{
-            backgroundColor: theme.colors.background.card,
+            backgroundColor: COLORS.cardBg,
             borderWidth: '2px',
-            borderColor: theme.colors.border.default,
+            borderColor: COLORS.border,
           }}>
             <div className="p-6" style={{
-              backgroundColor: `${theme.colors.text.primary}08`,
+              backgroundColor: `${COLORS.textPrimary}08`,
               borderBottomWidth: '2px',
-              borderBottomColor: theme.colors.border.default,
+              borderBottomColor: COLORS.border,
             }}>
               <h2 className="text-2xl font-black" style={{
                 letterSpacing: '-0.02em',
-                color: theme.colors.text.primary
+                color: COLORS.textPrimary
               }}>
                 How-To Guides
               </h2>
             </div>
             <div className="p-12">
-              <p className="mb-8 leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+              <p className="mb-8 leading-relaxed" style={{ color: COLORS.textSecondary }}>
                 Step-by-step guides for getting the most out of the course.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center justify-between p-6 rounded-lg transition-all duration-300 hover:shadow-lg" style={{
-                  backgroundColor: theme.colors.background.card,
+                  backgroundColor: COLORS.cardBg,
                   borderWidth: '2px',
-                  borderColor: theme.colors.border.default,
+                  borderColor: COLORS.border,
                 }}>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold" style={{ color: theme.colors.text.primary }}>
+                    <h3 className="text-lg font-semibold" style={{ color: COLORS.textPrimary }}>
                       The APP Framework
                     </h3>
-                    <p className="mt-2" style={{ color: theme.colors.text.secondary }}>
+                    <p className="mt-2" style={{ color: COLORS.textSecondary }}>
                       A comprehensive framework for understanding and applying key concepts
                     </p>
                   </div>
@@ -128,7 +128,7 @@ export function ResourcesPage() {
                     download="app-framework.pdf"
                     className="ml-6 px-6 py-3 text-white rounded-lg hover:opacity-90 transition-opacity font-semibold"
                     style={{
-                      backgroundColor: theme.colors.accent.cyan,
+                      backgroundColor: COLORS.accent,
                     }}
                   >
                     Download PDF
