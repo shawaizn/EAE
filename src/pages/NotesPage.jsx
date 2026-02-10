@@ -3,16 +3,16 @@ import { useAuth } from '../hooks/useAuth';
 import { useNotes } from '../hooks/useNotes';
 import { NoteCategory } from '../components/notes/NoteCategory';
 import { Clock, Sparkles, Heart, Target } from 'lucide-react';
+import { theme } from '../styles/theme';
 
-// DESIGN COLORS - Change these to switch between enterprise and old design
 const COLORS = {
-  bg: '#EFF6FF',
-  cardBg: '#FFFFFF',
-  textPrimary: '#0F172A',
-  textSecondary: '#475569',
-  accent: '#0369A1',
-  primary: '#1E293B',
-  border: '#E2E8F0',
+  bg: theme.colors.background.light || theme.colors.background.base,
+  cardBg: theme.colors.background.card,
+  textPrimary: theme.colors.text.primary,
+  textSecondary: theme.colors.text.secondary,
+  accent: theme.colors.accent.cyan,
+  primary: theme.colors.primary.deep,
+  border: theme.colors.border.subtle,
 };
 
 const CATEGORIES = [

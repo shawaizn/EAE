@@ -106,9 +106,8 @@ export function ProgressPage() {
             backgroundColor: `linear-gradient(135deg, ${COLORS.primaryElectric}10 0%, ${COLORS.cardBg} 100%)`,
             borderColor: `${COLORS.primaryElectric}30`,
           }}>
-            <div className="flex items-center gap-2 p-2 rounded-lg transition-all w-fit mb-3" style={{ backgroundColor: `${COLORS.primaryElectric}15` }}>
-              <div size={20} style={{ color: COLORS.primaryElectric }} className="text-xl">⭐</div>
-            </div>
+            <div className="flex items-center gap-2 p-2 rounded-lg transition-all w-fit mb-3" style={{ backgroundColor: `${COLORS.primaryElectric}15` }} />
+
             <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: COLORS.textSecondary }}>
               {behavior.gamificationLanguage ? 'Your Level' : 'Status'}
             </p>

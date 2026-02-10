@@ -7,33 +7,19 @@ import { ProgressBar } from '../components/ui/ProgressBar';
 import { Check } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
 import { BRAND } from '../lib/brandConstants';
-import { behavior } from '../styles/theme';
+import { behavior, theme } from '../styles/theme';
 import { Button } from '../components/ui/Button';
 
-// DESIGN COLORS - Change these to switch between enterprise and old design
 const COLORS = {
-  // ENTERPRISE DESIGN (Current)
-  bg: '#EFF6FF',              // Light blue background
-  cardBg: '#FFFFFF',          // White cards
-  textPrimary: '#0F172A',     // Near black text
-  textSecondary: '#475569',   // Slate gray text
-  accent: '#0369A1',          // Teal/cyan accent
-  accentLight: '#0369A115',   // Teal with transparency
-  primary: '#1E293B',         // Deep navy for buttons
-  border: '#E2E8F0',          // Light border
-  success: '#059669',         // Green for success states
-
-  /* OLD DESIGN - Uncomment to revert to previous design:
-  bg: '#FFFFFF',
-  cardBg: '#F8FAFC',
-  textPrimary: '#1E293B',
-  textSecondary: '#64748B',
-  accent: '#3B82F6',
-  accentLight: '#3B82F615',
-  primary: '#1F2937',
-  border: '#D1D5DB',
-  success: '#10B981',
-  */
+  bg: theme.colors.background.light || theme.colors.background.base,
+  cardBg: theme.colors.background.card,
+  textPrimary: theme.colors.text.primary,
+  textSecondary: theme.colors.text.secondary,
+  accent: theme.colors.accent.cyan,
+  accentLight: `${theme.colors.accent.cyan}15`,
+  primary: theme.colors.primary.deep,
+  border: theme.colors.border.subtle,
+  success: theme.colors.status.success,
 };
 
 export function ModulePage() {

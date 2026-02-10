@@ -1,17 +1,17 @@
 import { useAuth } from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import appFrameworkPdf from '../assets/app-framework.pdf';
+import { theme } from '../styles/theme';
 
-// DESIGN COLORS - Change these to switch between enterprise and old design
 const COLORS = {
-  bg: '#EFF6FF',
-  cardBg: '#FFFFFF',
-  textPrimary: '#0F172A',
-  textSecondary: '#475569',
-  textMuted: '#94A3B8',
-  accent: '#0369A1',
-  primary: '#1E293B',
-  border: '#E2E8F0',
+  bg: theme.colors.background.light || theme.colors.background.base,
+  cardBg: theme.colors.background.card,
+  textPrimary: theme.colors.text.primary,
+  textSecondary: theme.colors.text.secondary,
+  textMuted: theme.colors.text.muted,
+  accent: theme.colors.accent.cyan,
+  primary: theme.colors.primary.deep,
+  border: theme.colors.border.subtle,
 };
 
 export function ResourcesPage() {

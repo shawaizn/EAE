@@ -3,22 +3,21 @@ import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
 import { supabase } from '../lib/supabase';
 import { getProgressStats } from '../lib/utils';
-import { theme } from '../styles/theme';
+import { theme, getShadow } from '../styles/theme';
 import { Award, Download, Share2, CheckCircle2, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// DESIGN COLORS - Change these to switch between enterprise and old design
 const COLORS = {
-  bg: '#EFF6FF',
-  cardBg: '#FFFFFF',
-  textPrimary: '#0F172A',
-  textSecondary: '#475569',
-  accent: '#0369A1',
-  primary: '#1E293B',
-  primaryElectric: '#1E40AF',
-  border: '#E2E8F0',
-  success: '#059669',
-  shadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
+  bg: theme.colors.background.light || theme.colors.background.base,
+  cardBg: theme.colors.background.card,
+  textPrimary: theme.colors.text.primary,
+  textSecondary: theme.colors.text.secondary,
+  accent: theme.colors.accent.cyan,
+  primary: theme.colors.primary.deep,
+  primaryElectric: theme.colors.primary.electric,
+  border: theme.colors.border.subtle,
+  success: theme.colors.status.success,
+  shadow: getShadow('large'),
 };
 
 export function CertificatePage() {
