@@ -2,22 +2,16 @@ import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { getLessonNumber, getProgressStats, getModuleAndLesson } from '../lib/utils';
-import { behavior, lang, theme } from '../styles/theme';
-import { StatCard, ModuleProgressCard, LessonGrid } from '../components/progress';
-import { CheckCircle2, Bookmark, X, ChevronRight } from 'lucide-react';
+import { theme } from '../styles/theme';
+import {
+  IntegratedProgressHero,
+  ModuleTimeline,
+  ModuleLessonsBlock,
+  ContinueLearningCard
+} from '../components/progress';
+import { Bookmark, X } from 'lucide-react';
 import { useBookmarks } from '../hooks/useBookmarks';
 import { Link } from 'react-router-dom';
-
-const COLORS = {
-  bg: theme.colors.background.light || theme.colors.background.base,
-  cardBg: theme.colors.background.card,
-  textPrimary: theme.colors.text.primary,
-  textSecondary: theme.colors.text.secondary,
-  accent: theme.colors.accent.cyan,
-  primary: theme.colors.primary.deep,
-  primaryElectric: theme.colors.primary.electric,
-  border: theme.colors.border.subtle,
-};
 
 const moduleNarratives = [
   "Learn what AI is, how it fits in technology history, and the evolution from programming to machine learning.",
@@ -36,7 +30,6 @@ export function ProgressPage() {
   const { bookmarks, toggleBookmark } = useBookmarks(user?.id);
 
   const stats = getProgressStats(completions);
-  const totalLessons = 44;
 
   const allModules = modulesData.map((module, index) => {
     const completedLessons = module.lessons.filter(
@@ -49,138 +42,125 @@ export function ProgressPage() {
       progress,
       completedLessons,
       totalLessons: module.lessons.length,
-      narrative: moduleNarratives[index]
+      narrative: moduleNarratives[index],
+      lessons: module.lessons
     };
   });
 
+  const currentModule = allModules.find(m => m.progress > 0 && m.progress < 100) || allModules[0];
   const nextIncompleteModule = allModules.find(m => m.progress < 100);
-  const nextIncompleteLesson = nextIncompleteModule
-    ? nextIncompleteModule.lessons?.find(l => !isComplete(getLessonNumber(nextIncompleteModule.moduleId, l.id), 'lesson'))
-    : null;
+  const nextIncompleteLesson = nextIncompleteModule?.lessons?.find(
+    l => !isComplete(getLessonNumber(nextIncompleteModule.moduleId, l.id), 'lesson')
+  );
+
+  const modulesCompleted = allModules.filter(m => m.progress === 100).length;
 
   return (
-    <div className="w-full min-h-screen overflow-y-auto p-4 sm:p-6 lg:p-8" style={{ backgroundColor: COLORS.bg }}>
-      <div className="max-w-6xl mx-auto">
-        {/* Header: Clear orientation */}
-        <div className="mb-10">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-2" style={{
-            letterSpacing: '-0.02em',
-            color: COLORS.textPrimary,
-          }}>
-            {lang.progressTitle}
-          </h1>
-          <p className="text-base sm:text-lg" style={{ color: COLORS.textSecondary }}>
-            {lang.progressSubtitle}
-          </p>
-        </div>
-
-        {/* Key Metrics */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
-          <StatCard
-            icon={CheckCircle2}
-            label="Lessons Completed"
-            value={`${stats.lessonsCompleted}/44`}
-            color="success"
+    <div className="w-full min-h-screen overflow-y-auto" style={{ backgroundColor: theme.colors.background.base }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+        <div className="space-y-8">
+          <IntegratedProgressHero
+            stats={{ ...stats, modulesCompleted }}
+            currentModuleInfo={currentModule}
           />
-          <StatCard
-            icon={CheckCircle2}
-            label="Active Learning Modules"
-            value={`${allModules.filter(m => m.progress > 0 && m.progress < 100).length}/${allModules.length}`}
-            color="cyan"
-          />
-          <div className="p-4 sm:p-6 rounded-xl border transition-all hover:shadow-md" style={{
-            backgroundColor: COLORS.cardBg,
-            borderColor: COLORS.border,
-          }}>
-            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: COLORS.textSecondary }}>
-              Overall Progress
-            </p>
-            <p className="text-4xl sm:text-5xl font-bold" style={{ color: COLORS.primaryElectric }}>
-              {Math.round(stats.percentComplete)}%
-            </p>
-          </div>
-        </div>
 
-        {/* Next Steps */}
-        {nextIncompleteModule && (
-          <div className="mb-10 p-5 sm:p-6 rounded-xl border" style={{
-            backgroundColor: `${COLORS.primaryElectric}08`,
-            borderColor: `${COLORS.primaryElectric}30`,
-          }}>
-            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: COLORS.textSecondary }}>
-              Continue Your Learning
-            </p>
-            <Link
-              to={`/modules/${nextIncompleteModule.moduleId}`}
-              className="flex items-center justify-between gap-3 hover:gap-4 transition-all group"
-            >
-              <div className="flex-1 min-w-0">
-                <h3 className="text-lg sm:text-xl font-bold mb-1" style={{ color: COLORS.textPrimary }}>
-                  {nextIncompleteModule.title}
-                </h3>
-                <p className="text-sm line-clamp-1" style={{ color: COLORS.textSecondary }}>
-                  {nextIncompleteModule.narrative}
-                </p>
+          {nextIncompleteModule && nextIncompleteLesson && (
+            <ContinueLearningCard
+              nextModule={nextIncompleteModule}
+              nextLesson={nextIncompleteLesson}
+            />
+          )}
+
+          <div className="grid lg:grid-cols-[1fr,380px] gap-8">
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-2xl font-bold mb-6" style={{
+                  color: theme.colors.text.primary,
+                  letterSpacing: '-0.02em'
+                }}>
+                  Modules & Lessons
+                </h2>
+
+                <div className="space-y-6">
+                  {allModules.map(module => {
+                    const moduleLessons = Array.from(
+                      { length: module.totalLessons },
+                      (_, i) => getLessonNumber(module.moduleId, i + 1)
+                    );
+
+                    return (
+                      <ModuleLessonsBlock
+                        key={module.moduleId}
+                        module={module}
+                        lessons={moduleLessons}
+                        isComplete={isComplete}
+                        getModuleAndLesson={getModuleAndLesson}
+                      />
+                    );
+                  })}
+                </div>
               </div>
-              <ChevronRight size={20} style={{ color: COLORS.accent, flexShrink: 0 }} />
-            </Link>
-          </div>
-        )}
-
-        {/* Lesson Overview */}
-        <div className="mb-10">
-          <LessonGrid lessons={Array.from({ length: totalLessons }, (_, i) => i + 1)} stats={stats} totalLessons={totalLessons} />
-        </div>
-
-        {/* Bookmarked Lessons */}
-        {bookmarks.length > 0 && (
-          <div className="mb-10">
-            <h2 className="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2" style={{ color: COLORS.textPrimary }}>
-              <Bookmark size={18} style={{ color: COLORS.accent }} />
-              Saved for Later
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {bookmarks.map(bm => {
-                const { moduleId, lessonId } = getModuleAndLesson(bm.lesson_number);
-                const module = modulesData.find(m => m.id === moduleId);
-                const lesson = module?.lessons.find(l => l.id === lessonId);
-                if (!module || !lesson) return null;
-                return (
-                  <div key={bm.id} className="group relative p-4 rounded-xl border transition-all hover:shadow-md" style={{
-                    backgroundColor: COLORS.cardBg,
-                    borderColor: COLORS.border
-                  }}>
-                    <button
-                      onClick={() => toggleBookmark(bm.lesson_number)}
-                      className="absolute top-3 right-3 p-1 rounded-md text-slate-300 hover:text-slate-500 opacity-0 group-hover:opacity-100 transition-all"
-                      title="Remove bookmark"
-                    >
-                      <X size={14} />
-                    </button>
-                    <Link to={`/modules/${moduleId}/lessons/${lessonId}`} className="block">
-                      <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: COLORS.accent }}>
-                        Module {moduleId}
-                      </p>
-                      <p className="text-sm font-bold pr-6" style={{ color: COLORS.textPrimary }}>
-                        {lesson.title}
-                      </p>
-                    </Link>
-                  </div>
-                );
-              })}
             </div>
-          </div>
-        )}
 
-        {/* Complete Module Overview */}
-        <div className="mb-8">
-          <h2 className="text-lg sm:text-xl font-bold mb-4" style={{ color: COLORS.textPrimary }}>
-            All Training Modules
-          </h2>
-          <div className="space-y-3">
-            {allModules.map((module) => (
-              <ModuleProgressCard key={module.moduleId} module={module} />
-            ))}
+            <div className="space-y-6">
+              <ModuleTimeline modules={allModules} />
+
+              {bookmarks.length > 0 && (
+                <div className="rounded-xl border p-5" style={{
+                  backgroundColor: theme.colors.background.card,
+                  borderColor: theme.colors.border.subtle,
+                }}>
+                  <h3 className="text-lg font-bold mb-4 flex items-center gap-2" style={{
+                    color: theme.colors.text.primary
+                  }}>
+                    <Bookmark size={16} style={{ color: theme.colors.accent.cyan }} />
+                    Bookmarks
+                  </h3>
+
+                  <div className="space-y-2">
+                    {bookmarks.map(bm => {
+                      const { moduleId, lessonId } = getModuleAndLesson(bm.lesson_number);
+                      const module = modulesData.find(m => m.id === moduleId);
+                      const lesson = module?.lessons.find(l => l.id === lessonId);
+                      if (!module || !lesson) return null;
+
+                      return (
+                        <div
+                          key={bm.id}
+                          className="group relative p-3 rounded-lg border transition-all hover:shadow-sm"
+                          style={{
+                            backgroundColor: theme.colors.background.subtle,
+                            borderColor: theme.colors.border.subtle
+                          }}
+                        >
+                          <button
+                            onClick={() => toggleBookmark(bm.lesson_number)}
+                            className="absolute top-2 right-2 p-1 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+                            style={{ color: theme.colors.text.muted }}
+                            title="Remove bookmark"
+                          >
+                            <X size={12} />
+                          </button>
+
+                          <Link to={`/modules/${moduleId}/lessons/${lessonId}`}>
+                            <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{
+                              color: theme.colors.accent.cyan
+                            }}>
+                              Module {moduleId}
+                            </p>
+                            <p className="text-sm font-medium pr-6" style={{
+                              color: theme.colors.text.primary
+                            }}>
+                              {lesson.title}
+                            </p>
+                          </Link>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

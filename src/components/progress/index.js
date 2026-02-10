@@ -4,3 +4,7 @@ export { StatCard } from './StatCard';
 export { AchievementBadge } from './AchievementBadge';
 export { ModuleProgressCard } from './ModuleProgressCard';
 export { LessonGrid } from './LessonGrid';
+export { IntegratedProgressHero } from './IntegratedProgressHero';
+export { ModuleTimeline } from './ModuleTimeline';
+export { ModuleLessonsBlock } from './ModuleLessonsBlock';
+export { ContinueLearningCard } from './ContinueLearningCard';
