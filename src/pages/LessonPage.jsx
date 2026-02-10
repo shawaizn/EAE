@@ -192,7 +192,7 @@ export function LessonPage() {
               className="flex-shrink-0 mt-1 p-2.5 rounded-lg border-2 transition-all duration-200"
               style={{
                 backgroundColor: isBookmarked(globalLessonNumber) ? `${COLORS.accent}15` : COLORS.cardBg,
-                borderColor: isBookmarked(globalLessonNumber) ? COLORS.accent : theme.colors.border.subtle,
+                borderColor: isBookmarked(globalLessonNumber) ? COLORS.accent : COLORS.border,
                 color: isBookmarked(globalLessonNumber) ? COLORS.accent : COLORS.textMuted,
               }}
               title={isBookmarked(globalLessonNumber) ? 'Remove bookmark' : 'Bookmark this lesson'}
@@ -351,7 +351,7 @@ export function LessonPage() {
                       style={{
                         backgroundColor: `${COLORS.textPrimary}10`,
                         color: COLORS.textPrimary,
-                        borderColor: theme.colors.border.subtle,
+                        borderColor: COLORS.border,
                       }}
                     >
                       {lang.audienceLabels.learners}
@@ -362,7 +362,7 @@ export function LessonPage() {
                       style={{
                         backgroundColor: `${COLORS.textPrimary}10`,
                         color: COLORS.textPrimary,
-                        borderColor: theme.colors.border.subtle,
+                        borderColor: COLORS.border,
                       }}
                     >
                       {lang.audienceLabels.employees}
@@ -373,7 +373,7 @@ export function LessonPage() {
                       style={{
                         backgroundColor: `${COLORS.textPrimary}10`,
                         color: COLORS.textPrimary,
-                        borderColor: theme.colors.border.subtle,
+                        borderColor: COLORS.border,
                       }}
                     >
                       {lang.audienceLabels.selfEmployed}
@@ -384,7 +384,7 @@ export function LessonPage() {
                       style={{
                         backgroundColor: `${COLORS.textPrimary}10`,
                         color: COLORS.textPrimary,
-                        borderColor: theme.colors.border.subtle,
+                        borderColor: COLORS.border,
                       }}
                     >
                       {lang.audienceLabels.businesses}

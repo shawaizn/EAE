@@ -15,8 +15,10 @@ const COLORS = {
   textSecondary: '#475569',
   accent: '#0369A1',
   primary: '#1E293B',
+  primaryElectric: '#1E40AF',
   border: '#E2E8F0',
   success: '#059669',
+  shadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',
 };
 
 export function CertificatePage() {
@@ -93,7 +95,7 @@ export function CertificatePage() {
               className="h-full rounded-full transition-all duration-700"
               style={{
                 width: `${stats.percentComplete}%`,
-                background: `linear-gradient(90deg, ${COLORS.accent}, ${theme.colors.primary.electric})`,
+                background: `linear-gradient(90deg, ${COLORS.accent}, ${COLORS.primaryElectric})`,
               }}
             />
           </div>
@@ -143,19 +145,19 @@ export function CertificatePage() {
             className="relative mx-auto rounded-2xl overflow-hidden"
             style={{
               background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%)',
-              boxShadow: theme.shadows['2xl'],
+              boxShadow: COLORS.shadow,
               maxWidth: '800px',
             }}
           >
             <div className="absolute inset-0 opacity-10">
               <div className="absolute top-0 right-0 w-96 h-96 rounded-full" style={{ background: `radial-gradient(circle, ${COLORS.accent}40, transparent 70%)`, transform: 'translate(30%, -30%)' }} />
-              <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full" style={{ background: `radial-gradient(circle, ${theme.colors.primary.electric}40, transparent 70%)`, transform: 'translate(-30%, 30%)' }} />
+              <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full" style={{ background: `radial-gradient(circle, ${COLORS.primaryElectric}40, transparent 70%)`, transform: 'translate(-30%, 30%)' }} />
             </div>
 
             <div className="relative px-8 sm:px-16 py-12 sm:py-16">
               <div className="text-center mb-10">
                 <div className="flex items-center justify-center gap-2 mb-6">
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${COLORS.accent}, ${theme.colors.primary.electric})` }}>
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${COLORS.accent}, ${COLORS.primaryElectric})` }}>
                     <Award size={22} className="text-white" />
                   </div>
                   <span className="text-white font-bold text-lg tracking-wide">ENERGISE AI</span>

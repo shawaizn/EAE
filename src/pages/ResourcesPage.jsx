@@ -1,7 +1,18 @@
 import { useAuth } from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import appFrameworkPdf from '../assets/app-framework.pdf';
-import { theme } from '../styles/theme';
+
+// DESIGN COLORS - Change these to switch between enterprise and old design
+const COLORS = {
+  bg: '#EFF6FF',
+  cardBg: '#FFFFFF',
+  textPrimary: '#0F172A',
+  textSecondary: '#475569',
+  textMuted: '#94A3B8',
+  accent: '#0369A1',
+  primary: '#1E293B',
+  border: '#E2E8F0',
+};
 
 export function ResourcesPage() {
   const { user, signOut } = useAuth();

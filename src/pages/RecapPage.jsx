@@ -7,7 +7,17 @@ import { BookOpen, FileText } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
 import { getModuleNotes } from '../lib/notesFetch';
 import { useState, useEffect } from 'react';
-import { theme } from '../styles/theme';
+
+// DESIGN COLORS - Change these to switch between enterprise and old design
+const COLORS = {
+  bg: '#EFF6FF',
+  cardBg: '#FFFFFF',
+  textPrimary: '#0F172A',
+  textSecondary: '#475569',
+  accent: '#0369A1',
+  primary: '#1E293B',
+  border: '#E2E8F0',
+};
 
 export function RecapPage() {
   const { user, signOut } = useAuth();
