@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, Target, ArrowRight, BookOpen, Users, TrendingUp, ChevronDown } from 'lucide-react';
+import { Zap, Target, ArrowRight, BookOpen, Users, TrendingUp, ChevronDown, Sparkles, Shield, Rocket, Award } from 'lucide-react';
 import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 import { LogoHorizontal } from '../components/branding/Logo';
 import { FeaturesTable } from '../components/features/FeaturesTable';
@@ -182,82 +182,190 @@ export function Landing() {
         <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
           animationDelay: '0.4s',
         }}>
-          <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border-2 backdrop-blur-sm" style={{
-            borderColor: `${theme.colors.primary.electric}40`,
-            background: `linear-gradient(135deg, ${theme.colors.primary.light}30 0%, ${theme.colors.background.card} 100%)`,
-            boxShadow: behavior.hoverGlow ? `0 0 40px ${theme.colors.primary.electric}15` : theme.shadows.large,
-          }}>
-            <div className="mb-8">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4" style={{
-                backgroundColor: `${theme.colors.accent.cyan}10`,
-              }}>
-                <Target size={14} style={{ color: theme.colors.accent.cyan }} />
-                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.accent.cyan }}>
-                  What Makes This Different
-                </span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{
-                letterSpacing: '-0.03em',
-                color: theme.colors.text.primary,
-              }}>
-                Transform From Literacy to Leadership
-              </h2>
+          <div className="mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4" style={{
+              backgroundColor: `${theme.colors.accent.cyan}10`,
+            }}>
+              <Target size={14} style={{ color: theme.colors.accent.cyan }} />
+              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.accent.cyan }}>
+                What Makes This Different
+              </span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-bold mb-2" style={{
+              letterSpacing: '-0.03em',
+              color: theme.colors.text.primary,
+            }}>
+              Transform From Literacy to Leadership
+            </h2>
+            <p style={{ color: theme.colors.text.secondary }}>
+              Strategic AI training for teams that want competitive advantage
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-8">
+            <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
+              borderColor: theme.colors.accent.cyan,
+              backgroundColor: `${theme.colors.accent.cyan}05`,
+              boxShadow: theme.shadows.subtle,
+            }}>
+              <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.cyan }}>
+                £391B &rarr; £3.5T
+              </p>
+              <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
+                Global AI market growth by 2033
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-10">
-              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
-                borderColor: theme.colors.accent.cyan,
-                backgroundColor: `${theme.colors.accent.cyan}05`,
-                boxShadow: theme.shadows.subtle,
-              }}>
-                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.cyan }}>
-                  £391B &rarr; £3.5T
-                </p>
-                <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
-                  Global AI market growth by 2033
-                </p>
-              </div>
+            <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
+              borderColor: theme.colors.primary.electric,
+              backgroundColor: `${theme.colors.primary.electric}05`,
+              boxShadow: theme.shadows.subtle,
+            }}>
+              <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.primary.electric }}>
+                10 Million Workers
+              </p>
+              <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
+                UK government training by 2030
+              </p>
+            </div>
 
-              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
-                borderColor: theme.colors.primary.electric,
-                backgroundColor: `${theme.colors.primary.electric}05`,
-                boxShadow: theme.shadows.subtle,
-              }}>
-                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.primary.electric }}>
-                  10 Million Workers
-                </p>
-                <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
-                  UK government training by 2030
-                </p>
-              </div>
+            <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
+              borderColor: theme.colors.accent.coral,
+              backgroundColor: `${theme.colors.accent.coral}05`,
+              boxShadow: theme.shadows.subtle,
+            }}>
+              <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.coral }}>
+                78% of Organizations
+              </p>
+              <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
+                Now using AI in business functions
+              </p>
+            </div>
+          </div>
 
-              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
-                borderColor: theme.colors.accent.coral,
-                backgroundColor: `${theme.colors.accent.coral}05`,
-                boxShadow: theme.shadows.subtle,
-              }}>
-                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.coral }}>
-                  78% of Organizations
-                </p>
-                <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
-                  Now using AI in business functions
-                </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-6 rounded-xl border group transition-all" style={{
+              borderColor: theme.colors.border.subtle,
+              backgroundColor: theme.colors.background.card,
+              boxShadow: theme.shadows.subtle,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = theme.colors.accent.cyan;
+              e.currentTarget.style.backgroundColor = `${theme.colors.accent.cyan}03`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = theme.colors.border.subtle;
+              e.currentTarget.style.backgroundColor = theme.colors.background.card;
+            }}>
+              <div className="flex items-start gap-4 mb-3">
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform ${behavior.hoverScale ? 'group-hover:scale-110' : ''}`} style={{
+                  backgroundColor: `${theme.colors.accent.cyan}12`,
+                  transitionDuration: '200ms',
+                }}>
+                  <Sparkles size={20} style={{ color: theme.colors.accent.cyan }} />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2" style={{ color: theme.colors.text.primary }}>
+                    The Reality
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                    AI literacy is becoming universal. Free training from Microsoft, Google, IBM. Thousands of tutorials teaching prompts and tools. The UK government aims to train 10 million workers by 2030.
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div className="space-y-5 text-sm sm:text-base leading-relaxed">
-              <p style={{ color: theme.colors.text.secondary }}>
-                The UK government and major tech companies aim to train 10 million workers by 2030 with AI literacy courses -- that's essential. Free training from Microsoft, Google, and IBM. Thousands of LinkedIn posts, YouTube tutorials, and social media content teaching prompts and tools. AI literacy is becoming universal, not specialized.
-              </p>
-              <p style={{ color: theme.colors.text.secondary }}>
-                <span className="font-semibold" style={{ color: theme.colors.text.primary }}>But here's what matters:</span> when everyone completes the same foundation, strategic application becomes the differentiator. Despite massive investment and content saturation, only 21% of UK workers feel confident using AI, and just 16% of businesses have successfully implemented it.
-              </p>
-              <p style={{ color: theme.colors.text.secondary }}>
-                <span className="font-semibold" style={{ color: theme.colors.text.primary }}>We solve that gap.</span> We teach AI literacy accelerated for understanding, then add strategic capability on top. The result: save time and produce higher-quality output. Everything in one place, separating literacy from leadership, foundations from frameworks that create competitive advantage.
-              </p>
-              <p className="font-semibold" style={{ color: theme.colors.primary.deep }}>
-                While most businesses train teams in AI tools, a small percentage are developing strategic capability. That small percentage is your future competition -- or your future position.
-              </p>
+            <div className="p-6 rounded-xl border group transition-all" style={{
+              borderColor: theme.colors.border.subtle,
+              backgroundColor: theme.colors.background.card,
+              boxShadow: theme.shadows.subtle,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = theme.colors.primary.electric;
+              e.currentTarget.style.backgroundColor = `${theme.colors.primary.electric}03`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = theme.colors.border.subtle;
+              e.currentTarget.style.backgroundColor = theme.colors.background.card;
+            }}>
+              <div className="flex items-start gap-4 mb-3">
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform ${behavior.hoverScale ? 'group-hover:scale-110' : ''}`} style={{
+                  backgroundColor: `${theme.colors.primary.electric}12`,
+                  transitionDuration: '200ms',
+                }}>
+                  <Shield size={20} style={{ color: theme.colors.primary.electric }} />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2" style={{ color: theme.colors.text.primary }}>
+                    The Gap
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                    Despite massive investment, only 21% of UK workers feel confident using AI, and just 16% of businesses have successfully implemented it. Literacy doesn't equal capability.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-xl border group transition-all" style={{
+              borderColor: theme.colors.border.subtle,
+              backgroundColor: theme.colors.background.card,
+              boxShadow: theme.shadows.subtle,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = theme.colors.accent.coral;
+              e.currentTarget.style.backgroundColor = `${theme.colors.accent.coral}03`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = theme.colors.border.subtle;
+              e.currentTarget.style.backgroundColor = theme.colors.background.card;
+            }}>
+              <div className="flex items-start gap-4 mb-3">
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform ${behavior.hoverScale ? 'group-hover:scale-110' : ''}`} style={{
+                  backgroundColor: `${theme.colors.accent.coral}12`,
+                  transitionDuration: '200ms',
+                }}>
+                  <Rocket size={20} style={{ color: theme.colors.accent.coral }} />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2" style={{ color: theme.colors.text.primary }}>
+                    Our Solution
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                    We teach AI literacy accelerated for understanding, then add strategic capability on top. Save time and produce higher-quality output. Everything in one place.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-xl border group transition-all" style={{
+              borderColor: theme.colors.border.subtle,
+              backgroundColor: theme.colors.background.card,
+              boxShadow: theme.shadows.subtle,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = theme.colors.primary.deep;
+              e.currentTarget.style.backgroundColor = `${theme.colors.primary.deep}03`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = theme.colors.border.subtle;
+              e.currentTarget.style.backgroundColor = theme.colors.background.card;
+            }}>
+              <div className="flex items-start gap-4 mb-3">
+                <div className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform ${behavior.hoverScale ? 'group-hover:scale-110' : ''}`} style={{
+                  backgroundColor: `${theme.colors.primary.deep}12`,
+                  transitionDuration: '200ms',
+                }}>
+                  <Award size={20} style={{ color: theme.colors.primary.deep }} />
+                </div>
+                <div>
+                  <h3 className="font-semibold mb-2" style={{ color: theme.colors.text.primary }}>
+                    Your Advantage
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                    While most businesses train teams in AI tools, a small percentage are developing strategic capability. That small percentage is your future competition -- or your future position.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -267,7 +375,15 @@ export function Landing() {
         <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
           animationDelay: '0.5s',
         }}>
-          <div className="mb-12">
+          <div className="mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4" style={{
+              backgroundColor: `${theme.colors.primary.electric}10`,
+            }}>
+              <BookOpen size={14} style={{ color: theme.colors.primary.electric }} />
+              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.primary.electric }}>
+                Curriculum
+              </span>
+            </div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-2" style={{
               letterSpacing: '-0.03em',
               color: theme.colors.text.primary,
@@ -279,13 +395,13 @@ export function Landing() {
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3">
             {modulesData.map((module, index) => {
               const isExpanded = expandedModule === module.id;
               return (
                 <div
                   key={module.id}
-                  className="border-2 rounded-xl transition-all"
+                  className="rounded-xl border-2 overflow-hidden transition-all"
                   style={{
                     backgroundColor: theme.colors.background.card,
                     borderColor: isExpanded ? theme.colors.accent.cyan : theme.colors.border.subtle,
@@ -295,78 +411,101 @@ export function Landing() {
                   <button
                     type="button"
                     onClick={() => toggleModule(module.id)}
-                    className="w-full text-left p-6 sm:p-8 cursor-pointer group"
+                    className="w-full text-left p-6 cursor-pointer group hover:bg-opacity-50 transition-colors"
+                    style={{
+                      backgroundColor: isExpanded ? `${theme.colors.accent.cyan}03` : 'transparent',
+                    }}
                   >
-                    <div className="flex items-start justify-between gap-4 mb-3">
+                    <div className="flex items-start gap-4">
+                      <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform ${behavior.hoverScale ? 'group-hover:scale-105' : ''}`} style={{
+                        background: `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.primary.electric} 100%)`,
+                        transitionDuration: '200ms',
+                      }}>
+                        <span className="text-lg font-bold text-white">
+                          {module.id}
+                        </span>
+                      </div>
+
                       <div className="flex-1 min-w-0">
-                        <h3 className="text-lg sm:text-xl font-bold mb-2" style={{
-                          color: theme.colors.text.primary,
+                        <div className="flex items-start justify-between gap-4 mb-2">
+                          <h3 className="text-base sm:text-lg font-bold" style={{
+                            color: theme.colors.text.primary,
+                          }}>
+                            {module.title}
+                          </h3>
+                          <div className="flex items-center gap-3 flex-shrink-0">
+                            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold whitespace-nowrap" style={{
+                              backgroundColor: `${theme.colors.primary.electric}10`,
+                              color: theme.colors.primary.electric,
+                            }}>
+                              <BookOpen size={12} />
+                              {module.lessons.length}
+                            </div>
+                            <ChevronDown
+                              size={18}
+                              style={{
+                                color: isExpanded ? theme.colors.accent.cyan : theme.colors.text.muted,
+                                transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                                transition: 'transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94), color 200ms ease',
+                              }}
+                            />
+                          </div>
+                        </div>
+                        <p className="text-sm leading-relaxed" style={{
+                          color: theme.colors.text.secondary,
+                          display: isExpanded ? 'none' : 'block',
                         }}>
-                          Module {module.id}: {module.title}
-                        </h3>
-                        <p className="text-sm line-clamp-2" style={{ color: theme.colors.text.secondary }}>
                           {moduleNarratives[index]}
                         </p>
                       </div>
-                      <div className="inline-flex items-center gap-1 px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap flex-shrink-0" style={{
-                        backgroundColor: `${theme.colors.primary.electric}10`,
-                        color: theme.colors.primary.electric,
-                      }}>
-                        {module.lessons.length} lessons
-                      </div>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold tracking-wide" style={{ color: theme.colors.text.muted }}>
-                        ~{Math.ceil(module.lessons.length * 0.5)} hours
-                      </span>
-                      <ChevronDown
-                        size={16}
-                        style={{
-                          color: isExpanded ? theme.colors.accent.cyan : theme.colors.text.muted,
-                          transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
-                          transition: 'transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94), color 200ms ease',
-                        }}
-                      />
                     </div>
                   </button>
 
                   <div
                     style={{
-                      maxHeight: isExpanded ? `${module.lessons.length * 64 + 60}px` : '0px',
+                      maxHeight: isExpanded ? `${module.lessons.length * 60 + 100}px` : '0px',
                       opacity: isExpanded ? 1 : 0,
                       overflow: 'hidden',
                       transition: 'max-height 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 250ms ease',
                     }}
                   >
-                    <div className="px-6 sm:px-8 pb-6 sm:pb-8">
-                      <div className="border-t pt-4" style={{ borderColor: theme.colors.border.subtle }}>
-                        <div className="flex items-center gap-4 mb-2 px-0">
-                          <span className="text-[10px] font-semibold uppercase tracking-widest w-6 flex-shrink-0" style={{ color: theme.colors.text.muted }}></span>
-                          <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: theme.colors.text.muted }}>Lessons</span>
-                          <span className="ml-auto text-[10px] font-semibold uppercase tracking-widest flex-shrink-0" style={{ color: theme.colors.text.muted }}>Skill</span>
-                        </div>
-                        {module.lessons.map((lesson, lessonIndex) => (
+                    <div className="px-6 pb-6">
+                      <div className="pt-4 border-t mb-4" style={{ borderColor: theme.colors.border.subtle }}>
+                        <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                          {moduleNarratives[index]}
+                        </p>
+                      </div>
+
+                      <div className="space-y-2">
+                        {module.lessons.map((lesson) => (
                           <div
                             key={lesson.id}
-                            className="flex items-center gap-4 py-3"
+                            className="flex items-center gap-4 p-3 rounded-lg transition-colors"
                             style={{
-                              borderBottom: lessonIndex < module.lessons.length - 1
-                                ? `1px solid ${theme.colors.border.subtle}20`
-                                : 'none',
+                              backgroundColor: theme.colors.background.subtle,
+                            }}
+                            onMouseEnter={(e) => {
+                              e.currentTarget.style.backgroundColor = `${theme.colors.accent.cyan}08`;
+                            }}
+                            onMouseLeave={(e) => {
+                              e.currentTarget.style.backgroundColor = theme.colors.background.subtle;
                             }}
                           >
                             <span
-                              className="text-xs font-bold w-6 text-right flex-shrink-0 tabular-nums"
-                              style={{ color: theme.colors.text.muted }}
+                              className="text-xs font-bold w-8 h-8 flex items-center justify-center rounded-md flex-shrink-0"
+                              style={{
+                                backgroundColor: `${theme.colors.primary.electric}15`,
+                                color: theme.colors.primary.electric,
+                              }}
                             >
                               {String(lesson.id).padStart(2, '0')}
                             </span>
-                            <span className="text-sm font-medium" style={{ color: theme.colors.text.primary }}>
+                            <span className="text-sm font-medium flex-1" style={{ color: theme.colors.text.primary }}>
                               {lesson.title}
                             </span>
                             {activityData[`${module.id}-${lesson.id}`]?.skill && (
                               <span
-                                className="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0"
+                                className="text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0"
                                 style={{
                                   backgroundColor: `${theme.colors.accent.cyan}12`,
                                   color: theme.colors.accent.cyan,
