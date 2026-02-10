@@ -17,6 +17,7 @@ const COLORS = {
   textSecondary: '#475569',
   accent: '#0369A1',
   primary: '#1E293B',
+  primaryElectric: '#1E40AF',
   border: '#E2E8F0',
 };
 
@@ -103,16 +104,16 @@ export function ProgressPage() {
             color="success"
           />
           <div className={`p-4 sm:p-6 rounded-xl border transition-all ${behavior.hoverScale ? 'hover:shadow-lg hover:scale-105' : 'hover:shadow-md'} group cursor-default`} style={{
-            backgroundColor: `linear-gradient(135deg, ${theme.colors.primary.electric}10 0%, ${COLORS.cardBg} 100%)`,
-            borderColor: `${theme.colors.primary.electric}30`,
+            backgroundColor: `linear-gradient(135deg, ${COLORS.primaryElectric}10 0%, ${COLORS.cardBg} 100%)`,
+            borderColor: `${COLORS.primaryElectric}30`,
           }}>
-            <div className="flex items-center gap-2 p-2 rounded-lg transition-all w-fit mb-3" style={{ backgroundColor: `${theme.colors.primary.electric}15` }}>
-              <div size={20} style={{ color: theme.colors.primary.electric }} className="text-xl">⭐</div>
+            <div className="flex items-center gap-2 p-2 rounded-lg transition-all w-fit mb-3" style={{ backgroundColor: `${COLORS.primaryElectric}15` }}>
+              <div size={20} style={{ color: COLORS.primaryElectric }} className="text-xl">⭐</div>
             </div>
             <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: COLORS.textSecondary }}>
               {behavior.gamificationLanguage ? 'Your Level' : 'Status'}
             </p>
-            <p className="text-3xl sm:text-4xl font-bold transition-colors" style={{ color: theme.colors.primary.electric }}>
+            <p className="text-3xl sm:text-4xl font-bold transition-colors" style={{ color: COLORS.primaryElectric }}>
               {getPowerLevel(stats.percentComplete)}
             </p>
           </div>
@@ -147,7 +148,7 @@ export function ProgressPage() {
                 const lesson = module?.lessons.find(l => l.id === lessonId);
                 if (!module || !lesson) return null;
                 return (
-                  <div key={bm.id} className="group relative p-4 rounded-xl border bg-white hover:shadow-md transition-all" style={{ borderColor: theme.colors.border.subtle }}>
+                  <div key={bm.id} className="group relative p-4 rounded-xl border bg-white hover:shadow-md transition-all" style={{ borderColor: COLORS.border }}>
                     <button
                       onClick={() => toggleBookmark(bm.lesson_number)}
                       className="absolute top-3 right-3 p-1 rounded-md text-slate-300 hover:text-red-400 hover:bg-red-50 opacity-0 group-hover:opacity-100 transition-all"
