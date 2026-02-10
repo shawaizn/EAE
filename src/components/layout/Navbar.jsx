@@ -8,7 +8,7 @@ export function Navbar({ user }) {
   const { sidebarOpen, setSidebarOpen } = useSidebar();
 
   return (
-    <nav className="bg-white/98 backdrop-blur-md shadow-lg border-b border-slate-100 sticky top-0 z-20 relative" style={{
+    <nav className="bg-white/98 backdrop-blur-md shadow-lg border-b border-slate-100 fixed top-0 left-0 right-0 z-50 relative" style={{
       boxShadow: theme.shadows.medium,
     }}>
       <div className="absolute bottom-0 left-0 right-0 h-px" style={{

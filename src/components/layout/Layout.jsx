@@ -21,7 +21,7 @@ export function Layout({ children, user, onSignOut }) {
       <StaticGradientBackground />
 
       <Navbar user={user} />
-      <div className="flex h-[calc(100vh-4rem)]">
+      <div className="flex h-[calc(100vh-4rem)] pt-16">
         {sidebarOpen && (
           <aside className="w-64 bg-white/98 backdrop-blur-md border-r border-slate-100 h-screen overflow-y-auto flex-shrink-0 fixed left-0 top-0 z-10 pt-16 shadow-md">
             <MainSidebar user={user} onSignOut={onSignOut} />
