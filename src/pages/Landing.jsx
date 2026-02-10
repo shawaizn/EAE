@@ -37,7 +37,7 @@ export function Landing() {
       {behavior.animatedBackground && <EnergeticBackground />}
 
       <div className="relative z-10">
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-md border-b" style={{
+        <nav className="sticky top-0 z-20 bg-white/98 backdrop-blur-md border-b" style={{
           borderColor: theme.colors.border.subtle,
           boxShadow: theme.shadows.medium,
         }}>
@@ -81,7 +81,7 @@ export function Landing() {
           </div>
         </nav>
 
-        <section className="min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 sm:py-0 pt-20">
+        <section className="min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 sm:py-0">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-8 animate-fade-in-down" style={{
               borderColor: theme.colors.accent.cyan,
