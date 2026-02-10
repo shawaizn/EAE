@@ -53,15 +53,15 @@ export function ModulePage() {
   const progress = (completedLessons / module.lessons.length) * 100;
 
   const hoverLessonClasses = behavior.hoverScale
-    ? 'hover:border-cyan-600 hover:shadow-xl hover:-translate-y-1 hover:shadow-cyan-500/20'
-    : 'hover:border-cyan-600 hover:shadow-md';
+    ? 'hover:shadow-xl hover:-translate-y-1'
+    : 'hover:shadow-md';
 
   const hoverProgressClasses = behavior.hoverScale
-    ? 'hover:shadow-xl hover:border-violet-400/50'
+    ? 'hover:shadow-xl'
     : 'hover:shadow-md';
 
   const hoverOverviewClasses = behavior.hoverGlow
-    ? 'hover:shadow-2xl hover:shadow-cyan-500/20'
+    ? 'hover:shadow-2xl'
     : 'hover:shadow-lg';
 
   return (
@@ -90,7 +90,7 @@ export function ModulePage() {
               <h2 className="text-lg sm:text-2xl font-black" style={{
                 letterSpacing: '-0.02em',
                 color: COLORS.textPrimary
-              }}>Your Progress</h2>
+              }}>Module Progress</h2>
               <span className="text-sm sm:text-base font-semibold" style={{ color: COLORS.textSecondary }}>
                 {completedLessons} / {module.lessons.length} lessons
               </span>

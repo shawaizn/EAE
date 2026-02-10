@@ -1,13 +1,12 @@
 import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
-import { getLessonNumber, getProgressStats } from '../lib/utils';
+import { getLessonNumber, getProgressStats, getModuleAndLesson } from '../lib/utils';
 import { behavior, lang, theme } from '../styles/theme';
-import { StreakIndicator, ProgressRing, StatCard, AchievementBadge, ModuleProgressCard, LessonGrid } from '../components/progress';
-import { TrendingUp, CheckCircle2, Bookmark, X } from 'lucide-react';
+import { StatCard, ModuleProgressCard, LessonGrid } from '../components/progress';
+import { CheckCircle2, Bookmark, X, ChevronRight } from 'lucide-react';
 import { useBookmarks } from '../hooks/useBookmarks';
 import { Link } from 'react-router-dom';
-import { getModuleAndLesson } from '../lib/utils';
 
 const COLORS = {
   bg: theme.colors.background.light || theme.colors.background.base,
@@ -39,8 +38,6 @@ export function ProgressPage() {
   const stats = getProgressStats(completions);
   const totalLessons = 44;
 
-  const allLessonsArray = Array.from({ length: totalLessons }, (_, i) => i + 1);
-
   const allModules = modulesData.map((module, index) => {
     const completedLessons = module.lessons.filter(
       lesson => isComplete(getLessonNumber(module.id, lesson.id), 'lesson')
@@ -56,88 +53,91 @@ export function ProgressPage() {
     };
   });
 
-  const getPowerLevel = (percentComplete) => {
-    if (percentComplete >= 75) return lang.levelLabels[75];
-    if (percentComplete >= 50) return lang.levelLabels[50];
-    if (percentComplete >= 25) return lang.levelLabels[25];
-    if (percentComplete > 0) return lang.levelLabels[10];
-    return lang.levelLabels[0];
-  };
+  const nextIncompleteModule = allModules.find(m => m.progress < 100);
+  const nextIncompleteLesson = nextIncompleteModule
+    ? nextIncompleteModule.lessons?.find(l => !isComplete(getLessonNumber(nextIncompleteModule.moduleId, l.id), 'lesson'))
+    : null;
 
   return (
     <div className="w-full min-h-screen overflow-y-auto p-4 sm:p-6 lg:p-8" style={{ backgroundColor: COLORS.bg }}>
-      <div className="max-w-7xl mx-auto">
-        <div className="mb-8 sm:mb-12">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
-            <div>
-              <h1 className="text-3xl sm:text-5xl font-bold mb-2" style={{
-                letterSpacing: '-0.02em',
-                color: COLORS.textPrimary,
-              }}>
-                {lang.progressTitle}
-              </h1>
-              <p className="text-sm sm:text-base" style={{ color: COLORS.textSecondary }}>
-                {lang.progressSubtitle}
-              </p>
-            </div>
-            {behavior.showStreakIndicator && (
-              <div className="flex gap-3">
-                <StreakIndicator days={0} />
-              </div>
-            )}
-          </div>
+      <div className="max-w-6xl mx-auto">
+        {/* Header: Clear orientation */}
+        <div className="mb-10">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-2" style={{
+            letterSpacing: '-0.02em',
+            color: COLORS.textPrimary,
+          }}>
+            {lang.progressTitle}
+          </h1>
+          <p className="text-base sm:text-lg" style={{ color: COLORS.textSecondary }}>
+            {lang.progressSubtitle}
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-          <StatCard
-            icon={TrendingUp}
-            label="Overall Progress"
-            value={`${stats.percentComplete}%`}
-            color="electric"
-            gradient={true}
-          />
+        {/* Key Metrics: Scan-friendly summary */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
           <StatCard
             icon={CheckCircle2}
-            label="Completed"
+            label="Lessons Completed"
             value={`${stats.lessonsCompleted}/44`}
             color="success"
           />
-          <div className={`p-4 sm:p-6 rounded-xl border transition-all ${behavior.hoverScale ? 'hover:shadow-lg hover:scale-105' : 'hover:shadow-md'} group cursor-default`} style={{
-            backgroundColor: `linear-gradient(135deg, ${COLORS.primaryElectric}10 0%, ${COLORS.cardBg} 100%)`,
-            borderColor: `${COLORS.primaryElectric}30`,
+          <StatCard
+            icon={CheckCircle2}
+            label="Modules In Progress"
+            value={`${allModules.filter(m => m.progress > 0 && m.progress < 100).length}/${allModules.length}`}
+            color="cyan"
+          />
+          <div className="p-4 sm:p-6 rounded-xl border transition-all hover:shadow-md" style={{
+            backgroundColor: COLORS.cardBg,
+            borderColor: COLORS.border,
           }}>
-            <div className="flex items-center gap-2 p-2 rounded-lg transition-all w-fit mb-3" style={{ backgroundColor: `${COLORS.primaryElectric}15` }} />
-
-            <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: COLORS.textSecondary }}>
-              {behavior.gamificationLanguage ? 'Your Level' : 'Status'}
+            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: COLORS.textSecondary }}>
+              Overall Progress
             </p>
-            <p className="text-3xl sm:text-4xl font-bold transition-colors" style={{ color: COLORS.primaryElectric }}>
-              {getPowerLevel(stats.percentComplete)}
+            <p className="text-4xl sm:text-5xl font-bold" style={{ color: COLORS.primaryElectric }}>
+              {Math.round(stats.percentComplete)}%
             </p>
           </div>
         </div>
 
-        {behavior.showAchievementBadges && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 mb-8">
-            {[10, 25, 50, 75, 100].map(milestone => (
-              <AchievementBadge
-                key={milestone}
-                milestone={milestone}
-                unlocked={stats.percentComplete >= milestone}
-              />
-            ))}
+        {/* Next Steps: Clear call to action */}
+        {nextIncompleteModule && (
+          <div className="mb-10 p-5 sm:p-6 rounded-xl border" style={{
+            backgroundColor: `${COLORS.primaryElectric}08`,
+            borderColor: `${COLORS.primaryElectric}30`,
+          }}>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: COLORS.textSecondary }}>
+              Next Module to Start
+            </p>
+            <Link
+              to={`/modules/${nextIncompleteModule.moduleId}`}
+              className="flex items-center justify-between gap-3 hover:gap-4 transition-all group"
+            >
+              <div className="flex-1 min-w-0">
+                <h3 className="text-lg sm:text-xl font-bold mb-1" style={{ color: COLORS.textPrimary }}>
+                  {nextIncompleteModule.title}
+                </h3>
+                <p className="text-sm line-clamp-1" style={{ color: COLORS.textSecondary }}>
+                  {nextIncompleteModule.narrative}
+                </p>
+              </div>
+              <ChevronRight size={20} style={{ color: COLORS.accent, flexShrink: 0 }} />
+            </Link>
           </div>
         )}
 
-        <div className="mb-8">
-          <LessonGrid lessons={allLessonsArray} stats={stats} totalLessons={totalLessons} />
+        {/* Lesson Overview: Quick glance */}
+        <div className="mb-10">
+          <LessonGrid lessons={Array.from({ length: totalLessons }, (_, i) => i + 1)} stats={stats} totalLessons={totalLessons} />
         </div>
 
+        {/* Bookmarked Lessons: Quick access */}
         {bookmarks.length > 0 && (
-          <div className="mb-8">
+          <div className="mb-10">
             <h2 className="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2" style={{ color: COLORS.textPrimary }}>
-              <Bookmark size={20} style={{ color: COLORS.accent }} />
-              Bookmarked Lessons
+              <Bookmark size={18} style={{ color: COLORS.accent }} />
+              Saved for Later
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
               {bookmarks.map(bm => {
@@ -146,16 +146,19 @@ export function ProgressPage() {
                 const lesson = module?.lessons.find(l => l.id === lessonId);
                 if (!module || !lesson) return null;
                 return (
-                  <div key={bm.id} className="group relative p-4 rounded-xl border bg-white hover:shadow-md transition-all" style={{ borderColor: COLORS.border }}>
+                  <div key={bm.id} className="group relative p-4 rounded-xl border transition-all hover:shadow-md" style={{
+                    backgroundColor: COLORS.cardBg,
+                    borderColor: COLORS.border
+                  }}>
                     <button
                       onClick={() => toggleBookmark(bm.lesson_number)}
-                      className="absolute top-3 right-3 p-1 rounded-md text-slate-300 hover:text-red-400 hover:bg-red-50 opacity-0 group-hover:opacity-100 transition-all"
+                      className="absolute top-3 right-3 p-1 rounded-md text-slate-300 hover:text-slate-500 opacity-0 group-hover:opacity-100 transition-all"
                       title="Remove bookmark"
                     >
                       <X size={14} />
                     </button>
                     <Link to={`/modules/${moduleId}/lessons/${lessonId}`} className="block">
-                      <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: COLORS.accent }}>
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{ color: COLORS.accent }}>
                         Module {moduleId}
                       </p>
                       <p className="text-sm font-bold pr-6" style={{ color: COLORS.textPrimary }}>
@@ -169,9 +172,10 @@ export function ProgressPage() {
           </div>
         )}
 
+        {/* Module Curriculum: Complete view */}
         <div className="mb-8">
           <h2 className="text-lg sm:text-xl font-bold mb-4" style={{ color: COLORS.textPrimary }}>
-            Modules
+            Module Curriculum
           </h2>
           <div className="space-y-3">
             {allModules.map((module) => (
