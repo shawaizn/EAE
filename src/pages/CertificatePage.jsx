@@ -7,6 +7,18 @@ import { theme } from '../styles/theme';
 import { Award, Download, Share2, CheckCircle2, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// DESIGN COLORS - Change these to switch between enterprise and old design
+const COLORS = {
+  bg: '#EFF6FF',
+  cardBg: '#FFFFFF',
+  textPrimary: '#0F172A',
+  textSecondary: '#475569',
+  accent: '#0369A1',
+  primary: '#1E293B',
+  border: '#E2E8F0',
+  success: '#059669',
+};
+
 export function CertificatePage() {
   const { user } = useAuth();
   const { completions, loading } = useProgress(user?.id, []);
@@ -81,7 +93,7 @@ export function CertificatePage() {
               className="h-full rounded-full transition-all duration-700"
               style={{
                 width: `${stats.percentComplete}%`,
-                background: `linear-gradient(90deg, ${theme.colors.accent.cyan}, ${theme.colors.primary.electric})`,
+                background: `linear-gradient(90deg, ${COLORS.accent}, ${theme.colors.primary.electric})`,
               }}
             />
           </div>
@@ -136,22 +148,22 @@ export function CertificatePage() {
             }}
           >
             <div className="absolute inset-0 opacity-10">
-              <div className="absolute top-0 right-0 w-96 h-96 rounded-full" style={{ background: `radial-gradient(circle, ${theme.colors.accent.cyan}40, transparent 70%)`, transform: 'translate(30%, -30%)' }} />
+              <div className="absolute top-0 right-0 w-96 h-96 rounded-full" style={{ background: `radial-gradient(circle, ${COLORS.accent}40, transparent 70%)`, transform: 'translate(30%, -30%)' }} />
               <div className="absolute bottom-0 left-0 w-80 h-80 rounded-full" style={{ background: `radial-gradient(circle, ${theme.colors.primary.electric}40, transparent 70%)`, transform: 'translate(-30%, 30%)' }} />
             </div>
 
             <div className="relative px-8 sm:px-16 py-12 sm:py-16">
               <div className="text-center mb-10">
                 <div className="flex items-center justify-center gap-2 mb-6">
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${theme.colors.accent.cyan}, ${theme.colors.primary.electric})` }}>
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${COLORS.accent}, ${theme.colors.primary.electric})` }}>
                     <Award size={22} className="text-white" />
                   </div>
                   <span className="text-white font-bold text-lg tracking-wide">ENERGISE AI</span>
                 </div>
-                <p className="text-xs font-semibold uppercase tracking-[0.3em] mb-2" style={{ color: theme.colors.accent.cyan }}>
+                <p className="text-xs font-semibold uppercase tracking-[0.3em] mb-2" style={{ color: COLORS.accent }}>
                   Certificate of Completion
                 </p>
-                <div className="w-16 h-0.5 mx-auto rounded-full" style={{ background: `linear-gradient(90deg, transparent, ${theme.colors.accent.cyan}, transparent)` }} />
+                <div className="w-16 h-0.5 mx-auto rounded-full" style={{ background: `linear-gradient(90deg, transparent, ${COLORS.accent}, transparent)` }} />
               </div>
 
               <div className="text-center mb-10">
@@ -163,7 +175,7 @@ export function CertificatePage() {
                 <p className="text-slate-400 text-sm leading-relaxed max-w-md mx-auto">
                   has successfully completed all 44 lessons across 8 modules of the
                 </p>
-                <h3 className="text-xl sm:text-2xl font-bold mt-3" style={{ color: theme.colors.accent.cyan }}>
+                <h3 className="text-xl sm:text-2xl font-bold mt-3" style={{ color: COLORS.accent }}>
                   Strategic AI Mastery Program
                 </h3>
               </div>
@@ -187,8 +199,8 @@ export function CertificatePage() {
                   <p className="text-sm font-mono text-slate-400">{certId}</p>
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <CheckCircle2 size={14} style={{ color: theme.colors.status.success }} />
-                  <span className="text-xs font-semibold" style={{ color: theme.colors.status.success }}>Verified</span>
+                  <CheckCircle2 size={14} style={{ color: COLORS.success }} />
+                  <span className="text-xs font-semibold" style={{ color: COLORS.success }}>Verified</span>
                 </div>
               </div>
             </div>

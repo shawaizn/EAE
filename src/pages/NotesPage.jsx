@@ -3,7 +3,17 @@ import { useAuth } from '../hooks/useAuth';
 import { useNotes } from '../hooks/useNotes';
 import { NoteCategory } from '../components/notes/NoteCategory';
 import { Clock, Sparkles, Heart, Target } from 'lucide-react';
-import { theme } from '../styles/theme';
+
+// DESIGN COLORS - Change these to switch between enterprise and old design
+const COLORS = {
+  bg: '#EFF6FF',
+  cardBg: '#FFFFFF',
+  textPrimary: '#0F172A',
+  textSecondary: '#475569',
+  accent: '#0369A1',
+  primary: '#1E293B',
+  border: '#E2E8F0',
+};
 
 const CATEGORIES = [
   {
@@ -67,16 +77,16 @@ export function NotesPage() {
   }
 
   return (
-    <div className="flex-1 overflow-y-auto" style={{ backgroundColor: theme.colors.background.base }}>
+    <div className="flex-1 overflow-y-auto" style={{ backgroundColor: COLORS.bg }}>
       <div className="max-w-screen-xl mx-auto px-8 py-8">
         <div className="mb-8">
           <h1 className="text-5xl font-black mb-3" style={{
             letterSpacing: '-0.02em',
-            color: theme.colors.text.primary
+            color: COLORS.textPrimary
           }}>
             Notes
           </h1>
-          <p className="text-lg font-medium" style={{ color: theme.colors.text.secondary }}>
+          <p className="text-lg font-medium" style={{ color: COLORS.textSecondary }}>
             Capture your reflections and ideas as you learn
           </p>
         </div>

@@ -7,8 +7,34 @@ import { ProgressBar } from '../components/ui/ProgressBar';
 import { Check } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
 import { BRAND } from '../lib/brandConstants';
-import { behavior, theme } from '../styles/theme';
+import { behavior } from '../styles/theme';
 import { Button } from '../components/ui/Button';
+
+// DESIGN COLORS - Change these to switch between enterprise and old design
+const COLORS = {
+  // ENTERPRISE DESIGN (Current)
+  bg: '#EFF6FF',              // Light blue background
+  cardBg: '#FFFFFF',          // White cards
+  textPrimary: '#0F172A',     // Near black text
+  textSecondary: '#475569',   // Slate gray text
+  accent: '#0369A1',          // Teal/cyan accent
+  accentLight: '#0369A115',   // Teal with transparency
+  primary: '#1E293B',         // Deep navy for buttons
+  border: '#E2E8F0',          // Light border
+  success: '#059669',         // Green for success states
+
+  /* OLD DESIGN - Uncomment to revert to previous design:
+  bg: '#FFFFFF',
+  cardBg: '#F8FAFC',
+  textPrimary: '#1E293B',
+  textSecondary: '#64748B',
+  accent: '#3B82F6',
+  accentLight: '#3B82F615',
+  primary: '#1F2937',
+  border: '#D1D5DB',
+  success: '#10B981',
+  */
+};
 
 export function ModulePage() {
   const { user, signOut } = useAuth();
@@ -53,33 +79,33 @@ export function ModulePage() {
     : 'hover:shadow-lg';
 
   return (
-    <div className="flex-1 overflow-y-auto relative" style={{ backgroundColor: theme.colors.background.base }}>
+    <div className="flex-1 overflow-y-auto relative" style={{ backgroundColor: COLORS.bg }}>
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 relative z-10">
           {/* Module Header */}
           <div className="mb-12 sm:mb-24">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black mb-2 sm:mb-3" style={{
               letterSpacing: '-0.02em',
-              color: theme.colors.text.primary
+              color: COLORS.textPrimary
             }}>
               {module.title}
             </h1>
-            <p className="text-sm sm:text-lg font-medium" style={{ color: theme.colors.text.secondary }}>
+            <p className="text-sm sm:text-lg font-medium" style={{ color: COLORS.textSecondary }}>
               Module {moduleIdNum} of {modulesData.length}
             </p>
           </div>
 
           {/* Progress */}
           <div className={`mb-12 sm:mb-24 rounded-lg p-4 sm:p-6 lg:p-8 shadow-lg transition-all duration-300 ${hoverProgressClasses}`} style={{
-            backgroundColor: theme.colors.background.card,
+            backgroundColor: COLORS.cardBg,
             borderWidth: '2px',
-            borderColor: theme.colors.border.default,
+            borderColor: COLORS.border,
           }}>
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 mb-4">
               <h2 className="text-lg sm:text-2xl font-black" style={{
                 letterSpacing: '-0.02em',
-                color: theme.colors.text.primary
+                color: COLORS.textPrimary
               }}>Your Progress</h2>
-              <span className="text-sm sm:text-base font-semibold" style={{ color: theme.colors.text.secondary }}>
+              <span className="text-sm sm:text-base font-semibold" style={{ color: COLORS.textSecondary }}>
                 {completedLessons} / {module.lessons.length} lessons
               </span>
             </div>
@@ -89,53 +115,53 @@ export function ModulePage() {
           {/* Module Introduction */}
           {moduleIntros[moduleIdNum] && (
             <div className={`mb-12 sm:mb-24 rounded-lg overflow-hidden shadow-lg transition-all duration-300 ${hoverOverviewClasses}`} style={{
-              backgroundColor: theme.colors.background.card,
+              backgroundColor: COLORS.cardBg,
               borderWidth: '2px',
-              borderColor: theme.colors.accent.cyan,
+              borderColor: COLORS.accent,
             }}>
               <div className="p-4 sm:p-6" style={{
-                backgroundColor: `${theme.colors.accent.cyan}15`,
+                backgroundColor: COLORS.accentLight,
                 borderBottomWidth: '2px',
-                borderBottomColor: theme.colors.accent.cyan,
+                borderBottomColor: COLORS.accent,
               }}>
                 <h2 className="text-lg sm:text-2xl font-black" style={{
                   letterSpacing: '-0.02em',
-                  color: theme.colors.text.primary
+                  color: COLORS.textPrimary
                 }}>
                   Module Overview
                 </h2>
               </div>
-              <div className="p-4 sm:p-8 lg:p-12 space-y-6 sm:space-y-8" style={{ backgroundColor: theme.colors.background.card }}>
+              <div className="p-4 sm:p-8 lg:p-12 space-y-6 sm:space-y-8" style={{ backgroundColor: COLORS.cardBg }}>
                 <div>
                   <h3 className="text-base sm:text-lg font-black mb-2 sm:mb-3" style={{
                     letterSpacing: '-0.02em',
-                    color: theme.colors.text.primary
+                    color: COLORS.textPrimary
                   }}>
                     What You Already Know
                   </h3>
-                  <p className="text-sm sm:text-base leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                  <p className="text-sm sm:text-base leading-relaxed" style={{ color: COLORS.textSecondary }}>
                     {moduleIntros[moduleIdNum].activation}
                   </p>
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg font-black mb-2 sm:mb-3" style={{
                     letterSpacing: '-0.02em',
-                    color: theme.colors.text.primary
+                    color: COLORS.textPrimary
                   }}>
                     In This Module
                   </h3>
-                  <p className="text-sm sm:text-base leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                  <p className="text-sm sm:text-base leading-relaxed" style={{ color: COLORS.textSecondary }}>
                     {moduleIntros[moduleIdNum].zoom}
                   </p>
                 </div>
                 <div>
                   <h3 className="text-base sm:text-lg font-black mb-2 sm:mb-3" style={{
                     letterSpacing: '-0.02em',
-                    color: theme.colors.text.primary
+                    color: COLORS.textPrimary
                   }}>
                     Why This Matters
                   </h3>
-                  <p className="text-sm sm:text-base leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                  <p className="text-sm sm:text-base leading-relaxed" style={{ color: COLORS.textSecondary }}>
                     {moduleIntros[moduleIdNum].stakes}
                   </p>
                 </div>
@@ -147,7 +173,7 @@ export function ModulePage() {
           <div className="mb-12 sm:mb-24">
             <h2 className="text-lg sm:text-2xl font-black mb-4 sm:mb-6" style={{
               letterSpacing: '-0.02em',
-              color: theme.colors.text.primary
+              color: COLORS.textPrimary
             }}>Lessons</h2>
             <div className="space-y-2 sm:space-y-4">
               {module.lessons.map((lesson) => {
@@ -158,19 +184,19 @@ export function ModulePage() {
                     to={`/modules/${moduleIdNum}/lessons/${lesson.id}`}
                     className={`block p-3 sm:p-6 rounded-lg transition-all duration-300 ${hoverLessonClasses}`}
                     style={{
-                      backgroundColor: theme.colors.background.card,
+                      backgroundColor: COLORS.cardBg,
                       borderWidth: '2px',
-                      borderColor: theme.colors.border.default,
+                      borderColor: COLORS.border,
                     }}
                   >
                     <div className="flex items-center justify-between gap-2">
                       <div className="min-w-0 flex-1">
-                        <h3 className="text-base sm:text-lg font-semibold break-words" style={{ color: theme.colors.text.primary }}>
+                        <h3 className="text-base sm:text-lg font-semibold break-words" style={{ color: COLORS.textPrimary }}>
                           Lesson {lesson.id}: {lesson.title}
                         </h3>
                       </div>
                       {completed && (
-                        <Check size={20} className="flex-shrink-0 sm:w-6 sm:h-6" style={{ color: theme.colors.status.success }} />
+                        <Check size={20} className="flex-shrink-0 sm:w-6 sm:h-6" style={{ color: COLORS.success }} />
                       )}
                     </div>
                   </Link>
@@ -182,13 +208,13 @@ export function ModulePage() {
           {/* Recap Button */}
           <div className="pt-6 sm:pt-12" style={{
             borderTopWidth: '2px',
-            borderTopColor: theme.colors.border.default,
+            borderTopColor: COLORS.border,
           }}>
             <Link
               to={`/modules/${moduleIdNum}/recap`}
               className="inline-block w-full sm:w-auto text-center px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:opacity-90 transition-opacity font-semibold text-sm sm:text-base text-white"
               style={{
-                backgroundColor: theme.colors.primary.deep,
+                backgroundColor: COLORS.primary,
               }}
             >
               Go to Module Recap →

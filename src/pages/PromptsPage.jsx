@@ -3,7 +3,17 @@ import { useAuth } from '../hooks/useAuth';
 import { usePrompts } from '../hooks/usePrompts';
 import { PromptCategory } from '../components/prompts/PromptCategory';
 import { Zap, PenTool, BarChart3, Lightbulb, Layers } from 'lucide-react';
-import { theme } from '../styles/theme';
+
+// DESIGN COLORS - Change these to switch between enterprise and old design
+const COLORS = {
+  bg: '#EFF6FF',
+  cardBg: '#FFFFFF',
+  textPrimary: '#0F172A',
+  textSecondary: '#475569',
+  accent: '#0369A1',
+  primary: '#1E293B',
+  border: '#E2E8F0',
+};
 
 const CATEGORIES = [
   {
@@ -75,16 +85,16 @@ export function PromptsPage() {
   }
 
   return (
-    <div className="flex-1 overflow-y-auto" style={{ backgroundColor: theme.colors.background.base }}>
+    <div className="flex-1 overflow-y-auto" style={{ backgroundColor: COLORS.bg }}>
       <div className="max-w-screen-xl mx-auto px-8 py-8">
         <div className="mb-8">
           <h1 className="text-5xl font-black mb-3" style={{
             letterSpacing: '-0.02em',
-            color: theme.colors.text.primary
+            color: COLORS.textPrimary
           }}>
             Prompt Vault
           </h1>
-          <p className="text-lg font-medium" style={{ color: theme.colors.text.secondary }}>
+          <p className="text-lg font-medium" style={{ color: COLORS.textSecondary }}>
             Build your personal library of AI prompts -- copy any prompt with one click
           </p>
         </div>

@@ -2,12 +2,23 @@ import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { getLessonNumber, getProgressStats } from '../lib/utils';
-import { theme, behavior, lang } from '../styles/theme';
+import { behavior, lang } from '../styles/theme';
 import { StreakIndicator, ProgressRing, StatCard, AchievementBadge, ModuleProgressCard, LessonGrid } from '../components/progress';
 import { TrendingUp, CheckCircle2, Bookmark, X } from 'lucide-react';
 import { useBookmarks } from '../hooks/useBookmarks';
 import { Link } from 'react-router-dom';
 import { getModuleAndLesson } from '../lib/utils';
+
+// DESIGN COLORS - Change these to switch between enterprise and old design
+const COLORS = {
+  bg: '#EFF6FF',
+  cardBg: '#FFFFFF',
+  textPrimary: '#0F172A',
+  textSecondary: '#475569',
+  accent: '#0369A1',
+  primary: '#1E293B',
+  border: '#E2E8F0',
+};
 
 const moduleNarratives = [
   "Accelerated foundations -- what AI is, how it fits in technology history, and the evolution to machine learning.",
@@ -54,18 +65,18 @@ export function ProgressPage() {
   };
 
   return (
-    <div className="w-full min-h-screen overflow-y-auto p-4 sm:p-6 lg:p-8" style={{ backgroundColor: theme.colors.background.base }}>
+    <div className="w-full min-h-screen overflow-y-auto p-4 sm:p-6 lg:p-8" style={{ backgroundColor: COLORS.bg }}>
       <div className="max-w-7xl mx-auto">
         <div className="mb-8 sm:mb-12">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-4">
             <div>
               <h1 className="text-3xl sm:text-5xl font-bold mb-2" style={{
                 letterSpacing: '-0.02em',
-                color: theme.colors.text.primary,
+                color: COLORS.textPrimary,
               }}>
                 {lang.progressTitle}
               </h1>
-              <p className="text-sm sm:text-base" style={{ color: theme.colors.text.secondary }}>
+              <p className="text-sm sm:text-base" style={{ color: COLORS.textSecondary }}>
                 {lang.progressSubtitle}
               </p>
             </div>
@@ -92,13 +103,13 @@ export function ProgressPage() {
             color="success"
           />
           <div className={`p-4 sm:p-6 rounded-xl border transition-all ${behavior.hoverScale ? 'hover:shadow-lg hover:scale-105' : 'hover:shadow-md'} group cursor-default`} style={{
-            backgroundColor: `linear-gradient(135deg, ${theme.colors.primary.electric}10 0%, ${theme.colors.background.card} 100%)`,
+            backgroundColor: `linear-gradient(135deg, ${theme.colors.primary.electric}10 0%, ${COLORS.cardBg} 100%)`,
             borderColor: `${theme.colors.primary.electric}30`,
           }}>
             <div className="flex items-center gap-2 p-2 rounded-lg transition-all w-fit mb-3" style={{ backgroundColor: `${theme.colors.primary.electric}15` }}>
               <div size={20} style={{ color: theme.colors.primary.electric }} className="text-xl">⭐</div>
             </div>
-            <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: theme.colors.text.secondary }}>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: COLORS.textSecondary }}>
               {behavior.gamificationLanguage ? 'Your Level' : 'Status'}
             </p>
             <p className="text-3xl sm:text-4xl font-bold transition-colors" style={{ color: theme.colors.primary.electric }}>
@@ -125,8 +136,8 @@ export function ProgressPage() {
 
         {bookmarks.length > 0 && (
           <div className="mb-8">
-            <h2 className="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2" style={{ color: theme.colors.text.primary }}>
-              <Bookmark size={20} style={{ color: theme.colors.accent.cyan }} />
+            <h2 className="text-lg sm:text-xl font-bold mb-4 flex items-center gap-2" style={{ color: COLORS.textPrimary }}>
+              <Bookmark size={20} style={{ color: COLORS.accent }} />
               Bookmarked Lessons
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -145,10 +156,10 @@ export function ProgressPage() {
                       <X size={14} />
                     </button>
                     <Link to={`/modules/${moduleId}/lessons/${lessonId}`} className="block">
-                      <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: theme.colors.accent.cyan }}>
+                      <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{ color: COLORS.accent }}>
                         Module {moduleId}
                       </p>
-                      <p className="text-sm font-bold pr-6" style={{ color: theme.colors.text.primary }}>
+                      <p className="text-sm font-bold pr-6" style={{ color: COLORS.textPrimary }}>
                         {lesson.title}
                       </p>
                     </Link>
@@ -160,7 +171,7 @@ export function ProgressPage() {
         )}
 
         <div className="mb-8">
-          <h2 className="text-lg sm:text-xl font-bold mb-4" style={{ color: theme.colors.text.primary }}>
+          <h2 className="text-lg sm:text-xl font-bold mb-4" style={{ color: COLORS.textPrimary }}>
             Modules
           </h2>
           <div className="space-y-3">
