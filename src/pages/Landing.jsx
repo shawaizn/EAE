@@ -115,7 +115,7 @@ export function Landing() {
               </p>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 sm:mb-20 animate-fade-in-up" style={{
+            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{
               animationDelay: '0.2s',
             }}>
               <Link
@@ -129,52 +129,6 @@ export function Landing() {
               >
                 Get Started <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 animate-fade-in-up" style={{
-              animationDelay: '0.3s',
-            }}>
-              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
-                borderColor: theme.colors.accent.cyan,
-                backgroundColor: `${theme.colors.accent.cyan}05`,
-                boxShadow: theme.shadows.subtle,
-              }}>
-                <BookOpen size={28} className="mx-auto mb-3" style={{ color: theme.colors.accent.cyan }} />
-                <p className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: theme.colors.accent.cyan }}>
-                  {totalLessons}
-                </p>
-                <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
-                  Strategic Lessons
-                </p>
-              </div>
-
-              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
-                borderColor: theme.colors.primary.electric,
-                backgroundColor: `${theme.colors.primary.electric}05`,
-                boxShadow: theme.shadows.subtle,
-              }}>
-                <Users size={28} className="mx-auto mb-3" style={{ color: theme.colors.primary.electric }} />
-                <p className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: theme.colors.primary.electric }}>
-                  8
-                </p>
-                <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
-                  Focused Modules
-                </p>
-              </div>
-
-              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
-                borderColor: theme.colors.accent.coral,
-                backgroundColor: `${theme.colors.accent.coral}05`,
-                boxShadow: theme.shadows.subtle,
-              }}>
-                <TrendingUp size={28} className="mx-auto mb-3" style={{ color: theme.colors.accent.coral }} />
-                <p className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: theme.colors.accent.coral }}>
-                  10X
-                </p>
-                <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
-                  Output Multiplier
-                </p>
-              </div>
             </div>
           </div>
         </section>
