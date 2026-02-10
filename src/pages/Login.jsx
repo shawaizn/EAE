@@ -4,6 +4,7 @@ import { useAuth } from '../hooks/useAuth';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { AnimatedLoginBackground } from '../components/branding/AnimatedLoginBackground';
+import { behavior } from '../styles/theme';
 
 export function Login() {
   const [email, setEmail] = useState('');
@@ -29,8 +30,8 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-6 sm:py-8 relative">
-      <AnimatedLoginBackground />
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-6 sm:py-8 relative" style={{ backgroundColor: behavior.animatedBackground ? undefined : '#FAFAF9' }}>
+      {behavior.animatedBackground && <AnimatedLoginBackground />}
       <Card className="w-full max-w-md relative z-10 bg-white/90 backdrop-blur-lg border-2 border-white/20 shadow-2xl p-4 sm:p-6">
         <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-6 sm:mb-8 text-center" style={{ letterSpacing: '-0.02em' }}>
           Login to Your Account

@@ -1,5 +1,5 @@
 import { Video, Wrench, BookMarked, FileText, Brain, MapPin, Lightbulb, Layers, Diamond, Workflow, Gauge, Trophy } from 'lucide-react';
-import { theme } from '../../styles/theme';
+import { theme, behavior } from '../../styles/theme';
 
 const FEATURES = [
   {
@@ -126,8 +126,9 @@ export function FeaturesTable() {
                 >
                   <td className="px-6 py-5 align-top" style={{ borderBottom: `1px solid ${theme.colors.border.subtle}` }}>
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform duration-200 group-hover:scale-110" style={{
+                      <div className={`w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform ${behavior.hoverScale ? 'group-hover:scale-110' : ''}`} style={{
                         backgroundColor: `${theme.colors.accent.cyan}12`,
+                        transitionDuration: '200ms',
                       }}>
                         <Icon size={18} style={{ color: theme.colors.accent.cyan }} />
                       </div>

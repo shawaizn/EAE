@@ -2,23 +2,22 @@ import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { getLessonNumber, getProgressStats } from '../lib/utils';
-import { behavior, lang } from '../styles/theme';
+import { behavior, lang, theme } from '../styles/theme';
 import { StreakIndicator, ProgressRing, StatCard, AchievementBadge, ModuleProgressCard, LessonGrid } from '../components/progress';
 import { TrendingUp, CheckCircle2, Bookmark, X } from 'lucide-react';
 import { useBookmarks } from '../hooks/useBookmarks';
 import { Link } from 'react-router-dom';
 import { getModuleAndLesson } from '../lib/utils';
 
-// DESIGN COLORS - Change these to switch between enterprise and old design
 const COLORS = {
-  bg: '#EFF6FF',
-  cardBg: '#FFFFFF',
-  textPrimary: '#0F172A',
-  textSecondary: '#475569',
-  accent: '#0369A1',
-  primary: '#1E293B',
-  primaryElectric: '#1E40AF',
-  border: '#E2E8F0',
+  bg: theme.colors.background.light || theme.colors.background.base,
+  cardBg: theme.colors.background.card,
+  textPrimary: theme.colors.text.primary,
+  textSecondary: theme.colors.text.secondary,
+  accent: theme.colors.accent.cyan,
+  primary: theme.colors.primary.deep,
+  primaryElectric: theme.colors.primary.electric,
+  border: theme.colors.border.subtle,
 };
 
 const moduleNarratives = [
