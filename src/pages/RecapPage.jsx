@@ -7,6 +7,7 @@ import { BookOpen, FileText } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
 import { getModuleNotes } from '../lib/notesFetch';
 import { useState, useEffect } from 'react';
+import { theme } from '../styles/theme';
 
 export function RecapPage() {
   const { user, signOut } = useAuth();
@@ -48,60 +49,90 @@ export function RecapPage() {
   }
 
   return (
-    <div className="flex-1 overflow-y-auto">
+    <div className="flex-1 overflow-y-auto" style={{ backgroundColor: theme.colors.background.base }}>
       <div className="max-w-screen-xl mx-auto px-8 py-8">
           {/* Breadcrumb */}
           {/* <div className="mb-8">
-            <Link to="/dashboard" className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
+            <Link to="/dashboard" className="font-medium transition-colors" style={{ color: theme.colors.accent.cyan }}>
               Dashboard
             </Link>
-            <span className="mx-2 text-slate-400">/</span>
-            <Link to={`/modules/${moduleIdNum}`} className="text-cyan-600 hover:text-cyan-700 font-medium transition-colors">
+            <span className="mx-2" style={{ color: theme.colors.text.muted }}>/</span>
+            <Link to={`/modules/${moduleIdNum}`} className="font-medium transition-colors" style={{ color: theme.colors.accent.cyan }}>
               {module.title}
             </Link>
-            <span className="mx-2 text-slate-400">/</span>
-            <span className="text-slate-600 font-medium">Recap</span>
+            <span className="mx-2" style={{ color: theme.colors.text.muted }}>/</span>
+            <span className="font-medium" style={{ color: theme.colors.text.secondary }}>Recap</span>
           </div> */}
 
           {/* Header */}
           <div className="mb-24">
-            <h1 className="text-5xl font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>
+            <h1 className="text-5xl font-black mb-3" style={{
+              letterSpacing: '-0.02em',
+              color: theme.colors.text.primary
+            }}>
               Module Recap
             </h1>
-            <p className="text-lg text-slate-600 font-medium">{module.title}</p>
+            <p className="text-lg font-medium" style={{ color: theme.colors.text.secondary }}>
+              {module.title}
+            </p>
           </div>
 
           {/* Module Notes */}
-          <div className="mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
-            <div className="p-6 bg-slate-50 border-b-2 border-slate-200 flex items-center gap-3">
-              <FileText size={24} className="text-cyan-600" />
-              <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Module Notes</h2>
+          <div className="mb-24 rounded-lg shadow-sm" style={{
+            backgroundColor: theme.colors.background.card,
+            borderWidth: '2px',
+            borderColor: theme.colors.border.default,
+          }}>
+            <div className="p-6 flex items-center gap-3" style={{
+              backgroundColor: `${theme.colors.text.primary}08`,
+              borderBottomWidth: '2px',
+              borderBottomColor: theme.colors.border.default,
+            }}>
+              <FileText size={24} style={{ color: theme.colors.accent.cyan }} />
+              <h2 className="text-2xl font-black" style={{
+                letterSpacing: '-0.02em',
+                color: theme.colors.text.primary
+              }}>Module Notes</h2>
             </div>
             <div className="p-12">
               {notesLoading ? (
-                <p className="text-slate-600 italic">Loading notes...</p>
+                <p style={{
+                  color: theme.colors.text.secondary,
+                  fontStyle: 'italic'
+                }}>Loading notes...</p>
               ) : notes && notes.sections ? (
                 <div className="space-y-8">
                   {notes.sections.map((section, idx) => (
                     <div key={idx}>
-                      <h3 className="text-xl font-bold text-slate-900 mb-4">{section.name}</h3>
+                      <h3 className="text-xl font-bold mb-4" style={{ color: theme.colors.text.primary }}>
+                        {section.name}
+                      </h3>
                       {section.subsections && Array.isArray(section.subsections) ? (
                         <div className="space-y-4 pl-4">
                           {section.subsections.map((subsection, subIdx) => (
-                            <div key={subIdx} className="border-l-2 border-cyan-300 pl-4">
-                              <h4 className="font-semibold text-slate-800 mb-2">{subsection.title}</h4>
-                              <p className="text-slate-700 leading-relaxed text-sm">{subsection.content}</p>
+                            <div key={subIdx} className="pl-4" style={{
+                              borderLeftWidth: '2px',
+                              borderLeftColor: theme.colors.accent.cyan,
+                            }}>
+                              <h4 className="font-semibold mb-2" style={{ color: theme.colors.text.primary }}>
+                                {subsection.title}
+                              </h4>
+                              <p className="leading-relaxed text-sm" style={{ color: theme.colors.text.secondary }}>
+                                {subsection.content}
+                              </p>
                             </div>
                           ))}
                         </div>
                       ) : (
-                        <p className="text-slate-700 leading-relaxed">{section.content}</p>
+                        <p className="leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                          {section.content}
+                        </p>
                       )}
                     </div>
                   ))}
                 </div>
               ) : (
-                <p className="text-slate-600">
+                <p style={{ color: theme.colors.text.secondary }}>
                   Comprehensive notes summarizing all {module.lessons.length} lessons in this module.
                 </p>
               )}
@@ -109,18 +140,28 @@ export function RecapPage() {
           </div>
 
           {/* Practice Quiz */}
-          <div className="mb-24 border-2 border-cyan-600 rounded-lg bg-cyan-50 shadow-sm">
+          <div className="mb-24 rounded-lg shadow-sm" style={{
+            backgroundColor: `${theme.colors.accent.cyan}15`,
+            borderWidth: '2px',
+            borderColor: theme.colors.accent.cyan,
+          }}>
             <div className="p-12">
               <div className="flex items-center gap-3 mb-6">
-                <BookOpen size={28} className="text-cyan-600" />
-                <h2 className="text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Practice Quiz</h2>
+                <BookOpen size={28} style={{ color: theme.colors.accent.cyan }} />
+                <h2 className="text-2xl font-black" style={{
+                  letterSpacing: '-0.02em',
+                  color: theme.colors.text.primary
+                }}>Practice Quiz</h2>
               </div>
-              <p className="text-slate-700 mb-8 leading-relaxed text-lg">
+              <p className="mb-8 leading-relaxed text-lg" style={{ color: theme.colors.text.secondary }}>
                 Test your knowledge with {module.lessons.length} lessons worth of questions.
               </p>
               <Link
                 to={`/quiz/lesson/${moduleIdNum}`}
-                className="inline-block px-8 py-4 bg-cyan-600 text-white rounded-lg hover:bg-cyan-700 transition-colors font-semibold"
+                className="inline-block px-8 py-4 text-white rounded-lg hover:opacity-90 transition-opacity font-semibold"
+                style={{
+                  backgroundColor: theme.colors.accent.cyan,
+                }}
               >
                 Start Module Quiz
               </Link>
@@ -128,11 +169,18 @@ export function RecapPage() {
           </div>
 
           {/* Navigation */}
-          <div className="pt-12 border-t-2 border-slate-200 flex justify-between items-center">
+          <div className="pt-12 flex justify-between items-center" style={{
+            borderTopWidth: '2px',
+            borderTopColor: theme.colors.border.default,
+          }}>
             {moduleIdNum > 1 ? (
               <Link
                 to={`/modules/${moduleIdNum - 1}`}
-                className="px-6 py-3 text-slate-900 border-2 border-slate-200 rounded-lg hover:bg-slate-50 transition font-semibold"
+                className="px-6 py-3 rounded-lg transition font-semibold border-2"
+                style={{
+                  color: theme.colors.text.primary,
+                  borderColor: theme.colors.border.default,
+                }}
               >
                 ← Previous Module
               </Link>
@@ -142,7 +190,10 @@ export function RecapPage() {
             {moduleIdNum < 8 && (
               <Link
                 to={`/modules/${moduleIdNum + 1}`}
-                className="px-8 py-4 bg-slate-900 text-white rounded-lg hover:bg-slate-800 transition-colors font-semibold"
+                className="px-8 py-4 text-white rounded-lg hover:opacity-90 transition-opacity font-semibold"
+                style={{
+                  backgroundColor: theme.colors.primary.deep,
+                }}
               >
                 Next Module →
               </Link>

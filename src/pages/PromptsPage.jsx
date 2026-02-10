@@ -3,6 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 import { usePrompts } from '../hooks/usePrompts';
 import { PromptCategory } from '../components/prompts/PromptCategory';
 import { Zap, PenTool, BarChart3, Lightbulb, Layers } from 'lucide-react';
+import { theme } from '../styles/theme';
 
 const CATEGORIES = [
   {
@@ -74,13 +75,16 @@ export function PromptsPage() {
   }
 
   return (
-    <div className="flex-1 overflow-y-auto">
+    <div className="flex-1 overflow-y-auto" style={{ backgroundColor: theme.colors.background.base }}>
       <div className="max-w-screen-xl mx-auto px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-5xl font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>
+          <h1 className="text-5xl font-black mb-3" style={{
+            letterSpacing: '-0.02em',
+            color: theme.colors.text.primary
+          }}>
             Prompt Vault
           </h1>
-          <p className="text-lg text-slate-600 font-medium">
+          <p className="text-lg font-medium" style={{ color: theme.colors.text.secondary }}>
             Build your personal library of AI prompts -- copy any prompt with one click
           </p>
         </div>

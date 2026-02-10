@@ -3,6 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useNotes } from '../hooks/useNotes';
 import { NoteCategory } from '../components/notes/NoteCategory';
 import { Clock, Sparkles, Heart, Target } from 'lucide-react';
+import { theme } from '../styles/theme';
 
 const CATEGORIES = [
   {
@@ -66,13 +67,16 @@ export function NotesPage() {
   }
 
   return (
-    <div className="flex-1 overflow-y-auto">
+    <div className="flex-1 overflow-y-auto" style={{ backgroundColor: theme.colors.background.base }}>
       <div className="max-w-screen-xl mx-auto px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-5xl font-black text-slate-900 mb-3" style={{ letterSpacing: '-0.02em' }}>
+          <h1 className="text-5xl font-black mb-3" style={{
+            letterSpacing: '-0.02em',
+            color: theme.colors.text.primary
+          }}>
             Notes
           </h1>
-          <p className="text-lg text-slate-600 font-medium">
+          <p className="text-lg font-medium" style={{ color: theme.colors.text.secondary }}>
             Capture your reflections and ideas as you learn
           </p>
         </div>

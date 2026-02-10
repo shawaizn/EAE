@@ -10,7 +10,7 @@ import { lessonMedia } from '../data/lessonMedia';
 import { activityData } from '../data/activityData';
 import { getLessonNumber, parseMarkdownToHTML } from '../lib/utils';
 import { useBookmarks } from '../hooks/useBookmarks';
-import { lang } from '../styles/theme';
+import { lang, theme } from '../styles/theme';
 
 export function LessonPage() {
   const { user, signOut } = useAuth();
@@ -149,20 +149,24 @@ export function LessonPage() {
   };
 
   return (
-    <div className="flex-1 overflow-y-auto">
+    <div className="flex-1 overflow-y-auto" style={{ backgroundColor: theme.colors.background.base }}>
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
           {/* Lesson Title */}
           <div className="flex items-start justify-between gap-4 mb-12 sm:mb-24">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black" style={{
+              letterSpacing: '-0.02em',
+              color: theme.colors.text.primary
+            }}>
               {lesson.title}
             </h1>
             <button
               onClick={() => toggleBookmark(globalLessonNumber)}
-              className={`flex-shrink-0 mt-1 p-2.5 rounded-lg border-2 transition-all duration-200 ${
-                isBookmarked(globalLessonNumber)
-                  ? 'bg-cyan-50 border-cyan-300 text-cyan-600 shadow-sm'
-                  : 'bg-white border-slate-200 text-slate-400 hover:border-slate-300 hover:text-slate-600'
-              }`}
+              className="flex-shrink-0 mt-1 p-2.5 rounded-lg border-2 transition-all duration-200"
+              style={{
+                backgroundColor: isBookmarked(globalLessonNumber) ? `${theme.colors.accent.cyan}15` : theme.colors.background.card,
+                borderColor: isBookmarked(globalLessonNumber) ? theme.colors.accent.cyan : theme.colors.border.subtle,
+                color: isBookmarked(globalLessonNumber) ? theme.colors.accent.cyan : theme.colors.text.muted,
+              }}
               title={isBookmarked(globalLessonNumber) ? 'Remove bookmark' : 'Bookmark this lesson'}
             >
               <Bookmark size={20} fill={isBookmarked(globalLessonNumber) ? 'currentColor' : 'none'} />
@@ -175,12 +179,22 @@ export function LessonPage() {
           </div>
 
           {/* Summary Section */}
-          <div className="mb-12 sm:mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
+          <div className="mb-12 sm:mb-24 rounded-lg shadow-sm" style={{
+            backgroundColor: theme.colors.background.card,
+            borderWidth: '2px',
+            borderColor: theme.colors.border.default,
+          }}>
             <button
               onClick={() => setShowSummary(!showSummary)}
-              className="w-full flex items-center justify-between p-4 sm:p-6 bg-slate-50 hover:bg-slate-100 transition"
+              className="w-full flex items-center justify-between p-4 sm:p-6 transition"
+              style={{
+                backgroundColor: `${theme.colors.text.primary}08`,
+              }}
             >
-              <h2 className="text-lg sm:text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Lesson Summary</h2>
+              <h2 className="text-lg sm:text-2xl font-black" style={{
+                letterSpacing: '-0.02em',
+                color: theme.colors.text.primary
+              }}>Lesson Summary</h2>
               <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
                 {!showSummary && (
                   <button
@@ -188,21 +202,31 @@ export function LessonPage() {
                       e.stopPropagation();
                       handleCopySummary();
                     }}
-                    className="p-2 hover:bg-slate-200 rounded transition"
+                    className="p-2 rounded transition"
+                    style={{
+                      color: copied ? theme.colors.accent.cyan : theme.colors.text.secondary
+                    }}
                     title="Copy summary"
                   >
-                    <Copy size={18} className={`${copied ? 'text-cyan-600' : 'text-slate-600'} sm:w-5 sm:h-5`} />
+                    <Copy size={18} className="sm:w-5 sm:h-5" />
                   </button>
                 )}
-                {showSummary ? <ChevronUp size={20} className="text-slate-600 sm:w-6 sm:h-6" /> : <ChevronDown size={20} className="text-slate-600 sm:w-6 sm:h-6" />}
+                {showSummary ? <ChevronUp size={20} className="sm:w-6 sm:h-6" style={{ color: theme.colors.text.secondary }} /> : <ChevronDown size={20} className="sm:w-6 sm:h-6" style={{ color: theme.colors.text.secondary }} />}
               </div>
             </button>
             {showSummary && (
-              <div className="p-4 sm:p-6 border-t-2 border-slate-200">
-                <div className="prose prose-sm max-w-none text-slate-700 mb-4 sm:mb-6" dangerouslySetInnerHTML={{ __html: lessonMedia_.summary }} />
+              <div className="p-4 sm:p-6" style={{
+                borderTopWidth: '2px',
+                borderTopColor: theme.colors.border.default,
+              }}>
+                <div className="prose prose-sm max-w-none mb-4 sm:mb-6" style={{ color: theme.colors.text.secondary }} dangerouslySetInnerHTML={{ __html: lessonMedia_.summary }} />
                 <button
                   onClick={handleCopySummary}
-                  className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 bg-slate-100 text-slate-800 rounded-lg hover:bg-slate-200 transition font-medium text-sm sm:text-base w-full sm:w-auto justify-center sm:justify-start"
+                  className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-lg transition font-medium text-sm sm:text-base w-full sm:w-auto justify-center sm:justify-start"
+                  style={{
+                    backgroundColor: `${theme.colors.text.primary}10`,
+                    color: theme.colors.text.primary,
+                  }}
                 >
                   <Copy size={16} />
                   {copied ? 'Copied!' : 'Copy Summary'}
@@ -213,67 +237,127 @@ export function LessonPage() {
 
           {/* Activity Section */}
           {activity && (
-            <div className="mb-12 sm:mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
+            <div className="mb-12 sm:mb-24 rounded-lg shadow-sm" style={{
+              backgroundColor: theme.colors.background.card,
+              borderWidth: '2px',
+              borderColor: theme.colors.border.default,
+            }}>
               <button
                 onClick={() => setShowSkill(!showSkill)}
-                className="w-full flex items-center justify-between p-4 sm:p-6 bg-slate-50 hover:bg-slate-100 transition"
+                className="w-full flex items-center justify-between p-4 sm:p-6 transition"
+                style={{
+                  backgroundColor: `${theme.colors.text.primary}08`,
+                }}
               >
-                <h2 className="text-lg sm:text-2xl font-black text-slate-900 break-words" style={{ letterSpacing: '-0.02em' }}>
+                <h2 className="text-lg sm:text-2xl font-black break-words" style={{
+                  letterSpacing: '-0.02em',
+                  color: theme.colors.text.primary
+                }}>
                   Skill{activity.skill && `: ${activity.skill}`}
                 </h2>
-                {showSkill ? <ChevronUp size={20} className="text-slate-600 flex-shrink-0 sm:w-6 sm:h-6" /> : <ChevronDown size={20} className="text-slate-600 flex-shrink-0 sm:w-6 sm:h-6" />}
+                {showSkill ? <ChevronUp size={20} className="flex-shrink-0 sm:w-6 sm:h-6" style={{ color: theme.colors.text.secondary }} /> : <ChevronDown size={20} className="flex-shrink-0 sm:w-6 sm:h-6" style={{ color: theme.colors.text.secondary }} />}
               </button>
               {showSkill && (
-              <div className="p-4 sm:p-8 lg:p-12 text-slate-700 space-y-6 sm:space-y-8 border-t-2 border-slate-200">
+              <div className="p-4 sm:p-8 lg:p-12 space-y-6 sm:space-y-8" style={{
+                borderTopWidth: '2px',
+                borderTopColor: theme.colors.border.default,
+                color: theme.colors.text.secondary
+              }}>
                 {/* Skill */}
                 <div>
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 sm:mb-3" style={{ letterSpacing: '-0.02em' }}>Skills You're Building:</h3>
-                  <p className="text-base sm:text-lg font-semibold text-cyan-600">{activity.skill}</p>
+                  <h3 className="text-base sm:text-lg font-black mb-2 sm:mb-3" style={{
+                    letterSpacing: '-0.02em',
+                    color: theme.colors.text.primary
+                  }}>Skills You're Building:</h3>
+                  <p className="text-base sm:text-lg font-semibold" style={{ color: theme.colors.accent.cyan }}>
+                    {activity.skill}
+                  </p>
                 </div>
 
                 {/* Connection */}
                 <div>
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 sm:mb-3" style={{ letterSpacing: '-0.02em' }}>Connection:</h3>
-                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed">{activity.connection}</p>
+                  <h3 className="text-base sm:text-lg font-black mb-2 sm:mb-3" style={{
+                    letterSpacing: '-0.02em',
+                    color: theme.colors.text.primary
+                  }}>Connection:</h3>
+                  <p className="text-sm sm:text-base leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                    {activity.connection}
+                  </p>
                 </div>
 
                 {/* Activity */}
                 <div>
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 sm:mb-3" style={{ letterSpacing: '-0.02em' }}>Activity:</h3>
-                  <div className="text-sm sm:text-base text-slate-700 whitespace-pre-line leading-relaxed">{activity.activity}</div>
+                  <h3 className="text-base sm:text-lg font-black mb-2 sm:mb-3" style={{
+                    letterSpacing: '-0.02em',
+                    color: theme.colors.text.primary
+                  }}>Activity:</h3>
+                  <div className="text-sm sm:text-base whitespace-pre-line leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                    {activity.activity}
+                  </div>
                 </div>
 
                 {/* Why this matters */}
                 <div>
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-2 sm:mb-3" style={{ letterSpacing: '-0.02em' }}>Why this matters:</h3>
-                  <p className="text-sm sm:text-base text-slate-700 leading-relaxed">{activity.whyMatters}</p>
+                  <h3 className="text-base sm:text-lg font-black mb-2 sm:mb-3" style={{
+                    letterSpacing: '-0.02em',
+                    color: theme.colors.text.primary
+                  }}>Why this matters:</h3>
+                  <p className="text-sm sm:text-base leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                    {activity.whyMatters}
+                  </p>
                 </div>
 
                 {/* Audience Buttons */}
-                <div className="pt-4 sm:pt-6 border-t-2 border-slate-200">
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 mb-4 sm:mb-6" style={{ letterSpacing: '-0.02em' }}>Apply this as:</h3>
+                <div className="pt-4 sm:pt-6" style={{
+                  borderTopWidth: '2px',
+                  borderTopColor: theme.colors.border.default,
+                }}>
+                  <h3 className="text-base sm:text-lg font-black mb-4 sm:mb-6" style={{
+                    letterSpacing: '-0.02em',
+                    color: theme.colors.text.primary
+                  }}>Apply this as:</h3>
                   <div className="grid grid-cols-2 gap-2 sm:gap-4">
                     <button
                       onClick={() => setActiveModal('learners')}
-                      className="px-3 sm:px-6 py-2 sm:py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200 text-xs sm:text-sm"
+                      className="px-3 sm:px-6 py-2 sm:py-4 rounded-lg transition font-semibold border-2 text-xs sm:text-sm"
+                      style={{
+                        backgroundColor: `${theme.colors.text.primary}10`,
+                        color: theme.colors.text.primary,
+                        borderColor: theme.colors.border.subtle,
+                      }}
                     >
                       {lang.audienceLabels.learners}
                     </button>
                     <button
                       onClick={() => setActiveModal('employees')}
-                      className="px-3 sm:px-6 py-2 sm:py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200 text-xs sm:text-sm"
+                      className="px-3 sm:px-6 py-2 sm:py-4 rounded-lg transition font-semibold border-2 text-xs sm:text-sm"
+                      style={{
+                        backgroundColor: `${theme.colors.text.primary}10`,
+                        color: theme.colors.text.primary,
+                        borderColor: theme.colors.border.subtle,
+                      }}
                     >
                       {lang.audienceLabels.employees}
                     </button>
                     <button
                       onClick={() => setActiveModal('selfEmployed')}
-                      className="px-3 sm:px-6 py-2 sm:py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200 text-xs sm:text-sm"
+                      className="px-3 sm:px-6 py-2 sm:py-4 rounded-lg transition font-semibold border-2 text-xs sm:text-sm"
+                      style={{
+                        backgroundColor: `${theme.colors.text.primary}10`,
+                        color: theme.colors.text.primary,
+                        borderColor: theme.colors.border.subtle,
+                      }}
                     >
                       {lang.audienceLabels.selfEmployed}
                     </button>
                     <button
                       onClick={() => setActiveModal('businesses')}
-                      className="px-3 sm:px-6 py-2 sm:py-4 bg-slate-100 text-slate-900 rounded-lg hover:bg-slate-200 transition font-semibold border-2 border-slate-200 text-xs sm:text-sm"
+                      className="px-3 sm:px-6 py-2 sm:py-4 rounded-lg transition font-semibold border-2 text-xs sm:text-sm"
+                      style={{
+                        backgroundColor: `${theme.colors.text.primary}10`,
+                        color: theme.colors.text.primary,
+                        borderColor: theme.colors.border.subtle,
+                      }}
                     >
                       {lang.audienceLabels.businesses}
                     </button>
@@ -285,16 +369,31 @@ export function LessonPage() {
           )}
 
           {/* Guide Section */}
-          <div className="mb-12 sm:mb-24 border-2 border-slate-200 rounded-lg shadow-sm">
+          <div className="mb-12 sm:mb-24 rounded-lg shadow-sm" style={{
+            backgroundColor: theme.colors.background.card,
+            borderWidth: '2px',
+            borderColor: theme.colors.border.default,
+          }}>
             <button
               onClick={() => setShowGuide(!showGuide)}
-              className="w-full flex items-center justify-between p-4 sm:p-6 bg-slate-50 hover:bg-slate-100 transition"
+              className="w-full flex items-center justify-between p-4 sm:p-6 transition"
+              style={{
+                backgroundColor: `${theme.colors.text.primary}08`,
+              }}
             >
-              <h2 className="text-lg sm:text-2xl font-black text-slate-900" style={{ letterSpacing: '-0.02em' }}>Guide</h2>
-              {showGuide ? <ChevronUp size={20} className="text-slate-600 flex-shrink-0 sm:w-6 sm:h-6" /> : <ChevronDown size={20} className="text-slate-600 flex-shrink-0 sm:w-6 sm:h-6" />}
+              <h2 className="text-lg sm:text-2xl font-black" style={{
+                letterSpacing: '-0.02em',
+                color: theme.colors.text.primary
+              }}>Guide</h2>
+              {showGuide ? <ChevronUp size={20} className="flex-shrink-0 sm:w-6 sm:h-6" style={{ color: theme.colors.text.secondary }} /> : <ChevronDown size={20} className="flex-shrink-0 sm:w-6 sm:h-6" style={{ color: theme.colors.text.secondary }} />}
             </button>
             {showGuide && (
-              <div className="p-4 sm:p-8 lg:p-12 bg-white border-t-2 border-slate-200 prose prose-sm max-w-none" style={{ fontSize: '0.875rem' }}>
+              <div className="p-4 sm:p-8 lg:p-12 prose prose-sm max-w-none" style={{
+                borderTopWidth: '2px',
+                borderTopColor: theme.colors.border.default,
+                color: theme.colors.text.secondary,
+                fontSize: '0.875rem'
+              }}>
                 <div dangerouslySetInnerHTML={{ __html: lessonMedia_.guide }} />
               </div>
             )}
@@ -346,7 +445,10 @@ export function LessonPage() {
           </Modal>
 
           {/* Mark Complete Button */}
-          <div className="pt-6 sm:pt-12 border-t-2 border-slate-200">
+          <div className="pt-6 sm:pt-12" style={{
+            borderTopWidth: '2px',
+            borderTopColor: theme.colors.border.default,
+          }}>
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4">
               <Button
                 variant={completed ? 'success' : 'primary'}
@@ -373,7 +475,10 @@ export function LessonPage() {
                   return (
                     <Link
                       to={`/modules/${moduleIdNum}/lessons/${nextLesson.id}`}
-                      className="px-4 sm:px-6 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors text-sm sm:text-base text-center flex-1 sm:flex-none"
+                      className="px-4 sm:px-6 py-3 text-white font-medium rounded-lg hover:opacity-90 transition-opacity text-sm sm:text-base text-center flex-1 sm:flex-none"
+                      style={{
+                        backgroundColor: theme.colors.primary.deep
+                      }}
                     >
                       Next Lesson →
                     </Link>
@@ -383,7 +488,10 @@ export function LessonPage() {
                   return (
                     <Link
                       to={`/modules/${moduleIdNum}/recap`}
-                      className="px-4 sm:px-6 py-3 bg-slate-900 text-white font-medium rounded-lg hover:bg-slate-800 transition-colors text-sm sm:text-base text-center flex-1 sm:flex-none"
+                      className="px-4 sm:px-6 py-3 text-white font-medium rounded-lg hover:opacity-90 transition-opacity text-sm sm:text-base text-center flex-1 sm:flex-none"
+                      style={{
+                        backgroundColor: theme.colors.primary.deep
+                      }}
                     >
                       View Module Recap →
                     </Link>
