@@ -1,7 +1,7 @@
 export const landingContent = {
   hero: {
-    title: 'Achieve more. Spend less.',
-    subtitle: 'Higher quality output. Faster delivery. Same team. Different results.',
+    title: 'AI transformation partner',
+    subtitle: 'Here to help you remain competitive in an AI age',
     ctaPrimary: 'Book Call',
     ctaSecondary: 'See Curriculum'
   },
