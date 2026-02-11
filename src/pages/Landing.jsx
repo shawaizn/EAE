@@ -103,15 +103,12 @@ export function Landing() {
               backgroundClip: behavior.hoverGlow ? 'text' : undefined,
               color: behavior.hoverGlow ? undefined : theme.colors.text.primary,
             }}>
-              Achieve more.<br />Spend less.
+              AI transformation partner
             </h1>
 
             <div className="max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <p className="text-lg sm:text-xl leading-relaxed tracking-wide" style={{ color: theme.colors.text.secondary }}>
-                Higher quality output. Faster delivery.
-              </p>
-              <p className="text-lg sm:text-xl mt-2 font-semibold tracking-wide" style={{ color: theme.colors.text.primary }}>
-                Same team. <span style={{ color: theme.colors.accent.cyan }}>Different results.</span>
+                Here to help you remain competitive in an AI age
               </p>
             </div>
 
