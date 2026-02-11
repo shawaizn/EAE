@@ -1,36 +1,10 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, Target, ArrowRight, BookOpen, Users, TrendingUp, ChevronDown, Sparkles, Shield, Rocket, Award, ExternalLink, CheckCircle } from 'lucide-react';
+import { Zap, Target, ArrowRight, BookOpen, Rocket, ExternalLink } from 'lucide-react';
 import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 import { LogoHorizontal } from '../components/branding/Logo';
-import { modulesData } from '../data/modulesData';
-import { activityData } from '../data/activityData';
 import { theme, behavior } from '../styles/theme';
 
-const moduleNarratives = [
-  "Accelerated foundations -- what AI is, how it fits in technology history, and the evolution to machine learning. Understanding is a necessity, not a destination.",
-  "Evaluation frameworks -- how ChatGPT works, the autonomy ladder, and frameworks to evaluate ANY AI tool that emerges. Tools change constantly. Evaluation frameworks don't.",
-  "Market structure -- how AI goes from research labs to products, who controls what, the four types of AI products, and business models that determine access.",
-  "Strategic restraint -- when to use AI, when NOT to, which work to protect, and the five AI traps that create dependency.",
-  "Contextual prompting -- frameworks, meta-prompting, and building custom prompt libraries for YOUR workflow.",
-  "Systems thinking -- building workflows around outcomes, creating playbooks that survive tool changes, and strategic filtering.",
-  "Competitive positioning -- what skills increase in value, which advantages AI can't replicate, and building strategic assets.",
-  "Systematic implementation -- building workflows that last, team collaboration, measuring real impact, and continuous improvement."
-];
-
-const totalLessons = modulesData.reduce((acc, m) => acc + m.lessons.length, 0);
-
 export function Landing() {
-  const [expandedService, setExpandedService] = useState(null);
-  const [expandedModule, setExpandedModule] = useState(null);
-
-  const toggleService = (serviceId) => {
-    setExpandedService((prev) => (prev === serviceId ? null : serviceId));
-  };
-
-  const toggleModule = (moduleId) => {
-    setExpandedModule((prev) => (prev === moduleId ? null : moduleId));
-  };
 
   const services = [
     {
@@ -38,7 +12,7 @@ export function Landing() {
       icon: BookOpen,
       title: 'AI Education',
       description: 'Build team capability in AI. Frameworks and mental models, not just tools.',
-      expandable: true
+      link: '/ai-education'
     },
     {
       id: 'strategy',
@@ -163,239 +137,47 @@ export function Landing() {
             </p>
           </div>
 
-          <div className="space-y-4">
-            {services.map((service, index) => {
-              const isExpanded = expandedService === service.id;
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {services.map((service) => {
               const IconComponent = service.icon;
-
               return (
-                <div
+                <Link
                   key={service.id}
-                  className="rounded-xl border-2 overflow-hidden transition-all"
+                  to={service.link}
+                  className="p-8 rounded-lg border group transition-all h-full flex flex-col"
                   style={{
+                    borderColor: theme.colors.border.subtle,
                     backgroundColor: theme.colors.background.card,
-                    borderColor: isExpanded ? theme.colors.accent.cyan : theme.colors.border.subtle,
-                    boxShadow: isExpanded ? theme.shadows.medium : theme.shadows.subtle,
+                    textDecoration: 'none',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = theme.colors.accent.cyan;
+                    e.currentTarget.style.backgroundColor = `${theme.colors.accent.cyan}05`;
+                    if (behavior.hoverScale) {
+                      e.currentTarget.style.transform = 'translateY(-4px)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = theme.colors.border.subtle;
+                    e.currentTarget.style.backgroundColor = theme.colors.background.card;
+                    e.currentTarget.style.transform = 'translateY(0)';
                   }}
                 >
-                  {service.expandable ? (
-                    <>
-                      <button
-                        type="button"
-                        onClick={() => toggleService(service.id)}
-                        className="w-full text-left p-6 cursor-pointer group hover:bg-opacity-50 transition-colors"
-                        style={{
-                          backgroundColor: isExpanded ? `${theme.colors.accent.cyan}03` : 'transparent',
-                        }}
-                      >
-                        <div className="flex items-center gap-4">
-                          <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform ${behavior.hoverScale ? 'group-hover:scale-105' : ''}`} style={{
-                            background: `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.primary.electric} 100%)`,
-                            transitionDuration: '200ms',
-                          }}>
-                            <IconComponent size={24} style={{ color: 'white' }} />
-                          </div>
-
-                          <div className="flex-1 min-w-0">
-                            <h3 className="text-lg font-bold" style={{
-                              color: theme.colors.text.primary,
-                            }}>
-                              {service.title}
-                            </h3>
-                            <p className="text-sm mt-1" style={{ color: theme.colors.text.secondary }}>
-                              {service.description}
-                            </p>
-                          </div>
-                          <ChevronDown
-                            size={20}
-                            style={{
-                              color: isExpanded ? theme.colors.accent.cyan : theme.colors.text.muted,
-                              transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
-                              transition: 'transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94), color 200ms ease',
-                              flexShrink: 0,
-                            }}
-                          />
-                        </div>
-                      </button>
-
-                      {/* Expanded AI Education Content */}
-                      <div
-                        style={{
-                          maxHeight: isExpanded ? '5000px' : '0px',
-                          opacity: isExpanded ? 1 : 0,
-                          overflow: 'hidden',
-                          transition: 'max-height 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 250ms ease',
-                        }}
-                      >
-                        <div className="px-6 pb-6 border-t" style={{ borderColor: theme.colors.border.subtle }}>
-                          <div className="pt-6 mb-8">
-                            <h4 className="text-xl font-bold mb-4" style={{ color: theme.colors.text.primary }}>
-                              12 Live Sessions Over 6 Weeks
-                            </h4>
-                            <p className="text-base leading-relaxed mb-4" style={{ color: theme.colors.text.secondary }}>
-                              Strategic AI use from foundations to building.
-                            </p>
-                          </div>
-
-                          <div className="space-y-3 mb-8">
-                            {modulesData.map((module) => {
-                              const isModuleExpanded = expandedModule === module.id;
-                              return (
-                                <div
-                                  key={module.id}
-                                  className="rounded-lg border overflow-hidden transition-all"
-                                  style={{
-                                    backgroundColor: theme.colors.background.subtle,
-                                    borderColor: isModuleExpanded ? theme.colors.accent.cyan : theme.colors.border.subtle,
-                                  }}
-                                >
-                                  <button
-                                    type="button"
-                                    onClick={() => toggleModule(module.id)}
-                                    className="w-full text-left p-4 cursor-pointer group transition-colors"
-                                    style={{
-                                      backgroundColor: isModuleExpanded ? `${theme.colors.accent.cyan}03` : 'transparent',
-                                    }}
-                                  >
-                                    <div className="flex items-center justify-between gap-3">
-                                      <div className="flex items-center gap-3 min-w-0 flex-1">
-                                        <span className="text-sm font-bold px-2.5 py-1 rounded flex-shrink-0" style={{
-                                          backgroundColor: `${theme.colors.primary.electric}15`,
-                                          color: theme.colors.primary.electric,
-                                        }}>
-                                          {module.id}
-                                        </span>
-                                        <div className="min-w-0 flex-1">
-                                          <p className="font-semibold" style={{ color: theme.colors.text.primary }}>
-                                            {module.title}
-                                          </p>
-                                          <p className="text-xs mt-0.5" style={{ color: theme.colors.text.muted }}>
-                                            {module.lessons.length} lessons
-                                          </p>
-                                        </div>
-                                      </div>
-                                      <ChevronDown
-                                        size={16}
-                                        style={{
-                                          color: isModuleExpanded ? theme.colors.accent.cyan : theme.colors.text.muted,
-                                          transform: isModuleExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
-                                          transition: 'transform 300ms ease',
-                                          flexShrink: 0,
-                                        }}
-                                      />
-                                    </div>
-                                  </button>
-
-                                  <div
-                                    style={{
-                                      maxHeight: isModuleExpanded ? `${module.lessons.length * 40 + 100}px` : '0px',
-                                      opacity: isModuleExpanded ? 1 : 0,
-                                      overflow: 'hidden',
-                                      transition: 'max-height 300ms ease, opacity 250ms ease',
-                                    }}
-                                  >
-                                    <div className="px-4 pb-4 border-t" style={{ borderColor: theme.colors.border.subtle }}>
-                                      <p className="text-sm leading-relaxed my-3" style={{ color: theme.colors.text.secondary }}>
-                                        {moduleNarratives[index]}
-                                      </p>
-                                      <div className="space-y-2">
-                                        {module.lessons.map((lesson) => (
-                                          <div key={lesson.id} className="flex items-start gap-2 p-2">
-                                            <span className="text-xs font-bold mt-0.5" style={{
-                                              color: theme.colors.primary.electric,
-                                            }}>
-                                              {String(lesson.id).padStart(2, '0')}
-                                            </span>
-                                            <span className="text-sm flex-1" style={{ color: theme.colors.text.primary }}>
-                                              {lesson.title}
-                                            </span>
-                                          </div>
-                                        ))}
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                          </div>
-
-                          <div className="bg-slate-50 p-4 rounded-lg mb-6" style={{
-                            backgroundColor: `${theme.colors.accent.cyan}08`,
-                          }}>
-                            <h5 className="font-semibold mb-3" style={{ color: theme.colors.text.primary }}>
-                              Includes
-                            </h5>
-                            <ul className="space-y-2">
-                              {[
-                                '12 live teaching sessions (2 per week, 60 minutes)',
-                                'Full platform access (notes, quizzes, activities, homework)',
-                                'Email support throughout program',
-                                'WhatsApp community for peer support',
-                                'Custom AI tool building in final 4 sessions',
-                                'Platform access continues 14 days after program ends'
-                              ].map((item, i) => (
-                                <li key={i} className="flex items-start gap-2 text-sm" style={{ color: theme.colors.text.secondary }}>
-                                  <CheckCircle size={14} style={{ color: theme.colors.accent.cyan, marginTop: '2px', flexShrink: 0 }} />
-                                  {item}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                          <Link
-                            to="/login"
-                            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold w-full justify-center transition-all"
-                            style={{
-                              backgroundColor: theme.colors.accent.cyan,
-                              color: 'white',
-                              boxShadow: theme.shadows.medium,
-                            }}
-                          >
-                            Get Started <ArrowRight size={16} />
-                          </Link>
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <Link
-                      to={service.link}
-                      className="p-6 group transition-all flex items-center justify-between"
-                      style={{
-                        textDecoration: 'none',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.backgroundColor = `${theme.colors.accent.cyan}03`;
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.backgroundColor = 'transparent';
-                      }}
-                    >
-                      <div className="flex items-center gap-4 flex-1">
-                        <div className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0" style={{
-                          background: `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.primary.electric} 100%)`,
-                        }}>
-                          <IconComponent size={24} style={{ color: 'white' }} />
-                        </div>
-
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-lg font-bold" style={{
-                            color: theme.colors.text.primary,
-                          }}>
-                            {service.title}
-                          </h3>
-                          <p className="text-sm mt-1" style={{ color: theme.colors.text.secondary }}>
-                            {service.description}
-                          </p>
-                        </div>
-                      </div>
-                      <ExternalLink size={20} style={{
-                        color: theme.colors.accent.cyan,
-                        flexShrink: 0,
-                        marginLeft: '1rem',
-                      }} className="group-hover:translate-x-1 transition-transform" />
-                    </Link>
-                  )}
-                </div>
+                  <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{
+                    background: `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.primary.electric} 100%)`,
+                  }}>
+                    <IconComponent size={24} style={{ color: 'white' }} />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3" style={{ color: theme.colors.text.primary }}>
+                    {service.title}
+                  </h3>
+                  <p className="text-base leading-relaxed flex-1" style={{ color: theme.colors.text.secondary }}>
+                    {service.description}
+                  </p>
+                  <div className="flex items-center gap-2 mt-6 text-sm font-semibold" style={{ color: theme.colors.accent.cyan }}>
+                    Learn more <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </Link>
               );
             })}
           </div>
