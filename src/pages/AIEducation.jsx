@@ -103,7 +103,7 @@ export function AIEducation() {
               backgroundClip: behavior.hoverGlow ? 'text' : undefined,
               color: behavior.hoverGlow ? undefined : theme.colors.text.primary,
             }}>
-              Don't Learn About AI.
+              Learn about AI.
             </h1>
 
             <div className="max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
@@ -137,101 +137,106 @@ export function AIEducation() {
         <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
           animationDelay: '0.4s',
         }}>
-          <div className="mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4" style={{
-              backgroundColor: `${theme.colors.accent.cyan}10`,
-            }}>
-              <Target size={14} style={{ color: theme.colors.accent.cyan }} />
-              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.accent.cyan }}>
-                What Makes This Different
-              </span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold" style={{
-              letterSpacing: '-0.03em',
-              color: theme.colors.text.primary,
-            }}>
-              Everyone has access to AI. You need competitive advantage.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-12">
-            {/* The Problem */}
-            <div className="p-8 rounded-xl border-2 backdrop-blur-sm" style={{
-              borderColor: `${theme.colors.accent.coral}40`,
-              backgroundColor: `${theme.colors.accent.coral}05`,
-              boxShadow: theme.shadows.subtle,
-            }}>
-              <h3 className="text-xl font-bold mb-6" style={{ color: theme.colors.text.primary }}>
-                The Standard AI Approach
-              </h3>
-              <div className="space-y-4">
-                <div className="flex gap-4">
-                  <div className="text-2xl font-bold flex-shrink-0" style={{ color: theme.colors.accent.coral }}>×</div>
-                  <div>
-                    <p className="font-semibold mb-1" style={{ color: theme.colors.text.primary }}>Tool-focused training</p>
-                    <p className="text-sm" style={{ color: theme.colors.text.secondary }}>Learn ChatGPT. New tool launches. Training obsolete.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="text-2xl font-bold flex-shrink-0" style={{ color: theme.colors.accent.coral }}>×</div>
-                  <div>
-                    <p className="font-semibold mb-1" style={{ color: theme.colors.text.primary }}>Tips and tricks</p>
-                    <p className="text-sm" style={{ color: theme.colors.text.secondary }}>Everyone learns the same tricks. No differentiation.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="text-2xl font-bold flex-shrink-0" style={{ color: theme.colors.accent.coral }}>×</div>
-                  <div>
-                    <p className="font-semibold mb-1" style={{ color: theme.colors.text.primary }}>Depth without frameworks</p>
-                    <p className="text-sm" style={{ color: theme.colors.text.secondary }}>Learn features. Can't apply to new situations independently.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Our Approach */}
-            <div className="p-8 rounded-xl border-2 backdrop-blur-sm" style={{
-              borderColor: `${theme.colors.accent.cyan}40`,
-              backgroundColor: `${theme.colors.accent.cyan}05`,
-              boxShadow: theme.shadows.subtle,
-            }}>
-              <h3 className="text-xl font-bold mb-6" style={{ color: theme.colors.text.primary }}>
-                Our Approach
-              </h3>
-              <div className="space-y-4">
-                <div className="flex gap-4">
-                  <div className="text-2xl font-bold flex-shrink-0" style={{ color: theme.colors.accent.cyan }}>✓</div>
-                  <div>
-                    <p className="font-semibold mb-1" style={{ color: theme.colors.text.primary }}>Framework-based thinking</p>
-                    <p className="text-sm" style={{ color: theme.colors.text.secondary }}>Learn decision frameworks. Apply to any tool, today or next year.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="text-2xl font-bold flex-shrink-0" style={{ color: theme.colors.accent.cyan }}>✓</div>
-                  <div>
-                    <p className="font-semibold mb-1" style={{ color: theme.colors.text.primary }}>Strategic independence</p>
-                    <p className="text-sm" style={{ color: theme.colors.text.secondary }}>Evaluate new tools yourself. Adapt to changes instantly.</p>
-                  </div>
-                </div>
-                <div className="flex gap-4">
-                  <div className="text-2xl font-bold flex-shrink-0" style={{ color: theme.colors.accent.cyan }}>✓</div>
-                  <div>
-                    <p className="font-semibold mb-1" style={{ color: theme.colors.text.primary }}>Real competitive advantage</p>
-                    <p className="text-sm" style={{ color: theme.colors.text.secondary }}>When tools shift, you're ready. Most people are lost.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="p-8 rounded-xl border backdrop-blur-sm" style={{
-            borderColor: theme.colors.border.subtle,
-            backgroundColor: `${theme.colors.primary.electric}03`,
-            boxShadow: theme.shadows.subtle,
+          <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border-2 backdrop-blur-sm" style={{
+            borderColor: `${theme.colors.primary.electric}40`,
+            background: `linear-gradient(135deg, ${theme.colors.primary.light}30 0%, ${theme.colors.background.card} 100%)`,
+            boxShadow: behavior.hoverGlow ? `0 0 40px ${theme.colors.primary.electric}15` : theme.shadows.large,
           }}>
-            <p className="text-center text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-              <span style={{ color: theme.colors.text.primary, fontWeight: '600' }}>The advisor mindset:</span> We're on your side of the table. Your independence is our success. After this program, you won't need us anymore.
-            </p>
+            <div className="mb-10">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4" style={{
+                backgroundColor: `${theme.colors.accent.cyan}10`,
+              }}>
+                <Target size={14} style={{ color: theme.colors.accent.cyan }} />
+                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.accent.cyan }}>
+                  What Makes This Different
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{
+                letterSpacing: '-0.03em',
+                color: theme.colors.text.primary,
+              }}>
+                Transform From Literacy to Leadership
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-10">
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
+                borderColor: theme.colors.accent.cyan,
+                backgroundColor: `${theme.colors.accent.cyan}05`,
+                boxShadow: theme.shadows.subtle,
+              }}>
+                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.cyan }}>
+                  £391B &rarr; £3.5T
+                </p>
+                <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
+                  Global AI market growth by 2033
+                </p>
+              </div>
+
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
+                borderColor: theme.colors.primary.electric,
+                backgroundColor: `${theme.colors.primary.electric}05`,
+                boxShadow: theme.shadows.subtle,
+              }}>
+                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.primary.electric }}>
+                  10 Million Workers
+                </p>
+                <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
+                  UK government training by 2030
+                </p>
+              </div>
+
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
+                borderColor: theme.colors.accent.coral,
+                backgroundColor: `${theme.colors.accent.coral}05`,
+                boxShadow: theme.shadows.subtle,
+              }}>
+                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.coral }}>
+                  78% of Organizations
+                </p>
+                <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
+                  Now using AI in business functions
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+              <div className="p-5 rounded-lg" style={{
+                backgroundColor: `${theme.colors.accent.cyan}08`,
+                borderLeft: `3px solid ${theme.colors.accent.cyan}`,
+              }}>
+                <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                  <span className="font-semibold" style={{ color: theme.colors.text.primary }}>The Reality:</span> AI literacy is becoming universal. Free training. LinkedIn posts. YouTube tutorials. Everyone has access to the same tools and basics.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-lg" style={{
+                backgroundColor: `${theme.colors.primary.electric}08`,
+                borderLeft: `3px solid ${theme.colors.primary.electric}`,
+              }}>
+                <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                  <span className="font-semibold" style={{ color: theme.colors.text.primary }}>What Creates Advantage:</span> Strategic thinking frameworks that survive tool changes. Decision-making systems. Independence. When tools shift (they always do), most are lost. The few adapt instantly.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-lg" style={{
+                backgroundColor: `${theme.colors.accent.coral}08`,
+                borderLeft: `3px solid ${theme.colors.accent.coral}`,
+              }}>
+                <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                  <span className="font-semibold" style={{ color: theme.colors.text.primary }}>Our Approach:</span> Accelerated foundations so you understand the why. Strategic frameworks for years ahead. After this program, you won't need us anymore. You'll handle new tools on your own.
+                </p>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-lg" style={{
+              backgroundColor: `${theme.colors.primary.deep}08`,
+              borderTop: `2px solid ${theme.colors.primary.electric}`,
+            }}>
+              <p className="text-center text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                <span style={{ color: theme.colors.primary.deep, fontWeight: '600' }}>The advisor mindset:</span> Same side of the table. Your independence is our success.
+              </p>
+            </div>
           </div>
         </section>
 
