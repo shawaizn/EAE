@@ -111,7 +111,7 @@ export function AIEducation() {
                 So when AI changes, you can adapt with it.
               </p>
               <p className="text-lg sm:text-xl leading-relaxed tracking-wide" style={{ color: theme.colors.text.secondary }}>
-                Learn frameworks that survive tool changes. Think strategically. Build independently.
+                Think independently, decide strategically.
               </p>
             </div>
 
@@ -215,7 +215,7 @@ export function AIEducation() {
                 borderLeft: `3px solid ${theme.colors.primary.electric}`,
               }}>
                 <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                  <span className="font-semibold" style={{ color: theme.colors.text.primary }}>What Creates Advantage:</span> Strategic thinking frameworks that survive tool changes. Decision-making systems. Independence. When tools shift (they always do), most are lost. The few adapt instantly.
+                  <span className="font-semibold" style={{ color: theme.colors.text.primary }}>What Creates Advantage:</span> Flexible understanding beats specific knowledge. Frameworks that adapt. When tools change, you evolve instantly. Everyone else replaces their training.
                 </p>
               </div>
 
@@ -224,7 +224,7 @@ export function AIEducation() {
                 borderLeft: `3px solid ${theme.colors.accent.coral}`,
               }}>
                 <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                  <span className="font-semibold" style={{ color: theme.colors.text.primary }}>Our Approach:</span> Accelerated foundations so you understand the why. Strategic frameworks for years ahead. After this program, you won't need us anymore. You'll handle new tools on your own.
+                  <span className="font-semibold" style={{ color: theme.colors.text.primary }}>Our Approach:</span> Accelerated foundations. Flexible learning—copy any lesson, ask AI to tailor it to your role. Not tool-bound. Adaptable. Principles over processes. You graduate ready for whatever's next.
                 </p>
               </div>
             </div>
@@ -234,7 +234,7 @@ export function AIEducation() {
               borderTop: `2px solid ${theme.colors.primary.electric}`,
             }}>
               <p className="text-center text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                <span style={{ color: theme.colors.primary.deep, fontWeight: '600' }}>The advisor mindset:</span> Same side of the table. Your independence is our success.
+                <span style={{ color: theme.colors.primary.deep, fontWeight: '600' }}>Your independence is our success.</span>
               </p>
             </div>
           </div>
