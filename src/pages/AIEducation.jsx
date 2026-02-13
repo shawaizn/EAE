@@ -103,15 +103,15 @@ export function AIEducation() {
               backgroundClip: behavior.hoverGlow ? 'text' : undefined,
               color: behavior.hoverGlow ? undefined : theme.colors.text.primary,
             }}>
-              Achieve more.<br />Spend less.
+              Master AI.<br />Then lead with it.
             </h1>
 
             <div className="max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <p className="text-lg sm:text-xl leading-relaxed tracking-wide" style={{ color: theme.colors.text.secondary }}>
-                Higher quality output. Faster delivery.
+                Build frameworks that work regardless of which tools change.
               </p>
               <p className="text-lg sm:text-xl mt-2 font-semibold tracking-wide" style={{ color: theme.colors.text.primary }}>
-                Same team. <span style={{ color: theme.colors.accent.cyan }}>Different results.</span>
+                Become independent. <span style={{ color: theme.colors.accent.cyan }}>Never ask for help again.</span>
               </p>
             </div>
 
@@ -169,10 +169,10 @@ export function AIEducation() {
               }}>
                 <TrendingUp size={28} className="mx-auto mb-3" style={{ color: theme.colors.accent.coral }} />
                 <p className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: theme.colors.accent.coral }}>
-                  10X
+                  Lifetime
                 </p>
                 <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
-                  Output Multiplier
+                  Frameworks
                 </p>
               </div>
             </div>
@@ -247,16 +247,16 @@ export function AIEducation() {
 
             <div className="space-y-5 text-sm sm:text-base leading-relaxed">
               <p style={{ color: theme.colors.text.secondary }}>
-                The UK government and major tech companies aim to train 10 million workers by 2030 with AI literacy courses -- that's essential. Free training from Microsoft, Google, and IBM. Thousands of LinkedIn posts, YouTube tutorials, and social media content teaching prompts and tools. AI literacy is becoming universal, not specialized.
+                AI literacy is becoming universal. Free training from governments and tech companies. Thousands of LinkedIn posts, YouTube tutorials, ChatGPT tips. Everyone has access to the same tools and basics.
               </p>
               <p style={{ color: theme.colors.text.secondary }}>
-                <span className="font-semibold" style={{ color: theme.colors.text.primary }}>But here's what matters:</span> when everyone completes the same foundation, strategic application becomes the differentiator. Despite massive investment and content saturation, only 21% of UK workers feel confident using AI, and just 16% of businesses have successfully implemented it.
+                <span className="font-semibold" style={{ color: theme.colors.text.primary }}>Here's what actually creates advantage:</span> strategic thinking frameworks that survive tool changes. Decision-making systems. Independence. When tools shift (they always do), most people are lost. A small percentage can adapt instantly because they think in frameworks, not features.
               </p>
               <p style={{ color: theme.colors.text.secondary }}>
-                <span className="font-semibold" style={{ color: theme.colors.text.primary }}>We solve that gap.</span> We teach AI literacy accelerated for understanding, then add strategic capability on top. The result: save time and produce higher-quality output. Everything in one place, separating literacy from leadership, foundations from frameworks that create competitive advantage.
+                <span className="font-semibold" style={{ color: theme.colors.text.primary }}>Our approach is different.</span> We teach you to think independently. Accelerated foundations so you understand the why, not just the how. Strategic frameworks you'll use for years, regardless of what new tool launches next month. The goal: after this program, you won't need us anymore. You'll handle new tools, new problems, new situations on your own.
               </p>
               <p className="font-semibold" style={{ color: theme.colors.primary.deep }}>
-                While most businesses train teams in AI tools, a small percentage are developing strategic capability. That small percentage is your future competition -- or your future position.
+                That is the advisor mindset. Same side of the table. Your independence is our success.
               </p>
             </div>
           </div>
@@ -398,10 +398,10 @@ export function AIEducation() {
               letterSpacing: '-0.03em',
               color: theme.colors.text.primary,
             }}>
-              Ready to Build Strategic Advantage?
+              Is This For You?
             </h2>
             <p className="text-lg max-w-2xl mx-auto mb-8 leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-              Join the program and develop frameworks that create lasting competitive advantage in AI.
+              This program requires commitment. You'll do real work. You'll build something. And after it's done, you won't need us. You'll be independent. If that sounds like what you're looking for, let's talk.
             </p>
             <Link
               to="/login"
