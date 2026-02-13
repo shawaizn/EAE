@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ChevronDown, BookOpen, Users, TrendingUp, Zap, Target, Award, CheckCircle } from 'lucide-react';
+import { Zap, Target, ArrowRight, BookOpen, Users, TrendingUp, ChevronDown } from 'lucide-react';
 import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 import { LogoHorizontal } from '../components/branding/Logo';
+import { FeaturesTable } from '../components/features/FeaturesTable';
 import { modulesData } from '../data/modulesData';
 import { activityData } from '../data/activityData';
 import { theme, behavior } from '../styles/theme';
@@ -27,12 +28,15 @@ export function AIEducation() {
     setExpandedModule((prev) => (prev === moduleId ? null : moduleId));
   };
 
+  const hoverStatClasses = behavior.hoverScale
+    ? 'hover:scale-105 hover:shadow-xl'
+    : 'hover:shadow-md';
+
   return (
     <div className="w-full min-h-screen overflow-y-auto relative">
       {behavior.animatedBackground && <EnergeticBackground />}
 
       <div className="relative z-10">
-        {/* Navigation */}
         <nav className="sticky top-0 z-20 bg-white/98 backdrop-blur-md border-b" style={{
           borderColor: theme.colors.border.subtle,
           boxShadow: theme.shadows.medium,
@@ -44,267 +48,348 @@ export function AIEducation() {
           }} />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16 sm:h-18">
-              <div className="flex items-center gap-4">
-                <Link
-                  to="/"
-                  className="p-2 rounded-lg hover:bg-slate-100 transition-colors"
-                  style={{
-                    backgroundColor: behavior.hoverScale ? 'transparent' : undefined,
-                  }}
-                >
-                  <ArrowLeft size={20} style={{ color: theme.colors.text.secondary }} />
-                </Link>
-                <LogoHorizontal size="sm" />
-              </div>
+              <LogoHorizontal size="sm" />
               <Link
                 to="/login"
                 className="px-5 py-2 rounded-md font-bold text-sm relative group overflow-hidden border min-h-10 flex items-center"
                 style={{
-                  backgroundColor: theme.colors.text.secondary,
+                  backgroundColor: theme.colors.accent.cyan,
                   color: 'white',
-                  borderColor: theme.colors.text.secondary,
+                  borderColor: theme.colors.accent.cyan,
+                  boxShadow: '0 0 0 rgba(6, 182, 212, 0.3)',
                   transition: theme.transitions.fast,
+                }}
+                onMouseEnter={(e) => {
+                  if (behavior.hoverGlow) {
+                    e.currentTarget.style.boxShadow = theme.shadows.glow.cyan;
+                  }
+                  if (behavior.hoverScale) {
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = '0 0 0 rgba(6, 182, 212, 0.3)';
+                  e.currentTarget.style.transform = 'translateY(0)';
                 }}
               >
                 <span className="relative z-10">Sign In</span>
+                {behavior.hoverGlow && (
+                  <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-300" />
+                )}
               </Link>
             </div>
           </div>
         </nav>
 
-        {/* Main Content */}
-        <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl py-20 sm:py-32 animate-fade-in-up">
-          <div className="mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-6" style={{
-              backgroundColor: `${theme.colors.accent.cyan}10`,
+        <section className="min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 sm:py-0">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-8 animate-fade-in-down" style={{
+              borderColor: theme.colors.accent.cyan,
+              backgroundColor: `${theme.colors.accent.cyan}08`,
             }}>
-              <BookOpen size={14} style={{ color: theme.colors.accent.cyan }} />
-              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.accent.cyan }}>
-                Curriculum
+              <Zap size={16} style={{ color: theme.colors.accent.cyan }} />
+              <span className="text-sm font-semibold tracking-wide" style={{ color: theme.colors.accent.cyan }}>
+                Strategic AI Implementation
               </span>
             </div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4" style={{
+
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 leading-tight animate-fade-in" style={{
+              letterSpacing: '-0.03em',
+              background: behavior.hoverGlow
+                ? `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.primary.electric} 50%, ${theme.colors.accent.cyan} 100%)`
+                : undefined,
+              WebkitBackgroundClip: behavior.hoverGlow ? 'text' : undefined,
+              WebkitTextFillColor: behavior.hoverGlow ? 'transparent' : undefined,
+              backgroundClip: behavior.hoverGlow ? 'text' : undefined,
+              color: behavior.hoverGlow ? undefined : theme.colors.text.primary,
+            }}>
+              Achieve more.<br />Spend less.
+            </h1>
+
+            <div className="max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+              <p className="text-lg sm:text-xl leading-relaxed tracking-wide" style={{ color: theme.colors.text.secondary }}>
+                Higher quality output. Faster delivery.
+              </p>
+              <p className="text-lg sm:text-xl mt-2 font-semibold tracking-wide" style={{ color: theme.colors.text.primary }}>
+                Same team. <span style={{ color: theme.colors.accent.cyan }}>Different results.</span>
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 sm:mb-20 animate-fade-in-up" style={{
+              animationDelay: '0.2s',
+            }}>
+              <Link
+                to="/login"
+                className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all ${behavior.hoverScale ? 'hover:scale-105' : 'hover:shadow-lg'} group`}
+                style={{
+                  background: `linear-gradient(135deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
+                  color: 'white',
+                  boxShadow: behavior.hoverGlow ? `0 0 30px ${theme.colors.accent.cyan}40` : theme.shadows.medium,
+                }}
+              >
+                Get Started <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 animate-fade-in-up" style={{
+              animationDelay: '0.3s',
+            }}>
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
+                borderColor: theme.colors.accent.cyan,
+                backgroundColor: `${theme.colors.accent.cyan}05`,
+                boxShadow: theme.shadows.subtle,
+              }}>
+                <BookOpen size={28} className="mx-auto mb-3" style={{ color: theme.colors.accent.cyan }} />
+                <p className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: theme.colors.accent.cyan }}>
+                  {totalLessons}
+                </p>
+                <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
+                  Strategic Lessons
+                </p>
+              </div>
+
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
+                borderColor: theme.colors.primary.electric,
+                backgroundColor: `${theme.colors.primary.electric}05`,
+                boxShadow: theme.shadows.subtle,
+              }}>
+                <Users size={28} className="mx-auto mb-3" style={{ color: theme.colors.primary.electric }} />
+                <p className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: theme.colors.primary.electric }}>
+                  8
+                </p>
+                <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
+                  Focused Modules
+                </p>
+              </div>
+
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
+                borderColor: theme.colors.accent.coral,
+                backgroundColor: `${theme.colors.accent.coral}05`,
+                boxShadow: theme.shadows.subtle,
+              }}>
+                <TrendingUp size={28} className="mx-auto mb-3" style={{ color: theme.colors.accent.coral }} />
+                <p className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: theme.colors.accent.coral }}>
+                  10X
+                </p>
+                <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
+                  Output Multiplier
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
+          animationDelay: '0.4s',
+        }}>
+          <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border-2 backdrop-blur-sm" style={{
+            borderColor: `${theme.colors.primary.electric}40`,
+            background: `linear-gradient(135deg, ${theme.colors.primary.light}30 0%, ${theme.colors.background.card} 100%)`,
+            boxShadow: behavior.hoverGlow ? `0 0 40px ${theme.colors.primary.electric}15` : theme.shadows.large,
+          }}>
+            <div className="mb-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4" style={{
+                backgroundColor: `${theme.colors.accent.cyan}10`,
+              }}>
+                <Target size={14} style={{ color: theme.colors.accent.cyan }} />
+                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.accent.cyan }}>
+                  What Makes This Different
+                </span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{
+                letterSpacing: '-0.03em',
+                color: theme.colors.text.primary,
+              }}>
+                Transform From Literacy to Leadership
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-10">
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
+                borderColor: theme.colors.accent.cyan,
+                backgroundColor: `${theme.colors.accent.cyan}05`,
+                boxShadow: theme.shadows.subtle,
+              }}>
+                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.cyan }}>
+                  £391B &rarr; £3.5T
+                </p>
+                <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
+                  Global AI market growth by 2033
+                </p>
+              </div>
+
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
+                borderColor: theme.colors.primary.electric,
+                backgroundColor: `${theme.colors.primary.electric}05`,
+                boxShadow: theme.shadows.subtle,
+              }}>
+                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.primary.electric }}>
+                  10 Million Workers
+                </p>
+                <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
+                  UK government training by 2030
+                </p>
+              </div>
+
+              <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
+                borderColor: theme.colors.accent.coral,
+                backgroundColor: `${theme.colors.accent.coral}05`,
+                boxShadow: theme.shadows.subtle,
+              }}>
+                <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.coral }}>
+                  78% of Organizations
+                </p>
+                <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
+                  Now using AI in business functions
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-5 text-sm sm:text-base leading-relaxed">
+              <p style={{ color: theme.colors.text.secondary }}>
+                The UK government and major tech companies aim to train 10 million workers by 2030 with AI literacy courses -- that's essential. Free training from Microsoft, Google, and IBM. Thousands of LinkedIn posts, YouTube tutorials, and social media content teaching prompts and tools. AI literacy is becoming universal, not specialized.
+              </p>
+              <p style={{ color: theme.colors.text.secondary }}>
+                <span className="font-semibold" style={{ color: theme.colors.text.primary }}>But here's what matters:</span> when everyone completes the same foundation, strategic application becomes the differentiator. Despite massive investment and content saturation, only 21% of UK workers feel confident using AI, and just 16% of businesses have successfully implemented it.
+              </p>
+              <p style={{ color: theme.colors.text.secondary }}>
+                <span className="font-semibold" style={{ color: theme.colors.text.primary }}>We solve that gap.</span> We teach AI literacy accelerated for understanding, then add strategic capability on top. The result: save time and produce higher-quality output. Everything in one place, separating literacy from leadership, foundations from frameworks that create competitive advantage.
+              </p>
+              <p className="font-semibold" style={{ color: theme.colors.primary.deep }}>
+                While most businesses train teams in AI tools, a small percentage are developing strategic capability. That small percentage is your future competition -- or your future position.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <FeaturesTable />
+
+        <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
+          animationDelay: '0.5s',
+        }}>
+          <div className="mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-2" style={{
               letterSpacing: '-0.03em',
               color: theme.colors.text.primary,
             }}>
-              AI Education Program
-            </h1>
-            <p className="text-lg leading-relaxed max-w-2xl" style={{ color: theme.colors.text.secondary }}>
-              12 live sessions over 6 weeks. Strategic AI use from foundations to building.
+              The Learning Journey
+            </h2>
+            <p style={{ color: theme.colors.text.secondary }}>
+              8 strategic modules designed to build competitive advantage
             </p>
           </div>
 
-          {/* Course Overview Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-16">
-            <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${behavior.hoverScale ? 'hover:scale-105' : 'hover:shadow-md'}`} style={{
-              borderColor: theme.colors.accent.cyan,
-              backgroundColor: `${theme.colors.accent.cyan}05`,
-              boxShadow: theme.shadows.subtle,
-            }}>
-              <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.cyan }}>
-                12 Sessions
-              </p>
-              <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
-                2 per week, 60 minutes each
-              </p>
-            </div>
+          <div className="space-y-4">
+            {modulesData.map((module, index) => {
+              const isExpanded = expandedModule === module.id;
+              return (
+                <div
+                  key={module.id}
+                  className="border-2 rounded-xl transition-all"
+                  style={{
+                    backgroundColor: theme.colors.background.card,
+                    borderColor: isExpanded ? theme.colors.accent.cyan : theme.colors.border.subtle,
+                    boxShadow: isExpanded ? theme.shadows.medium : theme.shadows.subtle,
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => toggleModule(module.id)}
+                    className="w-full text-left p-6 sm:p-8 cursor-pointer group"
+                  >
+                    <div className="flex items-start justify-between gap-4 mb-3">
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-lg sm:text-xl font-bold mb-2" style={{
+                          color: theme.colors.text.primary,
+                        }}>
+                          Module {module.id}: {module.title}
+                        </h3>
+                        <p className="text-sm line-clamp-2" style={{ color: theme.colors.text.secondary }}>
+                          {moduleNarratives[index]}
+                        </p>
+                      </div>
+                      <div className="inline-flex items-center gap-1 px-3 py-1 rounded-md text-xs font-semibold whitespace-nowrap flex-shrink-0" style={{
+                        backgroundColor: `${theme.colors.primary.electric}10`,
+                        color: theme.colors.primary.electric,
+                      }}>
+                        {module.lessons.length} lessons
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-xs font-semibold tracking-wide" style={{ color: theme.colors.text.muted }}>
+                        ~{Math.ceil(module.lessons.length * 0.5)} hours
+                      </span>
+                      <ChevronDown
+                        size={16}
+                        style={{
+                          color: isExpanded ? theme.colors.accent.cyan : theme.colors.text.muted,
+                          transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
+                          transition: 'transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94), color 200ms ease',
+                        }}
+                      />
+                    </div>
+                  </button>
 
-            <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${behavior.hoverScale ? 'hover:scale-105' : 'hover:shadow-md'}`} style={{
-              borderColor: theme.colors.primary.electric,
-              backgroundColor: `${theme.colors.primary.electric}05`,
-              boxShadow: theme.shadows.subtle,
-            }}>
-              <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.primary.electric }}>
-                8 Modules
-              </p>
-              <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
-                {totalLessons} lessons total
-              </p>
-            </div>
-
-            <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${behavior.hoverScale ? 'hover:scale-105' : 'hover:shadow-md'}`} style={{
-              borderColor: theme.colors.accent.coral,
-              backgroundColor: `${theme.colors.accent.coral}05`,
-              boxShadow: theme.shadows.subtle,
-            }}>
-              <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.coral }}>
-                6 Weeks
-              </p>
-              <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
-                Plus 14 days platform access
-              </p>
-            </div>
-          </div>
-
-          {/* Modules */}
-          <div className="mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{
-              letterSpacing: '-0.03em',
-              color: theme.colors.text.primary,
-            }}>
-              What You Learn
-            </h2>
-
-            <div className="space-y-3">
-              {modulesData.map((module, index) => {
-                const isExpanded = expandedModule === module.id;
-                return (
                   <div
-                    key={module.id}
-                    className="rounded-xl border-2 overflow-hidden transition-all"
                     style={{
-                      backgroundColor: theme.colors.background.card,
-                      borderColor: isExpanded ? theme.colors.accent.cyan : theme.colors.border.subtle,
-                      boxShadow: isExpanded ? theme.shadows.medium : theme.shadows.subtle,
+                      maxHeight: isExpanded ? `${module.lessons.length * 64 + 60}px` : '0px',
+                      opacity: isExpanded ? 1 : 0,
+                      overflow: 'hidden',
+                      transition: 'max-height 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 250ms ease',
                     }}
                   >
-                    <button
-                      type="button"
-                      onClick={() => toggleModule(module.id)}
-                      className="w-full text-left p-6 cursor-pointer group hover:bg-opacity-50 transition-colors"
-                      style={{
-                        backgroundColor: isExpanded ? `${theme.colors.accent.cyan}03` : 'transparent',
-                      }}
-                    >
-                      <div className="flex items-start gap-4">
-                        <div className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform ${behavior.hoverScale ? 'group-hover:scale-110' : ''}`} style={{
-                          background: `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.primary.electric} 100%)`,
-                          transitionDuration: '200ms',
-                        }}>
-                          <span className="text-lg font-bold text-white">
-                            {module.id}
-                          </span>
+                    <div className="px-6 sm:px-8 pb-6 sm:pb-8">
+                      <div className="border-t pt-4" style={{ borderColor: theme.colors.border.subtle }}>
+                        <div className="flex items-center gap-4 mb-2 px-0">
+                          <span className="text-[10px] font-semibold uppercase tracking-widest w-6 flex-shrink-0" style={{ color: theme.colors.text.muted }}></span>
+                          <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: theme.colors.text.muted }}>Lessons</span>
+                          <span className="ml-auto text-[10px] font-semibold uppercase tracking-widest flex-shrink-0" style={{ color: theme.colors.text.muted }}>Skill</span>
                         </div>
-
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-start justify-between gap-4 mb-2">
-                            <h3 className="text-base sm:text-lg font-bold" style={{
-                              color: theme.colors.text.primary,
-                            }}>
-                              {module.title}
-                            </h3>
-                            <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-semibold whitespace-nowrap flex-shrink-0" style={{
-                              backgroundColor: `${theme.colors.primary.electric}10`,
-                              color: theme.colors.primary.electric,
-                            }}>
-                              <BookOpen size={12} />
-                              {module.lessons.length}
-                            </div>
-                          </div>
-                          <p className="text-sm leading-relaxed" style={{
-                            color: theme.colors.text.secondary,
-                            display: isExpanded ? 'none' : 'block',
-                          }}>
-                            {moduleNarratives[index]}
-                          </p>
-                        </div>
-                        <ChevronDown
-                          size={18}
-                          style={{
-                            color: isExpanded ? theme.colors.accent.cyan : theme.colors.text.muted,
-                            transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)',
-                            transition: 'transform 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94), color 200ms ease',
-                            flexShrink: 0,
-                          }}
-                        />
-                      </div>
-                    </button>
-
-                    <div
-                      style={{
-                        maxHeight: isExpanded ? `${module.lessons.length * 60 + 100}px` : '0px',
-                        opacity: isExpanded ? 1 : 0,
-                        overflow: 'hidden',
-                        transition: 'max-height 350ms cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 250ms ease',
-                      }}
-                    >
-                      <div className="px-6 pb-6">
-                        <div className="pt-4 border-t mb-4" style={{ borderColor: theme.colors.border.subtle }}>
-                          <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                            {moduleNarratives[index]}
-                          </p>
-                        </div>
-
-                        <div className="space-y-2">
-                          {module.lessons.map((lesson) => (
-                            <div
-                              key={lesson.id}
-                              className="flex items-center gap-4 p-3 rounded-lg transition-colors"
-                              style={{
-                                backgroundColor: theme.colors.background.subtle,
-                              }}
-                              onMouseEnter={(e) => {
-                                e.currentTarget.style.backgroundColor = `${theme.colors.accent.cyan}08`;
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.backgroundColor = theme.colors.background.subtle;
-                              }}
+                        {module.lessons.map((lesson, lessonIndex) => (
+                          <div
+                            key={lesson.id}
+                            className="flex items-center gap-4 py-3"
+                            style={{
+                              borderBottom: lessonIndex < module.lessons.length - 1
+                                ? `1px solid ${theme.colors.border.subtle}20`
+                                : 'none',
+                            }}
+                          >
+                            <span
+                              className="text-xs font-bold w-6 text-right flex-shrink-0 tabular-nums"
+                              style={{ color: theme.colors.text.muted }}
                             >
+                              {String(lesson.id).padStart(2, '0')}
+                            </span>
+                            <span className="text-sm font-medium" style={{ color: theme.colors.text.primary }}>
+                              {lesson.title}
+                            </span>
+                            {activityData[`${module.id}-${lesson.id}`]?.skill && (
                               <span
-                                className="text-xs font-bold w-8 h-8 flex items-center justify-center rounded-md flex-shrink-0"
+                                className="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0"
                                 style={{
-                                  backgroundColor: `${theme.colors.primary.electric}15`,
-                                  color: theme.colors.primary.electric,
+                                  backgroundColor: `${theme.colors.accent.cyan}12`,
+                                  color: theme.colors.accent.cyan,
                                 }}
                               >
-                                {String(lesson.id).padStart(2, '0')}
+                                {activityData[`${module.id}-${lesson.id}`].skill}
                               </span>
-                              <span className="text-sm font-medium flex-1" style={{ color: theme.colors.text.primary }}>
-                                {lesson.title}
-                              </span>
-                              {activityData[`${module.id}-${lesson.id}`]?.skill && (
-                                <span
-                                  className="text-xs font-semibold px-3 py-1 rounded-full flex-shrink-0"
-                                  style={{
-                                    backgroundColor: `${theme.colors.accent.cyan}12`,
-                                    color: theme.colors.accent.cyan,
-                                  }}
-                                >
-                                  {activityData[`${module.id}-${lesson.id}`].skill}
-                                </span>
-                              )}
-                            </div>
-                          ))}
-                        </div>
+                            )}
+                          </div>
+                        ))}
                       </div>
                     </div>
                   </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* What's Included */}
-          <div className="mb-16 p-8 sm:p-12 rounded-xl border" style={{
-            borderColor: theme.colors.accent.cyan,
-            backgroundColor: `${theme.colors.accent.cyan}05`,
-          }}>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-8" style={{
-              color: theme.colors.text.primary,
-              letterSpacing: '-0.03em',
-            }}>
-              What's Included
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {[
-                '12 live teaching sessions (2 per week, 60 minutes)',
-                'Full platform access (notes, quizzes, activities, homework)',
-                'Email support throughout program',
-                'WhatsApp community for peer support',
-                'Custom AI tool building in final 4 sessions',
-                'Platform access continues 14 days after program ends'
-              ].map((item, i) => (
-                <div key={i} className="flex items-start gap-3">
-                  <CheckCircle size={20} style={{ color: theme.colors.accent.cyan, marginTop: '2px', flexShrink: 0 }} />
-                  <span style={{ color: theme.colors.text.secondary }}>{item}</span>
                 </div>
-              ))}
-            </div>
+              );
+            })}
           </div>
+        </section>
 
-          {/* CTA Section */}
-          <div className="p-8 sm:p-12 rounded-xl border-2 text-center" style={{
+        <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
+          animationDelay: '0.6s',
+        }}>
+          <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border-2 text-center" style={{
             borderColor: theme.colors.accent.coral,
             background: `linear-gradient(135deg, ${theme.colors.accent.coral}08 0%, ${theme.colors.background.card} 100%)`,
             boxShadow: behavior.hoverGlow ? `0 0 40px ${theme.colors.accent.coral}15` : theme.shadows.large,
@@ -313,42 +398,54 @@ export function AIEducation() {
               letterSpacing: '-0.03em',
               color: theme.colors.text.primary,
             }}>
-              Ready to Get Started?
+              Ready to Build Strategic Advantage?
             </h2>
             <p className="text-lg max-w-2xl mx-auto mb-8 leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-              Join the next cohort and develop frameworks that create lasting competitive advantage in AI.
+              Join the program and develop frameworks that create lasting competitive advantage in AI.
             </p>
             <Link
               to="/login"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all"
+              className={`inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all ${behavior.hoverScale ? 'hover:scale-105' : 'hover:shadow-lg'}`}
               style={{
                 background: `linear-gradient(135deg, ${theme.colors.accent.coral} 0%, ${theme.colors.primary.electric} 100%)`,
                 color: 'white',
                 boxShadow: behavior.hoverGlow ? `0 0 30px ${theme.colors.accent.coral}40` : theme.shadows.medium,
               }}
-              onMouseEnter={(e) => {
-                if (behavior.hoverScale) e.currentTarget.style.transform = 'translateY(-2px)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-              }}
             >
-              Enroll Now
+              Sign In to Start <ArrowRight size={20} />
             </Link>
           </div>
         </section>
       </div>
 
       <style>{`
+        @keyframes fade-in-down {
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fade-in {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
         @keyframes fade-in-up {
           from { opacity: 0; transform: translateY(20px); }
           to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-down {
+          animation: fade-in-down 0.6s ease-out forwards;
+          opacity: 0;
+        }
+        .animate-fade-in {
+          animation: fade-in 0.8s ease-out forwards;
+          opacity: 0;
         }
         .animate-fade-in-up {
           animation: fade-in-up 0.6s ease-out forwards;
           opacity: 0;
         }
         @media (prefers-reduced-motion: reduce) {
+          .animate-fade-in-down,
+          .animate-fade-in,
           .animate-fade-in-up {
             animation: none !important;
             opacity: 1 !important;
