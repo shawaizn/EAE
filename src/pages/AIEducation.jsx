@@ -200,31 +200,28 @@ export function AIEducation() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-              <div className="p-5 rounded-lg" style={{
-                backgroundColor: `${theme.colors.accent.cyan}08`,
-                borderLeft: `3px solid ${theme.colors.accent.cyan}`,
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+              <div className="p-8 rounded-lg" style={{
+                backgroundColor: `${theme.colors.accent.coral}10`,
+                borderLeft: `4px solid ${theme.colors.accent.coral}`,
               }}>
+                <p className="text-lg font-semibold mb-3" style={{ color: theme.colors.accent.coral }}>
+                  The Problem
+                </p>
                 <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                  <span className="font-semibold" style={{ color: theme.colors.text.primary }}>The Reality:</span> AI literacy is becoming universal. Free training. LinkedIn posts. YouTube tutorials. Everyone has access to the same tools and basics.
+                  Everyone has AI access now. Tools change constantly. Understanding how things actually work? That's what's scarce.
                 </p>
               </div>
 
-              <div className="p-5 rounded-lg" style={{
-                backgroundColor: `${theme.colors.primary.electric}08`,
-                borderLeft: `3px solid ${theme.colors.primary.electric}`,
+              <div className="p-8 rounded-lg" style={{
+                backgroundColor: `${theme.colors.accent.cyan}10`,
+                borderLeft: `4px solid ${theme.colors.accent.cyan}`,
               }}>
-                <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                  <span className="font-semibold" style={{ color: theme.colors.text.primary }}>What Creates Advantage:</span> Flexible understanding beats specific knowledge. Frameworks that adapt. When tools change, you evolve instantly. Everyone else replaces their training.
+                <p className="text-lg font-semibold mb-3" style={{ color: theme.colors.accent.cyan }}>
+                  The Solution
                 </p>
-              </div>
-
-              <div className="p-5 rounded-lg" style={{
-                backgroundColor: `${theme.colors.accent.coral}08`,
-                borderLeft: `3px solid ${theme.colors.accent.coral}`,
-              }}>
                 <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                  <span className="font-semibold" style={{ color: theme.colors.text.primary }}>Our Approach:</span> Accelerated foundations. Flexible learning—copy any lesson, ask AI to tailor it to your role. Not tool-bound. Adaptable. Principles over processes. You graduate ready for whatever's next.
+                  We teach understanding. Mental models. So when something new drops, you instantly know what it is.
                 </p>
               </div>
             </div>
