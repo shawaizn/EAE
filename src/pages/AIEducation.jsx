@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, Target, ArrowRight, BookOpen, Users, TrendingUp, ChevronDown } from 'lucide-react';
+import { Zap, Target, ArrowRight, BookOpen, Users, TrendingUp, ChevronDown, ArrowLeft } from 'lucide-react';
 import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 import { LogoHorizontal } from '../components/branding/Logo';
 import { FeaturesTable } from '../components/features/FeaturesTable';
@@ -48,35 +48,51 @@ export function AIEducation() {
           }} />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16 sm:h-18">
-              <LogoHorizontal size="sm" />
-              <Link
-                to="/login"
-                className="px-5 py-2 rounded-md font-bold text-sm relative group overflow-hidden border min-h-10 flex items-center"
-                style={{
-                  backgroundColor: theme.colors.accent.cyan,
-                  color: 'white',
-                  borderColor: theme.colors.accent.cyan,
-                  boxShadow: '0 0 0 rgba(6, 182, 212, 0.3)',
-                  transition: theme.transitions.fast,
-                }}
-                onMouseEnter={(e) => {
-                  if (behavior.hoverGlow) {
-                    e.currentTarget.style.boxShadow = theme.shadows.glow.cyan;
-                  }
-                  if (behavior.hoverScale) {
-                    e.currentTarget.style.transform = 'translateY(-1px)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 0 0 rgba(6, 182, 212, 0.3)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                <span className="relative z-10">Sign In</span>
-                {behavior.hoverGlow && (
-                  <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-300" />
-                )}
-              </Link>
+              <div className="flex items-center gap-3">
+                <Link
+                  to="/"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-md transition-colors hover:opacity-70"
+                  style={{ color: theme.colors.text.secondary }}
+                >
+                  <ArrowLeft size={18} />
+                  <span className="text-sm font-medium hidden sm:inline">Back to Landing</span>
+                </Link>
+                <div className="hidden sm:block w-px h-6" style={{ backgroundColor: theme.colors.border.subtle }} />
+                <span className="text-sm font-semibold" style={{ color: theme.colors.text.secondary }}>
+                  AI Education
+                </span>
+              </div>
+              <div className="flex items-center gap-4">
+                <LogoHorizontal size="sm" />
+                <Link
+                  to="/login"
+                  className="px-5 py-2 rounded-md font-bold text-sm relative group overflow-hidden border min-h-10 flex items-center"
+                  style={{
+                    backgroundColor: theme.colors.accent.cyan,
+                    color: 'white',
+                    borderColor: theme.colors.accent.cyan,
+                    boxShadow: '0 0 0 rgba(6, 182, 212, 0.3)',
+                    transition: theme.transitions.fast,
+                  }}
+                  onMouseEnter={(e) => {
+                    if (behavior.hoverGlow) {
+                      e.currentTarget.style.boxShadow = theme.shadows.glow.cyan;
+                    }
+                    if (behavior.hoverScale) {
+                      e.currentTarget.style.transform = 'translateY(-1px)';
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.boxShadow = '0 0 0 rgba(6, 182, 212, 0.3)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }}
+                >
+                  <span className="relative z-10">Sign In</span>
+                  {behavior.hoverGlow && (
+                    <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-300" />
+                  )}
+                </Link>
+              </div>
             </div>
           </div>
         </nav>
