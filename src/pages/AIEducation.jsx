@@ -103,15 +103,15 @@ export function AIEducation() {
               backgroundClip: behavior.hoverGlow ? 'text' : undefined,
               color: behavior.hoverGlow ? undefined : theme.colors.text.primary,
             }}>
-              Master AI.<br />Then lead with it.
+              We teach you to fish.<br />Not give you fish.
             </h1>
 
             <div className="max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <p className="text-lg sm:text-xl leading-relaxed tracking-wide" style={{ color: theme.colors.text.secondary }}>
-                Build frameworks that work regardless of which tools change.
+                Learn how to evaluate, think strategically, and build with AI independently.
               </p>
               <p className="text-lg sm:text-xl mt-2 font-semibold tracking-wide" style={{ color: theme.colors.text.primary }}>
-                Become independent. <span style={{ color: theme.colors.accent.cyan }}>Never ask for help again.</span>
+                After this program, <span style={{ color: theme.colors.accent.cyan }}>you won't need us anymore.</span>
               </p>
             </div>
 
@@ -140,11 +140,8 @@ export function AIEducation() {
                 boxShadow: theme.shadows.subtle,
               }}>
                 <BookOpen size={28} className="mx-auto mb-3" style={{ color: theme.colors.accent.cyan }} />
-                <p className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: theme.colors.accent.cyan }}>
-                  {totalLessons}
-                </p>
                 <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
-                  Strategic Lessons
+                  Understand how<br />AI actually works
                 </p>
               </div>
 
@@ -153,12 +150,9 @@ export function AIEducation() {
                 backgroundColor: `${theme.colors.primary.electric}05`,
                 boxShadow: theme.shadows.subtle,
               }}>
-                <Users size={28} className="mx-auto mb-3" style={{ color: theme.colors.primary.electric }} />
-                <p className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: theme.colors.primary.electric }}>
-                  8
-                </p>
+                <Target size={28} className="mx-auto mb-3" style={{ color: theme.colors.primary.electric }} />
                 <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
-                  Focused Modules
+                  Evaluate any tool<br />that comes along
                 </p>
               </div>
 
@@ -168,11 +162,8 @@ export function AIEducation() {
                 boxShadow: theme.shadows.subtle,
               }}>
                 <TrendingUp size={28} className="mx-auto mb-3" style={{ color: theme.colors.accent.coral }} />
-                <p className="text-3xl sm:text-4xl font-bold mb-2" style={{ color: theme.colors.accent.coral }}>
-                  Lifetime
-                </p>
                 <p className="text-sm font-semibold uppercase tracking-wider" style={{ color: theme.colors.text.secondary }}>
-                  Frameworks
+                  Build strategic<br />workflows yourself
                 </p>
               </div>
             </div>
@@ -398,10 +389,10 @@ export function AIEducation() {
               letterSpacing: '-0.03em',
               color: theme.colors.text.primary,
             }}>
-              Is This For You?
+              Ready to be independent?
             </h2>
             <p className="text-lg max-w-2xl mx-auto mb-8 leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-              This program requires commitment. You'll do real work. You'll build something. And after it's done, you won't need us. You'll be independent. If that sounds like what you're looking for, let's talk.
+              This is real work. You'll learn how to think for yourself with AI. When it's done, you won't need us anymore.
             </p>
             <Link
               to="/login"
