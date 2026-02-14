@@ -221,24 +221,37 @@ export function AIEducation() {
                 backgroundColor: `${theme.colors.accent.coral}10`,
                 borderLeft: `4px solid ${theme.colors.accent.coral}`,
               }}>
-                <p className="text-lg font-semibold mb-3" style={{ color: theme.colors.accent.coral }}>
+                <p className="text-lg font-semibold mb-4" style={{ color: theme.colors.accent.coral }}>
                   The Problem
                 </p>
-                <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                  Everyone has AI access now. Tools change constantly. Understanding how things actually work? That's what's scarce.
-                </p>
+                <div className="space-y-3" style={{ color: theme.colors.text.secondary }}>
+                  <p className="text-sm leading-relaxed">
+                    AI is moving fast - and it's not slowing down. New tools launch every week, and by the time you've learned one, three more have taken its place. If you're trying to keep up, it can feel like you're always one step behind.
+                  </p>
+                  <p className="text-sm leading-relaxed font-medium">
+                    You shouldn't have to feel that way.
+                  </p>
+                </div>
               </div>
 
               <div className="p-8 rounded-lg" style={{
                 backgroundColor: `${theme.colors.accent.cyan}10`,
                 borderLeft: `4px solid ${theme.colors.accent.cyan}`,
               }}>
-                <p className="text-lg font-semibold mb-3" style={{ color: theme.colors.accent.cyan }}>
+                <p className="text-lg font-semibold mb-4" style={{ color: theme.colors.accent.cyan }}>
                   The Solution
                 </p>
-                <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                  We teach understanding. Mental models. So when something new drops, you instantly know what it is.
-                </p>
+                <div className="space-y-3" style={{ color: theme.colors.text.secondary }}>
+                  <p className="text-sm leading-relaxed">
+                    The businesses that thrive with AI aren't the ones chasing every new tool. They're the ones who took the time to understand it properly.
+                  </p>
+                  <p className="text-sm leading-relaxed">
+                    When you have a genuine understanding of AI - the frameworks, the principles, the bigger picture - the noise starts to fade. You stop feeling overwhelmed and start making clear, confident decisions about what's actually worth your time and what isn't.
+                  </p>
+                  <p className="text-sm leading-relaxed">
+                    That's what we help you build. Not just knowledge, but the kind of understanding that stays with you - whatever AI throws at your industry next.
+                  </p>
+                </div>
               </div>
             </div>
 
