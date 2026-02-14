@@ -12,13 +12,13 @@ const strategyFramework = [
     icon: Target,
   },
   {
-    title: 'Prioritization',
+    title: 'Identification',
     description: 'Focus on high-impact opportunities that align with your business strategy.',
     icon: Layers,
   },
   {
-    title: 'Implementation',
-    description: 'Build and deploy workflows that actually create measurable value.',
+    title: 'Plan',
+    description: 'Create a comprehensive roadmap showing exactly how to leverage AI efficiently and effectively to your advantage.',
     icon: TrendingUp,
   },
 ];
