@@ -19,7 +19,7 @@ export function Landing() {
       icon: Target,
       title: 'AI Strategy',
       description: 'Identify where AI creates competitive advantage in your operations.',
-      link: '/services/strategy'
+      link: '/ai-strategy'
     },
     {
       id: 'implementation',
