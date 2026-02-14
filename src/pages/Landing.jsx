@@ -26,7 +26,7 @@ export function Landing() {
       icon: Rocket,
       title: 'AI Implementation',
       description: 'Move from plan to practice. Deploy workflows that actually work.',
-      link: '/services/implementation'
+      link: '/ai-implementation'
     }
   ];
 
