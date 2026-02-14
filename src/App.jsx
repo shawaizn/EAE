@@ -3,6 +3,7 @@ import { useAuth } from './hooks/useAuth';
 import { Layout } from './components/layout/Layout';
 import { Landing } from './pages/Landing';
 import { AIEducation } from './pages/AIEducation';
+import { AIStrategy } from './pages/AIStrategy';
 import { Login } from './pages/Login';
 import { ProgressPage } from './pages/ProgressPage';
 import { LessonPage } from './pages/LessonPage';
@@ -45,6 +46,7 @@ function App() {
         <Routes>
           <Route path="/" element={user ? <Navigate to="/progress" replace /> : <Landing />} />
           <Route path="/ai-education" element={<AIEducation />} />
+          <Route path="/ai-strategy" element={<AIStrategy />} />
           <Route path="/login" element={user ? <Navigate to="/progress" replace /> : <Login />} />
 
           <Route
