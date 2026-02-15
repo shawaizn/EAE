@@ -130,12 +130,12 @@ export function AIStrategy() {
               backgroundClip: behavior.hoverGlow ? 'text' : undefined,
               color: behavior.hoverGlow ? undefined : theme.colors.text.primary,
             }}>
-              Find your competitive advantage in AI.
+              Find out exactly where AI creates value for you
             </h1>
 
             <div className="max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <p className="text-xl sm:text-2xl font-semibold leading-relaxed tracking-wide mb-4" style={{ color: theme.colors.accent.cyan }}>
-                Know exactly where AI creates value for your business.
+                gain clarity on HOW you AI can help you
               </p>
               <p className="text-lg sm:text-xl leading-relaxed tracking-wide" style={{ color: theme.colors.text.secondary }}>
                 Strategic assessment, clear roadmap, lasting advantage.
@@ -330,58 +330,9 @@ export function AIStrategy() {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
-          animationDelay: '0.7s',
-        }}>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-            <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
-              borderColor: theme.colors.accent.cyan,
-              backgroundColor: `${theme.colors.accent.cyan}05`,
-              boxShadow: theme.shadows.subtle,
-              textAlign: 'center',
-            }}>
-              <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.cyan }}>
-                35%
-              </p>
-              <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
-                Average cost reduction from AI automation
-              </p>
-            </div>
-
-            <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
-              borderColor: theme.colors.primary.electric,
-              backgroundColor: `${theme.colors.primary.electric}05`,
-              boxShadow: theme.shadows.subtle,
-              textAlign: 'center',
-            }}>
-              <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.primary.electric }}>
-                5x ROI
-              </p>
-              <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
-                Return on AI strategy investment
-              </p>
-            </div>
-
-            <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
-              borderColor: theme.colors.accent.coral,
-              backgroundColor: `${theme.colors.accent.coral}05`,
-              boxShadow: theme.shadows.subtle,
-              textAlign: 'center',
-            }}>
-              <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.coral }}>
-                6 Months
-              </p>
-              <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
-                Time to measurable competitive advantage
-              </p>
-            </div>
-          </div>
-        </section>
-
         {/* Final CTA Section */}
         <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
-          animationDelay: '0.8s',
+          animationDelay: '0.7s',
         }}>
           <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border-2 text-center" style={{
             borderColor: theme.colors.accent.coral,

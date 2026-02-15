@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Zap, Target, ArrowRight, CheckCircle2, Wrench, Zap as ZapIcon, ChevronDown, ArrowLeft, Code, Bot, FileText, Share2, Cpu } from 'lucide-react';
+import { Zap, Target, ArrowRight, CheckCircle2, Wrench, Zap as ZapIcon, ChevronDown, ArrowLeft, ChevronLeft, ChevronRight, Code, Bot, FileText, Share2, Cpu } from 'lucide-react';
 import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 import { LogoHorizontal } from '../components/branding/Logo';
 import { theme, behavior } from '../styles/theme';
@@ -48,9 +48,18 @@ const benefits = [
 
 export function AIImplementation() {
   const [expandedTool, setExpandedTool] = useState(null);
+  const [currentExample, setCurrentExample] = useState(0);
 
   const toggleTool = (toolIndex) => {
     setExpandedTool((prev) => (prev === toolIndex ? null : toolIndex));
+  };
+
+  const nextExample = () => {
+    setCurrentExample((prev) => (prev + 1) % implementations.length);
+  };
+
+  const prevExample = () => {
+    setCurrentExample((prev) => (prev - 1 + implementations.length) % implementations.length);
   };
 
   const hoverStatClasses = behavior.hoverScale
@@ -151,9 +160,6 @@ export function AIImplementation() {
             <div className="max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <p className="text-xl sm:text-2xl font-semibold leading-relaxed tracking-wide mb-4" style={{ color: theme.colors.accent.cyan }}>
                 We build or set up the AI tools your team needs.
-              </p>
-              <p className="text-lg sm:text-xl leading-relaxed tracking-wide" style={{ color: theme.colors.text.secondary }}>
-                Custom solutions, fully integrated, ready to use on day one.
               </p>
             </div>
 
@@ -258,7 +264,7 @@ export function AIImplementation() {
             }}>
               <ZapIcon size={14} style={{ color: theme.colors.accent.cyan }} />
               <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.accent.cyan }}>
-                Implementation Examples
+                Implementation Examples (Just a few of many possibilities)
               </span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold mb-2" style={{
@@ -268,94 +274,87 @@ export function AIImplementation() {
               AI Tools We Build or Set Up
             </h2>
             <p style={{ color: theme.colors.text.secondary }}>
-              Custom solutions tailored to your exact business needs
+              Custom solutions tailored to your exact business needs. Explore these examples by using the navigation arrows.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {implementations.map((impl, index) => {
-              const IconComponent = impl.icon;
-              return (
-                <div
-                  key={index}
-                  className={`p-8 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`}
-                  style={{
-                    borderColor: theme.colors.accent.cyan,
-                    backgroundColor: `${theme.colors.accent.cyan}05`,
-                    boxShadow: theme.shadows.subtle,
-                  }}
-                >
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{
-                    background: `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.primary.electric} 100%)`,
-                  }}>
-                    <IconComponent size={24} style={{ color: 'white' }} />
+          <div className="relative">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {[currentExample, currentExample + 1].map((exampleIndex) => {
+                if (exampleIndex >= implementations.length) return null;
+                const impl = implementations[exampleIndex];
+                const IconComponent = impl.icon;
+                return (
+                  <div
+                    key={exampleIndex}
+                    className={`p-8 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`}
+                    style={{
+                      borderColor: theme.colors.accent.cyan,
+                      backgroundColor: `${theme.colors.accent.cyan}05`,
+                      boxShadow: theme.shadows.subtle,
+                    }}
+                  >
+                    <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{
+                      background: `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.primary.electric} 100%)`,
+                    }}>
+                      <IconComponent size={24} style={{ color: 'white' }} />
+                    </div>
+                    <h3 className="text-lg font-bold mb-3" style={{ color: theme.colors.text.primary }}>
+                      {impl.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                      {impl.description}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold mb-3" style={{ color: theme.colors.text.primary }}>
-                    {impl.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                    {impl.description}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* What Makes This Different Section */}
-        <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
-          animationDelay: '0.6s',
-        }}>
-          <div className="mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4" style={{
-              backgroundColor: `${theme.colors.accent.cyan}10`,
-            }}>
-              <Zap size={14} style={{ color: theme.colors.accent.cyan }} />
-              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.accent.cyan }}>
-                Why Choose Us
-              </span>
+                );
+              })}
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold" style={{
-              letterSpacing: '-0.03em',
-              color: theme.colors.text.primary,
-            }}>
-              What Makes This Different
-            </h2>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`}
+            <div className="flex items-center justify-between mt-8">
+              <button
+                onClick={prevExample}
+                className="p-2 rounded-full transition-all"
                 style={{
-                  borderColor: theme.colors.accent.coral,
-                  backgroundColor: `${theme.colors.accent.coral}05`,
-                  boxShadow: theme.shadows.subtle,
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '12px',
+                  color: theme.colors.accent.cyan,
+                  backgroundColor: `${theme.colors.accent.cyan}10`,
                 }}
+                aria-label="Previous examples"
               >
-                <CheckCircle2
-                  size={24}
-                  style={{
-                    color: theme.colors.accent.coral,
-                    flexShrink: 0,
-                    marginTop: '2px',
-                  }}
-                />
-                <p style={{ color: theme.colors.text.primary, fontWeight: '500' }}>
-                  {benefit}
-                </p>
+                <ChevronLeft size={24} />
+              </button>
+
+              <div className="flex gap-2">
+                {Array.from({ length: Math.ceil(implementations.length / 2) }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentExample(index * 2)}
+                    className="w-2 h-2 rounded-full transition-all"
+                    style={{
+                      backgroundColor: currentExample === index * 2 ? theme.colors.accent.cyan : `${theme.colors.accent.cyan}40`,
+                    }}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
               </div>
-            ))}
+
+              <button
+                onClick={nextExample}
+                className="p-2 rounded-full transition-all"
+                style={{
+                  color: theme.colors.accent.cyan,
+                  backgroundColor: `${theme.colors.accent.cyan}10`,
+                }}
+                aria-label="Next examples"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
           </div>
         </section>
 
         {/* Process Section */}
         <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
-          animationDelay: '0.7s',
+          animationDelay: '0.6s',
         }}>
           <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border-2 backdrop-blur-sm" style={{
             borderColor: `${theme.colors.primary.electric}40`,
@@ -445,58 +444,9 @@ export function AIImplementation() {
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
-          animationDelay: '0.8s',
-        }}>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
-            <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
-              borderColor: theme.colors.accent.cyan,
-              backgroundColor: `${theme.colors.accent.cyan}05`,
-              boxShadow: theme.shadows.subtle,
-              textAlign: 'center',
-            }}>
-              <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.cyan }}>
-                50% Time
-              </p>
-              <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
-                Faster than building in-house
-              </p>
-            </div>
-
-            <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
-              borderColor: theme.colors.primary.electric,
-              backgroundColor: `${theme.colors.primary.electric}05`,
-              boxShadow: theme.shadows.subtle,
-              textAlign: 'center',
-            }}>
-              <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.primary.electric }}>
-                100% Custom
-              </p>
-              <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
-                Built for your specific business
-              </p>
-            </div>
-
-            <div className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`} style={{
-              borderColor: theme.colors.accent.coral,
-              backgroundColor: `${theme.colors.accent.coral}05`,
-              boxShadow: theme.shadows.subtle,
-              textAlign: 'center',
-            }}>
-              <p className="text-2xl sm:text-3xl font-bold mb-2" style={{ color: theme.colors.accent.coral }}>
-                Day 1 Live
-              </p>
-              <p className="text-xs font-semibold uppercase tracking-wider leading-tight" style={{ color: theme.colors.text.secondary }}>
-                Ready to use immediately
-              </p>
-            </div>
-          </div>
-        </section>
-
         {/* Final CTA Section */}
         <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
-          animationDelay: '0.9s',
+          animationDelay: '0.7s',
         }}>
           <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border-2 text-center" style={{
             borderColor: theme.colors.accent.coral,
