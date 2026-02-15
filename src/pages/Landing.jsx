@@ -8,18 +8,18 @@ export function Landing() {
 
   const services = [
     {
-      id: 'education',
-      icon: BookOpen,
-      title: 'AI Education',
-      description: 'Build team capability in AI. Frameworks and mental models, not just tools.',
-      link: '/ai-education'
-    },
-    {
       id: 'strategy',
       icon: Target,
       title: 'AI Strategy',
       description: 'Identify where AI creates competitive advantage in your operations.',
       link: '/ai-strategy'
+    },
+    {
+      id: 'education',
+      icon: BookOpen,
+      title: 'AI Education',
+      description: 'Build team capability in AI. Frameworks and mental models, not just tools.',
+      link: '/ai-education'
     },
     {
       id: 'implementation',

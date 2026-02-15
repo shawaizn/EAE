@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useAuth } from './hooks/useAuth';
 import { Layout } from './components/layout/Layout';
 import { Landing } from './pages/Landing';
@@ -16,6 +17,16 @@ import { PromptsPage } from './pages/PromptsPage';
 import { CertificatePage } from './pages/CertificatePage';
 import QuizPage from './components/quiz-system/QuizPage';
 import { SidebarProvider } from './context/SidebarContext';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -44,6 +55,7 @@ function App() {
   return (
     <SidebarProvider>
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={user ? <Navigate to="/progress" replace /> : <Landing />} />
           <Route path="/ai-education" element={<AIEducation />} />
