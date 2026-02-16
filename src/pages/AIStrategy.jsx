@@ -137,9 +137,6 @@ export function AIStrategy() {
               <p className="text-xl sm:text-2xl font-semibold leading-relaxed tracking-wide mb-4" style={{ color: theme.colors.accent.cyan }}>
                 gain clarity on HOW you AI can help you
               </p>
-              <p className="text-lg sm:text-xl leading-relaxed tracking-wide" style={{ color: theme.colors.text.secondary }}>
-                Strategic assessment, clear roadmap, lasting advantage.
-              </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 sm:mb-20 animate-fade-in-up" style={{

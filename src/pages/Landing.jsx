@@ -11,21 +11,21 @@ export function Landing() {
       id: 'strategy',
       icon: Target,
       title: 'AI Strategy',
-      description: 'Identify where AI creates competitive advantage in your operations.',
+      description: 'Identify where AI saves you time or gives you an advantage.',
       link: '/ai-strategy'
     },
     {
-      id: 'education',
+      id: 'training',
       icon: BookOpen,
-      title: 'AI Education',
+      title: 'AI Training',
       description: 'Build team capability in AI. Frameworks and mental models, not just tools.',
       link: '/ai-education'
     },
     {
-      id: 'implementation',
+      id: 'solutions',
       icon: Rocket,
-      title: 'AI Implementation',
-      description: 'Move from plan to practice. Deploy workflows that actually work.',
+      title: 'AI Solutions',
+      description: 'Move from plan to practise. Deploy tools that give you measurable benefits.',
       link: '/ai-implementation'
     }
   ];
@@ -133,7 +133,7 @@ export function Landing() {
               Three Ways We Help
             </h2>
             <p style={{ color: theme.colors.text.secondary }}>
-              AI Education, Strategy, and Implementation for SMBs
+              AI Strategy, Training and Solutions for SMB's
             </p>
           </div>
 
