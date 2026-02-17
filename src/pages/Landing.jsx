@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Zap, Target, ArrowRight, BookOpen, Rocket, ExternalLink } from 'lucide-react';
+import { Zap, Target, ArrowRight, BookOpen, Rocket, ExternalLink, Calendar, Mail } from 'lucide-react';
 import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 import { LogoHorizontal } from '../components/branding/Logo';
 import { theme, behavior } from '../styles/theme';
@@ -98,8 +98,10 @@ export function Landing() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{
               animationDelay: '0.2s',
             }}>
-              <Link
-                to="/login"
+              <a
+                href="https://calendly.com/shawaiznaeem-104/intro-call"
+                target="_blank"
+                rel="noopener noreferrer"
                 className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all ${behavior.hoverScale ? 'hover:scale-105' : 'hover:shadow-lg'} group`}
                 style={{
                   background: `linear-gradient(135deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
@@ -107,8 +109,8 @@ export function Landing() {
                   boxShadow: behavior.hoverGlow ? `0 0 30px ${theme.colors.accent.cyan}40` : theme.shadows.medium,
                 }}
               >
-                Get Started <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
+                Book a Call <Calendar size={20} className="group-hover:scale-110 transition-transform" />
+              </a>
             </div>
           </div>
         </section>
@@ -196,24 +198,46 @@ export function Landing() {
               letterSpacing: '-0.03em',
               color: theme.colors.text.primary,
             }}>
-              Ready to Build Strategic Advantage?
+              Ready to Transform Your Business with AI?
             </h2>
             <p className="text-lg max-w-2xl mx-auto mb-8 leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-              Join the program and develop frameworks that create lasting competitive advantage in AI.
+              Schedule a consultation to discuss how we can help you build strategic advantage in an AI-driven world.
             </p>
-            <Link
-              to="/login"
-              className={`inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all ${behavior.hoverScale ? 'hover:scale-105' : 'hover:shadow-lg'}`}
+            <a
+              href="https://calendly.com/shawaiznaeem-104/intro-call"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all ${behavior.hoverScale ? 'hover:scale-105' : 'hover:shadow-lg'} group`}
               style={{
                 background: `linear-gradient(135deg, ${theme.colors.accent.coral} 0%, ${theme.colors.primary.electric} 100%)`,
                 color: 'white',
                 boxShadow: behavior.hoverGlow ? `0 0 30px ${theme.colors.accent.coral}40` : theme.shadows.medium,
               }}
             >
-              Sign In to Start <ArrowRight size={20} />
-            </Link>
+              Book a Call <Calendar size={20} className="group-hover:scale-110 transition-transform" />
+            </a>
           </div>
         </section>
+
+        {/* Contact Footer */}
+        <footer className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl pb-12">
+          <div className="border-t pt-8" style={{ borderColor: theme.colors.border.subtle }}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <div className="flex items-center gap-2">
+                <Mail size={20} style={{ color: theme.colors.accent.cyan }} />
+                <a
+                  href="mailto:shawaizn@energiseai.co.uk"
+                  className="text-base font-medium hover:underline transition-colors"
+                  style={{ color: theme.colors.text.secondary }}
+                  onMouseEnter={(e) => e.currentTarget.style.color = theme.colors.accent.cyan}
+                  onMouseLeave={(e) => e.currentTarget.style.color = theme.colors.text.secondary}
+                >
+                  shawaizn@energiseai.co.uk
+                </a>
+              </div>
+            </div>
+          </div>
+        </footer>
       </div>
 
       <style>{`
