@@ -330,9 +330,14 @@ export function AIEducation() {
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-semibold tracking-wide" style={{ color: theme.colors.text.muted }}>
-                        ~{Math.ceil(module.lessons.length * 0.5)} hours
-                      </span>
+                      <div className="inline-flex items-center gap-2 px-3 py-2 rounded-lg" style={{
+                        backgroundColor: `${theme.colors.accent.coral}15`,
+                        color: theme.colors.accent.coral,
+                      }}>
+                        <span className="text-sm font-bold tracking-wide">
+                          ~{Math.ceil(module.lessons.length * 0.5)} hours
+                        </span>
+                      </div>
                       <ChevronDown
                         size={16}
                         style={{

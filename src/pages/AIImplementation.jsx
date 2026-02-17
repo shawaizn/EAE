@@ -161,6 +161,9 @@ export function AIImplementation() {
               <p className="text-xl sm:text-2xl font-semibold leading-relaxed tracking-wide mb-4" style={{ color: theme.colors.accent.cyan }}>
                 We build or set up the AI tools your team needs.
               </p>
+              <p className="text-lg sm:text-xl leading-relaxed tracking-wide" style={{ color: theme.colors.text.secondary }}>
+                Move from plan to practise. Deploy tools that give you measurable benefits.
+              </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 sm:mb-20 animate-fade-in-up" style={{
