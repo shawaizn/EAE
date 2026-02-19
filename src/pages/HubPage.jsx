@@ -341,7 +341,7 @@ export function HubPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           <EducationTile onClick={() => navigate('/progress')} />
           <StrategyTile onClick={() => navigate('/ai-strategy')} />
-          <SolutionsTile onClick={() => setComingSoonTitle('AI Solutions')} />
+          <SolutionsTile onClick={() => navigate('/ai-solutions')} />
           <IrreplacibleTile onClick={() => setComingSoonTitle('Irreplaceable Skills')} />
         </div>
       </main>
