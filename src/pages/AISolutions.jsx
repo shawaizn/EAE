@@ -297,7 +297,7 @@ export function AISolutions() {
           </div>
 
           <a
-            href="https://calendly.com"
+            href="https://calendly.com/shawaiznaeem-104/intro-call"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm transition-all"
