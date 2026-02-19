@@ -1,10 +1,10 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  ArrowLeft, Search, X, Calendar, CheckCircle2, Zap, Wrench,
-  Clock, DollarSign, ChevronRight, Filter, Building2, Users,
-  BarChart3, ShoppingCart, Megaphone, Briefcase, Settings,
-  UserCheck, Monitor, ArrowRight, TrendingUp, Shield,
+  ArrowLeft, Search, X, Calendar, CheckCircle2,
+  ChevronRight, Filter, Building2, Users,
+  BarChart3, Megaphone, Briefcase, Settings,
+  UserCheck, Monitor, ArrowRight, TrendingUp, Shield, DollarSign,
 } from 'lucide-react';
 import { LogoHorizontal } from '../components/branding/Logo';
 import { toolkitEntries, departments } from '../data/aitoolkitData';
@@ -50,13 +50,6 @@ function getDeptConfig(dept) {
   return DEPT_CONFIG[dept] || { accent: '#64748B', bg: 'rgba(100,116,139,0.1)', border: 'rgba(100,116,139,0.2)', icon: Building2 };
 }
 
-const STATS = [
-  { value: '60', label: 'AI solutions', icon: Zap },
-  { value: '9', label: 'Departments covered', icon: Building2 },
-  { value: '30 min', label: 'Fastest setup', icon: Clock },
-  { value: '£0', label: 'Starting cost', icon: DollarSign },
-];
-
 const BEFORE_AFTER = [
   { before: '3 hours answering emails', after: '20 minutes reviewing AI drafts' },
   { before: 'CVs piling up for weeks', after: 'AI shortlist ready same day' },
@@ -73,86 +66,39 @@ function SolutionCard({ entry, onClick }) {
       onClick={() => onClick(entry)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="w-full text-left rounded-2xl overflow-hidden transition-all duration-200 flex flex-col"
+      className="w-full text-left rounded-xl p-4 transition-all duration-200 flex items-center justify-between gap-3"
       style={{
-        background: hovered
-          ? 'rgba(255,255,255,0.055)'
-          : 'rgba(255,255,255,0.03)',
+        background: hovered ? 'rgba(255,255,255,0.055)' : 'rgba(255,255,255,0.03)',
         border: `1px solid ${hovered ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.07)'}`,
-        boxShadow: hovered ? '0 8px 32px rgba(0,0,0,0.25)' : 'none',
+        boxShadow: hovered ? '0 4px 20px rgba(0,0,0,0.2)' : 'none',
         transform: hovered ? 'translateY(-1px)' : 'none',
       }}
     >
-      <div className="p-5 flex-1 flex flex-col">
-        <div className="flex items-start justify-between gap-2 mb-3">
-          <div className="flex items-center gap-2 flex-wrap">
-            <span
-              className="px-2.5 py-1 rounded-lg text-xs font-bold tracking-wide"
-              style={{ background: dept.bg, color: dept.accent, border: `1px solid ${dept.border}` }}
-            >
-              {entry.department}
-            </span>
-            <span
-              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold"
-              style={{ background: diff.bg, color: diff.color, border: `1px solid ${diff.border}` }}
-            >
-              <span className="w-1.5 h-1.5 rounded-full" style={{ background: diff.dot }} />
-              {entry.difficulty}
-            </span>
-          </div>
-          <ChevronRight
-            size={15}
-            className="flex-shrink-0 mt-0.5 transition-transform duration-200"
-            style={{
-              color: hovered ? '#94A3B8' : '#1E293B',
-              transform: hovered ? 'translateX(2px)' : 'none',
-            }}
-          />
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2 mb-2 flex-wrap">
+          <span
+            className="px-2 py-0.5 rounded-md text-xs font-semibold"
+            style={{ background: dept.bg, color: dept.accent, border: `1px solid ${dept.border}` }}
+          >
+            {entry.department}
+          </span>
+          <span className="flex items-center gap-1 text-xs" style={{ color: diff.color }}>
+            <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: diff.dot }} />
+            {entry.difficulty}
+          </span>
         </div>
-
-        <h3 className="text-sm font-bold text-white leading-snug mb-3">
+        <h3 className="text-sm font-semibold text-white leading-snug">
           {entry.title}
         </h3>
-
-        <div
-          className="px-3 py-2.5 rounded-xl mb-3 flex-1"
-          style={{ background: 'rgba(248,113,113,0.06)', border: '1px solid rgba(248,113,113,0.12)' }}
-        >
-          <p className="text-xs font-semibold mb-1" style={{ color: '#F87171' }}>Problem</p>
-          <p className="text-xs leading-relaxed line-clamp-2" style={{ color: '#64748B' }}>
-            {entry.problem}
-          </p>
-        </div>
-
-        <div
-          className="px-3 py-2.5 rounded-xl"
-          style={{ background: 'rgba(74,222,128,0.05)', border: '1px solid rgba(74,222,128,0.12)' }}
-        >
-          <p className="text-xs font-semibold mb-1" style={{ color: '#4ADE80' }}>AI Fix</p>
-          <p className="text-xs leading-relaxed line-clamp-2" style={{ color: '#64748B' }}>
-            {entry.solution}
-          </p>
-        </div>
       </div>
-
-      <div
-        className="px-5 py-3 flex items-center justify-between"
-        style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}
-      >
-        <div className="flex items-center gap-3">
-          <span className="flex items-center gap-1 text-xs" style={{ color: '#334155' }}>
-            <Clock size={11} />
-            {entry.timeToSetup}
-          </span>
-          <span className="flex items-center gap-1 text-xs" style={{ color: '#334155' }}>
-            <DollarSign size={11} />
-            {entry.costRange}
-          </span>
-        </div>
-        <span className="text-xs font-semibold" style={{ color: hovered ? '#38BDF8' : '#1E293B' }}>
-          View details
-        </span>
-      </div>
+      <ChevronRight
+        size={15}
+        className="flex-shrink-0 transition-transform duration-200"
+        style={{
+          color: hovered ? '#94A3B8' : '#1E293B',
+          transform: hovered ? 'translateX(2px)' : 'none',
+        }}
+      />
     </button>
   );
 }
@@ -184,30 +130,6 @@ function DeptFilterPill({ label, count, active, onClick }) {
   );
 }
 
-function StatBar() {
-  return (
-    <div
-      className="grid grid-cols-2 sm:grid-cols-4 gap-px overflow-hidden rounded-2xl"
-      style={{ border: '1px solid rgba(255,255,255,0.08)' }}
-    >
-      {STATS.map(({ value, label, icon: Icon }, i) => (
-        <div
-          key={label}
-          className="flex flex-col items-center justify-center py-5 px-4 gap-1.5"
-          style={{
-            background: i % 2 === 0 ? 'rgba(255,255,255,0.03)' : 'rgba(255,255,255,0.02)',
-          }}
-        >
-          <Icon size={16} style={{ color: '#334155' }} />
-          <span className="text-2xl font-black text-white" style={{ letterSpacing: '-0.03em' }}>
-            {value}
-          </span>
-          <span className="text-xs text-center" style={{ color: '#475569' }}>{label}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
 
 export function AISolutions() {
   const navigate = useNavigate();
@@ -296,32 +218,16 @@ export function AISolutions() {
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
 
         {/* Hero */}
-        <div className="mb-10 sm:mb-12">
-          <div className="flex items-center gap-2 mb-4">
-            <div
-              className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black"
-              style={{ background: 'rgba(14,165,233,0.2)', color: '#38BDF8' }}
-            >
-              1
-            </div>
-            <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#38BDF8' }}>
-              Step 1 — Find your problem
-            </span>
-          </div>
-
+        <div className="mb-8">
           <h1
-            className="text-3xl sm:text-5xl font-black text-white mb-4 leading-tight"
+            className="text-2xl sm:text-4xl font-black text-white mb-2 leading-tight"
             style={{ letterSpacing: '-0.03em' }}
           >
-            Every business problem.<br />
-            <span style={{ color: '#38BDF8' }}>One AI fix.</span>
+            Find your AI fix
           </h1>
-
-          <p className="text-base sm:text-lg leading-relaxed mb-8 max-w-2xl" style={{ color: '#64748B' }}>
-            60 common SME problems — each mapped to a proven AI solution, specific tools, and an honest setup guide. Find yours, then book a call and we'll implement it.
+          <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>
+            60 common business problems, each mapped to a proven AI solution. Search or filter by department to find yours.
           </p>
-
-          <StatBar />
         </div>
 
         {/* Search + Filters */}
@@ -462,7 +368,7 @@ export function AISolutions() {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-2">
             {filtered.map((entry) => (
               <SolutionCard key={entry.id} entry={entry} onClick={setSelectedEntry} />
             ))}
