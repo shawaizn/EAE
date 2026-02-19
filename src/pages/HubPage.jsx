@@ -47,11 +47,11 @@ function EducationTile({ onClick }) {
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative overflow-hidden text-left w-full h-full rounded-2xl transition-all duration-300"
+      className="group relative overflow-hidden w-full h-full rounded-2xl transition-all duration-300"
       style={{
         background: '#0F172A',
         boxShadow: hovered
-          ? '0 24px 48px -8px rgba(8, 145, 178, 0.35), 0 0 0 1px rgba(8,145,178,0.2)'
+          ? '0 24px 48px -8px rgba(8,145,178,0.35), 0 0 0 1px rgba(8,145,178,0.2)'
           : '0 4px 16px -2px rgba(0,0,0,0.2)',
         transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
       }}
@@ -66,7 +66,6 @@ function EducationTile({ onClick }) {
           backgroundSize: '32px 32px',
         }}
       />
-
       <div
         className="absolute top-0 right-0 w-64 h-64 rounded-full opacity-10"
         style={{
@@ -75,51 +74,32 @@ function EducationTile({ onClick }) {
         }}
       />
 
-      <div className="relative z-10 p-8 h-full flex flex-col justify-between min-h-[280px]">
-        <div>
+      <div className="relative z-10 p-10 h-full flex flex-col items-center justify-center min-h-[260px] gap-5">
+        <div
+          className="w-16 h-16 rounded-2xl flex items-center justify-center"
+          style={{ background: 'rgba(8,145,178,0.2)', border: '1px solid rgba(8,145,178,0.3)' }}
+        >
+          <BookOpen size={28} className="text-cyan-400" />
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-2xl font-black text-white mb-3" style={{ letterSpacing: '-0.02em' }}>
+            AI Education
+          </h2>
           <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
             style={{ background: 'rgba(8,145,178,0.15)', color: '#22D3EE', border: '1px solid rgba(8,145,178,0.3)' }}
           >
             <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
             Available Now
           </div>
-
-          <div className="flex items-center gap-3 mb-4">
-            <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-              style={{ background: 'rgba(8,145,178,0.2)', border: '1px solid rgba(8,145,178,0.3)' }}
-            >
-              <BookOpen size={22} className="text-cyan-400" />
-            </div>
-            <h2 className="text-2xl font-black text-white" style={{ letterSpacing: '-0.02em' }}>
-              AI Education
-            </h2>
-          </div>
-
-          <p className="text-slate-400 text-sm leading-relaxed">
-            Frameworks and mental models to confidently navigate AI. Eight structured modules from foundations to strategy.
-          </p>
         </div>
 
-        <div className="flex items-center justify-between mt-6">
-          <div className="flex gap-2">
-            {['8 Modules', '44 Lessons'].map((tag) => (
-              <span
-                key={tag}
-                className="text-xs font-medium px-2 py-1 rounded"
-                style={{ background: 'rgba(255,255,255,0.06)', color: '#94A3B8' }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <div
-            className="flex items-center gap-1.5 text-cyan-400 text-sm font-semibold transition-transform duration-200"
-            style={{ transform: hovered ? 'translateX(4px)' : 'translateX(0)' }}
-          >
-            Enter <ArrowRight size={16} />
-          </div>
+        <div
+          className="flex items-center gap-1.5 text-cyan-400 text-sm font-semibold transition-transform duration-200"
+          style={{ transform: hovered ? 'translateX(4px)' : 'translateX(0)' }}
+        >
+          Enter <ArrowRight size={16} />
         </div>
       </div>
     </button>
@@ -134,7 +114,7 @@ function StrategyTile({ onClick }) {
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative overflow-hidden text-left w-full h-full rounded-2xl transition-all duration-300"
+      className="group relative overflow-hidden w-full h-full rounded-2xl transition-all duration-300"
       style={{
         background: hovered ? '#1a1a2e' : '#12121f',
         boxShadow: hovered
@@ -168,46 +148,25 @@ function StrategyTile({ onClick }) {
         ))}
       </div>
 
-      <div className="relative z-10 p-8 h-full flex flex-col justify-between min-h-[280px]">
-        <div>
+      <div className="relative z-10 p-10 h-full flex flex-col items-center justify-center min-h-[260px] gap-5">
+        <div
+          className="w-16 h-16 rounded-2xl flex items-center justify-center"
+          style={{ background: 'rgba(217,119,6,0.12)', border: '1px solid rgba(217,119,6,0.2)' }}
+        >
+          <Target size={28} style={{ color: '#F59E0B' }} />
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-2xl font-black text-white mb-3" style={{ letterSpacing: '-0.02em' }}>
+            AI Strategy
+          </h2>
           <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
             style={{ background: 'rgba(217,119,6,0.12)', color: '#F59E0B', border: '1px solid rgba(217,119,6,0.25)' }}
           >
             <Lock size={10} />
             Coming Soon
           </div>
-
-          <div className="flex items-center gap-3 mb-4">
-            <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-              style={{ background: 'rgba(217,119,6,0.12)', border: '1px solid rgba(217,119,6,0.2)' }}
-            >
-              <Target size={22} style={{ color: '#F59E0B' }} />
-            </div>
-            <h2 className="text-2xl font-black text-white" style={{ letterSpacing: '-0.02em' }}>
-              AI Strategy
-            </h2>
-          </div>
-
-          <p className="text-slate-400 text-sm leading-relaxed">
-            Identify where AI creates real competitive advantage in your business. Prioritise with clarity.
-          </p>
-        </div>
-
-        <div className="flex items-center justify-between mt-6">
-          <div className="flex gap-2">
-            {['Workshops', 'Roadmaps'].map((tag) => (
-              <span
-                key={tag}
-                className="text-xs font-medium px-2 py-1 rounded"
-                style={{ background: 'rgba(255,255,255,0.04)', color: '#64748B' }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <span className="text-xs font-semibold text-slate-500 tracking-wide uppercase">In Development</span>
         </div>
       </div>
     </button>
@@ -222,7 +181,7 @@ function SolutionsTile({ onClick }) {
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative overflow-hidden text-left w-full h-full rounded-2xl transition-all duration-300"
+      className="group relative overflow-hidden w-full h-full rounded-2xl transition-all duration-300"
       style={{
         background: 'linear-gradient(135deg, #0c1a0c 0%, #0d1a14 50%, #0a1520 100%)',
         boxShadow: hovered
@@ -256,46 +215,25 @@ function SolutionsTile({ onClick }) {
         </svg>
       </div>
 
-      <div className="relative z-10 p-8 h-full flex flex-col justify-between min-h-[280px]">
-        <div>
+      <div className="relative z-10 p-10 h-full flex flex-col items-center justify-center min-h-[260px] gap-5">
+        <div
+          className="w-16 h-16 rounded-2xl flex items-center justify-center"
+          style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)' }}
+        >
+          <Cpu size={28} style={{ color: '#34D399' }} />
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-2xl font-black text-white mb-3" style={{ letterSpacing: '-0.02em' }}>
+            AI Solutions
+          </h2>
           <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
             style={{ background: 'rgba(16,185,129,0.1)', color: '#34D399', border: '1px solid rgba(16,185,129,0.2)' }}
           >
             <Lock size={10} />
             Coming Soon
           </div>
-
-          <div className="flex items-center gap-3 mb-4">
-            <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-              style={{ background: 'rgba(16,185,129,0.1)', border: '1px solid rgba(16,185,129,0.2)' }}
-            >
-              <Cpu size={22} style={{ color: '#34D399' }} />
-            </div>
-            <h2 className="text-2xl font-black text-white" style={{ letterSpacing: '-0.02em' }}>
-              AI Solutions
-            </h2>
-          </div>
-
-          <p className="text-slate-400 text-sm leading-relaxed">
-            Move from plan to practice. Deploy tools that deliver measurable results and real operational change.
-          </p>
-        </div>
-
-        <div className="flex items-center justify-between mt-6">
-          <div className="flex gap-2">
-            {['Deployment', 'Integration'].map((tag) => (
-              <span
-                key={tag}
-                className="text-xs font-medium px-2 py-1 rounded"
-                style={{ background: 'rgba(255,255,255,0.04)', color: '#64748B' }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <span className="text-xs font-semibold text-slate-500 tracking-wide uppercase">In Development</span>
         </div>
       </div>
     </button>
@@ -310,7 +248,7 @@ function IrreplacibleTile({ onClick }) {
       onClick={onClick}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="group relative overflow-hidden text-left w-full h-full rounded-2xl transition-all duration-300"
+      className="group relative overflow-hidden w-full h-full rounded-2xl transition-all duration-300"
       style={{
         background: 'linear-gradient(145deg, #1a0f0a 0%, #1f1208 50%, #1a1008 100%)',
         boxShadow: hovered
@@ -322,9 +260,7 @@ function IrreplacibleTile({ onClick }) {
       <div className="absolute inset-0 overflow-hidden">
         <div
           className="absolute inset-0"
-          style={{
-            background: `radial-gradient(ellipse at 80% 20%, rgba(245,158,11,0.08) 0%, transparent 60%)`,
-          }}
+          style={{ background: `radial-gradient(ellipse at 80% 20%, rgba(245,158,11,0.08) 0%, transparent 60%)` }}
         />
         <div
           className="absolute bottom-0 right-0 w-48 h-48 rounded-full opacity-5"
@@ -333,59 +269,27 @@ function IrreplacibleTile({ onClick }) {
             transform: 'translate(20%, 20%)',
           }}
         />
-        <svg
-          className="absolute top-4 right-4 opacity-5"
-          width="80"
-          height="80"
-          viewBox="0 0 80 80"
-        >
-          <circle cx="40" cy="40" r="35" stroke="#F59E0B" strokeWidth="1" fill="none" />
-          <circle cx="40" cy="40" r="25" stroke="#F59E0B" strokeWidth="0.5" fill="none" />
-          <line x1="40" y1="5" x2="40" y2="75" stroke="#F59E0B" strokeWidth="0.5" />
-          <line x1="5" y1="40" x2="75" y2="40" stroke="#F59E0B" strokeWidth="0.5" />
-        </svg>
       </div>
 
-      <div className="relative z-10 p-8 h-full flex flex-col justify-between min-h-[280px]">
-        <div>
+      <div className="relative z-10 p-10 h-full flex flex-col items-center justify-center min-h-[260px] gap-5">
+        <div
+          className="w-16 h-16 rounded-2xl flex items-center justify-center"
+          style={{ background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.15)' }}
+        >
+          <Zap size={28} style={{ color: '#FCD34D' }} />
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-2xl font-black text-white mb-3" style={{ letterSpacing: '-0.02em' }}>
+            Irreplaceable Skills
+          </h2>
           <div
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
             style={{ background: 'rgba(245,158,11,0.08)', color: '#FCD34D', border: '1px solid rgba(245,158,11,0.18)' }}
           >
             <Lock size={10} />
             Coming Soon
           </div>
-
-          <div className="flex items-center gap-3 mb-4">
-            <div
-              className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
-              style={{ background: 'rgba(245,158,11,0.08)', border: '1px solid rgba(245,158,11,0.15)' }}
-            >
-              <Zap size={22} style={{ color: '#FCD34D' }} />
-            </div>
-            <h2 className="text-2xl font-black text-white" style={{ letterSpacing: '-0.02em', lineHeight: 1.15 }}>
-              Irreplaceable<br />Skills
-            </h2>
-          </div>
-
-          <p className="text-slate-400 text-sm leading-relaxed">
-            The human edge in an AI world. Develop the judgment, creativity, and leadership that no model can replicate.
-          </p>
-        </div>
-
-        <div className="flex items-center justify-between mt-6">
-          <div className="flex gap-2">
-            {['Judgment', 'Leadership'].map((tag) => (
-              <span
-                key={tag}
-                className="text-xs font-medium px-2 py-1 rounded"
-                style={{ background: 'rgba(255,255,255,0.04)', color: '#64748B' }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-          <span className="text-xs font-semibold text-slate-500 tracking-wide uppercase">In Development</span>
         </div>
       </div>
     </button>
