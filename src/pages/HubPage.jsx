@@ -433,30 +433,13 @@ export function HubPage() {
         </div>
       </nav>
 
-      <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
-        <div className="mb-10 sm:mb-14">
-          <p className="text-xs font-bold tracking-[0.2em] uppercase text-slate-500 mb-3">Welcome back</p>
-          <h1
-            className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-3"
-            style={{ letterSpacing: '-0.03em', lineHeight: 1.1 }}
-          >
-            Where do you want<br className="hidden sm:block" /> to go today?
-          </h1>
-          <p className="text-slate-400 text-base sm:text-lg max-w-xl">
-            Choose a programme to continue your AI transformation.
-          </p>
-        </div>
-
+      <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           <EducationTile onClick={() => navigate('/progress')} />
           <StrategyTile onClick={() => setComingSoonTitle('AI Strategy')} />
           <SolutionsTile onClick={() => setComingSoonTitle('AI Solutions')} />
           <IrreplacibleTile onClick={() => setComingSoonTitle('Irreplaceable Skills')} />
         </div>
-
-        <p className="text-center text-xs text-slate-600 mt-10">
-          More programmes launching throughout 2025
-        </p>
       </main>
 
       {comingSoonTitle && (
