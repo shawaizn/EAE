@@ -109,15 +109,7 @@ function SolutionCard({ entry, onClick }) {
           </p>
         </div>
 
-        <div className="flex items-center justify-between pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          <div className="flex items-center gap-4">
-            <span className="text-xs font-medium" style={{ color: '#334155' }}>
-              {entry.costRange}
-            </span>
-            <span className="text-xs" style={{ color: '#1E293B' }}>
-              {entry.timeToSetup} setup
-            </span>
-          </div>
+        <div className="flex items-center justify-end pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
           <ChevronRight
             size={15}
             className="flex-shrink-0 transition-all duration-200"
