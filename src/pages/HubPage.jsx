@@ -340,7 +340,7 @@ export function HubPage() {
       <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
           <EducationTile onClick={() => navigate('/progress')} />
-          <StrategyTile onClick={() => setComingSoonTitle('AI Strategy')} />
+          <StrategyTile onClick={() => navigate('/ai-strategy')} />
           <SolutionsTile onClick={() => setComingSoonTitle('AI Solutions')} />
           <IrreplacibleTile onClick={() => setComingSoonTitle('Irreplaceable Skills')} />
         </div>

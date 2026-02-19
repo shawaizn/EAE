@@ -1,400 +1,376 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Zap, Target, ArrowRight, CheckCircle2, Layers, TrendingUp, ChevronDown, ArrowLeft } from 'lucide-react';
-import { EnergeticBackground } from '../components/branding/EnergeticBackground';
+import { useNavigate } from 'react-router-dom';
+import { Target, MessageSquare, Calendar, ChevronRight, Lock, CheckCircle2, ArrowLeft, Lightbulb, Map, TrendingUp, Users } from 'lucide-react';
 import { LogoHorizontal } from '../components/branding/Logo';
-import { theme, behavior } from '../styles/theme';
 
-const strategyFramework = [
+const BOOKING_URL = 'https://calendly.com/shawaiznaeem-104/intro-call';
+
+const whatIsIncluded = [
   {
-    title: 'Assessment',
-    description: 'Evaluate your operations to identify where AI creates real competitive advantage.',
-    icon: Target,
+    icon: Lightbulb,
+    title: 'AI Opportunity Audit',
+    description: 'We map every part of your business against AI capabilities to surface real opportunities — not just hype.',
   },
   {
-    title: 'Identification',
-    description: 'Focus on high-impact opportunities that align with your business strategy.',
-    icon: Layers,
+    icon: Map,
+    title: 'Prioritised Roadmap',
+    description: 'A clear, sequenced plan showing which processes to automate first, based on impact and effort.',
   },
   {
-    title: 'Plan',
-    description: 'Create a comprehensive roadmap showing exactly how to leverage AI efficiently and effectively to your advantage.',
     icon: TrendingUp,
+    title: 'Competitive Positioning',
+    description: 'Understand how AI can widen your advantage over competitors in your specific market.',
   },
-];
-
-const benefits = [
-  'Identify AI opportunities others miss',
-  'Reduce costs by automating the right processes',
-  'Build sustainable competitive advantage',
-  'Align AI investments with business goals',
-  'Avoid AI investments that waste resources',
+  {
+    icon: Users,
+    title: 'Team Readiness Review',
+    description: 'Identify skill gaps and adoption risks so your strategy lands — not just exists on paper.',
+  },
 ];
 
 export function AIStrategy() {
-  const [expandedPhase, setExpandedPhase] = useState(null);
-
-  const togglePhase = (phaseIndex) => {
-    setExpandedPhase((prev) => (prev === phaseIndex ? null : phaseIndex));
-  };
-
-  const hoverStatClasses = behavior.hoverScale
-    ? 'hover:scale-105 hover:shadow-xl'
-    : 'hover:shadow-md';
+  const navigate = useNavigate();
+  const [interviewDone, setInterviewDone] = useState(false);
 
   return (
-    <div className="w-full min-h-screen overflow-y-auto relative">
-      {behavior.animatedBackground && <EnergeticBackground />}
+    <div className="min-h-screen w-full" style={{ background: '#080C14' }}>
+      <div
+        className="fixed inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            radial-gradient(ellipse at 15% 0%, rgba(217,119,6,0.07) 0%, transparent 50%),
+            radial-gradient(ellipse at 85% 100%, rgba(245,158,11,0.05) 0%, transparent 50%)
+          `,
+        }}
+      />
 
-      <div className="relative z-10">
-        <nav className="sticky top-0 z-20 bg-white/98 backdrop-blur-md border-b" style={{
-          borderColor: theme.colors.border.subtle,
-          boxShadow: theme.shadows.medium,
-        }}>
-          <div className="absolute bottom-0 left-0 right-0 h-px" style={{
-            background: behavior.hoverGlow
-              ? `linear-gradient(90deg, transparent, ${theme.colors.accent.cyan}60, ${theme.colors.accent.coral}60, transparent)`
-              : `linear-gradient(90deg, transparent, ${theme.colors.border.default}80, transparent)`,
-          }} />
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16 sm:h-18">
-              <div className="flex items-center gap-3">
-                <Link
-                  to="/"
-                  className="flex items-center gap-1.5 px-3 py-2 rounded-md transition-colors hover:opacity-70"
-                  style={{ color: theme.colors.text.secondary }}
-                >
-                  <ArrowLeft size={18} />
-                  <span className="text-sm font-medium hidden sm:inline">Back to Landing</span>
-                </Link>
-                <div className="hidden sm:block w-px h-6" style={{ backgroundColor: theme.colors.border.subtle }} />
-                <span className="text-sm font-semibold" style={{ color: theme.colors.text.secondary }}>
-                  AI Strategy
-                </span>
-              </div>
-              <div className="flex items-center gap-4">
-                <LogoHorizontal size="sm" />
-                <Link
-                  to="/login"
-                  className="px-5 py-2 rounded-md font-bold text-sm relative group overflow-hidden border min-h-10 flex items-center"
-                  style={{
-                    backgroundColor: theme.colors.accent.cyan,
-                    color: 'white',
-                    borderColor: theme.colors.accent.cyan,
-                    boxShadow: '0 0 0 rgba(6, 182, 212, 0.3)',
-                    transition: theme.transitions.fast,
-                  }}
-                  onMouseEnter={(e) => {
-                    if (behavior.hoverGlow) {
-                      e.currentTarget.style.boxShadow = theme.shadows.glow.cyan;
-                    }
-                    if (behavior.hoverScale) {
-                      e.currentTarget.style.transform = 'translateY(-1px)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.boxShadow = '0 0 0 rgba(6, 182, 212, 0.3)';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }}
-                >
-                  <span className="relative z-10">Sign In</span>
-                  {behavior.hoverGlow && (
-                    <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-300" />
-                  )}
-                </Link>
-              </div>
-            </div>
+      <nav
+        className="relative z-20 flex items-center justify-between px-6 sm:px-10 h-16 border-b"
+        style={{ borderColor: 'rgba(255,255,255,0.06)' }}
+      >
+        <button
+          onClick={() => navigate('/hub')}
+          className="flex items-center gap-2 text-sm font-medium transition-colors"
+          style={{ color: '#64748B' }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = '#CBD5E1')}
+          onMouseLeave={(e) => (e.currentTarget.style.color = '#64748B')}
+        >
+          <ArrowLeft size={16} />
+          Back
+        </button>
+        <LogoHorizontal size="sm" />
+        <div style={{ width: 60 }} />
+      </nav>
+
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+
+        <div className="text-center mb-14">
+          <div
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold mb-6 tracking-widest uppercase"
+            style={{ background: 'rgba(217,119,6,0.12)', color: '#F59E0B', border: '1px solid rgba(217,119,6,0.25)' }}
+          >
+            <Target size={12} />
+            AI Strategy
           </div>
-        </nav>
+          <h1
+            className="text-4xl sm:text-5xl font-black text-white mb-4"
+            style={{ letterSpacing: '-0.03em', lineHeight: 1.1 }}
+          >
+            Find out exactly where<br />AI creates value for you
+          </h1>
+          <p className="text-lg max-w-xl mx-auto" style={{ color: '#94A3B8' }}>
+            A focused two-step process. An AI interview to understand your business, then a one-on-one call to build your roadmap.
+          </p>
+        </div>
 
-        {/* Hero Section */}
-        <section className="min-h-[85vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-20 sm:py-0">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-8 animate-fade-in-down" style={{
-              borderColor: theme.colors.accent.cyan,
-              backgroundColor: `${theme.colors.accent.cyan}08`,
-            }}>
-              <Target size={16} style={{ color: theme.colors.accent.cyan }} />
-              <span className="text-sm font-semibold tracking-wide" style={{ color: theme.colors.accent.cyan }}>
-                Strategic Implementation
-              </span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-4 leading-tight animate-fade-in" style={{
-              letterSpacing: '-0.03em',
-              background: behavior.hoverGlow
-                ? `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.primary.electric} 50%, ${theme.colors.accent.cyan} 100%)`
-                : undefined,
-              WebkitBackgroundClip: behavior.hoverGlow ? 'text' : undefined,
-              WebkitTextFillColor: behavior.hoverGlow ? 'transparent' : undefined,
-              backgroundClip: behavior.hoverGlow ? 'text' : undefined,
-              color: behavior.hoverGlow ? undefined : theme.colors.text.primary,
-            }}>
-              Find out exactly where AI creates value for you
-            </h1>
-
-            <div className="max-w-2xl mx-auto mb-8 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-              <p className="text-xl sm:text-2xl font-semibold leading-relaxed tracking-wide mb-4" style={{ color: theme.colors.accent.cyan }}>
-                gain clarity on HOW you AI can help you
-              </p>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 sm:mb-20 animate-fade-in-up" style={{
-              animationDelay: '0.2s',
-            }}>
-              <Link
-                to="/login"
-                className={`inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all ${behavior.hoverScale ? 'hover:scale-105' : 'hover:shadow-lg'} group`}
+        <div
+          className="rounded-2xl p-6 sm:p-8 mb-12"
+          style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}
+        >
+          <p
+            className="text-xs font-bold tracking-widest uppercase mb-6"
+            style={{ color: '#64748B' }}
+          >
+            How this works
+          </p>
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-0">
+            <Step
+              number={1}
+              icon={MessageSquare}
+              label="AI Interview"
+              description="Answer questions about your business so we arrive at the call prepared."
+              active={!interviewDone}
+              done={interviewDone}
+              color="#F59E0B"
+            />
+            <div className="hidden sm:flex flex-1 items-center justify-center px-4">
+              <div
+                className="h-px w-full"
                 style={{
-                  background: `linear-gradient(135deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
-                  color: 'white',
-                  boxShadow: behavior.hoverGlow ? `0 0 30px ${theme.colors.accent.cyan}40` : theme.shadows.medium,
+                  background: interviewDone
+                    ? 'linear-gradient(90deg, #F59E0B, rgba(245,158,11,0.2))'
+                    : 'rgba(255,255,255,0.08)',
+                  transition: 'background 0.6s ease',
                 }}
-              >
-                Get Started <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
+              />
+              <ChevronRight size={16} style={{ color: interviewDone ? '#F59E0B' : '#334155', flexShrink: 0 }} />
             </div>
+            <Step
+              number={2}
+              icon={Calendar}
+              label="Book a Call"
+              description="Pick a time. We review the interview together and build your strategy."
+              active={interviewDone}
+              done={false}
+              locked={!interviewDone}
+              color="#F59E0B"
+            />
           </div>
-        </section>
+        </div>
 
-        {/* Problem & Solution Section */}
-        <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
-          animationDelay: '0.4s',
-        }}>
-          <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border-2 backdrop-blur-sm" style={{
-            borderColor: `${theme.colors.primary.electric}40`,
-            background: `linear-gradient(135deg, ${theme.colors.primary.light}30 0%, ${theme.colors.background.card} 100%)`,
-            boxShadow: behavior.hoverGlow ? `0 0 40px ${theme.colors.primary.electric}15` : theme.shadows.large,
-          }}>
-            <div className="mb-10">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4" style={{
-                backgroundColor: `${theme.colors.accent.cyan}10`,
-              }}>
-                <Target size={14} style={{ color: theme.colors.accent.cyan }} />
-                <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.accent.cyan }}>
-                  The Strategic Challenge
-                </span>
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{
-                letterSpacing: '-0.03em',
-                color: theme.colors.text.primary,
-              }}>
-                Most Businesses Are Flying Blind With AI
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-              <div className="p-8 rounded-lg" style={{
-                backgroundColor: `${theme.colors.accent.coral}10`,
-                borderLeft: `4px solid ${theme.colors.accent.coral}`,
-              }}>
-                <p className="text-lg font-semibold mb-4" style={{ color: theme.colors.accent.coral }}>
-                  The Problem
-                </p>
-                <div className="space-y-3" style={{ color: theme.colors.text.secondary }}>
-                  <p className="text-sm leading-relaxed">
-                    You know AI is important. Everyone's talking about it. But where do you actually use it? Which investments create real value? Which ones waste resources?
-                  </p>
-                  <p className="text-sm leading-relaxed">
-                    Without a clear strategy, businesses either ignore AI entirely or throw money at it randomly. Neither path ends well.
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-8 rounded-lg" style={{
-                backgroundColor: `${theme.colors.accent.cyan}10`,
-                borderLeft: `4px solid ${theme.colors.accent.cyan}`,
-              }}>
-                <p className="text-lg font-semibold mb-4" style={{ color: theme.colors.accent.cyan }}>
-                  The Solution
-                </p>
-                <div className="space-y-3" style={{ color: theme.colors.text.secondary }}>
-                  <p className="text-sm leading-relaxed">
-                    Strategic assessment that identifies where AI creates competitive advantage in your specific business.
-                  </p>
-                  <p className="text-sm leading-relaxed">
-                    A clear roadmap that shows exactly which processes to automate, which workflows to transform, and in what order. No guesswork. Just results.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-6 rounded-lg" style={{
-              backgroundColor: `${theme.colors.primary.deep}08`,
-              borderTop: `2px solid ${theme.colors.primary.electric}`,
-            }}>
-              <p className="text-center text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                <span style={{ color: theme.colors.primary.deep, fontWeight: '600' }}>Strategy first. Execution second. Success follows.</span>
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works Section */}
-        <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
-          animationDelay: '0.5s',
-        }}>
-          <div className="mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-2" style={{
-              letterSpacing: '-0.03em',
-              color: theme.colors.text.primary,
-            }}>
-              How Our Strategy Works
-            </h2>
-            <p style={{ color: theme.colors.text.secondary }}>
-              Three phases to identify and capitalize on AI opportunities
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            {strategyFramework.map((phase, index) => {
-              const IconComponent = phase.icon;
+        <div className="mb-12">
+          <p
+            className="text-xs font-bold tracking-widest uppercase mb-6"
+            style={{ color: '#64748B' }}
+          >
+            What the strategy includes
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {whatIsIncluded.map((item) => {
+              const Icon = item.icon;
               return (
                 <div
-                  key={index}
-                  className={`p-8 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`}
-                  style={{
-                    borderColor: theme.colors.accent.cyan,
-                    backgroundColor: `${theme.colors.accent.cyan}05`,
-                    boxShadow: theme.shadows.subtle,
-                  }}
+                  key={item.title}
+                  className="flex items-start gap-4 p-5 rounded-xl"
+                  style={{ background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.06)' }}
                 >
-                  <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{
-                    background: `linear-gradient(135deg, ${theme.colors.primary.deep} 0%, ${theme.colors.primary.electric} 100%)`,
-                  }}>
-                    <IconComponent size={24} style={{ color: 'white' }} />
+                  <div
+                    className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                    style={{ background: 'rgba(217,119,6,0.12)', border: '1px solid rgba(217,119,6,0.2)' }}
+                  >
+                    <Icon size={16} style={{ color: '#F59E0B' }} />
                   </div>
-                  <h3 className="text-lg font-bold mb-3" style={{ color: theme.colors.text.primary }}>
-                    {index + 1}. {phase.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                    {phase.description}
-                  </p>
+                  <div>
+                    <p className="text-sm font-bold text-white mb-1">{item.title}</p>
+                    <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>{item.description}</p>
+                  </div>
                 </div>
               );
             })}
           </div>
-        </section>
+        </div>
 
-        {/* What Makes This Different Section */}
-        <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
-          animationDelay: '0.6s',
-        }}>
-          <div className="mb-12">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4" style={{
-              backgroundColor: `${theme.colors.accent.cyan}10`,
-            }}>
-              <Zap size={14} style={{ color: theme.colors.accent.cyan }} />
-              <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: theme.colors.accent.cyan }}>
-                Competitive Advantage
-              </span>
+        <div
+          id="step-1"
+          className="rounded-2xl overflow-hidden mb-6"
+          style={{ border: '1px solid rgba(217,119,6,0.25)' }}
+        >
+          <div
+            className="flex items-center justify-between px-6 py-4"
+            style={{ background: 'rgba(217,119,6,0.08)', borderBottom: '1px solid rgba(217,119,6,0.15)' }}
+          >
+            <div className="flex items-center gap-3">
+              <div
+                className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black"
+                style={{ background: '#F59E0B', color: '#000' }}
+              >
+                1
+              </div>
+              <span className="text-sm font-bold text-white">AI Interview</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold" style={{
-              letterSpacing: '-0.03em',
-              color: theme.colors.text.primary,
-            }}>
-              What Makes This Different
-            </h2>
+            {interviewDone ? (
+              <div className="flex items-center gap-1.5 text-xs font-bold" style={{ color: '#4ADE80' }}>
+                <CheckCircle2 size={14} />
+                Complete
+              </div>
+            ) : (
+              <div
+                className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold"
+                style={{ background: 'rgba(8,145,178,0.15)', color: '#22D3EE', border: '1px solid rgba(8,145,178,0.3)' }}
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                Start here
+              </div>
+            )}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className={`p-6 rounded-xl border backdrop-blur-sm transition-all ${hoverStatClasses}`}
+          <div className="relative" style={{ height: 560, background: '#0c0f18' }}>
+            <iframe
+              src="https://app.relevanceai.com/agents/d7b62b/6ef140e56d41-4e20-bc3e-a953387246ab/96d09d11-a232-4c57-b6fd-11f8ba878c01/share?hide_tool_steps=false&hide_file_uploads=false&hide_conversation_list=false&bubble_style=agent&primary_color=%23685FFF&bubble_icon=pd%2Fchat&input_placeholder_text=Type+your+message...&hide_logo=false&hide_description=false"
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              allow="microphone"
+              title="AI Strategy Interview"
+              style={{ display: 'block' }}
+            />
+          </div>
+
+          {!interviewDone && (
+            <div
+              className="flex items-center justify-between px-6 py-4"
+              style={{ background: 'rgba(0,0,0,0.3)', borderTop: '1px solid rgba(255,255,255,0.05)' }}
+            >
+              <p className="text-xs" style={{ color: '#475569' }}>
+                Complete the interview above, then mark it done to unlock your booking.
+              </p>
+              <button
+                onClick={() => setInterviewDone(true)}
+                className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-bold transition-all"
                 style={{
-                  borderColor: theme.colors.accent.coral,
-                  backgroundColor: `${theme.colors.accent.coral}05`,
-                  boxShadow: theme.shadows.subtle,
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  gap: '12px',
+                  background: 'rgba(245,158,11,0.15)',
+                  color: '#F59E0B',
+                  border: '1px solid rgba(245,158,11,0.3)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(245,158,11,0.25)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(245,158,11,0.15)';
                 }}
               >
-                <CheckCircle2
-                  size={24}
+                <CheckCircle2 size={15} />
+                Interview complete
+              </button>
+            </div>
+          )}
+        </div>
+
+        <div
+          id="step-2"
+          className="rounded-2xl overflow-hidden transition-all duration-500"
+          style={{
+            border: interviewDone ? '1px solid rgba(245,158,11,0.25)' : '1px solid rgba(255,255,255,0.06)',
+            opacity: interviewDone ? 1 : 0.45,
+          }}
+        >
+          <div
+            className="flex items-center justify-between px-6 py-4"
+            style={{
+              background: interviewDone ? 'rgba(217,119,6,0.08)' : 'rgba(255,255,255,0.02)',
+              borderBottom: `1px solid ${interviewDone ? 'rgba(217,119,6,0.15)' : 'rgba(255,255,255,0.05)'}`,
+            }}
+          >
+            <div className="flex items-center gap-3">
+              <div
+                className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black transition-all duration-500"
+                style={{
+                  background: interviewDone ? '#F59E0B' : 'rgba(255,255,255,0.08)',
+                  color: interviewDone ? '#000' : '#475569',
+                }}
+              >
+                {interviewDone ? '2' : <Lock size={12} />}
+              </div>
+              <span className="text-sm font-bold" style={{ color: interviewDone ? 'white' : '#475569' }}>
+                Book a Call
+              </span>
+            </div>
+            {!interviewDone && (
+              <span className="text-xs font-semibold" style={{ color: '#334155' }}>
+                Unlocks after interview
+              </span>
+            )}
+          </div>
+
+          <div
+            className="p-8 sm:p-10 text-center"
+            style={{ background: interviewDone ? 'rgba(217,119,6,0.04)' : 'rgba(0,0,0,0.2)' }}
+          >
+            {interviewDone ? (
+              <>
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5"
+                  style={{ background: 'rgba(217,119,6,0.15)', border: '1px solid rgba(217,119,6,0.3)' }}
+                >
+                  <Calendar size={26} style={{ color: '#F59E0B' }} />
+                </div>
+                <h3 className="text-xl font-black text-white mb-2" style={{ letterSpacing: '-0.02em' }}>
+                  You're ready to book
+                </h3>
+                <p className="text-sm mb-8 max-w-sm mx-auto" style={{ color: '#64748B' }}>
+                  Pick a time that works for you. We'll review what the interview captured and build your personalised AI strategy together.
+                </p>
+                <a
+                  href={BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl font-bold text-sm transition-all"
                   style={{
-                    color: theme.colors.accent.coral,
-                    flexShrink: 0,
-                    marginTop: '2px',
+                    background: 'linear-gradient(135deg, #D97706 0%, #F59E0B 100%)',
+                    color: '#000',
+                    boxShadow: '0 8px 24px -4px rgba(217,119,6,0.4)',
                   }}
-                />
-                <p style={{ color: theme.colors.text.primary, fontWeight: '500' }}>
-                  {benefit}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = '0 12px 32px -4px rgba(217,119,6,0.5)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 8px 24px -4px rgba(217,119,6,0.4)';
+                  }}
+                >
+                  <Calendar size={17} />
+                  Book Your Strategy Call
+                  <ChevronRight size={16} />
+                </a>
+              </>
+            ) : (
+              <div className="py-4">
+                <div
+                  className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
+                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
+                >
+                  <Lock size={22} style={{ color: '#334155' }} />
+                </div>
+                <p className="text-sm font-semibold" style={{ color: '#334155' }}>
+                  Complete the AI interview above to unlock booking
                 </p>
               </div>
-            ))}
+            )}
           </div>
-        </section>
+        </div>
 
-        {/* Final CTA Section */}
-        <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
-          animationDelay: '0.7s',
-        }}>
-          <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border-2 text-center" style={{
-            borderColor: theme.colors.accent.coral,
-            background: `linear-gradient(135deg, ${theme.colors.accent.coral}08 0%, ${theme.colors.background.card} 100%)`,
-            boxShadow: behavior.hoverGlow ? `0 0 40px ${theme.colors.accent.coral}15` : theme.shadows.large,
-          }}>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4" style={{
-              letterSpacing: '-0.03em',
-              color: theme.colors.text.primary,
-            }}>
-              Ready to build your AI advantage?
-            </h2>
-            <p className="text-lg max-w-2xl mx-auto mb-8 leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-              Let's identify where AI creates competitive advantage in your business and build a strategy that lasts.
-            </p>
-            <Link
-              to="/login"
-              className={`inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all ${behavior.hoverScale ? 'hover:scale-105' : 'hover:shadow-lg'}`}
-              style={{
-                background: `linear-gradient(135deg, ${theme.colors.accent.coral} 0%, ${theme.colors.primary.electric} 100%)`,
-                color: 'white',
-                boxShadow: behavior.hoverGlow ? `0 0 30px ${theme.colors.accent.coral}40` : theme.shadows.medium,
-              }}
-            >
-              Start Your Assessment <ArrowRight size={20} />
-            </Link>
-          </div>
-        </section>
       </div>
 
       <style>{`
-        @keyframes fade-in-down {
-          from { opacity: 0; transform: translateY(-20px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fade-in {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
         @keyframes fade-in-up {
-          from { opacity: 0; transform: translateY(20px); }
+          from { opacity: 0; transform: translateY(16px); }
           to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-down {
-          animation: fade-in-down 0.6s ease-out forwards;
-          opacity: 0;
-        }
-        .animate-fade-in {
-          animation: fade-in 0.8s ease-out forwards;
-          opacity: 0;
-        }
-        .animate-fade-in-up {
-          animation: fade-in-up 0.6s ease-out forwards;
-          opacity: 0;
-        }
-        @media (prefers-reduced-motion: reduce) {
-          .animate-fade-in-down,
-          .animate-fade-in,
-          .animate-fade-in-up {
-            animation: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-          }
         }
       `}</style>
+    </div>
+  );
+}
+
+function Step({ number, icon: Icon, label, description, active, done, locked, color }) {
+  return (
+    <div className="flex items-start gap-3 flex-1">
+      <div
+        className="w-9 h-9 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-400"
+        style={{
+          background: done ? '#4ADE80' : active ? color : 'rgba(255,255,255,0.06)',
+          border: `2px solid ${done ? '#4ADE80' : active ? color : 'rgba(255,255,255,0.1)'}`,
+        }}
+      >
+        {done ? (
+          <CheckCircle2 size={16} style={{ color: '#000' }} />
+        ) : locked ? (
+          <Lock size={14} style={{ color: '#334155' }} />
+        ) : (
+          <Icon size={15} style={{ color: active ? '#000' : '#475569' }} />
+        )}
+      </div>
+      <div>
+        <p
+          className="text-sm font-bold mb-0.5"
+          style={{ color: active || done ? 'white' : '#475569' }}
+        >
+          Step {number} — {label}
+        </p>
+        <p className="text-xs leading-relaxed" style={{ color: '#475569' }}>
+          {description}
+        </p>
+      </div>
     </div>
   );
 }
