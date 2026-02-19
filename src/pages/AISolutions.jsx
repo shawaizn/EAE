@@ -1,10 +1,10 @@
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-  ArrowLeft, Search, X, Calendar, CheckCircle2,
-  ChevronRight, Filter, Building2, Users,
+  ArrowLeft, Search, X, Calendar,
+  ChevronRight, Building2, Users,
   BarChart3, Megaphone, Briefcase, Settings,
-  UserCheck, Monitor, ArrowRight, TrendingUp, Shield, DollarSign,
+  UserCheck, Monitor, TrendingUp, Shield, DollarSign, ArrowRight,
 } from 'lucide-react';
 import { LogoHorizontal } from '../components/branding/Logo';
 import { toolkitEntries, departments } from '../data/aitoolkitData';
@@ -20,98 +20,127 @@ const DIFFICULTY_CONFIG = {
 };
 
 const DEPT_CONFIG = {
-  'Customer Service': { accent: '#0EA5E9', bg: 'rgba(14,165,233,0.1)', border: 'rgba(14,165,233,0.2)', icon: Users },
-  'Sales': { accent: '#10B981', bg: 'rgba(16,185,129,0.1)', border: 'rgba(16,185,129,0.2)', icon: TrendingUp },
-  'Sales / Marketing': { accent: '#10B981', bg: 'rgba(16,185,129,0.1)', border: 'rgba(16,185,129,0.2)', icon: TrendingUp },
-  'Sales / Admin': { accent: '#10B981', bg: 'rgba(16,185,129,0.1)', border: 'rgba(16,185,129,0.2)', icon: TrendingUp },
-  'Marketing': { accent: '#F59E0B', bg: 'rgba(245,158,11,0.1)', border: 'rgba(245,158,11,0.2)', icon: Megaphone },
-  'Marketing / Sales': { accent: '#F59E0B', bg: 'rgba(245,158,11,0.1)', border: 'rgba(245,158,11,0.2)', icon: Megaphone },
-  'Operations': { accent: '#A78BFA', bg: 'rgba(167,139,250,0.1)', border: 'rgba(167,139,250,0.2)', icon: Settings },
-  'Operations / Project Management': { accent: '#A78BFA', bg: 'rgba(167,139,250,0.1)', border: 'rgba(167,139,250,0.2)', icon: Settings },
-  'Operations / HR': { accent: '#A78BFA', bg: 'rgba(167,139,250,0.1)', border: 'rgba(167,139,250,0.2)', icon: Settings },
-  'Operations / Marketing': { accent: '#A78BFA', bg: 'rgba(167,139,250,0.1)', border: 'rgba(167,139,250,0.2)', icon: Settings },
-  'Operations / Finance': { accent: '#A78BFA', bg: 'rgba(167,139,250,0.1)', border: 'rgba(167,139,250,0.2)', icon: Settings },
-  'Operations / Admin': { accent: '#A78BFA', bg: 'rgba(167,139,250,0.1)', border: 'rgba(167,139,250,0.2)', icon: Settings },
-  'Finance / Admin': { accent: '#EC4899', bg: 'rgba(236,72,153,0.1)', border: 'rgba(236,72,153,0.2)', icon: DollarSign },
-  'Admin / Finance': { accent: '#EC4899', bg: 'rgba(236,72,153,0.1)', border: 'rgba(236,72,153,0.2)', icon: DollarSign },
-  'Admin': { accent: '#EC4899', bg: 'rgba(236,72,153,0.1)', border: 'rgba(236,72,153,0.2)', icon: Briefcase },
-  'HR': { accent: '#06B6D4', bg: 'rgba(6,182,212,0.1)', border: 'rgba(6,182,212,0.2)', icon: UserCheck },
-  'Management': { accent: '#F97316', bg: 'rgba(249,115,22,0.1)', border: 'rgba(249,115,22,0.2)', icon: BarChart3 },
-  'IT / Admin': { accent: '#64748B', bg: 'rgba(100,116,139,0.1)', border: 'rgba(100,116,139,0.2)', icon: Monitor },
-  'Project Management / Operations': { accent: '#A78BFA', bg: 'rgba(167,139,250,0.1)', border: 'rgba(167,139,250,0.2)', icon: Settings },
-  'Project Management / Client Services': { accent: '#0EA5E9', bg: 'rgba(14,165,233,0.1)', border: 'rgba(14,165,233,0.2)', icon: Briefcase },
-  'Customer Service / Operations': { accent: '#0EA5E9', bg: 'rgba(14,165,233,0.1)', border: 'rgba(14,165,233,0.2)', icon: Users },
-  'Customer Service / Product': { accent: '#0EA5E9', bg: 'rgba(14,165,233,0.1)', border: 'rgba(14,165,233,0.2)', icon: Users },
-  'Sales / Legal': { accent: '#10B981', bg: 'rgba(16,185,129,0.1)', border: 'rgba(16,185,129,0.2)', icon: Shield },
-  'Sales / Operations': { accent: '#10B981', bg: 'rgba(16,185,129,0.1)', border: 'rgba(16,185,129,0.2)', icon: TrendingUp },
+  'Customer Service': { accent: '#0EA5E9', bg: 'rgba(14,165,233,0.08)', border: 'rgba(14,165,233,0.18)', glow: 'rgba(14,165,233,0.06)', icon: Users },
+  'Sales': { accent: '#10B981', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.18)', glow: 'rgba(16,185,129,0.06)', icon: TrendingUp },
+  'Sales / Marketing': { accent: '#10B981', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.18)', glow: 'rgba(16,185,129,0.06)', icon: TrendingUp },
+  'Sales / Admin': { accent: '#10B981', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.18)', glow: 'rgba(16,185,129,0.06)', icon: TrendingUp },
+  'Marketing': { accent: '#F59E0B', bg: 'rgba(245,158,11,0.08)', border: 'rgba(245,158,11,0.18)', glow: 'rgba(245,158,11,0.06)', icon: Megaphone },
+  'Marketing / Sales': { accent: '#F59E0B', bg: 'rgba(245,158,11,0.08)', border: 'rgba(245,158,11,0.18)', glow: 'rgba(245,158,11,0.06)', icon: Megaphone },
+  'Operations': { accent: '#8B5CF6', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.18)', glow: 'rgba(139,92,246,0.06)', icon: Settings },
+  'Operations / Project Management': { accent: '#8B5CF6', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.18)', glow: 'rgba(139,92,246,0.06)', icon: Settings },
+  'Operations / HR': { accent: '#8B5CF6', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.18)', glow: 'rgba(139,92,246,0.06)', icon: Settings },
+  'Operations / Marketing': { accent: '#8B5CF6', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.18)', glow: 'rgba(139,92,246,0.06)', icon: Settings },
+  'Operations / Finance': { accent: '#8B5CF6', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.18)', glow: 'rgba(139,92,246,0.06)', icon: Settings },
+  'Operations / Admin': { accent: '#8B5CF6', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.18)', glow: 'rgba(139,92,246,0.06)', icon: Settings },
+  'Finance / Admin': { accent: '#EC4899', bg: 'rgba(236,72,153,0.08)', border: 'rgba(236,72,153,0.18)', glow: 'rgba(236,72,153,0.06)', icon: DollarSign },
+  'Admin / Finance': { accent: '#EC4899', bg: 'rgba(236,72,153,0.08)', border: 'rgba(236,72,153,0.18)', glow: 'rgba(236,72,153,0.06)', icon: DollarSign },
+  'Admin': { accent: '#EC4899', bg: 'rgba(236,72,153,0.08)', border: 'rgba(236,72,153,0.18)', glow: 'rgba(236,72,153,0.06)', icon: Briefcase },
+  'HR': { accent: '#06B6D4', bg: 'rgba(6,182,212,0.08)', border: 'rgba(6,182,212,0.18)', glow: 'rgba(6,182,212,0.06)', icon: UserCheck },
+  'Management': { accent: '#F97316', bg: 'rgba(249,115,22,0.08)', border: 'rgba(249,115,22,0.18)', glow: 'rgba(249,115,22,0.06)', icon: BarChart3 },
+  'IT / Admin': { accent: '#64748B', bg: 'rgba(100,116,139,0.08)', border: 'rgba(100,116,139,0.18)', glow: 'rgba(100,116,139,0.06)', icon: Monitor },
+  'Project Management / Operations': { accent: '#8B5CF6', bg: 'rgba(139,92,246,0.08)', border: 'rgba(139,92,246,0.18)', glow: 'rgba(139,92,246,0.06)', icon: Settings },
+  'Project Management / Client Services': { accent: '#0EA5E9', bg: 'rgba(14,165,233,0.08)', border: 'rgba(14,165,233,0.18)', glow: 'rgba(14,165,233,0.06)', icon: Briefcase },
+  'Customer Service / Operations': { accent: '#0EA5E9', bg: 'rgba(14,165,233,0.08)', border: 'rgba(14,165,233,0.18)', glow: 'rgba(14,165,233,0.06)', icon: Users },
+  'Customer Service / Product': { accent: '#0EA5E9', bg: 'rgba(14,165,233,0.08)', border: 'rgba(14,165,233,0.18)', glow: 'rgba(14,165,233,0.06)', icon: Users },
+  'Sales / Legal': { accent: '#10B981', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.18)', glow: 'rgba(16,185,129,0.06)', icon: Shield },
+  'Sales / Operations': { accent: '#10B981', bg: 'rgba(16,185,129,0.08)', border: 'rgba(16,185,129,0.18)', glow: 'rgba(16,185,129,0.06)', icon: TrendingUp },
 };
 
 function getDeptConfig(dept) {
-  return DEPT_CONFIG[dept] || { accent: '#64748B', bg: 'rgba(100,116,139,0.1)', border: 'rgba(100,116,139,0.2)', icon: Building2 };
+  return DEPT_CONFIG[dept] || { accent: '#64748B', bg: 'rgba(100,116,139,0.08)', border: 'rgba(100,116,139,0.18)', glow: 'rgba(100,116,139,0.06)', icon: Building2 };
 }
-
-const BEFORE_AFTER = [
-  { before: '3 hours answering emails', after: '20 minutes reviewing AI drafts' },
-  { before: 'CVs piling up for weeks', after: 'AI shortlist ready same day' },
-  { before: 'Meeting notes lost in chats', after: 'Summaries emailed automatically' },
-];
 
 function SolutionCard({ entry, onClick }) {
   const [hovered, setHovered] = useState(false);
   const diff = DIFFICULTY_CONFIG[entry.difficulty] || DIFFICULTY_CONFIG.Medium;
   const dept = getDeptConfig(entry.department);
+  const Icon = dept.icon;
 
   return (
     <button
       onClick={() => onClick(entry)}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="w-full text-left rounded-xl p-4 transition-all duration-200 flex items-center justify-between gap-3"
+      className="w-full text-left rounded-2xl transition-all duration-300 flex flex-col"
       style={{
-        background: hovered ? 'rgba(255,255,255,0.055)' : 'rgba(255,255,255,0.03)',
-        border: `1px solid ${hovered ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.07)'}`,
-        boxShadow: hovered ? '0 4px 20px rgba(0,0,0,0.2)' : 'none',
-        transform: hovered ? 'translateY(-1px)' : 'none',
+        background: hovered
+          ? `linear-gradient(160deg, ${dept.glow} 0%, rgba(255,255,255,0.04) 100%)`
+          : 'rgba(255,255,255,0.03)',
+        border: `1px solid ${hovered ? dept.border : 'rgba(255,255,255,0.07)'}`,
+        boxShadow: hovered ? `0 8px 32px rgba(0,0,0,0.25), 0 0 0 1px ${dept.border}` : 'none',
+        transform: hovered ? 'translateY(-2px)' : 'none',
+        minHeight: '220px',
       }}
     >
-      <div className="flex-1 min-w-0">
-        <div className="flex items-center gap-2 mb-2 flex-wrap">
-          <span
-            className="px-2 py-0.5 rounded-md text-xs font-semibold"
-            style={{ background: dept.bg, color: dept.accent, border: `1px solid ${dept.border}` }}
-          >
-            {entry.department}
-          </span>
-          <span className="flex items-center gap-1 text-xs" style={{ color: diff.color }}>
-            <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: diff.dot }} />
-            {entry.difficulty}
-          </span>
-        </div>
-        <h3 className="text-sm font-semibold text-white leading-snug">
-          {entry.title}
-        </h3>
-      </div>
-      <ChevronRight
-        size={15}
-        className="flex-shrink-0 transition-transform duration-200"
-        style={{
-          color: hovered ? '#94A3B8' : '#1E293B',
-          transform: hovered ? 'translateX(2px)' : 'none',
-        }}
+      <div
+        className="h-1 w-full rounded-t-2xl"
+        style={{ background: hovered ? dept.accent : 'transparent', transition: 'background 0.3s' }}
       />
+
+      <div className="flex flex-col flex-1 p-6 gap-4">
+        <div className="flex items-start justify-between gap-3">
+          <div
+            className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
+            style={{ background: dept.bg, border: `1px solid ${dept.border}` }}
+          >
+            <Icon size={18} style={{ color: dept.accent }} />
+          </div>
+          <div className="flex items-center gap-1.5 flex-shrink-0 mt-0.5">
+            <span
+              className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+              style={{ background: diff.dot }}
+            />
+            <span className="text-xs font-medium" style={{ color: diff.color }}>{entry.difficulty}</span>
+          </div>
+        </div>
+
+        <div className="flex-1">
+          <p className="text-xs font-semibold mb-2 uppercase tracking-wider" style={{ color: dept.accent }}>
+            {entry.department}
+          </p>
+          <h3
+            className="font-bold text-white leading-snug mb-3"
+            style={{ fontSize: '0.95rem', letterSpacing: '-0.01em' }}
+          >
+            {entry.title}
+          </h3>
+          <p className="text-sm leading-relaxed" style={{ color: '#4B5563' }}>
+            {entry.solution}
+          </p>
+        </div>
+
+        <div className="flex items-center justify-between pt-3" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <div className="flex items-center gap-4">
+            <span className="text-xs font-medium" style={{ color: '#334155' }}>
+              {entry.costRange}
+            </span>
+            <span className="text-xs" style={{ color: '#1E293B' }}>
+              {entry.timeToSetup} setup
+            </span>
+          </div>
+          <ChevronRight
+            size={15}
+            className="flex-shrink-0 transition-all duration-200"
+            style={{
+              color: hovered ? dept.accent : '#1E293B',
+              transform: hovered ? 'translateX(2px)' : 'none',
+            }}
+          />
+        </div>
+      </div>
     </button>
   );
 }
 
-function DeptFilterPill({ label, count, active, onClick }) {
+function FilterPill({ label, count, active, accent, onClick }) {
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold transition-all whitespace-nowrap flex-shrink-0"
+      className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold transition-all duration-200 whitespace-nowrap flex-shrink-0"
       style={{
-        background: active ? 'rgba(14,165,233,0.15)' : 'rgba(255,255,255,0.04)',
+        background: active ? 'rgba(14,165,233,0.12)' : 'rgba(255,255,255,0.04)',
         color: active ? '#38BDF8' : '#475569',
-        border: active ? '1px solid rgba(14,165,233,0.3)' : '1px solid rgba(255,255,255,0.07)',
+        border: active ? '1px solid rgba(14,165,233,0.25)' : '1px solid rgba(255,255,255,0.06)',
       }}
     >
       {label}
@@ -130,14 +159,12 @@ function DeptFilterPill({ label, count, active, onClick }) {
   );
 }
 
-
 export function AISolutions() {
   const navigate = useNavigate();
   const [search, setSearch] = useState('');
   const [activeDept, setActiveDept] = useState(DEPT_ALL);
   const [activeDiff, setActiveDiff] = useState(DIFF_ALL);
   const [selectedEntry, setSelectedEntry] = useState(null);
-  const [showFilters, setShowFilters] = useState(false);
 
   const deptCounts = useMemo(() => {
     const counts = {};
@@ -177,9 +204,7 @@ export function AISolutions() {
   }, []);
 
   useEffect(() => {
-    const onKey = (e) => {
-      if (e.key === 'Escape') setSelectedEntry(null);
-    };
+    const onKey = (e) => { if (e.key === 'Escape') setSelectedEntry(null); };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, []);
@@ -190,13 +215,14 @@ export function AISolutions() {
         className="fixed inset-0 pointer-events-none"
         style={{
           backgroundImage: `
-            radial-gradient(ellipse at 10% 0%, rgba(14,165,233,0.07) 0%, transparent 55%),
-            radial-gradient(ellipse at 90% 100%, rgba(245,158,11,0.05) 0%, transparent 55%),
-            radial-gradient(ellipse at 50% 50%, rgba(16,185,129,0.02) 0%, transparent 60%)
+            radial-gradient(ellipse 80% 50% at 50% -10%, rgba(14,165,233,0.06) 0%, transparent 60%),
+            radial-gradient(ellipse at 0% 100%, rgba(16,185,129,0.04) 0%, transparent 50%),
+            radial-gradient(ellipse at 100% 100%, rgba(245,158,11,0.04) 0%, transparent 50%)
           `,
         }}
       />
 
+      {/* Nav */}
       <nav
         className="relative z-20 flex items-center justify-between px-6 sm:px-10 h-16 border-b"
         style={{ borderColor: 'rgba(255,255,255,0.06)', background: 'rgba(8,12,20,0.9)', backdropFilter: 'blur(12px)' }}
@@ -215,75 +241,85 @@ export function AISolutions() {
         <div style={{ width: 60 }} />
       </nav>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
-
-        {/* Hero */}
-        <div className="mb-8">
-          <h1
-            className="text-2xl sm:text-4xl font-black text-white mb-2 leading-tight"
-            style={{ letterSpacing: '-0.03em' }}
-          >
-            Find your AI fix
-          </h1>
-          <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>
-            60 common business problems, each mapped to a proven AI solution. Search or filter by department to find yours.
-          </p>
-        </div>
-
-        {/* Search + Filters */}
-        <div
-          className="sticky top-0 z-10 pb-4 pt-2"
-          style={{ background: 'linear-gradient(to bottom, #080C14 80%, transparent)' }}
+      {/* Hero */}
+      <div className="relative z-10 px-4 sm:px-6 pt-20 pb-16 text-center">
+        <p
+          className="text-xs font-bold uppercase tracking-widest mb-6"
+          style={{ color: '#0EA5E9', letterSpacing: '0.2em' }}
         >
-          <div className="flex gap-2 mb-3">
-            <div className="relative flex-1">
-              <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: '#334155' }} />
-              <input
-                type="text"
-                placeholder="Search by problem, solution, tool, or department..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full pl-9 pr-9 py-3 rounded-xl text-sm outline-none text-white placeholder-slate-600"
-                style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)' }}
-              />
-              {search && (
-                <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2" style={{ color: '#475569' }}>
-                  <X size={14} />
-                </button>
-              )}
-            </div>
-            <button
-              onClick={() => setShowFilters((v) => !v)}
-              className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm font-semibold transition-all sm:hidden"
-              style={{
-                background: showFilters ? 'rgba(14,165,233,0.15)' : 'rgba(255,255,255,0.05)',
-                color: showFilters ? '#38BDF8' : '#475569',
-                border: showFilters ? '1px solid rgba(14,165,233,0.3)' : '1px solid rgba(255,255,255,0.1)',
-              }}
-            >
-              <Filter size={14} />
-              Filter
-            </button>
-          </div>
+          AI Toolkit for SMEs
+        </p>
+        <h1
+          className="text-4xl sm:text-6xl font-black text-white mb-6 mx-auto"
+          style={{ letterSpacing: '-0.04em', lineHeight: 1.05, maxWidth: '640px' }}
+        >
+          Pick your fix.
+        </h1>
+        <p
+          className="text-base sm:text-lg mb-12 mx-auto"
+          style={{ color: '#4B5563', maxWidth: '480px', lineHeight: 1.6 }}
+        >
+          60 common business problems, each mapped to a proven AI solution you can start using this week.
+        </p>
 
-          {/* Desktop: always visible filter row */}
-          <div className="hidden sm:flex gap-2 overflow-x-auto pb-0.5" style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}>
-            <DeptFilterPill
+        {/* Search */}
+        <div className="relative mx-auto" style={{ maxWidth: '540px' }}>
+          <Search
+            size={17}
+            className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none"
+            style={{ color: '#334155' }}
+          />
+          <input
+            type="text"
+            placeholder="Search by problem, tool, or department..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full pl-12 pr-10 py-4 rounded-2xl text-sm outline-none text-white placeholder-slate-600"
+            style={{
+              background: 'rgba(255,255,255,0.05)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              fontSize: '0.9rem',
+            }}
+          />
+          {search && (
+            <button
+              onClick={() => setSearch('')}
+              className="absolute right-4 top-1/2 -translate-y-1/2 transition-colors"
+              style={{ color: '#475569' }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = '#94A3B8')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = '#475569')}
+            >
+              <X size={15} />
+            </button>
+          )}
+        </div>
+      </div>
+
+      {/* Filters + Grid */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8">
+
+        {/* Filter pills */}
+        <div
+          className="sticky top-0 z-10 py-4"
+          style={{ background: 'linear-gradient(to bottom, #080C14 70%, transparent)' }}
+        >
+          <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            <FilterPill
               label="Any difficulty"
               active={activeDiff === DIFF_ALL}
               onClick={() => setActiveDiff(DIFF_ALL)}
             />
             {['Easy', 'Medium'].map((d) => (
-              <DeptFilterPill
+              <FilterPill
                 key={d}
                 label={d}
                 active={activeDiff === d}
                 onClick={() => setActiveDiff(d)}
               />
             ))}
-            <div className="w-px flex-shrink-0 self-stretch my-1" style={{ background: 'rgba(255,255,255,0.08)' }} />
+            <div className="w-px flex-shrink-0 self-stretch my-1 mx-1" style={{ background: 'rgba(255,255,255,0.07)' }} />
             {departments.map((dept) => (
-              <DeptFilterPill
+              <FilterPill
                 key={dept}
                 label={dept}
                 count={dept === 'All' ? toolkitEntries.length : deptCounts[dept]}
@@ -292,73 +328,42 @@ export function AISolutions() {
               />
             ))}
           </div>
-
-          {/* Mobile: toggle filter panel */}
-          {showFilters && (
-            <div className="sm:hidden mt-2 p-4 rounded-xl space-y-3" style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#334155' }}>Difficulty</p>
-                <div className="flex gap-2 flex-wrap">
-                  {[{ label: 'Any', value: DIFF_ALL }, { label: 'Easy', value: 'Easy' }, { label: 'Medium', value: 'Medium' }].map(({ label, value }) => (
-                    <DeptFilterPill
-                      key={value}
-                      label={label}
-                      active={activeDiff === value}
-                      onClick={() => setActiveDiff(value)}
-                    />
-                  ))}
-                </div>
-              </div>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: '#334155' }}>Department</p>
-                <div className="flex gap-2 flex-wrap">
-                  {departments.map((dept) => (
-                    <DeptFilterPill
-                      key={dept}
-                      label={dept}
-                      count={dept === 'All' ? toolkitEntries.length : deptCounts[dept]}
-                      active={activeDept === dept}
-                      onClick={() => { setActiveDept(dept); setShowFilters(false); }}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
         </div>
 
         {/* Results bar */}
-        <div className="flex items-center justify-between mb-5">
-          <p className="text-sm font-semibold" style={{ color: '#334155' }}>
-            <span className="text-white">{filtered.length}</span>
-            {' '}of {toolkitEntries.length} solutions
-            {activeDept !== DEPT_ALL && <span style={{ color: '#38BDF8' }}> — {activeDept}</span>}
+        <div className="flex items-center justify-between mb-8 mt-2">
+          <p className="text-sm" style={{ color: '#334155' }}>
+            <span className="font-bold text-white">{filtered.length}</span>
+            <span> of {toolkitEntries.length} solutions</span>
+            {activeDept !== DEPT_ALL && (
+              <span style={{ color: '#38BDF8' }}> — {activeDept}</span>
+            )}
           </p>
           {hasFilters && (
             <button
               onClick={clearAll}
-              className="text-xs font-semibold flex items-center gap-1 transition-colors"
+              className="text-xs font-semibold flex items-center gap-1.5 transition-colors"
               style={{ color: '#475569' }}
               onMouseEnter={(e) => (e.currentTarget.style.color = '#94A3B8')}
               onMouseLeave={(e) => (e.currentTarget.style.color = '#475569')}
             >
               <X size={12} />
-              Clear filters
+              Clear
             </button>
           )}
         </div>
 
-        {/* Grid */}
+        {/* Card Grid */}
         {filtered.length === 0 ? (
-          <div className="text-center py-20">
+          <div className="text-center py-24">
             <div
-              className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-4"
+              className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5"
               style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
             >
               <Search size={22} style={{ color: '#334155' }} />
             </div>
-            <p className="font-bold text-white mb-1">No solutions found</p>
-            <p className="text-sm mb-4" style={{ color: '#475569' }}>Try a different search term or clear your filters</p>
+            <p className="font-bold text-white mb-2">No solutions found</p>
+            <p className="text-sm mb-6" style={{ color: '#475569' }}>Try a different term or clear your filters</p>
             <button
               onClick={clearAll}
               className="text-sm font-semibold transition-colors"
@@ -368,7 +373,7 @@ export function AISolutions() {
             </button>
           </div>
         ) : (
-          <div className="flex flex-col gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {filtered.map((entry) => (
               <SolutionCard key={entry.id} entry={entry} onClick={setSelectedEntry} />
             ))}
@@ -377,79 +382,40 @@ export function AISolutions() {
 
         {/* Bottom CTA */}
         <div
-          className="mt-16 rounded-2xl overflow-hidden"
-          style={{ border: '1px solid rgba(255,255,255,0.1)' }}
+          className="mt-24 rounded-3xl overflow-hidden"
+          style={{ border: '1px solid rgba(255,255,255,0.08)' }}
         >
           <div
-            className="px-6 sm:px-10 pt-10 pb-8 text-center"
+            className="px-8 sm:px-16 py-16 text-center"
             style={{
-              background: 'linear-gradient(135deg, rgba(14,165,233,0.08) 0%, rgba(245,158,11,0.06) 100%)',
+              background: 'linear-gradient(160deg, rgba(14,165,233,0.06) 0%, rgba(8,12,20,1) 60%)',
             }}
           >
-            <div className="flex items-center justify-center gap-2 mb-4">
-              <div
-                className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black"
-                style={{ background: 'rgba(245,158,11,0.2)', color: '#F59E0B' }}
-              >
-                2
-              </div>
-              <span className="text-xs font-bold uppercase tracking-widest" style={{ color: '#F59E0B' }}>
-                Step 2
-              </span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-black text-white mb-2" style={{ letterSpacing: '-0.02em' }}>
-              Get it built for you
+            <h2
+              className="text-3xl sm:text-4xl font-black text-white mb-4"
+              style={{ letterSpacing: '-0.03em' }}
+            >
+              Get it built for you.
             </h2>
-            <p className="text-sm mb-8 max-w-md mx-auto" style={{ color: '#64748B' }}>
-              Found a problem that fits? Book a free call and we'll map out exactly how to implement it — no technical knowledge needed.
+            <p className="text-base mb-10 mx-auto" style={{ color: '#4B5563', maxWidth: '400px', lineHeight: 1.6 }}>
+              Found a problem that fits? Book a free call and we'll map out exactly how to implement it.
             </p>
-
-            {/* Before/After */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
-              {BEFORE_AFTER.map(({ before, after }, i) => (
-                <div
-                  key={i}
-                  className="rounded-xl p-4 text-left"
-                  style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)' }}
-                >
-                  <div className="flex items-start gap-2 mb-2.5">
-                    <X size={12} className="flex-shrink-0 mt-0.5" style={{ color: '#F87171' }} />
-                    <p className="text-xs leading-snug" style={{ color: '#64748B' }}>{before}</p>
-                  </div>
-                  <div className="w-full h-px mb-2.5" style={{ background: 'rgba(255,255,255,0.06)' }} />
-                  <div className="flex items-start gap-2">
-                    <CheckCircle2 size={12} className="flex-shrink-0 mt-0.5" style={{ color: '#4ADE80' }} />
-                    <p className="text-xs leading-snug font-medium" style={{ color: '#CBD5E1' }}>{after}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
-              {['We handle the setup', 'No jargon', 'Done in days, not months'].map((point) => (
-                <div key={point} className="flex items-center gap-1.5">
-                  <CheckCircle2 size={14} style={{ color: '#4ADE80' }} />
-                  <span className="text-sm font-medium" style={{ color: '#94A3B8' }}>{point}</span>
-                </div>
-              ))}
-            </div>
-
             <a
               href="https://calendly.com/shawaiznaeem-104/intro-call"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm transition-all"
+              className="inline-flex items-center gap-2.5 px-8 py-4 rounded-2xl font-bold text-sm transition-all"
               style={{
                 background: 'linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%)',
                 color: 'white',
-                boxShadow: '0 4px 20px rgba(14,165,233,0.35)',
+                boxShadow: '0 4px 24px rgba(14,165,233,0.3)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = '0 6px 30px rgba(14,165,233,0.5)';
+                e.currentTarget.style.boxShadow = '0 8px 36px rgba(14,165,233,0.5)';
                 e.currentTarget.style.transform = 'translateY(-1px)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(14,165,233,0.35)';
+                e.currentTarget.style.boxShadow = '0 4px 24px rgba(14,165,233,0.3)';
                 e.currentTarget.style.transform = 'none';
               }}
             >
@@ -463,51 +429,34 @@ export function AISolutions() {
 
       {/* Floating CTA */}
       <div
-        className="fixed bottom-0 left-0 right-0 z-30 px-4 py-3"
-        style={{
-          background: 'linear-gradient(to top, rgba(8,12,20,1) 60%, transparent)',
-        }}
+        className="fixed bottom-0 left-0 right-0 z-30 flex justify-center px-4 py-4"
+        style={{ background: 'linear-gradient(to top, rgba(8,12,20,1) 50%, transparent)' }}
       >
-        <div
-          className="max-w-xl mx-auto flex items-center justify-between gap-4 px-4 py-3 rounded-xl"
+        <a
+          href="https://calendly.com/shawaiznaeem-104/intro-call"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl font-bold text-sm transition-all"
           style={{
-            background: 'linear-gradient(135deg, rgba(14,165,233,0.1) 0%, rgba(245,158,11,0.07) 100%)',
-            border: '1px solid rgba(255,255,255,0.1)',
+            background: 'linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%)',
+            color: 'white',
+            boxShadow: '0 4px 24px rgba(14,165,233,0.35)',
             backdropFilter: 'blur(8px)',
           }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.boxShadow = '0 8px 36px rgba(14,165,233,0.5)';
+            e.currentTarget.style.transform = 'translateY(-1px)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.boxShadow = '0 4px 24px rgba(14,165,233,0.35)';
+            e.currentTarget.style.transform = 'none';
+          }}
         >
-          <div className="flex items-center gap-3 min-w-0">
-            <div
-              className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black flex-shrink-0"
-              style={{ background: 'rgba(245,158,11,0.2)', color: '#F59E0B' }}
-            >
-              2
-            </div>
-            <div className="min-w-0">
-              <p className="text-sm font-bold text-white leading-tight">Found your problem?</p>
-              <p className="text-xs hidden sm:block" style={{ color: '#64748B' }}>Book a free call — we'll handle the setup for you</p>
-            </div>
-          </div>
-          <a
-            href="https://calendly.com/shawaiznaeem-104/intro-call"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg font-bold text-xs transition-all"
-            style={{
-              background: 'linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%)',
-              color: 'white',
-              boxShadow: '0 2px 12px rgba(14,165,233,0.3)',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 4px 20px rgba(14,165,233,0.5)')}
-            onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 2px 12px rgba(14,165,233,0.3)')}
-          >
-            <Calendar size={13} />
-            Book free call
-          </a>
-        </div>
+          <Calendar size={15} />
+          Book a free call
+        </a>
       </div>
 
-      {/* Solution Drawer */}
       <SolutionDrawer
         entry={selectedEntry}
         onClose={() => setSelectedEntry(null)}
