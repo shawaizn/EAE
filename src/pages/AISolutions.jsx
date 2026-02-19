@@ -1,21 +1,24 @@
 import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Search, X, ChevronDown, ChevronUp, Clock, PoundSterling, Calendar, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Search, X, ChevronDown, ChevronUp, Calendar, CheckCircle2 } from 'lucide-react';
 import { LogoHorizontal } from '../components/branding/Logo';
 import { toolkitEntries, departments } from '../data/aitoolkitData';
 
 const DEPT_ALL = 'All';
 const DIFF_ALL = 'All';
 
+const DIFFICULTY_STYLES = {
+  Easy: { bg: 'rgba(34,197,94,0.12)', color: '#4ADE80' },
+  Medium: { bg: 'rgba(251,191,36,0.12)', color: '#FCD34D' },
+  Hard: { bg: 'rgba(248,113,113,0.12)', color: '#F87171' },
+};
+
 function DifficultyPill({ difficulty }) {
-  const isEasy = difficulty === 'Easy';
+  const style = DIFFICULTY_STYLES[difficulty] || DIFFICULTY_STYLES.Medium;
   return (
     <span
       className="px-2 py-0.5 rounded-full text-xs font-semibold"
-      style={{
-        background: isEasy ? 'rgba(34,197,94,0.12)' : 'rgba(251,191,36,0.12)',
-        color: isEasy ? '#4ADE80' : '#FCD34D',
-      }}
+      style={{ background: style.bg, color: style.color }}
     >
       {difficulty}
     </span>
@@ -35,63 +38,51 @@ function EntryCard({ entry }) {
     >
       <button
         onClick={() => setExpanded((v) => !v)}
-        className="w-full text-left px-5 py-4 flex items-center gap-4"
+        className="w-full text-left px-4 py-3.5 flex items-center gap-3"
       >
         <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-white mb-1.5 leading-snug">{entry.title}</p>
+          <p className="text-sm font-semibold text-white leading-snug mb-1.5">{entry.title}</p>
           <div className="flex flex-wrap items-center gap-2">
             <DifficultyPill difficulty={entry.difficulty} />
-            <span className="text-xs font-medium" style={{ color: '#475569' }}>{entry.department}</span>
+            <span
+              className="px-2 py-0.5 rounded-md text-xs font-medium"
+              style={{ background: 'rgba(255,255,255,0.04)', color: '#475569', border: '1px solid rgba(255,255,255,0.06)' }}
+            >
+              {entry.department}
+            </span>
           </div>
         </div>
         <div className="flex-shrink-0" style={{ color: '#334155' }}>
-          {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          {expanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
         </div>
       </button>
 
       {expanded && (
-        <div className="px-5 pb-5" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          <div className="pt-4 space-y-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="p-3.5 rounded-lg" style={{ background: 'rgba(248,113,113,0.07)', border: '1px solid rgba(248,113,113,0.15)' }}>
+        <div className="px-4 pb-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+          <div className="pt-3.5 space-y-3.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div className="p-3 rounded-lg" style={{ background: 'rgba(248,113,113,0.07)', border: '1px solid rgba(248,113,113,0.15)' }}>
                 <p className="text-xs font-bold mb-1" style={{ color: '#F87171' }}>The problem</p>
                 <p className="text-sm leading-relaxed" style={{ color: '#94A3B8' }}>{entry.problem}</p>
               </div>
-              <div className="p-3.5 rounded-lg" style={{ background: 'rgba(74,222,128,0.07)', border: '1px solid rgba(74,222,128,0.15)' }}>
+              <div className="p-3 rounded-lg" style={{ background: 'rgba(74,222,128,0.07)', border: '1px solid rgba(74,222,128,0.15)' }}>
                 <p className="text-xs font-bold mb-1" style={{ color: '#4ADE80' }}>The fix</p>
                 <p className="text-sm leading-relaxed" style={{ color: '#94A3B8' }}>{entry.solution}</p>
               </div>
             </div>
 
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: '#334155' }}>How it works</p>
+              <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: '#334155' }}>How it works</p>
               <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>{entry.howItWorks}</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
-              <div className="flex items-start gap-2.5 p-3 rounded-lg" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                <PoundSterling size={14} className="mt-0.5 flex-shrink-0" style={{ color: '#475569' }} />
-                <div>
-                  <p className="text-xs font-semibold" style={{ color: '#475569' }}>Cost</p>
-                  <p className="text-sm font-bold text-white">{entry.costRange}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-2.5 p-3 rounded-lg" style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.07)' }}>
-                <Clock size={14} className="mt-0.5 flex-shrink-0" style={{ color: '#475569' }} />
-                <div>
-                  <p className="text-xs font-semibold" style={{ color: '#475569' }}>Setup time</p>
-                  <p className="text-sm font-bold text-white">{entry.timeToSetup}</p>
-                </div>
-              </div>
-            </div>
-
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: '#334155' }}>What you need first</p>
+              <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: '#334155' }}>What you need first</p>
               <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>{entry.whatYouNeed}</p>
             </div>
 
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: '#334155' }}>Tools</p>
+              <p className="text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: '#334155' }}>Tools</p>
               <div className="flex flex-wrap gap-1.5">
                 {entry.tools.map((tool) => (
                   <span
@@ -107,6 +98,71 @@ function EntryCard({ entry }) {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+function FilterChip({ label, active, onClick }) {
+  return (
+    <button
+      onClick={onClick}
+      className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap flex-shrink-0"
+      style={{
+        background: active ? 'rgba(14,165,233,0.15)' : 'rgba(255,255,255,0.04)',
+        color: active ? '#38BDF8' : '#475569',
+        border: active ? '1px solid rgba(14,165,233,0.3)' : '1px solid rgba(255,255,255,0.07)',
+      }}
+    >
+      {label}
+    </button>
+  );
+}
+
+function FloatingCTA() {
+  return (
+    <div
+      className="fixed bottom-0 left-0 right-0 z-30 px-4 py-3"
+      style={{
+        background: 'linear-gradient(to top, rgba(8,12,20,0.98) 60%, transparent)',
+        backdropFilter: 'blur(12px)',
+      }}
+    >
+      <div
+        className="max-w-3xl mx-auto flex items-center justify-between gap-4 px-4 py-3 rounded-xl"
+        style={{
+          background: 'linear-gradient(135deg, rgba(14,165,233,0.1) 0%, rgba(245,158,11,0.07) 100%)',
+          border: '1px solid rgba(255,255,255,0.1)',
+        }}
+      >
+        <div className="flex items-center gap-3 min-w-0">
+          <div
+            className="w-7 h-7 rounded-full flex items-center justify-center text-xs font-black flex-shrink-0"
+            style={{ background: 'rgba(245,158,11,0.2)', color: '#F59E0B' }}
+          >
+            2
+          </div>
+          <div className="min-w-0">
+            <p className="text-sm font-bold text-white leading-tight">Found your problem?</p>
+            <p className="text-xs hidden sm:block" style={{ color: '#64748B' }}>Book a free call — we'll handle the setup, no jargon</p>
+          </div>
+        </div>
+        <a
+          href="https://calendly.com/shawaiznaeem-104/intro-call"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex-shrink-0 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg font-bold text-xs transition-all"
+          style={{
+            background: 'linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%)',
+            color: 'white',
+            boxShadow: '0 2px 12px rgba(14,165,233,0.3)',
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.boxShadow = '0 4px 20px rgba(14,165,233,0.45)')}
+          onMouseLeave={(e) => (e.currentTarget.style.boxShadow = '0 2px 12px rgba(14,165,233,0.3)')}
+        >
+          <Calendar size={13} />
+          Book free call
+        </a>
+      </div>
     </div>
   );
 }
@@ -138,7 +194,7 @@ export function AISolutions() {
   const hasFilters = activeDept !== DEPT_ALL || activeDiff !== DIFF_ALL || search;
 
   return (
-    <div className="min-h-screen w-full" style={{ background: '#080C14' }}>
+    <div className="min-h-screen w-full pb-24" style={{ background: '#080C14' }}>
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
@@ -169,7 +225,7 @@ export function AISolutions() {
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
 
-        <div className="mb-10">
+        <div className="mb-8">
           <div className="flex items-center gap-2 mb-2">
             <div
               className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black"
@@ -211,7 +267,7 @@ export function AISolutions() {
           </div>
 
           <div className="flex gap-2 overflow-x-auto pb-0.5" style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}>
-            {['All', 'Easy', 'Medium'].map((d) => (
+            {['All', 'Easy', 'Medium', 'Hard'].map((d) => (
               <FilterChip
                 key={d}
                 label={d === 'All' ? 'Any difficulty' : d}
@@ -262,7 +318,7 @@ export function AISolutions() {
         )}
 
         <div
-          className="mt-14 rounded-2xl p-8 text-center"
+          className="mt-12 rounded-2xl p-8 text-center"
           style={{
             background: 'linear-gradient(135deg, rgba(14,165,233,0.08) 0%, rgba(245,158,11,0.06) 100%)',
             border: '1px solid rgba(255,255,255,0.1)',
@@ -314,22 +370,8 @@ export function AISolutions() {
           </a>
         </div>
       </div>
-    </div>
-  );
-}
 
-function FilterChip({ label, active, onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all whitespace-nowrap flex-shrink-0"
-      style={{
-        background: active ? 'rgba(14,165,233,0.15)' : 'rgba(255,255,255,0.04)',
-        color: active ? '#38BDF8' : '#475569',
-        border: active ? '1px solid rgba(14,165,233,0.3)' : '1px solid rgba(255,255,255,0.07)',
-      }}
-    >
-      {label}
-    </button>
+      <FloatingCTA />
+    </div>
   );
 }
