@@ -1,101 +1,158 @@
 import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Search, X, ChevronDown, ChevronUp, Calendar, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, Search, X, ChevronDown, ChevronUp, Calendar, CheckCircle2, Zap, ArrowRight, Wrench } from 'lucide-react';
 import { LogoHorizontal } from '../components/branding/Logo';
 import { toolkitEntries, departments } from '../data/aitoolkitData';
 
 const DEPT_ALL = 'All';
 const DIFF_ALL = 'All';
 
-const DIFFICULTY_STYLES = {
-  Easy: { bg: 'rgba(34,197,94,0.12)', color: '#4ADE80' },
-  Medium: { bg: 'rgba(251,191,36,0.12)', color: '#FCD34D' },
-  Hard: { bg: 'rgba(248,113,113,0.12)', color: '#F87171' },
+const DIFFICULTY_CONFIG = {
+  Easy: { color: '#4ADE80', bg: 'rgba(74,222,128,0.1)', border: 'rgba(74,222,128,0.2)', dot: '#4ADE80' },
+  Medium: { color: '#FCD34D', bg: 'rgba(252,211,77,0.1)', border: 'rgba(252,211,77,0.2)', dot: '#FCD34D' },
+  Hard: { color: '#F87171', bg: 'rgba(248,113,113,0.1)', border: 'rgba(248,113,113,0.2)', dot: '#F87171' },
 };
 
-function DifficultyPill({ difficulty }) {
-  const style = DIFFICULTY_STYLES[difficulty] || DIFFICULTY_STYLES.Medium;
-  return (
-    <span
-      className="px-2 py-0.5 rounded-full text-xs font-semibold"
-      style={{ background: style.bg, color: style.color }}
-    >
-      {difficulty}
-    </span>
-  );
+const DEPT_COLORS = {
+  'Customer Service': { accent: '#0EA5E9', bg: 'rgba(14,165,233,0.08)' },
+  'Sales': { accent: '#10B981', bg: 'rgba(16,185,129,0.08)' },
+  'Sales / Marketing': { accent: '#10B981', bg: 'rgba(16,185,129,0.08)' },
+  'Sales / Admin': { accent: '#10B981', bg: 'rgba(16,185,129,0.08)' },
+  'Marketing': { accent: '#F59E0B', bg: 'rgba(245,158,11,0.08)' },
+  'Operations': { accent: '#8B5CF6', bg: 'rgba(139,92,246,0.08)' },
+  'Finance': { accent: '#EC4899', bg: 'rgba(236,72,153,0.08)' },
+  'HR': { accent: '#06B6D4', bg: 'rgba(6,182,212,0.08)' },
+  'IT': { accent: '#64748B', bg: 'rgba(100,116,139,0.08)' },
+};
+
+function getDeptConfig(dept) {
+  return DEPT_COLORS[dept] || { accent: '#475569', bg: 'rgba(71,85,105,0.08)' };
 }
 
 function EntryCard({ entry }) {
   const [expanded, setExpanded] = useState(false);
+  const diff = DIFFICULTY_CONFIG[entry.difficulty] || DIFFICULTY_CONFIG.Medium;
+  const dept = getDeptConfig(entry.department);
 
   return (
     <div
-      className="rounded-xl overflow-hidden transition-all duration-200"
+      className="rounded-2xl overflow-hidden transition-all duration-300"
       style={{
-        background: 'rgba(255,255,255,0.03)',
+        background: expanded
+          ? `linear-gradient(145deg, rgba(255,255,255,0.045) 0%, rgba(255,255,255,0.025) 100%)`
+          : 'rgba(255,255,255,0.03)',
         border: `1px solid ${expanded ? 'rgba(255,255,255,0.12)' : 'rgba(255,255,255,0.07)'}`,
+        boxShadow: expanded ? '0 8px 40px rgba(0,0,0,0.3)' : 'none',
       }}
     >
       <button
         onClick={() => setExpanded((v) => !v)}
-        className="w-full text-left px-4 py-3.5 flex items-center gap-3"
+        className="w-full text-left px-5 pt-5 pb-4 group"
       >
-        <div className="flex-1 min-w-0">
-          <p className="text-sm font-semibold text-white leading-snug mb-1.5">{entry.title}</p>
-          <div className="flex flex-wrap items-center gap-2">
-            <DifficultyPill difficulty={entry.difficulty} />
+        <div className="flex items-start justify-between gap-3 mb-3">
+          <div className="flex items-center gap-2 flex-wrap">
             <span
-              className="px-2 py-0.5 rounded-md text-xs font-medium"
-              style={{ background: 'rgba(255,255,255,0.04)', color: '#475569', border: '1px solid rgba(255,255,255,0.06)' }}
+              className="px-2.5 py-1 rounded-lg text-xs font-bold tracking-wide"
+              style={{ background: dept.bg, color: dept.accent, border: `1px solid ${dept.accent}22` }}
             >
               {entry.department}
             </span>
+            <span
+              className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-semibold"
+              style={{ background: diff.bg, color: diff.color, border: `1px solid ${diff.border}` }}
+            >
+              <span
+                className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                style={{ background: diff.dot }}
+              />
+              {entry.difficulty}
+            </span>
+          </div>
+          <div
+            className="flex-shrink-0 mt-0.5 transition-transform duration-200"
+            style={{
+              color: expanded ? '#94A3B8' : '#334155',
+              transform: expanded ? 'rotate(0deg)' : 'rotate(0deg)',
+            }}
+          >
+            {expanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
           </div>
         </div>
-        <div className="flex-shrink-0" style={{ color: '#334155' }}>
-          {expanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+
+        <h3 className="text-base font-bold text-white leading-snug mb-3 pr-2 group-hover:text-slate-200 transition-colors">
+          {entry.title}
+        </h3>
+
+        <div
+          className="flex items-start gap-2 px-3 py-2.5 rounded-xl"
+          style={{ background: 'rgba(248,113,113,0.06)', border: '1px solid rgba(248,113,113,0.12)' }}
+        >
+          <span className="text-xs mt-0.5 flex-shrink-0" style={{ color: '#F87171' }}>Problem:</span>
+          <p className="text-xs leading-relaxed line-clamp-2" style={{ color: '#94A3B8' }}>
+            {entry.problem}
+          </p>
         </div>
       </button>
 
       {expanded && (
-        <div className="px-4 pb-4" style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-          <div className="pt-3.5 space-y-3.5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-              <div className="p-3 rounded-lg" style={{ background: 'rgba(248,113,113,0.07)', border: '1px solid rgba(248,113,113,0.15)' }}>
-                <p className="text-xs font-bold mb-1" style={{ color: '#F87171' }}>The problem</p>
-                <p className="text-sm leading-relaxed" style={{ color: '#94A3B8' }}>{entry.problem}</p>
-              </div>
-              <div className="p-3 rounded-lg" style={{ background: 'rgba(74,222,128,0.07)', border: '1px solid rgba(74,222,128,0.15)' }}>
-                <p className="text-xs font-bold mb-1" style={{ color: '#4ADE80' }}>The fix</p>
-                <p className="text-sm leading-relaxed" style={{ color: '#94A3B8' }}>{entry.solution}</p>
-              </div>
-            </div>
-
+        <div className="px-5 pb-5">
+          <div
+            className="flex items-start gap-2 px-3 py-2.5 rounded-xl mb-4"
+            style={{ background: 'rgba(74,222,128,0.06)', border: '1px solid rgba(74,222,128,0.15)' }}
+          >
+            <Zap size={13} className="flex-shrink-0 mt-0.5" style={{ color: '#4ADE80' }} />
             <div>
-              <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: '#334155' }}>How it works</p>
-              <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>{entry.howItWorks}</p>
-            </div>
-
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wider mb-1" style={{ color: '#334155' }}>What you need first</p>
-              <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>{entry.whatYouNeed}</p>
-            </div>
-
-            <div>
-              <p className="text-xs font-bold uppercase tracking-wider mb-1.5" style={{ color: '#334155' }}>Tools</p>
-              <div className="flex flex-wrap gap-1.5">
-                {entry.tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="px-2.5 py-1 rounded-md text-xs font-medium"
-                    style={{ background: 'rgba(255,255,255,0.05)', color: '#64748B', border: '1px solid rgba(255,255,255,0.08)' }}
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
+              <p className="text-xs font-bold mb-0.5" style={{ color: '#4ADE80' }}>The AI fix</p>
+              <p className="text-sm leading-relaxed" style={{ color: '#CBD5E1' }}>{entry.solution}</p>
             </div>
           </div>
+
+          <div className="space-y-3 mb-4">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest mb-1.5" style={{ color: '#334155' }}>How it works</p>
+              <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>{entry.howItWorks}</p>
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest mb-1.5" style={{ color: '#334155' }}>What you need first</p>
+              <p className="text-sm leading-relaxed" style={{ color: '#64748B' }}>{entry.whatYouNeed}</p>
+            </div>
+          </div>
+
+          <div
+            className="pt-3"
+            style={{ borderTop: '1px solid rgba(255,255,255,0.06)' }}
+          >
+            <div className="flex items-center gap-1.5 mb-2">
+              <Wrench size={11} style={{ color: '#334155' }} />
+              <p className="text-xs font-bold uppercase tracking-widest" style={{ color: '#334155' }}>Tools</p>
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {entry.tools.map((tool) => (
+                <span
+                  key={tool}
+                  className="px-2.5 py-1 rounded-lg text-xs font-medium"
+                  style={{
+                    background: 'rgba(255,255,255,0.05)',
+                    color: '#94A3B8',
+                    border: '1px solid rgba(255,255,255,0.09)',
+                  }}
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <button
+            onClick={() => setExpanded(false)}
+            className="mt-3 text-xs font-semibold transition-colors flex items-center gap-1"
+            style={{ color: '#334155' }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = '#64748B')}
+            onMouseLeave={(e) => (e.currentTarget.style.color = '#334155')}
+          >
+            <ChevronUp size={12} />
+            Collapse
+          </button>
         </div>
       )}
     </div>
@@ -123,8 +180,7 @@ function FloatingCTA() {
     <div
       className="fixed bottom-0 left-0 right-0 z-30 px-4 py-3"
       style={{
-        background: 'linear-gradient(to top, rgba(8,12,20,0.98) 60%, transparent)',
-        backdropFilter: 'blur(12px)',
+        background: 'linear-gradient(to top, rgba(8,12,20,1) 50%, rgba(8,12,20,0))',
       }}
     >
       <div
@@ -194,12 +250,12 @@ export function AISolutions() {
   const hasFilters = activeDept !== DEPT_ALL || activeDiff !== DIFF_ALL || search;
 
   return (
-    <div className="min-h-screen w-full pb-24" style={{ background: '#080C14' }}>
+    <div className="min-h-screen w-full pb-28" style={{ background: '#080C14' }}>
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
           backgroundImage: `
-            radial-gradient(ellipse at 10% 0%, rgba(14,165,233,0.05) 0%, transparent 50%),
+            radial-gradient(ellipse at 10% 0%, rgba(14,165,233,0.06) 0%, transparent 50%),
             radial-gradient(ellipse at 90% 90%, rgba(245,158,11,0.04) 0%, transparent 50%)
           `,
         }}
@@ -225,8 +281,8 @@ export function AISolutions() {
 
       <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 py-10 sm:py-14">
 
-        <div className="mb-8">
-          <div className="flex items-center gap-2 mb-2">
+        <div className="mb-10">
+          <div className="flex items-center gap-2 mb-3">
             <div
               className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-black"
               style={{ background: 'rgba(14,165,233,0.2)', color: '#38BDF8' }}
@@ -237,17 +293,17 @@ export function AISolutions() {
               Step 1
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-black text-white mb-2" style={{ letterSpacing: '-0.02em' }}>
+          <h1 className="text-3xl sm:text-4xl font-black text-white mb-3" style={{ letterSpacing: '-0.02em' }}>
             Find your problem
           </h1>
-          <p className="text-base" style={{ color: '#64748B' }}>
-            Browse 60 common business problems and the AI solution for each. Search, filter by department, or just scroll.
+          <p className="text-base leading-relaxed" style={{ color: '#64748B' }}>
+            60 common business problems — each with a proven AI fix. Find one that sounds like your team, then book a call and we'll set it up for you.
           </p>
         </div>
 
         <div
-          className="sticky top-0 z-10 py-3"
-          style={{ background: '#080C14' }}
+          className="sticky top-0 z-10 pb-3 pt-2"
+          style={{ background: 'linear-gradient(to bottom, #080C14 85%, transparent)' }}
         >
           <div className="relative mb-2.5">
             <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none" style={{ color: '#334155' }} />
@@ -257,7 +313,7 @@ export function AISolutions() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="w-full pl-9 pr-9 py-2.5 rounded-xl text-sm outline-none text-white placeholder-slate-600"
-              style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.09)' }}
+              style={{ background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.09)' }}
             />
             {search && (
               <button onClick={() => setSearch('')} className="absolute right-3 top-1/2 -translate-y-1/2" style={{ color: '#475569' }}>
@@ -275,7 +331,7 @@ export function AISolutions() {
                 onClick={() => setActiveDiff(d)}
               />
             ))}
-            <div className="w-px flex-shrink-0 self-stretch" style={{ background: 'rgba(255,255,255,0.08)' }} />
+            <div className="w-px flex-shrink-0 self-stretch my-1" style={{ background: 'rgba(255,255,255,0.08)' }} />
             {departments.map((dept) => (
               <FilterChip
                 key={dept}
@@ -287,8 +343,8 @@ export function AISolutions() {
           </div>
         </div>
 
-        <div className="flex items-center justify-between mb-3 mt-1">
-          <p className="text-xs" style={{ color: '#334155' }}>
+        <div className="flex items-center justify-between mb-4 mt-1">
+          <p className="text-xs font-medium" style={{ color: '#334155' }}>
             {filtered.length} solution{filtered.length !== 1 ? 's' : ''}
           </p>
           {hasFilters && (
@@ -310,7 +366,7 @@ export function AISolutions() {
             <p className="text-sm" style={{ color: '#475569' }}>Try a different search or clear your filters</p>
           </div>
         ) : (
-          <div className="space-y-2">
+          <div className="space-y-3">
             {filtered.map((entry) => (
               <EntryCard key={entry.id} entry={entry} />
             ))}
@@ -318,7 +374,7 @@ export function AISolutions() {
         )}
 
         <div
-          className="mt-12 rounded-2xl p-8 text-center"
+          className="mt-14 rounded-2xl p-8 text-center"
           style={{
             background: 'linear-gradient(135deg, rgba(14,165,233,0.08) 0%, rgba(245,158,11,0.06) 100%)',
             border: '1px solid rgba(255,255,255,0.1)',
