@@ -24,7 +24,7 @@ export function Login() {
     try {
       await signIn(email, password);
       setSidebarOpen(false);
-      navigate('/progress');
+      navigate('/hub');
     } catch (err) {
       setError(err.message || 'Failed to sign in. Please check your credentials.');
     } finally {

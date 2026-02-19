@@ -8,6 +8,7 @@ import { AIStrategy } from './pages/AIStrategy';
 import { AIImplementation } from './pages/AIImplementation';
 import { Login } from './pages/Login';
 import { ProgressPage } from './pages/ProgressPage';
+import { HubPage } from './pages/HubPage';
 import { LessonPage } from './pages/LessonPage';
 import { ModulePage } from './pages/ModulePage';
 import { RecapPage } from './pages/RecapPage';
@@ -57,11 +58,19 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={user ? <Navigate to="/progress" replace /> : <Landing />} />
+          <Route path="/" element={user ? <Navigate to="/hub" replace /> : <Landing />} />
           <Route path="/ai-education" element={<AIEducation />} />
           <Route path="/ai-strategy" element={<AIStrategy />} />
           <Route path="/ai-implementation" element={<AIImplementation />} />
-          <Route path="/login" element={user ? <Navigate to="/progress" replace /> : <Login />} />
+          <Route path="/login" element={user ? <Navigate to="/hub" replace /> : <Login />} />
+          <Route
+            path="/hub"
+            element={
+              <ProtectedRoute>
+                <HubPage />
+              </ProtectedRoute>
+            }
+          />
 
           <Route
             path="/progress"
