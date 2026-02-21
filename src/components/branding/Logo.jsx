@@ -18,8 +18,8 @@ export function LogoHorizontal({ size = 'md' }) {
       <svg width={svg} height={svg} viewBox="0 0 64 64" className="flex-shrink-0">
         {/* Top arc - teal */}
         <path d="M 16 32 A 16 16 0 0 1 48 32" stroke="#0891b2" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-        {/* Bottom arc - charcoal */}
-        <path d="M 48 32 A 16 16 0 0 1 16 32" stroke="#1e293b" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+        {/* Bottom arc - light for visibility on dark backgrounds */}
+        <path d="M 48 32 A 16 16 0 0 1 16 32" stroke="#e0f2fe" strokeWidth="2.5" fill="none" strokeLinecap="round" />
         {/* Activation dot - floating */}
         <circle cx="48" cy="18" r="2" fill="#0891b2" />
         {/* Radiating lines */}
@@ -27,18 +27,18 @@ export function LogoHorizontal({ size = 'md' }) {
         <line x1="52" y1="18" x2="60" y2="18" stroke="#0891b2" strokeWidth="1.5" strokeLinecap="round" />
         <line x1="51" y1="15" x2="57" y2="9" stroke="#0891b2" strokeWidth="1.5" strokeLinecap="round" />
 
-        {/* E letter inside the loop */}
-        <rect x="24" y="24" width="3.5" height="16" fill="#1e293b" rx="0.5" />
-        <rect x="24" y="24" width="13" height="3" fill="#1e293b" rx="0.5" />
-        <rect x="24" y="30.5" width="11" height="2.5" fill="#1e293b" rx="0.5" />
-        <rect x="24" y="37" width="13" height="3" fill="#1e293b" rx="0.5" />
+        {/* E letter inside the loop - white for visibility */}
+        <rect x="24" y="24" width="3.5" height="16" fill="#f8fafc" rx="0.5" />
+        <rect x="24" y="24" width="13" height="3" fill="#f8fafc" rx="0.5" />
+        <rect x="24" y="30.5" width="11" height="2.5" fill="#f8fafc" rx="0.5" />
+        <rect x="24" y="37" width="13" height="3" fill="#f8fafc" rx="0.5" />
       </svg>
 
       <div>
-        <p className={`${text} font-black text-slate-900`} style={{fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', letterSpacing: '-0.02em'}}>
+        <p className={`${text} font-black text-white`} style={{fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', letterSpacing: '-0.02em'}}>
           Energise
         </p>
-        <p className="text-xs font-semibold text-slate-600" style={{fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', letterSpacing: '0.05em'}}>
+        <p className="text-xs font-semibold text-slate-300" style={{fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', letterSpacing: '0.05em'}}>
           AI EDUCATION
         </p>
       </div>
@@ -61,8 +61,8 @@ export function LogoCircular({ size = 'md' }) {
     <svg width={svgSize} height={svgSize} viewBox="0 0 140 140" className="flex-shrink-0">
       {/* Top arc - teal */}
       <path d="M 25 70 A 45 45 0 0 1 115 70" stroke="#0891b2" strokeWidth="5" fill="none" strokeLinecap="round" />
-      {/* Bottom arc - charcoal */}
-      <path d="M 115 70 A 45 45 0 0 1 25 70" stroke="#1e293b" strokeWidth="5" fill="none" strokeLinecap="round" />
+      {/* Bottom arc - light for visibility on dark backgrounds */}
+      <path d="M 115 70 A 45 45 0 0 1 25 70" stroke="#e0f2fe" strokeWidth="5" fill="none" strokeLinecap="round" />
       {/* Activation dot */}
       <circle cx="110" cy="38" r="2.5" fill="#0891b2" />
       {/* Radiating lines */}
@@ -70,11 +70,11 @@ export function LogoCircular({ size = 'md' }) {
       <line x1="116" y1="38" x2="128" y2="38" stroke="#0891b2" strokeWidth="1.5" strokeLinecap="round" />
       <line x1="114" y1="34" x2="122" y2="26" stroke="#0891b2" strokeWidth="1.5" strokeLinecap="round" />
 
-      {/* Solid geometric E inside loop */}
-      <rect x="52" y="52" width="8" height="36" fill="#1e293b" rx="1" />
-      <rect x="52" y="52" width="30" height="7" fill="#1e293b" rx="1" />
-      <rect x="52" y="67" width="26" height="6" fill="#1e293b" rx="1" />
-      <rect x="52" y="81" width="30" height="7" fill="#1e293b" rx="1" />
+      {/* Solid geometric E inside loop - white for visibility */}
+      <rect x="52" y="52" width="8" height="36" fill="#f8fafc" rx="1" />
+      <rect x="52" y="52" width="30" height="7" fill="#f8fafc" rx="1" />
+      <rect x="52" y="67" width="26" height="6" fill="#f8fafc" rx="1" />
+      <rect x="52" y="81" width="30" height="7" fill="#f8fafc" rx="1" />
     </svg>
   );
 }
