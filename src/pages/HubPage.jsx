@@ -322,7 +322,7 @@ export function HubPage() {
       />
 
       <nav className="relative z-20 flex items-center justify-between px-6 sm:px-10 h-16 border-b" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
-        <LogoHorizontal size="sm" />
+        <LogoHorizontal size="sm" whiteMode={true} />
         <div className="flex items-center gap-4">
           {user?.email && (
             <span className="hidden sm:block text-xs text-slate-500 font-medium">{user.email}</span>

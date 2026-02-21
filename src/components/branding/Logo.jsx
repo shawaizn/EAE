@@ -4,7 +4,7 @@
 import React from 'react';
 
 // HORIZONTAL LOGO - Use in headers, marketing, full branding
-export function LogoHorizontal({ size = 'md' }) {
+export function LogoHorizontal({ size = 'md', whiteMode = false }) {
   const sizeMap = {
     sm: { svg: 48, text: 'text-lg' },
     md: { svg: 64, text: 'text-xl' },
@@ -13,19 +13,23 @@ export function LogoHorizontal({ size = 'md' }) {
 
   const { svg, text } = sizeMap[size];
 
+  const topArcColor = whiteMode ? '#ffffff' : '#0891b2';
+  const dotsColor = whiteMode ? '#ffffff' : '#0891b2';
+  const linesColor = whiteMode ? '#ffffff' : '#0891b2';
+
   return (
     <div className="flex items-center gap-4">
       <svg width={svg} height={svg} viewBox="0 0 64 64" className="flex-shrink-0">
-        {/* Top arc - teal */}
-        <path d="M 16 32 A 16 16 0 0 1 48 32" stroke="#0891b2" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+        {/* Top arc - teal or white */}
+        <path d="M 16 32 A 16 16 0 0 1 48 32" stroke={topArcColor} strokeWidth="2.5" fill="none" strokeLinecap="round" />
         {/* Bottom arc - light for visibility on dark backgrounds */}
         <path d="M 48 32 A 16 16 0 0 1 16 32" stroke="#e0f2fe" strokeWidth="2.5" fill="none" strokeLinecap="round" />
         {/* Activation dot - floating */}
-        <circle cx="48" cy="18" r="2" fill="#0891b2" />
+        <circle cx="48" cy="18" r="2" fill={dotsColor} />
         {/* Radiating lines */}
-        <line x1="48" y1="14" x2="48" y2="6" stroke="#0891b2" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="52" y1="18" x2="60" y2="18" stroke="#0891b2" strokeWidth="1.5" strokeLinecap="round" />
-        <line x1="51" y1="15" x2="57" y2="9" stroke="#0891b2" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="48" y1="14" x2="48" y2="6" stroke={linesColor} strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="52" y1="18" x2="60" y2="18" stroke={linesColor} strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="51" y1="15" x2="57" y2="9" stroke={linesColor} strokeWidth="1.5" strokeLinecap="round" />
 
         {/* E letter inside the loop - white for visibility */}
         <rect x="24" y="24" width="3.5" height="16" fill="#f8fafc" rx="0.5" />
@@ -47,7 +51,7 @@ export function LogoHorizontal({ size = 'md' }) {
 }
 
 // CIRCULAR LOGO - Use in app icons, favicons, badges, profile pictures
-export function LogoCircular({ size = 'md' }) {
+export function LogoCircular({ size = 'md', whiteMode = false }) {
   const sizeMap = {
     sm: 48,
     md: 80,
@@ -57,18 +61,22 @@ export function LogoCircular({ size = 'md' }) {
 
   const svgSize = sizeMap[size];
 
+  const topArcColor = whiteMode ? '#ffffff' : '#0891b2';
+  const dotsColor = whiteMode ? '#ffffff' : '#0891b2';
+  const linesColor = whiteMode ? '#ffffff' : '#0891b2';
+
   return (
     <svg width={svgSize} height={svgSize} viewBox="0 0 140 140" className="flex-shrink-0">
-      {/* Top arc - teal */}
-      <path d="M 25 70 A 45 45 0 0 1 115 70" stroke="#0891b2" strokeWidth="5" fill="none" strokeLinecap="round" />
+      {/* Top arc - teal or white */}
+      <path d="M 25 70 A 45 45 0 0 1 115 70" stroke={topArcColor} strokeWidth="5" fill="none" strokeLinecap="round" />
       {/* Bottom arc - light for visibility on dark backgrounds */}
       <path d="M 115 70 A 45 45 0 0 1 25 70" stroke="#e0f2fe" strokeWidth="5" fill="none" strokeLinecap="round" />
       {/* Activation dot */}
-      <circle cx="110" cy="38" r="2.5" fill="#0891b2" />
+      <circle cx="110" cy="38" r="2.5" fill={dotsColor} />
       {/* Radiating lines */}
-      <line x1="110" y1="32" x2="110" y2="20" stroke="#0891b2" strokeWidth="1.5" strokeLinecap="round" />
-      <line x1="116" y1="38" x2="128" y2="38" stroke="#0891b2" strokeWidth="1.5" strokeLinecap="round" />
-      <line x1="114" y1="34" x2="122" y2="26" stroke="#0891b2" strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="110" y1="32" x2="110" y2="20" stroke={linesColor} strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="116" y1="38" x2="128" y2="38" stroke={linesColor} strokeWidth="1.5" strokeLinecap="round" />
+      <line x1="114" y1="34" x2="122" y2="26" stroke={linesColor} strokeWidth="1.5" strokeLinecap="round" />
 
       {/* Solid geometric E inside loop - white for visibility */}
       <rect x="52" y="52" width="8" height="36" fill="#f8fafc" rx="1" />

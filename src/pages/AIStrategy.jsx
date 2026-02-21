@@ -58,7 +58,7 @@ export function AIStrategy() {
           <ArrowLeft size={16} />
           Back
         </button>
-        <LogoHorizontal size="sm" />
+        <LogoHorizontal size="sm" whiteMode={true} />
         <div style={{ width: 60 }} />
       </nav>
 
