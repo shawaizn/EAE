@@ -49,7 +49,7 @@ export function AIStrategy() {
         style={{ borderColor: 'rgba(255,255,255,0.06)' }}
       >
         <button
-          onClick={() => navigate('/hub')}
+          onClick={() => navigate(-1)}
           className="flex items-center gap-2 text-sm font-medium transition-colors"
           style={{ color: '#64748B' }}
           onMouseEnter={(e) => (e.currentTarget.style.color = '#CBD5E1')}
