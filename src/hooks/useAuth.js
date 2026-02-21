@@ -21,8 +21,11 @@ export function useAuth() {
   }, []);
 
   const signIn = async (username, password) => {
+    const trimmedUsername = username.trim();
+    const trimmedPassword = password.trim();
+
     // Check for hardcoded test credentials
-    if (username === 'shawaiz' && password === 'naeem') {
+    if (trimmedUsername === 'shawaiz' && trimmedPassword === 'naeem') {
       const testUser = {
         id: 'test-user-001',
         email: 'shawaiz@test.local',
@@ -35,10 +38,10 @@ export function useAuth() {
     }
 
     // Otherwise, try Supabase authentication (if email format is provided)
-    if (username.includes('@')) {
+    if (trimmedUsername.includes('@')) {
       const { data, error } = await supabase.auth.signInWithPassword({
-        email: username,
-        password
+        email: trimmedUsername,
+        password: trimmedPassword
       });
 
       if (error) throw error;
