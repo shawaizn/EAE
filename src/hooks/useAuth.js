@@ -20,14 +20,32 @@ export function useAuth() {
     return () => subscription.unsubscribe();
   }, []);
 
-  const signIn = async (email, password) => {
-    const { data, error } = await supabase.auth.signInWithPassword({
-      email,
-      password
-    });
+  const signIn = async (username, password) => {
+    // Check for hardcoded test credentials
+    if (username === 'shawaiz' && password === 'naeem') {
+      const testUser = {
+        id: 'test-user-001',
+        email: 'shawaiz@test.local',
+        user_metadata: {
+          username: 'shawaiz'
+        }
+      };
+      setUser(testUser);
+      return { user: testUser };
+    }
 
-    if (error) throw error;
-    return data;
+    // Otherwise, try Supabase authentication (if email format is provided)
+    if (username.includes('@')) {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: username,
+        password
+      });
+
+      if (error) throw error;
+      return data;
+    }
+
+    throw new Error('Invalid credentials. Please check your username and password.');
   };
 
   const signOut = async () => {
