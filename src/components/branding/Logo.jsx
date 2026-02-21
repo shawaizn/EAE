@@ -32,18 +32,18 @@ export function LogoHorizontal({ size = 'md', whiteMode = false }) {
         <line x1="52" y1="18" x2="60" y2="18" stroke={linesColor} strokeWidth="1.5" strokeLinecap="round" />
         <line x1="51" y1="15" x2="57" y2="9" stroke={linesColor} strokeWidth="1.5" strokeLinecap="round" />
 
-        {/* E letter inside the loop - white for visibility */}
-        <rect x="24" y="24" width="3.5" height="16" fill="#f8fafc" rx="0.5" />
-        <rect x="24" y="24" width="13" height="3" fill="#f8fafc" rx="0.5" />
-        <rect x="24" y="30.5" width="11" height="2.5" fill="#f8fafc" rx="0.5" />
-        <rect x="24" y="37" width="13" height="3" fill="#f8fafc" rx="0.5" />
+        {/* E letter inside the loop - dark navy */}
+        <rect x="24" y="24" width="3.5" height="16" fill="#1a2332" rx="0.5" />
+        <rect x="24" y="24" width="13" height="3" fill="#1a2332" rx="0.5" />
+        <rect x="24" y="30.5" width="11" height="2.5" fill="#1a2332" rx="0.5" />
+        <rect x="24" y="37" width="13" height="3" fill="#1a2332" rx="0.5" />
       </svg>
 
       <div>
-        <p className={`${text} font-black text-white`} style={{fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', letterSpacing: '-0.02em'}}>
+        <p className={`${text} font-black`} style={{color: '#1a2332', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', letterSpacing: '-0.02em'}}>
           Energise
         </p>
-        <p className="text-xs font-semibold text-slate-300" style={{fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', letterSpacing: '0.05em'}}>
+        <p className="text-xs font-semibold" style={{color: '#0891b2', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', letterSpacing: '0.05em'}}>
           AI EDUCATION
         </p>
       </div>
@@ -80,11 +80,11 @@ export function LogoCircular({ size = 'md', whiteMode = false }) {
       <line x1="116" y1="38" x2="128" y2="38" stroke={linesColor} strokeWidth="1.5" strokeLinecap="round" />
       <line x1="114" y1="34" x2="122" y2="26" stroke={linesColor} strokeWidth="1.5" strokeLinecap="round" />
 
-      {/* Solid geometric E inside loop - white for visibility */}
-      <rect x="52" y="52" width="8" height="36" fill="#f8fafc" rx="1" />
-      <rect x="52" y="52" width="30" height="7" fill="#f8fafc" rx="1" />
-      <rect x="52" y="67" width="26" height="6" fill="#f8fafc" rx="1" />
-      <rect x="52" y="81" width="30" height="7" fill="#f8fafc" rx="1" />
+      {/* Solid geometric E inside loop - dark navy */}
+      <rect x="52" y="52" width="8" height="36" fill="#1a2332" rx="1" />
+      <rect x="52" y="52" width="30" height="7" fill="#1a2332" rx="1" />
+      <rect x="52" y="67" width="26" height="6" fill="#1a2332" rx="1" />
+      <rect x="52" y="81" width="30" height="7" fill="#1a2332" rx="1" />
     </svg>
   );
 }
