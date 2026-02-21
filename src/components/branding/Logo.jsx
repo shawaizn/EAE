@@ -22,8 +22,8 @@ export function LogoHorizontal({ size = 'md', whiteMode = false }) {
       <svg width={svg} height={svg} viewBox="0 0 64 64" className="flex-shrink-0">
         {/* Top arc - teal or white */}
         <path d="M 16 32 A 16 16 0 0 1 48 32" stroke={topArcColor} strokeWidth="2.5" fill="none" strokeLinecap="round" />
-        {/* Bottom arc - light for visibility on dark backgrounds */}
-        <path d="M 48 32 A 16 16 0 0 1 16 32" stroke="#e0f2fe" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+        {/* Bottom arc - cyan always */}
+        <path d="M 48 32 A 16 16 0 0 1 16 32" stroke="#06B6D4" strokeWidth="2.5" fill="none" strokeLinecap="round" />
         {/* Activation dot - floating */}
         <circle cx="48" cy="18" r="2" fill={dotsColor} />
         {/* Radiating lines */}
@@ -69,8 +69,8 @@ export function LogoCircular({ size = 'md', whiteMode = false }) {
     <svg width={svgSize} height={svgSize} viewBox="0 0 140 140" className="flex-shrink-0">
       {/* Top arc - teal or white */}
       <path d="M 25 70 A 45 45 0 0 1 115 70" stroke={topArcColor} strokeWidth="5" fill="none" strokeLinecap="round" />
-      {/* Bottom arc - light for visibility on dark backgrounds */}
-      <path d="M 115 70 A 45 45 0 0 1 25 70" stroke="#e0f2fe" strokeWidth="5" fill="none" strokeLinecap="round" />
+      {/* Bottom arc - cyan always */}
+      <path d="M 115 70 A 45 45 0 0 1 25 70" stroke="#06B6D4" strokeWidth="5" fill="none" strokeLinecap="round" />
       {/* Activation dot */}
       <circle cx="110" cy="38" r="2.5" fill={dotsColor} />
       {/* Radiating lines */}
