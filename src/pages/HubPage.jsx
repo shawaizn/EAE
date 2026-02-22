@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { LogoHorizontal } from '../components/branding/Logo';
-import { BookOpen, Target, Cpu, Zap, LogOut, ArrowRight, Lock, X } from 'lucide-react';
+import { BookOpen, Target, Cpu, Zap, LogOut, ArrowRight, Lock, X, Shield } from 'lucide-react';
 
 function ComingSoonModal({ title, onClose }) {
   return (
@@ -240,6 +240,73 @@ function SolutionsTile({ onClick }) {
   );
 }
 
+function SecurityTile({ onClick }) {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="group relative overflow-hidden w-full h-full rounded-2xl transition-all duration-300"
+      style={{
+        background: 'linear-gradient(135deg, #0c1428 0%, #0d1a28 50%, #0a1a28 100%)',
+        boxShadow: hovered
+          ? '0 24px 48px -8px rgba(59,130,246,0.2), 0 0 0 1px rgba(59,130,246,0.15)'
+          : '0 4px 16px -2px rgba(0,0,0,0.2)',
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+      }}
+    >
+      <div className="absolute inset-0 overflow-hidden">
+        <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="securityGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#3B82F6" stopOpacity="0" />
+              <stop offset="50%" stopColor="#3B82F6" stopOpacity="1" />
+              <stop offset="100%" stopColor="#3B82F6" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          {[0, 1, 2, 3, 4].map((i) => (
+            <line
+              key={i}
+              x1={i * 90}
+              y1="0"
+              x2={i * 90 + 200}
+              y2="300"
+              stroke="url(#securityGrad)"
+              strokeWidth="1"
+              opacity={hovered ? 0.8 : 0.4}
+              style={{ transition: 'opacity 0.4s ease' }}
+            />
+          ))}
+        </svg>
+      </div>
+
+      <div className="relative z-10 p-10 h-full flex flex-col items-center justify-center min-h-[260px] gap-5">
+        <div
+          className="w-16 h-16 rounded-2xl flex items-center justify-center"
+          style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)' }}
+        >
+          <Shield size={28} style={{ color: '#60A5FA' }} />
+        </div>
+
+        <div className="text-center">
+          <h2 className="text-2xl font-black text-white mb-3" style={{ letterSpacing: '-0.02em' }}>
+            AI Security
+          </h2>
+          <div
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
+            style={{ background: 'rgba(59,130,246,0.1)', color: '#60A5FA', border: '1px solid rgba(59,130,246,0.2)' }}
+          >
+            <Lock size={10} />
+            Coming Soon
+          </div>
+        </div>
+      </div>
+    </button>
+  );
+}
+
 function IrreplacibleTile({ onClick }) {
   const [hovered, setHovered] = useState(false);
 
@@ -342,6 +409,7 @@ export function HubPage() {
           <EducationTile onClick={() => navigate('/progress')} />
           <StrategyTile onClick={() => navigate('/ai-strategy')} />
           <SolutionsTile onClick={() => navigate('/ai-solutions')} />
+          <SecurityTile onClick={() => navigate('/ai-security')} />
           <IrreplacibleTile onClick={() => setComingSoonTitle('Irreplaceable Skills')} />
         </div>
       </main>

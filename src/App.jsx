@@ -7,6 +7,7 @@ import { AIEducation } from './pages/AIEducation';
 import { AIStrategy } from './pages/AIStrategy';
 import { AIImplementation } from './pages/AIImplementation';
 import { AISolutions } from './pages/AISolutions';
+import { AISecurity } from './pages/AISecurity';
 import { Login } from './pages/Login';
 import { ProgressPage } from './pages/ProgressPage';
 import { HubPage } from './pages/HubPage';
@@ -64,6 +65,7 @@ function App() {
           <Route path="/ai-strategy" element={<AIStrategy />} />
           <Route path="/ai-implementation" element={<AIImplementation />} />
           <Route path="/ai-solutions" element={<AISolutions />} />
+          <Route path="/ai-security" element={<AISecurity />} />
           <Route path="/login" element={user ? <Navigate to="/hub" replace /> : <Login />} />
           <Route
             path="/hub"
