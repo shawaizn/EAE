@@ -404,30 +404,30 @@ export function HubPage() {
         </div>
       </nav>
 
-      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-        <div className="relative h-96 sm:h-[500px] lg:h-[600px]">
+      <main className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="relative h-72 sm:h-80 lg:h-96">
           {/* Center: AI Education */}
-          <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 z-20">
+          <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 z-20">
             <EducationTile onClick={() => navigate('/progress')} />
           </div>
 
           {/* Top Left: AI Strategy */}
-          <div className="absolute top-0 left-0 w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 z-10">
+          <div className="absolute top-0 left-0 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 z-10">
             <StrategyTile onClick={() => navigate('/ai-strategy')} />
           </div>
 
           {/* Top Right: AI Solutions */}
-          <div className="absolute top-0 right-0 w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 z-10">
+          <div className="absolute top-0 right-0 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 z-10">
             <SolutionsTile onClick={() => navigate('/ai-solutions')} />
           </div>
 
           {/* Bottom Left: AI Security */}
-          <div className="absolute bottom-0 left-0 w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 z-10">
+          <div className="absolute bottom-0 left-0 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 z-10">
             <SecurityTile onClick={() => navigate('/ai-security')} />
           </div>
 
           {/* Bottom Right: Irreplaceable Skills */}
-          <div className="absolute bottom-0 right-0 w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 z-10">
+          <div className="absolute bottom-0 right-0 w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 z-10">
             <IrreplacibleTile onClick={() => setComingSoonTitle('Irreplaceable Skills')} />
           </div>
         </div>
