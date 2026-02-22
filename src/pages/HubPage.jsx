@@ -404,27 +404,27 @@ export function HubPage() {
         </div>
       </nav>
 
-      <main className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
-        <div className="flex flex-col gap-8">
-          {/* Top Row: 3 tiles */}
-          <div className="flex justify-center items-center gap-6 sm:gap-8">
-            <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56">
+      <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="flex flex-col gap-12">
+          {/* Top Row: 3 equal tiles */}
+          <div className="flex justify-center items-center gap-8 sm:gap-10 lg:gap-12">
+            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72">
               <StrategyTile onClick={() => navigate('/ai-strategy')} />
             </div>
-            <div className="w-44 h-44 sm:w-56 sm:h-56 lg:w-64 lg:h-64">
+            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72">
               <EducationTile onClick={() => navigate('/progress')} />
             </div>
-            <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56">
+            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72">
               <SolutionsTile onClick={() => navigate('/ai-solutions')} />
             </div>
           </div>
 
           {/* Bottom Row: 2 tiles */}
-          <div className="flex justify-center items-center gap-6 sm:gap-8">
-            <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56">
+          <div className="flex justify-center items-center gap-8 sm:gap-10 lg:gap-12">
+            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72">
               <SecurityTile onClick={() => navigate('/ai-security')} />
             </div>
-            <div className="w-40 h-40 sm:w-48 sm:h-48 lg:w-56 lg:h-56">
+            <div className="w-56 h-56 sm:w-64 sm:h-64 lg:w-72 lg:h-72">
               <IrreplacibleTile onClick={() => setComingSoonTitle('Irreplaceable Skills')} />
             </div>
           </div>
