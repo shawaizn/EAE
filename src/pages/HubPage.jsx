@@ -164,8 +164,8 @@ function StrategyTile({ onClick }) {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
             style={{ background: 'rgba(217,119,6,0.12)', color: '#F59E0B', border: '1px solid rgba(217,119,6,0.25)' }}
           >
-            <Lock size={10} />
-            Coming Soon
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+            Available Now
           </div>
         </div>
       </div>
@@ -231,8 +231,8 @@ function SolutionsTile({ onClick }) {
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase"
             style={{ background: 'rgba(16,185,129,0.1)', color: '#34D399', border: '1px solid rgba(16,185,129,0.2)' }}
           >
-            <Lock size={10} />
-            Coming Soon
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            Available Now
           </div>
         </div>
       </div>
