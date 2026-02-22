@@ -168,6 +168,13 @@ function StrategyTile({ onClick }) {
             Available Now
           </div>
         </div>
+
+        <div
+          className="flex items-center gap-1.5 text-amber-400 text-sm font-semibold transition-transform duration-200"
+          style={{ transform: hovered ? 'translateX(4px)' : 'translateX(0)' }}
+        >
+          Enter <ArrowRight size={16} />
+        </div>
       </div>
     </button>
   );
@@ -234,6 +241,13 @@ function SolutionsTile({ onClick }) {
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             Available Now
           </div>
+        </div>
+
+        <div
+          className="flex items-center gap-1.5 text-emerald-400 text-sm font-semibold transition-transform duration-200"
+          style={{ transform: hovered ? 'translateX(4px)' : 'translateX(0)' }}
+        >
+          Enter <ArrowRight size={16} />
         </div>
       </div>
     </button>
