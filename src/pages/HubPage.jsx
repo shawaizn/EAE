@@ -404,13 +404,32 @@ export function HubPage() {
         </div>
       </nav>
 
-      <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
-          <EducationTile onClick={() => navigate('/progress')} />
-          <StrategyTile onClick={() => navigate('/ai-strategy')} />
-          <SolutionsTile onClick={() => navigate('/ai-solutions')} />
-          <SecurityTile onClick={() => navigate('/ai-security')} />
-          <IrreplacibleTile onClick={() => setComingSoonTitle('Irreplaceable Skills')} />
+      <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
+        <div className="relative h-96 sm:h-[500px] lg:h-[600px]">
+          {/* Center: AI Education */}
+          <div className="absolute inset-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 sm:w-64 sm:h-64 lg:w-72 lg:h-72 z-20">
+            <EducationTile onClick={() => navigate('/progress')} />
+          </div>
+
+          {/* Top Left: AI Strategy */}
+          <div className="absolute top-0 left-0 w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 z-10">
+            <StrategyTile onClick={() => navigate('/ai-strategy')} />
+          </div>
+
+          {/* Top Right: AI Solutions */}
+          <div className="absolute top-0 right-0 w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 z-10">
+            <SolutionsTile onClick={() => navigate('/ai-solutions')} />
+          </div>
+
+          {/* Bottom Left: AI Security */}
+          <div className="absolute bottom-0 left-0 w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 z-10">
+            <SecurityTile onClick={() => navigate('/ai-security')} />
+          </div>
+
+          {/* Bottom Right: Irreplaceable Skills */}
+          <div className="absolute bottom-0 right-0 w-40 h-40 sm:w-52 sm:h-52 lg:w-60 lg:h-60 z-10">
+            <IrreplacibleTile onClick={() => setComingSoonTitle('Irreplaceable Skills')} />
+          </div>
         </div>
       </main>
 
