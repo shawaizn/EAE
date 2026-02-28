@@ -25,6 +25,13 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Validate deployment secrets
+        run: |
+          if [ -z "${{ secrets.HOSTINGER_PATH }}" ]; then
+            echo "ERROR: HOSTINGER_PATH secret is not set. Aborting to prevent rsync targeting root /."
+            exit 1
+          fi
+
       - name: Deploy to Hostinger via SSH
         uses: burnett01/rsync-deployments@7.0.1
         with:
