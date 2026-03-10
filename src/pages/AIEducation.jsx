@@ -4,6 +4,7 @@ import { Zap, Target, ArrowRight, BookOpen, Users, TrendingUp, ChevronDown, Arro
 import { EnergeticBackground } from '../components/branding/EnergeticBackground';
 import { LogoHorizontal } from '../components/branding/Logo';
 import { FeaturesTable } from '../components/features/FeaturesTable';
+import { PricingTiers } from '../components/pricing/PricingTiers';
 import { modulesData } from '../data/modulesData';
 import { activityData } from '../data/activityData';
 import { theme, behavior } from '../styles/theme';
@@ -407,8 +408,10 @@ export function AIEducation() {
           </div>
         </section>
 
+        <PricingTiers />
+
         <section className="mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl mb-20 sm:mb-32 animate-fade-in-up" style={{
-          animationDelay: '0.6s',
+          animationDelay: '0.7s',
         }}>
           <div className="p-8 sm:p-12 lg:p-16 rounded-2xl border-2 text-center" style={{
             borderColor: theme.colors.accent.coral,
