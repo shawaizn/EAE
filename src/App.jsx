@@ -4,6 +4,7 @@ import { useAuth } from './hooks/useAuth';
 import { Layout } from './components/layout/Layout';
 import { Landing } from './pages/Landing';
 import { AIEducationLanding } from './pages/AIEducationLanding';
+import { ProgramCurriculum } from './pages/ProgramCurriculum';
 import { AIEducation } from './pages/AIEducation';
 import { AIStrategy } from './pages/AIStrategy';
 import { AIImplementation } from './pages/AIImplementation';
@@ -68,6 +69,7 @@ function App() {
           {/* <Route path="/" element={user ? <Navigate to="/hub" replace /> : <Landing />} /> */}
           
           <Route path="/ai-education-landing" element={<AIEducationLanding />} />
+          <Route path="/program-curriculum" element={<ProgramCurriculum />} />
           <Route path="/consulting" element={user ? <Navigate to="/hub" replace /> : <Landing />} />
           <Route path="/ai-education" element={<AIEducation />} />
           <Route path="/ai-strategy" element={<AIStrategy />} />
