@@ -61,8 +61,14 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={user ? <Navigate to="/hub" replace /> : <Landing />} />
+          {/* NEW AI EDUCATION LANDING PAGE - Default home page */}
+          <Route path="/" element={<AIEducationLanding />} />
+          
+          {/* OLD CONSULTING LANDING PAGE - COMMENTED OUT FOR NOW */}
+          {/* <Route path="/" element={user ? <Navigate to="/hub" replace /> : <Landing />} /> */}
+          
           <Route path="/ai-education-landing" element={<AIEducationLanding />} />
+          <Route path="/consulting" element={user ? <Navigate to="/hub" replace /> : <Landing />} />
           <Route path="/ai-education" element={<AIEducation />} />
           <Route path="/ai-strategy" element={<AIStrategy />} />
           <Route path="/ai-implementation" element={<AIImplementation />} />
