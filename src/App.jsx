@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useAuth } from './hooks/useAuth';
 import { Layout } from './components/layout/Layout';
 import { Landing } from './pages/Landing';
+import { AIEducationLanding } from './pages/AIEducationLanding';
 import { AIEducation } from './pages/AIEducation';
 import { AIStrategy } from './pages/AIStrategy';
 import { AIImplementation } from './pages/AIImplementation';
@@ -61,6 +62,7 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={user ? <Navigate to="/hub" replace /> : <Landing />} />
+          <Route path="/ai-education-landing" element={<AIEducationLanding />} />
           <Route path="/ai-education" element={<AIEducation />} />
           <Route path="/ai-strategy" element={<AIStrategy />} />
           <Route path="/ai-implementation" element={<AIImplementation />} />
