@@ -162,10 +162,8 @@ export function AIEducationLanding() {
 
           {/* Learn More Button */}
           <div className="text-center mb-12">
-            <a
-              href="https://energiseai.co.uk/ai-education"
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              to="/program-curriculum"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105"
               style={{
                 background: `linear-gradient(135deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
@@ -173,7 +171,7 @@ export function AIEducationLanding() {
               }}
             >
               Learn More About Our Program <ArrowRight size={20} />
-            </a>
+            </Link>
           </div>
 
           {/* Program Details */}
