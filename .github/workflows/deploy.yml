@@ -25,30 +25,41 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # Cache key covers all React source files — cache hits skip the build entirely
+      - name: Restore React build cache
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: dist/app
+          key: react-${{ hashFiles('src/**', 'public/**', 'index.html', 'package-lock.json', 'vite.config.ts') }}
+
       - name: Setup Node.js
+        if: steps.cache.outputs.cache-hit != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
       - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
       - name: Build React app
+        if: steps.cache.outputs.cache-hit != 'true'
         run: npm run build
 
-      - name: Restructure dist for combined site
+      - name: Move build to dist/app
+        if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          # Move React app files into dist/app/
           mkdir -p dist/app
           mv dist/index.html dist/app/index.html
           [ -d dist/assets ] && mv dist/assets dist/app/assets
 
-          # Copy energiseai landing page to dist root
+      - name: Assemble final site
+        run: |
+          mkdir -p dist
           cp landing/index.html dist/index.html
           cp landing/shawaiz.jpg dist/shawaiz.jpg
-
-          # 404.html = React app so direct navigation to /EAE/app/* works
           cp dist/app/index.html dist/404.html
 
       - name: Setup Pages
