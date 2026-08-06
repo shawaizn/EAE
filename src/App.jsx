@@ -62,10 +62,9 @@ function App() {
       <BrowserRouter basename="/EAE">
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={<AIEducationLanding />} />
+          <Route path="/" element={user ? <Navigate to="/hub" replace /> : <Landing />} />
           <Route path="/ai-education-landing" element={<AIEducationLanding />} />
           <Route path="/program-curriculum" element={<ProgramCurriculum />} />
-          <Route path="/consulting" element={user ? <Navigate to="/hub" replace /> : <Landing />} />
           <Route path="/ai-education" element={<AIEducation />} />
           <Route path="/ai-strategy" element={<AIStrategy />} />
           <Route path="/ai-implementation" element={<AIImplementation />} />
