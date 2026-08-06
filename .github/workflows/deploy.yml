@@ -34,11 +34,22 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: Build React app
         run: npm run build
 
-      - name: Copy index.html to 404.html for SPA routing
-        run: cp dist/index.html dist/404.html
+      - name: Restructure dist for combined site
+        run: |
+          # Move React app files into dist/app/
+          mkdir -p dist/app
+          mv dist/index.html dist/app/index.html
+          [ -d dist/assets ] && mv dist/assets dist/app/assets
+
+          # Copy energiseai landing page to dist root
+          cp landing/index.html dist/index.html
+          cp landing/shawaiz.jpg dist/shawaiz.jpg
+
+          # 404.html = React app so direct navigation to /EAE/app/* works
+          cp dist/app/index.html dist/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

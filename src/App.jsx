@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-route
 import { useEffect } from 'react';
 import { useAuth } from './hooks/useAuth';
 import { Layout } from './components/layout/Layout';
-import { Landing } from './pages/Landing';
 import { AIEducationLanding } from './pages/AIEducationLanding';
 import { ProgramCurriculum } from './pages/ProgramCurriculum';
 import { AIEducation } from './pages/AIEducation';
@@ -59,10 +58,10 @@ function App() {
   }
   return (
     <SidebarProvider>
-      <BrowserRouter basename="/EAE">
+      <BrowserRouter basename="/EAE/app">
         <ScrollToTop />
         <Routes>
-          <Route path="/" element={user ? <Navigate to="/hub" replace /> : <Landing />} />
+          <Route path="/" element={user ? <Navigate to="/hub" replace /> : <Navigate to="/login" replace />} />
           <Route path="/ai-education-landing" element={<AIEducationLanding />} />
           <Route path="/program-curriculum" element={<ProgramCurriculum />} />
           <Route path="/ai-education" element={<AIEducation />} />
