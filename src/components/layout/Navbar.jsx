@@ -1,99 +1,108 @@
 import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useSidebar } from '../../context/SidebarContext';
-import { LogoHorizontal } from '../branding/Logo';
-import { theme, behavior } from '../../styles/theme';
 
 export function Navbar({ user }) {
   const { sidebarOpen, setSidebarOpen } = useSidebar();
 
   return (
-    <nav className="bg-white/98 backdrop-blur-md shadow-lg border-b border-slate-100 sticky top-0 z-20 relative" style={{
-      boxShadow: theme.shadows.medium,
+    <nav style={{
+      background: 'rgba(250,248,245,0.92)',
+      backdropFilter: 'blur(12px)',
+      WebkitBackdropFilter: 'blur(12px)',
+      borderBottom: '1px solid rgba(193,127,58,0.15)',
+      position: 'sticky',
+      top: 0,
+      zIndex: 20,
     }}>
-      <div className="absolute bottom-0 left-0 right-0 h-px" style={{
-        background: behavior.hoverGlow
-          ? `linear-gradient(90deg, transparent, ${theme.colors.accent.cyan}60, ${theme.colors.accent.coral}60, transparent)`
-          : `linear-gradient(90deg, transparent, ${theme.colors.border.default}80, transparent)`,
-      }} />
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex justify-between items-center h-16 sm:h-18">
-          <div className="flex items-center gap-2 sm:gap-4 min-w-0">
+          {/* Left: sidebar toggle + wordmark */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             {user && (
               <button
                 onClick={() => setSidebarOpen(!sidebarOpen)}
-                className="p-2 rounded-md transition-all group relative border border-transparent flex-shrink-0 min-h-10 min-w-10 flex items-center justify-center"
+                aria-label={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
                 style={{
-                  color: theme.colors.text.secondary,
-                  transition: theme.transitions.fast,
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  color: '#6b5c4e',
+                  padding: '6px',
+                  borderRadius: '6px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  transition: 'color 0.2s',
                 }}
-                title={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = theme.colors.accent.cyan;
-                  e.currentTarget.style.borderColor = `${theme.colors.accent.cyan}30`;
-                  e.currentTarget.style.backgroundColor = `${theme.colors.accent.cyan}10`;
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = theme.colors.text.secondary;
-                  e.currentTarget.style.borderColor = 'transparent';
-                  e.currentTarget.style.backgroundColor = 'transparent';
-                }}
+                onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
+                onMouseLeave={e => e.currentTarget.style.color = '#6b5c4e'}
               >
-                {sidebarOpen ? <X size={18} className="sm:w-5 sm:h-5" /> : <Menu size={18} className="sm:w-5 sm:h-5" />}
+                {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
             )}
-            <Link to={user ? '/progress' : '/'} className="flex items-center flex-shrink-0">
-              <LogoHorizontal size="sm" />
+            <Link
+              to={user ? '/progress' : '/'}
+              style={{ textDecoration: 'none' }}
+            >
+              <span style={{
+                fontFamily: "'Playfair Display', Georgia, serif",
+                fontSize: '1.35rem',
+                fontWeight: 700,
+                color: '#1a1612',
+                letterSpacing: '-0.01em',
+              }}>
+                Energise <span style={{ color: '#c17f3a' }}>AI</span>
+              </span>
             </Link>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+          {/* Right: nav links */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
             <a
-              href="https://tally.so/r/2EPBje"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-3 sm:px-5 py-2 rounded-md font-semibold text-xs sm:text-sm relative group overflow-hidden border min-h-10 flex items-center"
-              style={{
-                backgroundColor: theme.colors.background.subtle,
-                color: theme.colors.text.secondary,
-                borderColor: theme.colors.border.default,
-                transition: theme.transitions.fast,
-              }}
+              href="/EAE/#services"
+              style={{ fontSize: '0.9rem', color: '#4a3f35', textDecoration: 'none', fontWeight: 500 }}
+              onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
+              onMouseLeave={e => e.currentTarget.style.color = '#4a3f35'}
             >
-              <span className="relative z-10">Feedback</span>
+              Services
             </a>
-            {!user && (
-              <Link
-                to="/login"
-                className="px-3 sm:px-5 py-2 rounded-md font-bold text-xs sm:text-sm relative group overflow-hidden border min-h-10 flex items-center"
-                style={{
-                  backgroundColor: theme.colors.accent.cyan,
-                  color: 'white',
-                  borderColor: theme.colors.accent.cyan,
-                  boxShadow: '0 0 0 rgba(6, 182, 212, 0.3)',
-                  transition: theme.transitions.fast,
-                }}
-                onMouseEnter={(e) => {
-                  if (behavior.hoverGlow) {
-                    e.currentTarget.style.boxShadow = theme.shadows.glow.cyan;
-                  }
-                  if (behavior.hoverScale) {
-                    e.currentTarget.style.transform = 'translateY(-1px)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.boxShadow = '0 0 0 rgba(6, 182, 212, 0.3)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
-                <span className="relative z-10">Login</span>
-                {behavior.hoverGlow && (
-                  <div className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-300" />
-                )}
-              </Link>
-            )}
+            <a
+              href="/EAE/#why-us"
+              style={{ fontSize: '0.9rem', color: '#4a3f35', textDecoration: 'none', fontWeight: 500 }}
+              onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
+              onMouseLeave={e => e.currentTarget.style.color = '#4a3f35'}
+            >
+              Why Us
+            </a>
+            <a
+              href="/EAE/#pricing"
+              style={{ fontSize: '0.9rem', color: '#4a3f35', textDecoration: 'none', fontWeight: 500 }}
+              onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
+              onMouseLeave={e => e.currentTarget.style.color = '#4a3f35'}
+            >
+              Pricing
+            </a>
+            <a
+              href="/EAE/#contact"
+              style={{
+                fontSize: '0.88rem',
+                fontWeight: 700,
+                color: '#faf8f5',
+                background: '#c17f3a',
+                border: '2px solid #c17f3a',
+                borderRadius: '6px',
+                padding: '7px 18px',
+                textDecoration: 'none',
+                transition: 'background 0.2s, color 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = '#a66830'; e.currentTarget.style.borderColor = '#a66830'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = '#c17f3a'; e.currentTarget.style.borderColor = '#c17f3a'; }}
+            >
+              Contact
+            </a>
           </div>
+
         </div>
       </div>
     </nav>

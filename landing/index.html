@@ -677,6 +677,18 @@ ul { list-style: none; }
   transition: gap 0.2s, color 0.2s;
 }
 .why__card-link:hover { gap: 10px; color: var(--accent-dark); }
+.why__card-coming-soon {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  border-radius: 20px;
+  padding: 3px 12px;
+  opacity: 0.7;
+}
 
 @media (max-width: 620px) {
   .why__grid { grid-template-columns: 1fr; }
@@ -1139,7 +1151,7 @@ ul { list-style: none; }
           <div class="why__card-icon">📚</div>
           <h3 class="why__card-title">AI Training</h3>
           <p class="why__card-desc">We train your people to work alongside AI properly — building real capability and confidence so your team stays ahead as the technology evolves.</p>
-          <a href="/EAE/app/ai-education-landing" class="why__card-link">Learn more →</a>
+          <a href="/EAE/app/progress" class="why__card-link">Learn more →</a>
         </div>
 
         <div class="why__card">
@@ -1153,7 +1165,7 @@ ul { list-style: none; }
           <div class="why__card-icon">⚡</div>
           <h3 class="why__card-title">Human Optimisation</h3>
           <p class="why__card-desc">The best AI works best alongside people who are performing well. We help your team build better focus, energy, and habits so the whole system — human and AI — runs better together.</p>
-          <a href="/EAE/app/ai-solutions" class="why__card-link">Learn more →</a>
+          <span class="why__card-coming-soon">Coming Soon</span>
         </div>
 
       </div>
