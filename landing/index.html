@@ -630,6 +630,59 @@ ul { list-style: none; }
   .pricing-single__cta .btn { width: 100%; text-align: center; }
 }
 
+/* ---- WHY CHOOSE US ---- */
+.why__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.why__card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.why__card:hover {
+  box-shadow: 0 8px 32px rgba(193,127,58,0.1);
+  transform: translateY(-3px);
+}
+.why__card-icon {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+}
+.why__card-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 10px;
+}
+.why__card-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  flex: 1;
+  margin-bottom: 20px;
+}
+.why__card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: gap 0.2s, color 0.2s;
+}
+.why__card-link:hover { gap: 10px; color: var(--accent-dark); }
+
+@media (max-width: 620px) {
+  .why__grid { grid-template-columns: 1fr; }
+}
+
+
 .contact__methods {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -774,6 +827,7 @@ ul { list-style: none; }
         <li><a href="#problem">The Problem</a></li>
         <li><a href="#team">Who We Are</a></li>
         <li><a href="#what-we-do">What We Do</a></li>
+        <li><a href="#why-us">Why Us</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Get In Touch</a></li>
         <li><a href="/EAE/app/login" class="nav__cta">Client Login</a></li>
@@ -790,6 +844,7 @@ ul { list-style: none; }
       <li><a href="#problem" class="mm-link">The Problem</a></li>
       <li><a href="#team" class="mm-link">Who We Are</a></li>
       <li><a href="#what-we-do" class="mm-link">What We Do</a></li>
+      <li><a href="#why-us" class="mm-link">Why Us</a></li>
       <li><a href="#pricing" class="mm-link">Pricing</a></li>
       <li><a href="#contact" class="mm-link">Get In Touch</a></li>
       <li><a href="/EAE/app/login" class="mm-link">Client Login</a></li>
@@ -1064,6 +1119,47 @@ ul { list-style: none; }
           <p class="agent-card__role">Custom AI Employee</p>
           <p class="agent-card__tagline">Built around your workflow, your team, and your specific needs.</p>
           <a href="#contact" class="btn btn--primary" style="margin-top: auto;">Let's build yours →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE US -->
+  <section class="section" id="why-us">
+    <div class="container">
+      <p class="label label--center">Why choose us</p>
+      <h2 class="section__heading section__heading--center">We don't just give you AI.<br>We make it work for you.</h2>
+      <p class="section__sub">Most AI companies hand you a tool and walk away. We take a different approach — combining AI employees, training, consulting, and human development into one joined-up solution.</p>
+
+      <div class="why__grid">
+
+        <div class="why__card">
+          <div class="why__card-icon">🤖</div>
+          <h3 class="why__card-title">AI Employees</h3>
+          <p class="why__card-desc">Done-for-you AI that handles calls, follows up leads, and looks after your customers — without you lifting a finger. The result you're paying for, delivered.</p>
+          <a href="#what-we-do" class="why__card-link">Meet the team →</a>
+        </div>
+
+        <div class="why__card">
+          <div class="why__card-icon">📚</div>
+          <h3 class="why__card-title">AI Training</h3>
+          <p class="why__card-desc">We train your people to work with AI properly — building real capability and confidence so your team stays ahead as the technology evolves.</p>
+          <a href="/EAE/app/ai-education-landing" class="why__card-link">Learn more →</a>
+        </div>
+
+        <div class="why__card">
+          <div class="why__card-icon">🎯</div>
+          <h3 class="why__card-title">AI Consulting</h3>
+          <p class="why__card-desc">Before you spend anything, we help you figure out exactly where AI creates value in your business — and where it doesn't. Strategy first, implementation second.</p>
+          <a href="/EAE/app/ai-strategy" class="why__card-link">Learn more →</a>
+        </div>
+
+        <div class="why__card">
+          <div class="why__card-icon">⚡</div>
+          <h3 class="why__card-title">Human Optimisation</h3>
+          <p class="why__card-desc">The best AI works best alongside people who are performing well. We help your team build better focus, energy, and habits so the whole system runs better together.</p>
+          <a href="/EAE/app/ai-solutions" class="why__card-link">Learn more →</a>
         </div>
 
       </div>
