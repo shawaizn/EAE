@@ -59,7 +59,7 @@ function App() {
   }
   return (
     <SidebarProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/EAE">
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<AIEducationLanding />} />
