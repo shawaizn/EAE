@@ -1,75 +1,37 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+
+const STORAGE_KEY = 'eae_prompts';
 
 export function usePrompts(userId) {
   const [prompts, setPrompts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!userId) {
-      setLoading(false);
-      return;
-    }
-    fetchPrompts();
+    if (!userId) { setLoading(false); return; }
+    const stored = localStorage.getItem(`${STORAGE_KEY}_${userId}`);
+    setPrompts(stored ? JSON.parse(stored) : []);
+    setLoading(false);
   }, [userId]);
 
-  const fetchPrompts = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('prompts')
-        .select('*')
-        .eq('user_id', userId)
-        .order('created_at', { ascending: false });
-
-      if (error) {
-        console.error('Error fetching prompts:', error);
-        setPrompts([]);
-      } else {
-        setPrompts(data || []);
-      }
-    } catch (err) {
-      console.error('Error:', err);
-      setPrompts([]);
-    } finally {
-      setLoading(false);
-    }
+  const save = (updated) => {
+    setPrompts(updated);
+    localStorage.setItem(`${STORAGE_KEY}_${userId}`, JSON.stringify(updated));
   };
 
   const addPrompt = async (category, title, content) => {
-    const { data, error } = await supabase
-      .from('prompts')
-      .insert({ user_id: userId, category, title, content })
-      .select()
-      .maybeSingle();
-
-    if (error) throw error;
-    setPrompts(prev => [data, ...prev]);
-    return data;
+    const prompt = { id: Date.now().toString(), user_id: userId, category, title, content, created_at: new Date().toISOString() };
+    save([prompt, ...prompts]);
+    return prompt;
   };
 
   const updatePrompt = async (id, title, content) => {
-    const { data, error } = await supabase
-      .from('prompts')
-      .update({ title, content, updated_at: new Date().toISOString() })
-      .eq('id', id)
-      .eq('user_id', userId)
-      .select()
-      .maybeSingle();
-
-    if (error) throw error;
-    setPrompts(prev => prev.map(p => p.id === id ? data : p));
-    return data;
+    const updated = prompts.map(p => p.id === id ? { ...p, title, content, updated_at: new Date().toISOString() } : p);
+    save(updated);
+    return updated.find(p => p.id === id);
   };
 
   const deletePrompt = async (id) => {
-    const { error } = await supabase
-      .from('prompts')
-      .delete()
-      .eq('id', id)
-      .eq('user_id', userId);
-
-    if (error) throw error;
-    setPrompts(prev => prev.filter(p => p.id !== id));
+    save(prompts.filter(p => p.id !== id));
   };
 
   const getPromptsByCategory = (category) => prompts.filter(p => p.category === category);

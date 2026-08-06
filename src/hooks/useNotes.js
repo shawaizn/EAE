@@ -1,75 +1,37 @@
 import { useState, useEffect } from 'react';
-import { supabase } from '../lib/supabase';
+
+const STORAGE_KEY = 'eae_notes';
 
 export function useNotes(userId) {
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!userId) {
-      setLoading(false);
-      return;
-    }
-    fetchNotes();
+    if (!userId) { setLoading(false); return; }
+    const stored = localStorage.getItem(`${STORAGE_KEY}_${userId}`);
+    setNotes(stored ? JSON.parse(stored) : []);
+    setLoading(false);
   }, [userId]);
 
-  const fetchNotes = async () => {
-    try {
-      const { data, error } = await supabase
-        .from('notes')
-        .select('*')
-        .eq('user_id', userId)
-        .order('created_at', { ascending: false });
-
-      if (error) {
-        console.error('Error fetching notes:', error);
-        setNotes([]);
-      } else {
-        setNotes(data || []);
-      }
-    } catch (err) {
-      console.error('Error:', err);
-      setNotes([]);
-    } finally {
-      setLoading(false);
-    }
+  const save = (updated) => {
+    setNotes(updated);
+    localStorage.setItem(`${STORAGE_KEY}_${userId}`, JSON.stringify(updated));
   };
 
   const addNote = async (category, content) => {
-    const { data, error } = await supabase
-      .from('notes')
-      .insert({ user_id: userId, category, content })
-      .select()
-      .maybeSingle();
-
-    if (error) throw error;
-    setNotes(prev => [data, ...prev]);
-    return data;
+    const note = { id: Date.now().toString(), user_id: userId, category, content, created_at: new Date().toISOString() };
+    save([note, ...notes]);
+    return note;
   };
 
   const updateNote = async (id, content) => {
-    const { data, error } = await supabase
-      .from('notes')
-      .update({ content, updated_at: new Date().toISOString() })
-      .eq('id', id)
-      .eq('user_id', userId)
-      .select()
-      .maybeSingle();
-
-    if (error) throw error;
-    setNotes(prev => prev.map(n => n.id === id ? data : n));
-    return data;
+    const updated = notes.map(n => n.id === id ? { ...n, content, updated_at: new Date().toISOString() } : n);
+    save(updated);
+    return updated.find(n => n.id === id);
   };
 
   const deleteNote = async (id) => {
-    const { error } = await supabase
-      .from('notes')
-      .delete()
-      .eq('id', id)
-      .eq('user_id', userId);
-
-    if (error) throw error;
-    setNotes(prev => prev.filter(n => n.id !== id));
+    save(notes.filter(n => n.id !== id));
   };
 
   const getNotesByCategory = (category) => notes.filter(n => n.category === category);

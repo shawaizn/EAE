@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { LogOut, User, ChevronRight, ChevronDown } from 'lucide-react';
-import { supabase } from '../../lib/supabase';
 import { modulesData } from '../../data/modulesData';
 import { lang } from '../../styles/theme';
 
@@ -66,15 +65,8 @@ export function MainSidebar({ user, onSignOut }) {
     }
   }, [location.pathname]);
 
-  const fetchUserName = async () => {
-    const { data } = await supabase
-      .from('profiles')
-      .select('full_name')
-      .eq('id', user.id)
-      .maybeSingle();
-    if (data?.full_name) {
-      setUserName(data.full_name);
-    }
+  const fetchUserName = () => {
+    if (user?.username) setUserName(user.username);
   };
 
   const handleSignOut = async () => {

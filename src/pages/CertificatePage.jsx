@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
-import { supabase } from '../lib/supabase';
 import { getProgressStats } from '../lib/utils';
 import { theme, getShadow } from '../styles/theme';
 import { Award, Download, Share2, CheckCircle2, Lock } from 'lucide-react';
@@ -31,17 +30,8 @@ export function CertificatePage() {
   const isComplete = stats.percentComplete === 100;
 
   useEffect(() => {
-    if (user) fetchName();
+    if (user?.username) setUserName(user.username);
   }, [user]);
-
-  const fetchName = async () => {
-    const { data } = await supabase
-      .from('profiles')
-      .select('full_name')
-      .eq('id', user.id)
-      .maybeSingle();
-    if (data?.full_name) setUserName(data.full_name);
-  };
 
   const completionDate = (() => {
     if (!isComplete) return null;
