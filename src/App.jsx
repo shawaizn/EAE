@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useAuth } from './hooks/useAuth';
 import { Layout } from './components/layout/Layout';
@@ -30,6 +30,17 @@ function ScrollToTop() {
   }, [pathname]);
 
   return null;
+}
+
+// Modules 3+ lessons are locked — redirect to the module overview page
+const LOCKED_MODULES = [3, 4, 5, 6, 7, 8];
+
+function UnlockedLessonRoute({ children }) {
+  const { moduleId } = useParams();
+  if (LOCKED_MODULES.includes(parseInt(moduleId))) {
+    return <Navigate to={`/modules/${moduleId}`} replace />;
+  }
+  return children;
 }
 
 function ProtectedRoute({ children }) {
@@ -107,9 +118,11 @@ function App() {
             path="/modules/:moduleId/lessons/:lessonId"
             element={
               <ProtectedRoute>
-                <Layout user={user} onSignOut={signOut}>
-                  <LessonPage />
-                </Layout>
+                <UnlockedLessonRoute>
+                  <Layout user={user} onSignOut={signOut}>
+                    <LessonPage />
+                  </Layout>
+                </UnlockedLessonRoute>
               </ProtectedRoute>
             }
           />

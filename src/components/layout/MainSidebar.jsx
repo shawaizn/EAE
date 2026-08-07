@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { LogOut, User, ChevronRight, ChevronDown } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { ChevronRight, ChevronDown, Lock } from 'lucide-react';
 import { modulesData } from '../../data/modulesData';
 import { lang } from '../../styles/theme';
 
@@ -8,6 +8,7 @@ const tiers = [
   {
     id: 'beginner',
     modules: [1, 2],
+    locked: false,
     color: {
       bg: 'bg-cyan-50',
       activeBg: 'bg-cyan-100',
@@ -19,6 +20,7 @@ const tiers = [
   {
     id: 'intermediate',
     modules: [3, 4, 5],
+    locked: true,
     color: {
       bg: 'bg-slate-100',
       activeBg: 'bg-slate-200',
@@ -30,6 +32,7 @@ const tiers = [
   {
     id: 'advanced',
     modules: [6, 7, 8],
+    locked: true,
     color: {
       bg: 'bg-slate-50',
       activeBg: 'bg-slate-100',
@@ -40,22 +43,13 @@ const tiers = [
   }
 ];
 
-export function MainSidebar({ user, onSignOut }) {
-  const [userName, setUserName] = useState('User');
+export function MainSidebar({ user }) {
   const [expandedTier, setExpandedTier] = useState(null);
   const location = useLocation();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (user) {
-      fetchUserName();
-    }
-  }, [user]);
 
   // Auto-expand tier containing current module
   useEffect(() => {
-    const currentPath = location.pathname;
-    const moduleMatch = currentPath.match(/\/modules\/(\d+)/);
+    const moduleMatch = location.pathname.match(/\/modules\/(\d+)/);
     if (moduleMatch) {
       const currentModuleId = parseInt(moduleMatch[1]);
       const tierWithModule = tiers.find(tier => tier.modules.includes(currentModuleId));
@@ -64,15 +58,6 @@ export function MainSidebar({ user, onSignOut }) {
       }
     }
   }, [location.pathname]);
-
-  const fetchUserName = () => {
-    if (user?.username) setUserName(user.username);
-  };
-
-  const handleSignOut = async () => {
-    await onSignOut();
-    navigate('/');
-  };
 
   const toggleTier = (tierId) => {
     setExpandedTier(prev => prev === tierId ? null : tierId);
@@ -87,7 +72,9 @@ export function MainSidebar({ user, onSignOut }) {
 
   return (
     <div className="flex flex-col h-full">
-      <nav className="p-6 space-y-2 flex-1 overflow-y-auto">
+      <nav className="p-4 space-y-1 flex-1 overflow-y-auto">
+
+        {/* Progress */}
         <Link
           to="/progress"
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold text-sm ${
@@ -99,33 +86,34 @@ export function MainSidebar({ user, onSignOut }) {
           Progress
         </Link>
 
-        <div className="pt-2 pb-1">
-          <p className="px-4 py-2 text-xs font-semibold text-slate-500 uppercase tracking-wider">Curriculum</p>
+        {/* Curriculum heading */}
+        <div className="pt-4 pb-1 flex items-center gap-3 px-4">
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">Curriculum</span>
+          <div className="flex-1 h-px bg-slate-200" />
         </div>
 
         {tiers.map(tier => {
           const tierLabel = lang.tierLabels[tier.id] || tier.id;
           const isExpanded = expandedTier === tier.id;
-          const hasActiveModule = tier.modules.some(moduleId =>
-            isActive(`/modules/${moduleId}`)
-          );
+          const hasActiveModule = tier.modules.some(moduleId => isActive(`/modules/${moduleId}`));
 
           return (
             <div key={tier.id} className="space-y-1">
               <button
                 onClick={() => toggleTier(tier.id)}
-                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors font-semibold ${
+                className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors font-semibold text-sm ${
                   hasActiveModule
                     ? `${tier.color.activeBg} ${tier.color.text} border-l-4 ${tier.color.border}`
-                    : 'text-slate-700 hover:bg-slate-100'
+                    : tier.locked
+                      ? 'text-slate-400 hover:bg-slate-50'
+                      : 'text-slate-700 hover:bg-slate-100'
                 }`}
               >
-                <span>{tierLabel}</span>
-                {isExpanded ? (
-                  <ChevronDown size={18} />
-                ) : (
-                  <ChevronRight size={18} />
-                )}
+                <span className="flex items-center gap-2">
+                  {tier.locked && <Lock size={13} className="flex-shrink-0" />}
+                  {tierLabel}
+                </span>
+                {isExpanded ? <ChevronDown size={16} /> : <ChevronRight size={16} />}
               </button>
 
               {isExpanded && (
@@ -133,7 +121,6 @@ export function MainSidebar({ user, onSignOut }) {
                   {tier.modules.map(moduleId => {
                     const module = modulesData.find(m => m.id === moduleId);
                     if (!module) return null;
-
                     const isModuleActive = isActive(`/modules/${moduleId}`);
 
                     return (
@@ -156,16 +143,16 @@ export function MainSidebar({ user, onSignOut }) {
           );
         })}
 
-        <div className="pt-4 pb-1">
-          <p className="px-4 py-2 text-xs font-semibold text-slate-500 uppercase tracking-wider">Resources</p>
+        {/* Resources heading */}
+        <div className="pt-4 pb-1 flex items-center gap-3 px-4">
+          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">Resources</span>
+          <div className="flex-1 h-px bg-slate-200" />
         </div>
 
         <Link
           to="/notes"
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold text-sm ${
-            isActive('/notes')
-              ? 'bg-slate-900 text-white'
-              : 'text-slate-700 hover:bg-slate-100'
+            isActive('/notes') ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100'
           }`}
         >
           Notes
@@ -174,9 +161,7 @@ export function MainSidebar({ user, onSignOut }) {
         <Link
           to="/prompts"
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold text-sm ${
-            isActive('/prompts')
-              ? 'bg-slate-900 text-white'
-              : 'text-slate-700 hover:bg-slate-100'
+            isActive('/prompts') ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100'
           }`}
         >
           Prompt Vault
@@ -185,9 +170,7 @@ export function MainSidebar({ user, onSignOut }) {
         <Link
           to="/resources"
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold text-sm ${
-            isActive('/resources')
-              ? 'bg-slate-900 text-white'
-              : 'text-slate-700 hover:bg-slate-100'
+            isActive('/resources') ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100'
           }`}
         >
           Resources
@@ -196,30 +179,13 @@ export function MainSidebar({ user, onSignOut }) {
         <Link
           to="/certificate"
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold text-sm ${
-            isActive('/certificate')
-              ? 'bg-slate-900 text-white'
-              : 'text-slate-700 hover:bg-slate-100'
+            isActive('/certificate') ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100'
           }`}
         >
           Certificate
         </Link>
-      </nav>
 
-      {user && (
-        <div className="border-t-2 border-slate-200 p-4 space-y-2">
-          <div className="flex items-center gap-2 px-4 py-3 bg-slate-50 rounded-lg">
-            <User size={18} className="text-slate-600" />
-            <span className="text-sm font-semibold text-slate-700 truncate">{userName}</span>
-          </div>
-          <button
-            onClick={handleSignOut}
-            className="w-full flex items-center gap-2 px-4 py-2 text-slate-700 hover:bg-red-50 rounded-lg transition-colors text-sm font-medium"
-          >
-            <LogOut size={18} />
-            Sign Out
-          </button>
-        </div>
-      )}
+      </nav>
     </div>
   );
 }
