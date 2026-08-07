@@ -17,6 +17,15 @@
   }
 }
 
+/* Responsive video embeds — makes injected iframes scale to container width */
+.lesson-video-wrapper iframe,
+.lesson-video-wrapper video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  display: block;
+}
+
 @layer components {
   .prose {
     @apply max-w-none text-slate-700 leading-relaxed;

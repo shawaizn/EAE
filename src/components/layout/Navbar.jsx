@@ -57,8 +57,8 @@ export function Navbar({ user }) {
             </Link>
           </div>
 
-          {/* Right: nav links */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+          {/* Right: nav links — hidden on small screens to prevent overflow */}
+          <div className="hidden md:flex" style={{ alignItems: 'center', gap: '24px' }}>
             <a
               href="/EAE/#services"
               style={{ fontSize: '0.9rem', color: '#4a3f35', textDecoration: 'none', fontWeight: 500 }}

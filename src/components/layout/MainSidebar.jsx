@@ -43,7 +43,7 @@ const tiers = [
   }
 ];
 
-export function MainSidebar({ user }) {
+export function MainSidebar({ user, onNavigate }) {
   const [expandedTier, setExpandedTier] = useState(null);
   const location = useLocation();
 
@@ -70,6 +70,10 @@ export function MainSidebar({ user }) {
     return title.substring(0, maxLength - 3) + '...';
   };
 
+  const handleNav = () => {
+    if (onNavigate) onNavigate();
+  };
+
   return (
     <div className="flex flex-col h-full">
       <nav className="p-4 space-y-1 flex-1 overflow-y-auto">
@@ -77,6 +81,7 @@ export function MainSidebar({ user }) {
         {/* Progress */}
         <Link
           to="/progress"
+          onClick={handleNav}
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold text-sm ${
             isActive('/progress')
               ? 'bg-energise-400 text-white'
@@ -127,6 +132,7 @@ export function MainSidebar({ user }) {
                       <Link
                         key={moduleId}
                         to={`/modules/${moduleId}`}
+                        onClick={handleNav}
                         className={`block px-4 py-2.5 rounded-lg transition-colors text-sm border-l-2 font-medium ${
                           isModuleActive
                             ? `${tier.color.activeBg} ${tier.color.text} ${tier.color.border}`
@@ -151,6 +157,7 @@ export function MainSidebar({ user }) {
 
         <Link
           to="/notes"
+          onClick={handleNav}
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold text-sm ${
             isActive('/notes') ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100'
           }`}
@@ -160,6 +167,7 @@ export function MainSidebar({ user }) {
 
         <Link
           to="/prompts"
+          onClick={handleNav}
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold text-sm ${
             isActive('/prompts') ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100'
           }`}
@@ -169,6 +177,7 @@ export function MainSidebar({ user }) {
 
         <Link
           to="/resources"
+          onClick={handleNav}
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold text-sm ${
             isActive('/resources') ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100'
           }`}
@@ -178,6 +187,7 @@ export function MainSidebar({ user }) {
 
         <Link
           to="/certificate"
+          onClick={handleNav}
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold text-sm ${
             isActive('/certificate') ? 'bg-slate-900 text-white' : 'text-slate-700 hover:bg-slate-100'
           }`}

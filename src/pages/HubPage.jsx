@@ -73,9 +73,9 @@ export function HubPage() {
           </span>
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
             {user?.email && (
-              <span style={{ fontSize: '0.8rem', color: '#9a8a7a', display: 'none' }}
-                className="sm:block"
-              >{user.email}</span>
+              <span className="hidden sm:block" style={{ fontSize: '0.8rem', color: '#9a8a7a' }}>
+                {user.email}
+              </span>
             )}
             <button
               onClick={handleSignOut}
@@ -107,7 +107,7 @@ export function HubPage() {
 
         <div style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(280px, 100%), 1fr))',
           gap: '1.25rem',
         }}>
           {SERVICES.map(service => {

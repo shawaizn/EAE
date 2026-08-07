@@ -187,7 +187,7 @@ export function LessonPage() {
           </div>
 
           {/* Video */}
-          <div className="mb-12 sm:mb-24 bg-black rounded-lg overflow-hidden shadow-lg">
+          <div className="lesson-video-wrapper mb-8 sm:mb-16 bg-black rounded-lg overflow-hidden shadow-lg">
             <div dangerouslySetInnerHTML={{ __html: lessonMedia_.video }} />
           </div>
 

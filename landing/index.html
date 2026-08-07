@@ -220,7 +220,7 @@ ul { list-style: none; }
 }
 .hero__headline {
   font-family: var(--font-display);
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-size: clamp(1.8rem, 5vw, 3.8rem);
   font-weight: 500;
   line-height: 1.15;
   color: var(--text);
@@ -349,7 +349,7 @@ ul { list-style: none; }
 .team__card--featured {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: 380px 1fr;
+  grid-template-columns: minmax(220px, 340px) 1fr;
   gap: 48px;
   align-items: center;
   background: var(--surface);
@@ -414,6 +414,9 @@ ul { list-style: none; }
   padding: 8px 0 32px;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  /* Gradient fade on right edge signals there's more content to scroll to */
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 48px), transparent 100%);
+  mask-image: linear-gradient(to right, black calc(100% - 48px), transparent 100%);
 }
 .agents-track-wrap::-webkit-scrollbar { display: none; }
 
@@ -826,6 +829,14 @@ ul { list-style: none; }
   .hero__actions { flex-direction: column; }
   .hero__actions .btn { text-align: center; }
   .section { padding: 64px 0; }
+  .hero__image img { height: 240px; }
+  .team__photo { height: 220px; }
+  .team__card--featured { padding: 24px; gap: 20px; }
+}
+
+@media (max-width: 380px) {
+  .section { padding: 48px 0; }
+  .hero__sub { font-size: 1rem; }
 }
   </style>
 </head>
