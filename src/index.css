@@ -8,7 +8,8 @@
   }
 
   body {
-    @apply bg-slate-50;
+    background: #faf8f5;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
   }
 
   button:focus-visible {
@@ -129,7 +130,7 @@
     left: 0;
     top: 0;
     font-weight: 600;
-    color: #0369A1;
+    color: #c17f3a;
   }
 
   article ul > li {
@@ -141,7 +142,7 @@
     content: '•';
     position: absolute;
     left: 0.5rem;
-    color: #0369A1;
+    color: #c17f3a;
     font-weight: bold;
   }
 
@@ -166,15 +167,15 @@
   }
 
   input:focus {
-    @apply outline-none ring-2 ring-cyan-500 ring-offset-2;
+    @apply outline-none ring-2 ring-energise-400 ring-offset-2;
   }
 
   textarea:focus {
-    @apply outline-none ring-2 ring-cyan-500 ring-offset-2;
+    @apply outline-none ring-2 ring-energise-400 ring-offset-2;
   }
 
   select:focus {
-    @apply outline-none ring-2 ring-cyan-500 ring-offset-2;
+    @apply outline-none ring-2 ring-energise-400 ring-offset-2;
   }
 
   /* Smooth transitions for all interactive elements — easing set by theme */
@@ -225,10 +226,10 @@
 
   .prose-activities h5 {
     @apply text-xl font-bold text-slate-900 mt-8 mb-3;
-    background-color: rgba(30, 64, 175, 0.12);
+    background-color: rgba(193, 127, 58, 0.08);
     padding: 10px 14px;
     border-radius: 6px;
-    border-left: 4px solid #1E40AF;
+    border-left: 4px solid #c17f3a;
   }
 
   .prose-activities h5 + p {
@@ -245,7 +246,7 @@
 
   .prose-activities em {
     @apply italic text-slate-700;
-    background-color: rgba(30, 64, 175, 0.1);
+    background-color: rgba(193, 127, 58, 0.08);
     padding: 2px 6px;
     border-radius: 4px;
   }

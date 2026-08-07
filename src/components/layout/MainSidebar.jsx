@@ -79,8 +79,8 @@ export function MainSidebar({ user }) {
           to="/progress"
           className={`block px-4 py-3 rounded-lg transition-colors font-semibold text-sm ${
             isActive('/progress')
-              ? 'bg-slate-900 text-white'
-              : 'text-slate-700 hover:bg-slate-100'
+              ? 'bg-energise-400 text-white'
+              : 'text-slate-700 hover:bg-energise-100'
           }`}
         >
           Progress
@@ -89,7 +89,7 @@ export function MainSidebar({ user }) {
         {/* Curriculum heading */}
         <div className="pt-4 pb-1 flex items-center gap-3 px-4">
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">Curriculum</span>
-          <div className="flex-1 h-px bg-slate-200" />
+          <div className="flex-1 h-px bg-energise-200" />
         </div>
 
         {tiers.map(tier => {
@@ -146,7 +146,7 @@ export function MainSidebar({ user }) {
         {/* Resources heading */}
         <div className="pt-4 pb-1 flex items-center gap-3 px-4">
           <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest whitespace-nowrap">Resources</span>
-          <div className="flex-1 h-px bg-slate-200" />
+          <div className="flex-1 h-px bg-energise-200" />
         </div>
 
         <Link

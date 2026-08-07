@@ -4,6 +4,18 @@ export default {
   theme: {
     extend: {
       colors: {
+        energise: {
+          50:  '#faf8f5',
+          100: '#f4efe8',
+          200: '#e8dfd4',
+          300: '#d4c4b0',
+          400: '#c17f3a',
+          500: '#a66830',
+          600: '#8a5526',
+          700: '#6b3e1c',
+          800: '#4a2a12',
+          900: '#1a1612',
+        },
         slate: {
           50: '#f8fafc',
           100: '#f1f5f9',

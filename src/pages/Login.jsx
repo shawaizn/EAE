@@ -34,9 +34,8 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-6 sm:py-8 relative" style={{ backgroundColor: behavior.animatedBackground ? undefined : '#FAFAF9' }}>
-      {behavior.animatedBackground && <AnimatedLoginBackground />}
-      <Card className="w-full max-w-md relative z-10 bg-white/90 backdrop-blur-lg border-2 border-white/20 shadow-2xl p-4 sm:p-6">
+    <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-6 sm:py-8" style={{ backgroundColor: '#faf8f5' }}>
+      <Card className="w-full max-w-md bg-white border-2 shadow-md p-4 sm:p-6" style={{ borderColor: '#e8dfd4' }}>
         <button
           onClick={() => navigate('/')}
           className="mb-4 flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium"
@@ -59,7 +58,7 @@ export function Login() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600 transition text-sm"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-energise-400 focus:border-energise-400 transition text-sm"
               placeholder="shawaiz"
             />
           </div>
@@ -74,7 +73,7 @@ export function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-cyan-600 focus:border-cyan-600 transition text-sm"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-energise-400 focus:border-energise-400 transition text-sm"
               placeholder="••••••••"
             />
           </div>

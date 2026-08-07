@@ -33,7 +33,7 @@ export function ModuleLessonsBlock({ module, lessons, isComplete, getModuleAndLe
     }}>
       <button
         onClick={() => setOpen(o => !o)}
-        className="w-full text-left flex items-center gap-4 px-5 py-4 transition-colors hover:bg-slate-50/60"
+        className="w-full text-left flex items-center gap-4 px-5 py-4 transition-colors hover:bg-energise-50"
       >
         <div className="flex-1 min-w-0 flex items-center gap-4">
           <div className="flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold" style={{

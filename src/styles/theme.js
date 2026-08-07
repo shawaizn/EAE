@@ -137,36 +137,36 @@ const currentTheme = {
 const enterpriseTheme = {
   colors: {
     primary: {
-      deep: '#1E293B',
-      electric: '#1E40AF',
-      light: '#EFF6FF',
+      deep:     '#1a1612',   // warm near-black
+      electric: '#c17f3a',   // energise amber
+      light:    '#f4efe8',   // warm off-white
     },
     accent: {
-      cyan: '#0369A1',
-      coral: '#D97706',
+      cyan:  '#c17f3a',   // re-mapped to amber
+      coral: '#a66830',   // deeper amber
     },
     background: {
-      base: '#FAFAF9',
-      card: '#FFFFFF',
-      subtle: '#F8FAFC',
-      overlay: 'rgba(255, 255, 255, 0.97)',
+      base:    '#faf8f5',
+      card:    '#ffffff',
+      subtle:  '#f4efe8',
+      overlay: 'rgba(250, 248, 245, 0.97)',
     },
     text: {
-      primary: '#0F172A',
-      secondary: '#475569',
-      muted: '#94A3B8',
-      inverse: '#FFFFFF',
+      primary:   '#1a1612',
+      secondary: '#4a3f35',
+      muted:     '#9a8a7a',
+      inverse:   '#ffffff',
     },
     border: {
-      subtle: '#E2E8F0',
-      default: '#CBD5E1',
-      strong: '#94A3B8',
+      subtle:  '#e8dfd4',
+      default: '#d4c4b0',
+      strong:  '#c17f3a',
     },
     status: {
       success: '#059669',
-      warning: '#D97706',
-      error: '#DC2626',
-      info: '#1E40AF',
+      warning: '#d97706',
+      error:   '#dc2626',
+      info:    '#c17f3a',
     },
   },
   shadows: {
