@@ -3,9 +3,11 @@ import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { moduleIntros } from '../data/moduleIntros';
-import { Check, CheckCircle2, Circle, ArrowRight, BookOpen } from 'lucide-react';
+import { Check, CheckCircle2, Circle, ArrowRight, BookOpen, Lock } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
 import { theme } from '../styles/theme';
+
+const LOCKED_MODULES = [3, 4, 5, 6, 7, 8];
 
 export function ModulePage() {
   const { user } = useAuth();
@@ -13,6 +15,7 @@ export function ModulePage() {
   const { isComplete, loading } = useProgress(user?.id, []);
 
   const moduleIdNum = parseInt(moduleId);
+  const isLocked = LOCKED_MODULES.includes(moduleIdNum);
   const module = modulesData.find(m => m.id === moduleIdNum);
 
   if (!module) {
@@ -131,7 +134,23 @@ export function ModulePage() {
             </div>
           </div>
 
-          {nextLesson && (
+          {isLocked && (
+            <div className="flex items-start gap-4 p-5 rounded-xl border-2" style={{
+              backgroundColor: '#fdf8f3',
+              borderColor: '#c17f3a',
+            }}>
+              <Lock size={20} style={{ color: '#c17f3a', flexShrink: 0, marginTop: 2 }} />
+              <div>
+                <p className="font-semibold text-sm" style={{ color: '#c17f3a' }}>Module locked</p>
+                <p className="text-sm mt-1" style={{ color: '#6b5c4e' }}>
+                  Complete Foundation (modules 1 &amp; 2) to unlock this module's lessons.
+                  You can browse the overview below to see what's covered.
+                </p>
+              </div>
+            </div>
+          )}
+
+          {!isLocked && nextLesson && (
             <Link
               to={`/modules/${moduleIdNum}/lessons/${nextLesson.id}`}
               className="group block p-6 rounded-xl border-2 transition-all hover:shadow-lg"
@@ -216,6 +235,35 @@ export function ModulePage() {
             <div className="grid gap-3">
               {module.lessons.map((lesson) => {
                 const completed = isComplete(getLessonNumber(moduleIdNum, lesson.id), 'lesson');
+
+                if (isLocked) {
+                  return (
+                    <div
+                      key={lesson.id}
+                      className="flex items-center gap-4 p-5 rounded-xl border-2"
+                      style={{
+                        backgroundColor: '#f7f5f2',
+                        borderColor: '#e5e0d8',
+                        opacity: 0.75,
+                        cursor: 'not-allowed',
+                      }}
+                    >
+                      <Lock size={20} style={{ color: '#b0a090', flexShrink: 0 }} />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-base font-semibold" style={{ color: '#9a8a7a' }}>
+                          Lesson {lesson.id}: {lesson.title}
+                        </h3>
+                      </div>
+                      <span className="text-xs font-semibold px-2 py-1 rounded-full flex-shrink-0" style={{
+                        background: '#ede8e0',
+                        color: '#9a8a7a',
+                      }}>
+                        Locked
+                      </span>
+                    </div>
+                  );
+                }
+
                 return (
                   <Link
                     key={lesson.id}
