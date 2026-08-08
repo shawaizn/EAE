@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useSidebar } from '../../context/SidebarContext';
 
@@ -44,8 +43,8 @@ export function Navbar({ user }) {
                 {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
             )}
-            <Link
-              to={user ? '/progress' : '/'}
+            <a
+              href={landingBase}
               style={{ textDecoration: 'none' }}
             >
               <span style={{
@@ -57,7 +56,7 @@ export function Navbar({ user }) {
               }}>
                 Energise <span style={{ color: '#c17f3a' }}>AI</span>
               </span>
-            </Link>
+            </a>
           </div>
 
           {/* Right: nav links — hidden on small screens to prevent overflow */}
