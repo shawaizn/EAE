@@ -2,6 +2,9 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useSidebar } from '../../context/SidebarContext';
 
+// Derive landing page base URL from the app basename so links work on any host
+const landingBase = (import.meta.env.VITE_BASENAME || '/EAE/app').replace(/\/app$/, '') + '/';
+
 export function Navbar({ user }) {
   const { sidebarOpen, setSidebarOpen } = useSidebar();
 
@@ -60,7 +63,7 @@ export function Navbar({ user }) {
           {/* Right: nav links — hidden on small screens to prevent overflow */}
           <div className="hidden md:flex" style={{ alignItems: 'center', gap: '24px' }}>
             <a
-              href="/EAE/#services"
+              href={`${landingBase}#services`}
               style={{ fontSize: '0.9rem', color: '#4a3f35', textDecoration: 'none', fontWeight: 500 }}
               onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
               onMouseLeave={e => e.currentTarget.style.color = '#4a3f35'}
@@ -68,7 +71,7 @@ export function Navbar({ user }) {
               Services
             </a>
             <a
-              href="/EAE/#why-us"
+              href={`${landingBase}#why-us`}
               style={{ fontSize: '0.9rem', color: '#4a3f35', textDecoration: 'none', fontWeight: 500 }}
               onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
               onMouseLeave={e => e.currentTarget.style.color = '#4a3f35'}
@@ -76,7 +79,7 @@ export function Navbar({ user }) {
               Why Us
             </a>
             <a
-              href="/EAE/#pricing"
+              href={`${landingBase}#pricing`}
               style={{ fontSize: '0.9rem', color: '#4a3f35', textDecoration: 'none', fontWeight: 500 }}
               onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
               onMouseLeave={e => e.currentTarget.style.color = '#4a3f35'}
@@ -84,7 +87,7 @@ export function Navbar({ user }) {
               Pricing
             </a>
             <a
-              href="/EAE/#contact"
+              href={`${landingBase}#contact`}
               style={{
                 fontSize: '0.88rem',
                 fontWeight: 700,
