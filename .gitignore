@@ -9,6 +9,7 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+# hostinger/ is intentionally tracked (pre-built output for Hostinger deployment)
 *.local
 
 .vscode/*

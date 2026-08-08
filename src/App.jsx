@@ -69,7 +69,7 @@ function App() {
   }
   return (
     <SidebarProvider>
-      <BrowserRouter basename="/EAE/app">
+      <BrowserRouter basename={import.meta.env.VITE_BASENAME || '/EAE/app'}>
         <ScrollToTop />
         <Routes>
           <Route path="/" element={user ? <Navigate to="/hub" replace /> : <Navigate to="/login" replace />} />
