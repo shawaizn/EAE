@@ -8,6 +8,8 @@ import { AnimatedLoginBackground } from '../components/branding/AnimatedLoginBac
 import { behavior } from '../styles/theme';
 import { ArrowLeft } from 'lucide-react';
 
+const landingBase = (import.meta.env.VITE_BASENAME || '/EAE/app').replace(/\/app$/, '') + '/';
+
 export function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -36,13 +38,14 @@ export function Login() {
   return (
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-6 sm:py-8" style={{ backgroundColor: '#faf8f5' }}>
       <Card className="w-full max-w-md bg-white border-2 shadow-md p-4 sm:p-6" style={{ borderColor: '#e8dfd4' }}>
-        <button
-          onClick={() => navigate('/')}
+        <a
+          href={landingBase}
           className="mb-4 flex items-center gap-2 text-slate-600 hover:text-slate-900 transition-colors text-sm font-medium"
+          style={{ textDecoration: 'none' }}
         >
           <ArrowLeft size={16} />
-          Back to Home
-        </button>
+          Back to site
+        </a>
         <h2 className="text-2xl sm:text-3xl font-black text-slate-900 mb-6 sm:mb-8 text-center" style={{ letterSpacing: '-0.02em' }}>
           Login to Your Account
         </h2>
