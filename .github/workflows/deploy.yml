@@ -27,17 +27,16 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      # Cache key covers React source AND landing page — any change triggers a rebuild
+      # Cache covers React source + landing — any change triggers a rebuild
       - name: Restore build cache
         id: cache
         uses: actions/cache@v4
         with:
-          path: |
-            dist/app
-            hostinger
+          path: dist/app
           key: build-${{ hashFiles('src/**', 'public/**', 'index.html', 'package-lock.json', 'vite.config.ts', 'landing/**') }}
 
       - name: Setup Node.js
+        if: steps.cache.outputs.cache-hit != 'true'
         uses: actions/setup-node@v4
         with:
           node-version: '20'
@@ -47,64 +46,64 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm ci
 
-      # --- GitHub Pages build (base: /EAE/app/) ---
+      # --- Build for GitHub Pages (base: /EAE/app/) ---
       - name: Build React app for GitHub Pages
         if: steps.cache.outputs.cache-hit != 'true'
         run: npm run build
 
-      - name: Move build to dist/app
+      - name: Move GitHub Pages build to dist/app
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           mkdir -p dist/app
           mv dist/index.html dist/app/index.html
           [ -d dist/assets ] && mv dist/assets dist/app/assets
 
-      # --- Hostinger build (base: /app/) ---
+      # --- Build for Hostinger (base: /app/) and commit to main ---
       - name: Build React app for Hostinger
         if: steps.cache.outputs.cache-hit != 'true'
         run: BASE_URL=/app/ VITE_BASENAME=/app npm run build
 
-      - name: Assemble Hostinger build
+      - name: Commit Hostinger build to main
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          rm -rf hostinger
-          mkdir -p hostinger/app
+          # Move built files into app/ at repo root
+          rm -rf app
+          mkdir -p app
+          mv dist/index.html app/index.html
+          [ -d dist/assets ] && mv dist/assets app/assets
 
-          # React app files
-          mv dist/index.html hostinger/app/index.html
-          [ -d dist/assets ] && mv dist/assets hostinger/app/assets
-
-          # Landing page with paths rewritten for root-served domain
-          sed 's|/EAE/app/|/app/|g' landing/index.html > hostinger/index.html
-
-          # Copy landing page images
+          # Copy landing page images to repo root so relative URLs resolve correctly
           for img in landing/*.jpg landing/*.png landing/*.webp landing/*.svg; do
-            [ -f "$img" ] && cp "$img" hostinger/
+            [ -f "$img" ] && cp "$img" "$(basename $img)"
           done
 
-          # .htaccess so Apache rewrites /app/* back to the SPA index
-          cat > hostinger/app/.htaccess << 'EOF'
+          # .htaccess: route / to landing page, route /app/* to the SPA
+          cat > .htaccess << 'HTEOF'
           <IfModule mod_rewrite.c>
             RewriteEngine On
-            RewriteBase /app/
-            RewriteRule ^index\.html$ - [L]
+            RewriteBase /
+
+            # Serve landing page transparently at the domain root
+            RewriteRule ^$ landing/index.html [L]
+            RewriteRule ^index\.html$ landing/index.html [L]
+
+            # SPA routing — all /app/* paths go to the React entry point
             RewriteCond %{REQUEST_FILENAME} !-f
             RewriteCond %{REQUEST_FILENAME} !-d
-            RewriteRule . /app/index.html [L]
+            RewriteRule ^app/(.*)$ app/index.html [L]
           </IfModule>
-          EOF
+          HTEOF
 
-      # --- Commit Hostinger build back to main ---
-      - name: Commit Hostinger build to main
-        run: |
+          # Commit everything back to main so Hostinger picks it up
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add hostinger/
+          git add app/ .htaccess *.jpg *.png *.webp *.svg 2>/dev/null || true
+          git rm -r --cached hostinger/ 2>/dev/null || true
           git diff --staged --quiet || git commit -m "chore: update hostinger build [skip ci]"
           git push origin main
 
-      # --- Assemble and deploy GitHub Pages ---
-      - name: Assemble final site
+      # --- Assemble and deploy to GitHub Pages ---
+      - name: Assemble final GitHub Pages site
         run: |
           mkdir -p dist
           cp landing/index.html dist/index.html
