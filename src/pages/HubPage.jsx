@@ -1,6 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import { BookOpen, Target, Cpu, Zap, Shield, ArrowRight } from 'lucide-react';
+import { BookOpen, Target, Cpu, Zap, Shield, ArrowRight, ArrowLeft } from 'lucide-react';
+
+const landingBase = (import.meta.env.VITE_BASENAME || '/EAE/app').replace(/\/app$/, '') + '/';
 
 const SERVICES = [
   {
@@ -91,6 +93,14 @@ export function HubPage() {
 
       {/* Main */}
       <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 1.5rem 5rem' }}>
+        <a
+          href={landingBase}
+          style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.85rem', color: '#6b5c4e', textDecoration: 'none', fontWeight: 500, marginBottom: '2rem' }}
+          onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
+          onMouseLeave={e => e.currentTarget.style.color = '#6b5c4e'}
+        >
+          <ArrowLeft size={15} /> Back to site
+        </a>
         <div style={{ marginBottom: '2.5rem' }}>
           <h1 style={{
             fontFamily: "'Playfair Display', Georgia, serif",
