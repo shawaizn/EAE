@@ -27,13 +27,12 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      # Cache covers React source + landing — any change triggers a rebuild
       - name: Restore build cache
         id: cache
         uses: actions/cache@v4
         with:
           path: dist/app
-          key: build-${{ hashFiles('src/**', 'public/**', 'index.html', 'package-lock.json', 'vite.config.ts', 'landing/**') }}
+          key: build-${{ hashFiles('src/**', 'public/**', 'vite-entry.html', 'package-lock.json', 'vite.config.ts', 'landing/**') }}
 
       - name: Setup Node.js
         if: steps.cache.outputs.cache-hit != 'true'
@@ -55,7 +54,7 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
           mkdir -p dist/app
-          mv dist/index.html dist/app/index.html
+          mv dist/vite-entry.html dist/app/index.html
           [ -d dist/assets ] && mv dist/assets dist/app/assets
 
       # --- Build for Hostinger (base: /app/) and commit to main ---
@@ -66,38 +65,39 @@ jobs:
       - name: Commit Hostinger build to main
         if: steps.cache.outputs.cache-hit != 'true'
         run: |
-          # Move built files into app/ at repo root
+          # Place built app into app/ at repo root
           rm -rf app
           mkdir -p app
-          mv dist/index.html app/index.html
+          mv dist/vite-entry.html app/index.html
           [ -d dist/assets ] && mv dist/assets app/assets
 
-          # Copy landing page images to repo root so relative URLs resolve correctly
+          # .htaccess inside app/ handles SPA routing for /app/* URLs
+          cat > app/.htaccess << 'HTEOF'
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /app/
+  RewriteRule ^index\.html$ - [L]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /app/index.html [L]
+</IfModule>
+HTEOF
+
+          # Copy landing images to root so relative paths resolve correctly
           for img in landing/*.jpg landing/*.png landing/*.webp landing/*.svg; do
-            [ -f "$img" ] && cp "$img" "$(basename $img)"
+            [ -f "$img" ] && cp "$img" "$(basename "$img")"
           done
 
-          # .htaccess: route / to landing page, route /app/* to the SPA
-          cat > .htaccess << 'HTEOF'
-          <IfModule mod_rewrite.c>
-            RewriteEngine On
-            RewriteBase /
+          # Keep root index.html in sync with landing page source
+          cp landing/index.html index.html
 
-            # Serve landing page transparently at the domain root
-            RewriteRule ^$ landing/index.html [L]
-            RewriteRule ^index\.html$ landing/index.html [L]
-
-            # SPA routing — all /app/* paths go to the React entry point
-            RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteCond %{REQUEST_FILENAME} !-d
-            RewriteRule ^app/(.*)$ app/index.html [L]
-          </IfModule>
-          HTEOF
-
-          # Commit everything back to main so Hostinger picks it up
+          # Commit back to main — Hostinger picks this up automatically
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add app/ .htaccess *.jpg *.png *.webp *.svg 2>/dev/null || true
+          git add app/ index.html
+          for img in landing/*.jpg landing/*.png landing/*.webp landing/*.svg; do
+            [ -f "$img" ] && git add "$(basename "$img")" 2>/dev/null || true
+          done
           git rm -r --cached hostinger/ 2>/dev/null || true
           git diff --staged --quiet || git commit -m "chore: update hostinger build [skip ci]"
           git push origin main
