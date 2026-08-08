@@ -28,11 +28,12 @@ export function Layout({ children, user, onSignOut }) {
               onClick={() => setSidebarOpen(false)}
             />
             <aside
-              className="bg-white border-r overflow-y-auto flex-shrink-0 fixed left-0 top-0 z-40 pt-16"
+              className="bg-white border-r overflow-y-auto flex-shrink-0 fixed left-0 z-40"
               style={{
                 borderColor: '#e8dfd4',
                 width: '16rem',
-                height: '100dvh',
+                top: '4rem',
+                height: 'calc(100dvh - 4rem)',
               }}
             >
               <MainSidebar

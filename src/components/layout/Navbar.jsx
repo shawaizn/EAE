@@ -15,7 +15,7 @@ export function Navbar({ user }) {
       borderBottom: '1px solid rgba(193,127,58,0.15)',
       position: 'sticky',
       top: 0,
-      zIndex: 20,
+      zIndex: 50,
     }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
