@@ -73,21 +73,11 @@ export function HubPage() {
           <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.35rem', fontWeight: 700, color: '#1a1612', letterSpacing: '-0.01em' }}>
             Energise <span style={{ color: '#c17f3a' }}>AI</span>
           </span>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-            {user?.email && (
-              <span className="hidden sm:block" style={{ fontSize: '0.8rem', color: '#9a8a7a' }}>
-                {user.email}
-              </span>
-            )}
-            <button
-              onClick={handleSignOut}
-              style={{ fontSize: '0.85rem', color: '#6b5c4e', fontWeight: 600, background: 'none', border: 'none', cursor: 'pointer', padding: '4px 0' }}
-              onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
-              onMouseLeave={e => e.currentTarget.style.color = '#6b5c4e'}
-            >
-              Sign out
-            </button>
-          </div>
+          {user?.email && (
+            <span className="hidden sm:block" style={{ fontSize: '0.8rem', color: '#9a8a7a' }}>
+              {user.email}
+            </span>
+          )}
         </div>
       </nav>
 
