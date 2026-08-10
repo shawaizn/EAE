@@ -839,6 +839,99 @@ ul { list-style: none; }
   .section { padding: 48px 0; }
   .hero__sub { font-size: 1rem; }
 }
+
+/* ---- DEPARTMENT TABS ---- */
+.dept-tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+.dept-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 8px;
+  border: 1.5px solid var(--border);
+  background: var(--surface);
+  font-family: var(--font);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.dept-tab:hover { border-color: var(--accent); color: var(--accent); }
+.dept-tab--active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.dept-tab__icon { font-size: 1rem; }
+
+.dept-panel { display: none; }
+.dept-panel--active { display: block; }
+
+.dept-panel__desc {
+  text-align: center;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto 36px;
+}
+
+.agents-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  max-width: 620px;
+  margin: 0 auto;
+}
+.agents-grid--trio { max-width: 880px; }
+.agents-grid--solo { max-width: 300px; }
+.agents-grid .agent-card { width: auto; flex-shrink: unset; }
+
+.agent-card__badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1.5px solid rgba(193,127,58,0.4);
+  border-radius: 20px;
+  padding: 3px 10px;
+}
+.agent-card--soon { opacity: 0.8; }
+
+.dept-custom {
+  margin: 48px auto 0;
+  text-align: center;
+  padding: 36px 32px;
+  border: 1.5px dashed var(--accent);
+  border-radius: 16px;
+  background: var(--accent-light);
+  max-width: 560px;
+}
+.dept-custom__icon {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: var(--accent); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; margin: 0 auto 16px;
+}
+.dept-custom__title {
+  font-family: var(--font-display); font-size: 1.3rem;
+  font-weight: 500; color: var(--text); margin-bottom: 10px;
+}
+.dept-custom__desc {
+  font-size: 0.9rem; color: var(--text-muted); line-height: 1.65;
+  margin-bottom: 20px; max-width: 400px;
+  margin-left: auto; margin-right: auto;
+}
+
+@media (max-width: 640px) {
+  .dept-tabs { gap: 6px; }
+  .dept-tab { padding: 10px 14px; font-size: 0.82rem; }
+  .agents-grid--trio, .agents-grid--solo { max-width: 100%; }
+}
   </style>
 </head>
 <body>
@@ -850,7 +943,7 @@ ul { list-style: none; }
       <ul class="nav__links">
         <li><a href="#problem">The Problem</a></li>
         <li><a href="#team">Who We Are</a></li>
-        <li><a href="#what-we-do">What We Do</a></li>
+        <li><a href="#what-we-do">AI Employees</a></li>
         <li><a href="#why-us">Why Us</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Get In Touch</a></li>
@@ -867,7 +960,7 @@ ul { list-style: none; }
     <ul>
       <li><a href="#problem" class="mm-link">The Problem</a></li>
       <li><a href="#team" class="mm-link">Who We Are</a></li>
-      <li><a href="#what-we-do" class="mm-link">What We Do</a></li>
+      <li><a href="#what-we-do" class="mm-link">AI Employees</a></li>
       <li><a href="#why-us" class="mm-link">Why Us</a></li>
       <li><a href="#pricing" class="mm-link">Pricing</a></li>
       <li><a href="#contact" class="mm-link">Get In Touch</a></li>
@@ -880,7 +973,7 @@ ul { list-style: none; }
     <div class="hero__content">
       <p class="hero__label">AI Employees · energiseai.co.uk</p>
       <h1 class="hero__headline">Your admin work still gets done.<br>You just don't have to do it.</h1>
-      <p class="hero__sub">We build AI employees that answer calls, follow up leads, handle customer service and much more — so you can focus on the parts of your business only you can do.</p>
+      <p class="hero__sub">We build AI employees for Sales, Marketing, Customer Service, Finance, Operations and more — so you can focus on the parts of your business only you can do.</p>
       <div class="hero__actions">
         <a href="#contact" class="btn btn--primary">Get In Touch</a>
         <a href="#what-we-do" class="btn btn--ghost">See What We Do</a>
@@ -1010,142 +1103,239 @@ ul { list-style: none; }
     </div>
   </section>
 
-  <!-- WHAT WE DO -->
+  <!-- AI EMPLOYEES BY DEPARTMENT -->
   <section class="section section--alt" id="what-we-do">
-    <div class="agents-section__header container">
-      <p class="label label--center">The team</p>
-      <h2 class="section__heading section__heading--center">Your new AI employees.</h2>
-      <p class="section__sub">Each one is built for a specific job. They start immediately, work around the clock, and never drop the ball.</p>
-    </div>
-    <div class="agents-track-wrap">
-      <div class="agents-track">
+    <div class="container">
+      <p class="label label--center">AI Employees by Department</p>
+      <h2 class="section__heading section__heading--center">Which part of your business<br>needs the most help?</h2>
+      <p class="section__sub">Every department has tasks that eat time and cost money. Select yours below to see which AI employee handles it.</p>
 
-        <div class="agent-card">
-          <div class="agent-card__top">
-            <div class="agent-card__avatar">M</div>
-            <span class="agent-card__status">● Online</span>
-          </div>
-          <h3 class="agent-card__name">Max</h3>
-          <p class="agent-card__role">AI Appointment Setter</p>
-          <p class="agent-card__tagline">Your calendar's empty because nobody has time to chase leads. Max fixes that.</p>
-          <ul class="agent-card__facts">
-            <li>Follows up every lead automatically</li>
-            <li>Books directly into your calendar</li>
-            <li>Works across WhatsApp, SMS & email</li>
-          </ul>
-          <div class="agent-card__demo">
-            <span>▶</span>
-            <p>Demo coming soon</p>
-          </div>
-        </div>
-
-        <div class="agent-card">
-          <div class="agent-card__top">
-            <div class="agent-card__avatar">I</div>
-            <span class="agent-card__status">● Online</span>
-          </div>
-          <h3 class="agent-card__name">Ivy</h3>
-          <p class="agent-card__role">AI Receptionist</p>
-          <p class="agent-card__tagline">Every missed call is a lost customer. Ivy answers every call, 24/7.</p>
-          <ul class="agent-card__facts">
-            <li>Answers calls in your business name</li>
-            <li>Handles FAQs & takes messages</li>
-            <li>Transfers or escalates when needed</li>
-          </ul>
-          <div class="agent-card__demo">
-            <span>▶</span>
-            <p>Demo coming soon</p>
-          </div>
-        </div>
-
-        <div class="agent-card">
-          <div class="agent-card__top">
-            <div class="agent-card__avatar">S</div>
-            <span class="agent-card__status">● Online</span>
-          </div>
-          <h3 class="agent-card__name">Sage</h3>
-          <p class="agent-card__role">AI Support Agent</p>
-          <p class="agent-card__tagline">Your team is drowning in the same questions. Sage resolves them instantly.</p>
-          <ul class="agent-card__facts">
-            <li>Instant responses 24/7</li>
-            <li>Handles returns, queries & complaints</li>
-            <li>Learns your business inside out</li>
-          </ul>
-          <div class="agent-card__demo">
-            <span>▶</span>
-            <p>Demo coming soon</p>
-          </div>
-        </div>
-
-        <div class="agent-card">
-          <div class="agent-card__top">
-            <div class="agent-card__avatar">O</div>
-            <span class="agent-card__status">● Online</span>
-          </div>
-          <h3 class="agent-card__name">Otto</h3>
-          <p class="agent-card__role">AI Assistant</p>
-          <p class="agent-card__tagline">There aren't enough hours to be unorganised. Otto handles the busywork.</p>
-          <ul class="agent-card__facts">
-            <li>Manages emails & scheduling</li>
-            <li>Summarises meetings & notes</li>
-            <li>Keeps things moving in the background</li>
-          </ul>
-          <div class="agent-card__demo">
-            <span>▶</span>
-            <p>Demo coming soon</p>
-          </div>
-        </div>
-
-        <div class="agent-card">
-          <div class="agent-card__top">
-            <div class="agent-card__avatar">Ir</div>
-            <span class="agent-card__status">● Online</span>
-          </div>
-          <h3 class="agent-card__name">Iris</h3>
-          <p class="agent-card__role">AI Research Assistant</p>
-          <p class="agent-card__tagline">Your reps walk into calls unprepared. Iris makes sure they never do again.</p>
-          <ul class="agent-card__facts">
-            <li>Researches leads before every call</li>
-            <li>Pulls competitor & market data</li>
-            <li>Delivers briefings in minutes</li>
-          </ul>
-          <div class="agent-card__demo">
-            <span>▶</span>
-            <p>Demo coming soon</p>
-          </div>
-        </div>
-
-        <div class="agent-card">
-          <div class="agent-card__top">
-            <div class="agent-card__avatar">L</div>
-            <span class="agent-card__status">● Online</span>
-          </div>
-          <h3 class="agent-card__name">Leo</h3>
-          <p class="agent-card__role">AI Content Creator</p>
-          <p class="agent-card__tagline">Filming content is slow and expensive. Leo publishes in minutes.</p>
-          <ul class="agent-card__facts">
-            <li>Writes posts, captions & emails</li>
-            <li>Consistent output, every week</li>
-            <li>Matched to your brand voice</li>
-          </ul>
-          <div class="agent-card__demo">
-            <span>▶</span>
-            <p>Demo coming soon</p>
-          </div>
-        </div>
-
-        <div class="agent-card agent-card--custom">
-          <div class="agent-card__top">
-            <div class="agent-card__avatar">+</div>
-            <span class="agent-card__status">● Available</span>
-          </div>
-          <h3 class="agent-card__name">Your Role</h3>
-          <p class="agent-card__role">Custom AI Employee</p>
-          <p class="agent-card__tagline">Built around your workflow, your team, and your specific needs.</p>
-          <a href="#contact" class="btn btn--primary" style="margin-top: auto;">Let's build yours →</a>
-        </div>
-
+      <div class="dept-tabs" role="tablist" aria-label="Business departments">
+        <button class="dept-tab dept-tab--active" data-dept="sales" role="tab" aria-selected="true">
+          <span class="dept-tab__icon">💼</span>Sales
+        </button>
+        <button class="dept-tab" data-dept="marketing" role="tab" aria-selected="false">
+          <span class="dept-tab__icon">📣</span>Marketing
+        </button>
+        <button class="dept-tab" data-dept="customer-service" role="tab" aria-selected="false">
+          <span class="dept-tab__icon">🎧</span>Customer Service
+        </button>
+        <button class="dept-tab" data-dept="finance" role="tab" aria-selected="false">
+          <span class="dept-tab__icon">💰</span>Finance
+        </button>
+        <button class="dept-tab" data-dept="operations" role="tab" aria-selected="false">
+          <span class="dept-tab__icon">⚙️</span>Operations
+        </button>
       </div>
+
+      <!-- SALES -->
+      <div class="dept-panel dept-panel--active" data-dept="sales" role="tabpanel">
+        <p class="dept-panel__desc">From chasing leads to booking meetings — these AI employees make sure your pipeline never runs cold.</p>
+        <div class="agents-grid">
+
+          <div class="agent-card">
+            <div class="agent-card__top">
+              <div class="agent-card__avatar">M</div>
+              <span class="agent-card__status">● Online</span>
+            </div>
+            <h3 class="agent-card__name">Max</h3>
+            <p class="agent-card__role">AI Appointment Setter</p>
+            <p class="agent-card__tagline">Your calendar's empty because nobody has time to chase leads. Max fixes that.</p>
+            <ul class="agent-card__facts">
+              <li>Follows up every lead automatically</li>
+              <li>Books directly into your calendar</li>
+              <li>Works across WhatsApp, SMS & email</li>
+            </ul>
+            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+          </div>
+
+          <div class="agent-card">
+            <div class="agent-card__top">
+              <div class="agent-card__avatar">Ir</div>
+              <span class="agent-card__status">● Online</span>
+            </div>
+            <h3 class="agent-card__name">Iris</h3>
+            <p class="agent-card__role">AI Research Assistant</p>
+            <p class="agent-card__tagline">Your reps walk into calls unprepared. Iris makes sure they never do again.</p>
+            <ul class="agent-card__facts">
+              <li>Researches leads before every call</li>
+              <li>Pulls competitor & market data</li>
+              <li>Delivers briefings in minutes</li>
+            </ul>
+            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- MARKETING -->
+      <div class="dept-panel" data-dept="marketing" role="tabpanel">
+        <p class="dept-panel__desc">Keep your brand visible and your audience growing — without you having to write, film, or design a single thing.</p>
+        <div class="agents-grid agents-grid--trio">
+
+          <div class="agent-card">
+            <div class="agent-card__top">
+              <div class="agent-card__avatar">L</div>
+              <span class="agent-card__status">● Online</span>
+            </div>
+            <h3 class="agent-card__name">Leo</h3>
+            <p class="agent-card__role">AI Content Creator</p>
+            <p class="agent-card__tagline">Filming content is slow and expensive. Leo publishes in minutes.</p>
+            <ul class="agent-card__facts">
+              <li>Writes posts, captions & emails</li>
+              <li>Consistent output, every week</li>
+              <li>Matched to your brand voice</li>
+            </ul>
+            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+          </div>
+
+          <div class="agent-card agent-card--soon">
+            <div class="agent-card__top">
+              <div class="agent-card__avatar">N</div>
+              <span class="agent-card__badge">Coming Soon</span>
+            </div>
+            <h3 class="agent-card__name">Nova</h3>
+            <p class="agent-card__role">AI Web Designer</p>
+            <p class="agent-card__tagline">Brief in, live website out. No developers, no delays, no invoices.</p>
+            <ul class="agent-card__facts">
+              <li>Takes a brief and builds your site</li>
+              <li>Updates pages on request</li>
+              <li>No developer needed, ever</li>
+            </ul>
+            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+          </div>
+
+          <div class="agent-card agent-card--soon">
+            <div class="agent-card__top">
+              <div class="agent-card__avatar">A</div>
+              <span class="agent-card__badge">Coming Soon</span>
+            </div>
+            <h3 class="agent-card__name">Ada</h3>
+            <p class="agent-card__role">AI Ads Writer</p>
+            <p class="agent-card__tagline">Most ad copy is forgettable. Ada writes ads that actually convert.</p>
+            <ul class="agent-card__facts">
+              <li>Writes Google and Meta ad copy</li>
+              <li>Generates A/B test variants</li>
+              <li>Tailored to your offer and audience</li>
+            </ul>
+            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CUSTOMER SERVICE -->
+      <div class="dept-panel" data-dept="customer-service" role="tabpanel">
+        <p class="dept-panel__desc">Every customer touchpoint handled instantly — no hold times, no missed messages, no frustrated customers.</p>
+        <div class="agents-grid">
+
+          <div class="agent-card">
+            <div class="agent-card__top">
+              <div class="agent-card__avatar">I</div>
+              <span class="agent-card__status">● Online</span>
+            </div>
+            <h3 class="agent-card__name">Ivy</h3>
+            <p class="agent-card__role">AI Receptionist</p>
+            <p class="agent-card__tagline">Every missed call is a lost customer. Ivy answers every call, 24/7.</p>
+            <ul class="agent-card__facts">
+              <li>Answers calls in your business name</li>
+              <li>Handles FAQs & takes messages</li>
+              <li>Transfers or escalates when needed</li>
+            </ul>
+            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+          </div>
+
+          <div class="agent-card">
+            <div class="agent-card__top">
+              <div class="agent-card__avatar">S</div>
+              <span class="agent-card__status">● Online</span>
+            </div>
+            <h3 class="agent-card__name">Sage</h3>
+            <p class="agent-card__role">AI Support Agent</p>
+            <p class="agent-card__tagline">Your team is drowning in the same questions. Sage resolves them instantly.</p>
+            <ul class="agent-card__facts">
+              <li>Instant responses 24/7</li>
+              <li>Handles returns, queries & complaints</li>
+              <li>Learns your business inside out</li>
+            </ul>
+            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FINANCE -->
+      <div class="dept-panel" data-dept="finance" role="tabpanel">
+        <p class="dept-panel__desc">Stop chasing payments and writing quotes by hand. These AI employees keep your cash flow moving.</p>
+        <div class="agents-grid">
+
+          <div class="agent-card agent-card--soon">
+            <div class="agent-card__top">
+              <div class="agent-card__avatar">F</div>
+              <span class="agent-card__badge">Coming Soon</span>
+            </div>
+            <h3 class="agent-card__name">Felix</h3>
+            <p class="agent-card__role">AI Invoice Chaser</p>
+            <p class="agent-card__tagline">Unpaid invoices cost you money and awkward conversations. Felix handles both.</p>
+            <ul class="agent-card__facts">
+              <li>Chases unpaid invoices automatically</li>
+              <li>Sends reminders at the right time</li>
+              <li>Escalates overdue accounts</li>
+            </ul>
+            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+          </div>
+
+          <div class="agent-card agent-card--soon">
+            <div class="agent-card__top">
+              <div class="agent-card__avatar">Q</div>
+              <span class="agent-card__badge">Coming Soon</span>
+            </div>
+            <h3 class="agent-card__name">Quinn</h3>
+            <p class="agent-card__role">AI Quote Writer</p>
+            <p class="agent-card__tagline">Slow quotes lose jobs. Quinn gets a professional proposal out in minutes.</p>
+            <ul class="agent-card__facts">
+              <li>Turns a brief into a professional quote</li>
+              <li>Sends it directly to the client</li>
+              <li>Follows up automatically</li>
+            </ul>
+            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- OPERATIONS -->
+      <div class="dept-panel" data-dept="operations" role="tabpanel">
+        <p class="dept-panel__desc">The invisible engine that keeps everything running — scheduling, admin, emails, meeting notes. All handled.</p>
+        <div class="agents-grid agents-grid--solo">
+
+          <div class="agent-card">
+            <div class="agent-card__top">
+              <div class="agent-card__avatar">O</div>
+              <span class="agent-card__status">● Online</span>
+            </div>
+            <h3 class="agent-card__name">Otto</h3>
+            <p class="agent-card__role">AI Assistant</p>
+            <p class="agent-card__tagline">There aren't enough hours to be unorganised. Otto handles the busywork.</p>
+            <ul class="agent-card__facts">
+              <li>Manages emails & scheduling</li>
+              <li>Summarises meetings & notes</li>
+              <li>Keeps things moving in the background</li>
+            </ul>
+            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CUSTOM SLOT -->
+      <div class="dept-custom">
+        <div class="dept-custom__icon">+</div>
+        <h3 class="dept-custom__title">Don't see what you need?</h3>
+        <p class="dept-custom__desc">We build custom AI employees around your specific workflow, your team, and your business — whatever the role, we can fill it.</p>
+        <a href="#contact" class="btn btn--primary">Let's build yours →</a>
+      </div>
+
     </div>
   </section>
 
@@ -1299,6 +1489,20 @@ ul { list-style: none; }
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Department tab switching
+    const deptTabs = document.querySelectorAll('.dept-tab');
+    const deptPanels = document.querySelectorAll('.dept-panel');
+    deptTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const dept = tab.dataset.dept;
+        deptTabs.forEach(t => { t.classList.remove('dept-tab--active'); t.setAttribute('aria-selected', 'false'); });
+        deptPanels.forEach(p => p.classList.remove('dept-panel--active'));
+        tab.classList.add('dept-tab--active');
+        tab.setAttribute('aria-selected', 'true');
+        document.querySelector(`.dept-panel[data-dept="${dept}"]`).classList.add('dept-panel--active');
+      });
+    });
   </script>
 
 </body>
