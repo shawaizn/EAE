@@ -227,6 +227,13 @@ ul { list-style: none; }
   color: var(--text);
   margin-bottom: 24px;
 }
+.hero__definition {
+  font-size: 1.25rem;
+  color: var(--text);
+  line-height: 1.6;
+  max-width: 500px;
+  margin-bottom: 20px;
+}
 .hero__sub {
   font-size: 1.1rem;
   color: var(--text-muted);
@@ -835,6 +842,10 @@ ul { list-style: none; }
   .team__card--featured { padding: 24px; gap: 20px; }
 }
 
+@media (max-width: 600px) {
+  .hero__definition { font-size: 1.1rem; }
+}
+
 @media (max-width: 380px) {
   .section { padding: 48px 0; }
   .hero__sub { font-size: 1rem; }
@@ -981,7 +992,8 @@ ul { list-style: none; }
     <div class="hero__content">
       <p class="hero__label">AI Employees · energiseai.co.uk</p>
       <p class="hero__motto">Work smarter, not harder.</p>
-      <h1 class="hero__headline">Your admin work still gets done.<br>You just don't have to do it.</h1>
+      <h1 class="hero__headline">AI Employees</h1>
+      <p class="hero__definition">An AI employee is software that does a specific job in your business, like answering calls, replying to customers or following up leads, around the clock.</p>
       <p class="hero__sub">We build AI employees for Sales, Marketing, Customer Service, Finance, Operations and more — so you can focus on the parts of your business only you can do.</p>
       <div class="hero__actions">
         <a href="#contact" class="btn btn--primary">Get In Touch</a>
