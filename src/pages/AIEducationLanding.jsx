@@ -200,6 +200,13 @@ export function AIEducationLanding() {
             <h3 className="text-2xl font-bold mb-4" style={{ color: theme.colors.text.primary }}>
               Give your teenager the AI advantage for their future careers
             </h3>
+            <a
+              href="#book"
+              className="inline-flex items-center justify-center gap-2 mt-2 px-7 py-3.5 rounded-lg font-semibold text-white transition-all hover:scale-105"
+              style={{ backgroundColor: theme.colors.accent.cyan }}
+            >
+              Book a Place <ArrowRight size={18} />
+            </a>
           </div>
         </div>
       </section>
@@ -244,7 +251,7 @@ export function AIEducationLanding() {
             {certificates.map((c) => (
               <div key={c.title} className="flex flex-col rounded-lg border bg-white overflow-hidden" style={{ borderColor: theme.colors.border.subtle }}>
                 <a href={c.pdf} target="_blank" rel="noopener noreferrer" aria-label={`Open ${c.title} certificate`}>
-                  <img src={c.image} alt={`Codecademy certificate: ${c.title}`} className="w-full border-b" style={{ borderColor: theme.colors.border.subtle }} loading="lazy" />
+                  <img src={c.image} alt={`Codecademy certificate: ${c.title}`} width={640} height={511} className="w-full h-auto border-b" style={{ borderColor: theme.colors.border.subtle }} loading="lazy" />
                 </a>
                 <div className="p-3 sm:p-4 flex flex-col flex-1">
                   <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: theme.colors.accent.cyan }}>
