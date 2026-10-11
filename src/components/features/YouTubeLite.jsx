@@ -2,9 +2,10 @@ import { useState } from 'react';
 
 // Lightweight YouTube player: shows the thumbnail with a play button and only
 // loads YouTube's player when clicked, so the page stays fast.
+// With no `id` it shows a "Video coming soon" placeholder in the same frame.
 export function YouTubeLite({ id, title }) {
   const [playing, setPlaying] = useState(false);
-  const [thumb, setThumb] = useState(`https://i.ytimg.com/vi/${id}/maxresdefault.jpg`);
+  const [thumb, setThumb] = useState(id ? `https://i.ytimg.com/vi/${id}/maxresdefault.jpg` : '');
 
   return (
     <div
@@ -15,7 +16,22 @@ export function YouTubeLite({ id, title }) {
         boxShadow: '0 24px 64px rgba(26,22,18,0.18)',
       }}
     >
-      {playing ? (
+      {!id ? (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-4 text-white">
+          <span
+            className="flex items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full"
+            style={{ backgroundColor: 'rgba(193,127,58,0.35)', border: '2px solid rgba(193,127,58,0.7)' }}
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 24 24" className="w-9 h-9 sm:w-10 sm:h-10 ml-1" fill="currentColor">
+              <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z" />
+            </svg>
+          </span>
+          <span className="text-sm sm:text-base font-semibold tracking-wide" style={{ color: 'rgba(255,255,255,0.85)' }}>
+            Video coming soon
+          </span>
+        </div>
+      ) : playing ? (
         <iframe
           className="absolute inset-0 w-full h-full"
           src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}

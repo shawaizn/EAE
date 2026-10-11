@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Target, Users, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, CalendarDays, UserCheck } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Target, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, UserCheck } from 'lucide-react';
 import { theme, behavior } from '../styles/theme';
 import { LogoHorizontal } from '../components/branding/Logo';
 import teacherPhoto from '../assets/shawaiz-teacher.jpg';
@@ -9,7 +9,7 @@ import { CertificateDialog, CertificateThumb } from '../components/features/Cert
 import { YouTubeLite } from '../components/features/YouTubeLite';
 
 // YouTube video shown in the hero. Paste the video's ID here (the part after
-// "watch?v=" or "youtu.be/"). While it's empty, the hero shows the text version.
+// "watch?v=" or "youtu.be/"). While it's empty, a "Video coming soon" placeholder shows.
 const HERO_VIDEO_ID = '';
 
 // Derive landing page base URL from the app basename so links work on any host
@@ -121,42 +121,13 @@ export function AIEducationLanding() {
       {/* Hero Section */}
       <section className="min-h-[calc(100svh-4rem)] flex items-center justify-center py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-5xl mx-auto text-center">
-          {HERO_VIDEO_ID ? (
-            <>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8" style={{ color: theme.colors.text.primary }}>
-                AI Education Program
-              </h1>
-              {/* Sized so title, video and buttons fit on one screen */}
-              <div className="mx-auto" style={{ width: 'min(100%, 960px, calc((100svh - 4rem - 300px) * 16 / 9))' }}>
-                <YouTubeLite id={HERO_VIDEO_ID} title="AI Education Program" />
-              </div>
-            </>
-          ) : (
-            <div className="max-w-4xl mx-auto">
-              <div className="mb-6">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6" style={{ color: theme.colors.text.primary }}>
-                  AI Education Program
-                </h1>
-                <p className="text-lg sm:text-xl" style={{ color: theme.colors.text.secondary }}>
-                  Give your teenager the AI advantage for their future careers
-                </p>
-              </div>
-              <div className="inline-block px-4 py-2 rounded-full border" style={{
-                borderColor: theme.colors.accent.cyan,
-                backgroundColor: `${theme.colors.accent.cyan}08`,
-              }}>
-                <span className="text-sm font-semibold" style={{ color: theme.colors.accent.cyan }}>
-                  Only 29 spots available • First 15 students get £20 discount
-                </span>
-              </div>
-              <div className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium" style={{ color: theme.colors.text.secondary }}>
-                <span className="flex items-center gap-2"><CalendarDays size={16} style={{ color: theme.colors.accent.cyan }} />Starts 1st November</span>
-                <span className="flex items-center gap-2"><Video size={16} style={{ color: theme.colors.accent.cyan }} />Live online lessons</span>
-                <span className="flex items-center gap-2"><Users size={16} style={{ color: theme.colors.accent.cyan }} />Ages 16 and under</span>
-                <span className="flex items-center gap-2"><RotateCcw size={16} style={{ color: theme.colors.accent.cyan }} />Full refund after lesson one</span>
-              </div>
-            </div>
-          )}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8" style={{ color: theme.colors.text.primary }}>
+            AI Education Program
+          </h1>
+          {/* Sized so title, video and buttons fit on one screen */}
+          <div className="mx-auto" style={{ width: 'min(100%, 960px, calc((100svh - 4rem - 300px) * 16 / 9))' }}>
+            <YouTubeLite id={HERO_VIDEO_ID} title="AI Education Program" />
+          </div>
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3">
             <a
               href="#book"
@@ -442,6 +413,14 @@ export function AIEducationLanding() {
           <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{ color: theme.colors.text.primary }}>
             Ready to Start Your AI Journey?
           </h2>
+
+          <p className="inline-block mb-6 px-4 py-2 rounded-full border text-sm font-semibold" style={{
+            borderColor: theme.colors.accent.cyan,
+            backgroundColor: `${theme.colors.accent.cyan}08`,
+            color: theme.colors.accent.cyan,
+          }}>
+            Only 29 spots available • First 15 students get £20 discount
+          </p>
 
           <div className="flex items-start sm:items-center justify-center gap-3 mb-6 p-4 rounded-lg text-left sm:text-center" style={{
             backgroundColor: `${theme.colors.accent.cyan}12`,
