@@ -76,7 +76,7 @@ export function AIEducationLanding() {
             </a>
             <nav className="flex items-center gap-8">
               <a href="#why" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Why</a>
-              <a href="#about" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">About</a>
+              <a href="#teacher" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Tutor</a>
               <a href="#curriculum" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Curriculum</a>
               <a href="#parents" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Parents</a>
               <a
@@ -121,16 +121,14 @@ export function AIEducationLanding() {
       </section>
 
       {/* Why Section */}
-      <section id="why" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b" style={{
-        background: `linear-gradient(135deg, ${theme.colors.accent.cyan}05 0%, transparent 100%)`
-      }}>
+      <section id="why" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
             Why We Created This
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="p-6 rounded-lg border" style={{ borderColor: theme.colors.border.subtle }}>
+            <div className="p-6 rounded-lg border bg-white" style={{ borderColor: theme.colors.border.subtle }}>
               <p className="text-base leading-relaxed mb-4 italic" style={{ color: theme.colors.text.secondary }}>
                 In a world changing this fast, traditional education alone may not be enough.
               </p>
@@ -161,28 +159,11 @@ export function AIEducationLanding() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
-            About Energise AI Education
-          </h2>
-          <div className="p-8 rounded-lg border" style={{
-            borderColor: theme.colors.border.subtle,
-            backgroundColor: theme.colors.background.card,
-          }}>
-            <p className="text-lg leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-              Energise AI Education is dedicated to equipping young people with essential AI skills and knowledge. We provide practical, hands-on training that goes beyond tools to build real understanding of AI's impact on careers, society, and the future of work.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Teacher Section */}
-      <section id="teacher" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
+      <section id="teacher" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
-            Meet Your Child&apos;s Teacher
+            Meet the Tutor
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center p-6 sm:p-8 rounded-lg border bg-white" style={{ borderColor: theme.colors.border.subtle }}>
             <img
@@ -200,7 +181,7 @@ export function AIEducationLanding() {
                 I teach every lesson myself, live. I started Energise AI because AI, used the right way, makes things easier, saves time and expands what you&apos;re capable of. Used wrong, it delivers none of that.
               </p>
               <p className="leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                Before Energise AI, I tutored GCSE students. This course brings the same patient, step-by-step approach to teaching young people how to use AI well.
+                I&apos;ve also tutored GCSE students. This course brings the same patient, step-by-step approach to teaching young people how to use AI well.
               </p>
               <p className="leading-relaxed mt-4 font-medium" style={{ color: theme.colors.text.primary }}>
                 I hold {certificates.length} Codecademy certificates in AI, machine learning and programming, including the Machine Learning/AI Engineer Career Path.
@@ -239,10 +220,15 @@ export function AIEducationLanding() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <h3 className="text-2xl font-bold mt-16 mb-2 text-center" style={{ color: theme.colors.text.primary }}>
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-2 text-center" style={{ color: theme.colors.text.primary }}>
             What My Past Students Say
-          </h3>
+          </h2>
           <p className="text-sm text-center mb-8" style={{ color: theme.colors.text.secondary }}>
             From Year 11 students I tutored for their GCSEs
           </p>
@@ -263,9 +249,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* Curriculum Section */}
-      <section id="curriculum" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b" style={{
-        background: `linear-gradient(135deg, ${theme.colors.accent.cyan}05 0%, transparent 100%)`
-      }}>
+      <section id="curriculum" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
             Our Curriculum
@@ -293,20 +277,6 @@ export function AIEducationLanding() {
                 </p>
               </div>
             ))}
-          </div>
-
-          {/* Learn More Button */}
-          <div className="text-center mb-12">
-            <Link
-              to="/program-curriculum"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105"
-              style={{
-                background: `linear-gradient(135deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
-                color: 'white',
-              }}
-            >
-              Learn More About Our Program <ArrowRight size={20} />
-            </Link>
           </div>
 
           {/* Program Details */}
@@ -347,11 +317,25 @@ export function AIEducationLanding() {
               </p>
             </div>
           </div>
+
+          {/* Learn More Button */}
+          <div className="text-center mt-12">
+            <Link
+              to="/program-curriculum"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105"
+              style={{
+                background: `linear-gradient(135deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
+                color: 'white',
+              }}
+            >
+              Learn More About Our Program <ArrowRight size={20} />
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
             AI Skills Give
@@ -397,7 +381,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* Parent Reassurance Section */}
-      <section id="parents" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
+      <section id="parents" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
             For Parents
@@ -435,9 +419,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b" style={{
-        background: `linear-gradient(135deg, ${theme.colors.accent.cyan}08 0%, ${theme.colors.primary.deep}08 100%)`
-      }}>
+      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{ color: theme.colors.text.primary }}>
             Ready to Start Your AI Journey?
@@ -501,7 +483,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
+      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: theme.colors.text.primary }}>
             Questions Before You Book?
