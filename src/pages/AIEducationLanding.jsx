@@ -93,8 +93,8 @@ export function AIEducationLanding() {
       </header>
 
       {/* Hero Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="min-h-[calc(100svh-4rem)] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-4xl mx-auto text-center">
           <div className="mb-6">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6" style={{ color: theme.colors.text.primary }}>
               AI Education Program
@@ -116,6 +116,22 @@ export function AIEducationLanding() {
             <span className="flex items-center gap-2"><Video size={16} style={{ color: theme.colors.accent.cyan }} />Live online lessons</span>
             <span className="flex items-center gap-2"><Users size={16} style={{ color: theme.colors.accent.cyan }} />Ages 16 and under</span>
             <span className="flex items-center gap-2"><RotateCcw size={16} style={{ color: theme.colors.accent.cyan }} />Full refund after lesson one</span>
+          </div>
+          <div className="mt-10 flex flex-col sm:flex-row justify-center gap-3">
+            <a
+              href="#book"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-white transition-all hover:scale-105"
+              style={{ backgroundColor: theme.colors.accent.cyan }}
+            >
+              Book a Place <ArrowRight size={18} />
+            </a>
+            <a
+              href="#teacher"
+              className="inline-flex items-center justify-center px-7 py-3.5 rounded-lg font-semibold border bg-white transition-all hover:shadow-md"
+              style={{ borderColor: theme.colors.border.subtle, color: theme.colors.text.primary }}
+            >
+              Meet the Tutor
+            </a>
           </div>
         </div>
       </section>
@@ -419,7 +435,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
+      <section id="book" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{ color: theme.colors.text.primary }}>
             Ready to Start Your AI Journey?
