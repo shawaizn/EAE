@@ -1,9 +1,10 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Zap, Target, Users, Award, BookOpen, TrendingUp, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, CalendarDays, UserCheck } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink, FileText, Zap, Target, Users, Award, BookOpen, TrendingUp, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, CalendarDays, UserCheck } from 'lucide-react';
 import { theme, behavior } from '../styles/theme';
 import { LogoHorizontal } from '../components/branding/Logo';
 import teacherPhoto from '../assets/shawaiz-teacher.jpg';
+import { certificates } from '../data/certificates';
 
 // Derive landing page base URL from the app basename so links work on any host
 const landingBase = (import.meta.env.VITE_BASENAME || '/EAE/app').replace(/\/app$/, '') + '/';
@@ -201,7 +202,42 @@ export function AIEducationLanding() {
               <p className="leading-relaxed" style={{ color: theme.colors.text.secondary }}>
                 Before Energise AI, I tutored GCSE students. This course brings the same patient, step-by-step approach to teaching young people how to use AI well.
               </p>
+              <p className="leading-relaxed mt-4 font-medium" style={{ color: theme.colors.text.primary }}>
+                I hold {certificates.length} Codecademy certificates in AI, machine learning and programming, including the Machine Learning/AI Engineer Career Path.
+              </p>
             </div>
+          </div>
+
+          <h3 id="certificates" className="text-2xl font-bold mt-16 mb-2 text-center" style={{ color: theme.colors.text.primary }}>
+            My Certificates
+          </h3>
+          <p className="text-sm text-center mb-8" style={{ color: theme.colors.text.secondary }}>
+            Tap any certificate to open the original. Each one can be verified on Codecademy.
+          </p>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
+            {certificates.map((c) => (
+              <div key={c.title} className="flex flex-col rounded-lg border bg-white overflow-hidden" style={{ borderColor: theme.colors.border.subtle }}>
+                <a href={c.pdf} target="_blank" rel="noopener noreferrer" aria-label={`Open ${c.title} certificate`}>
+                  <img src={c.image} alt={`Codecademy certificate: ${c.title}`} className="w-full border-b" style={{ borderColor: theme.colors.border.subtle }} loading="lazy" />
+                </a>
+                <div className="p-3 sm:p-4 flex flex-col flex-1">
+                  <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: theme.colors.accent.cyan }}>
+                    {c.kind} · {c.date}
+                  </p>
+                  <h4 className="text-sm sm:text-base font-semibold mt-1 flex-1" style={{ color: theme.colors.text.primary }}>
+                    {c.title}
+                  </h4>
+                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs sm:text-sm font-medium">
+                    <a href={c.pdf} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:underline" style={{ color: theme.colors.accent.cyan }}>
+                      <FileText size={14} /> View
+                    </a>
+                    <a href={c.verifyUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:underline" style={{ color: theme.colors.text.secondary }}>
+                      <ExternalLink size={14} /> Verify
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
 
           <h3 className="text-2xl font-bold mt-16 mb-2 text-center" style={{ color: theme.colors.text.primary }}>
