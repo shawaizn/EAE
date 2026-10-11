@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Zap, Target, Users, Award, BookOpen, TrendingUp } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Zap, Target, Users, Award, BookOpen, TrendingUp } from 'lucide-react';
 import { theme, behavior } from '../styles/theme';
 import { LogoHorizontal } from '../components/branding/Logo';
+
+// Derive landing page base URL from the app basename so links work on any host
+const landingBase = (import.meta.env.VITE_BASENAME || '/EAE/app').replace(/\/app$/, '') + '/';
 
 export function AIEducationLanding() {
   useEffect(() => {
@@ -37,11 +40,21 @@ export function AIEducationLanding() {
       <header className="sticky top-0 z-20 bg-white border-b" style={{ borderColor: theme.colors.border.subtle }}>
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <LogoHorizontal size="sm" />
-            <nav className="hidden sm:flex gap-8">
-              <a href="#why" className="text-sm font-medium hover:text-cyan-600 transition-colors">Why</a>
-              <a href="#about" className="text-sm font-medium hover:text-cyan-600 transition-colors">About</a>
-              <a href="#curriculum" className="text-sm font-medium hover:text-cyan-600 transition-colors">Curriculum</a>
+            <a href={landingBase} aria-label="Energise AI home">
+              <LogoHorizontal size="sm" />
+            </a>
+            <nav className="flex items-center gap-8">
+              <a href="#why" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Why</a>
+              <a href="#about" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">About</a>
+              <a href="#curriculum" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Curriculum</a>
+              <a
+                href={landingBase}
+                className="flex items-center gap-2 text-sm font-medium transition-colors"
+                style={{ color: theme.colors.accent.cyan }}
+              >
+                <ArrowLeft className="w-4 h-4" />
+                Back to Energise AI
+              </a>
             </nav>
           </div>
         </div>
