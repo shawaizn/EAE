@@ -249,6 +249,22 @@ ul { list-style: none; }
 .hero__image {
   position: relative;
 }
+
+/* Desktop: text column spans exactly the photo's height —
+   headline top lines up with the photo top, buttons with its bottom */
+@media (min-width: 901px) {
+  .hero { align-content: center; }
+  .hero__content {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero__content > *,
+  .hero__copy .hero__sub { margin-bottom: 0; }
+  .hero__copy .hero__definition { margin-bottom: 24px; }
+  .hero__headline { margin-top: -0.17em; }
+}
 .hero__image img {
   width: 100%;
   height: clamp(480px, 72vh, 760px);
@@ -991,8 +1007,10 @@ ul { list-style: none; }
   <section class="hero" id="home">
     <div class="hero__content">
       <h1 class="hero__headline">AI Employees</h1>
-      <p class="hero__definition">An AI employee is software that does a specific job in your business, like answering calls, replying to customers or following up leads, around the clock.</p>
-      <p class="hero__sub">We build AI employees for Sales, Marketing, Customer Service, Finance, Operations and more — so you can focus on the parts of your business only you can do.</p>
+      <div class="hero__copy">
+        <p class="hero__definition">An AI employee is software that does a specific job in your business, like answering calls, replying to customers or following up leads, around the clock.</p>
+        <p class="hero__sub">We build AI employees for Sales, Marketing, Customer Service, Finance, Operations and more — so you can focus on the parts of your business only you can do.</p>
+      </div>
       <div class="hero__actions">
         <a href="#contact" class="btn btn--primary">Get In Touch</a>
         <a href="#what-we-do" class="btn btn--ghost">See What We Do</a>
