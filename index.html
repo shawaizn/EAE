@@ -381,7 +381,7 @@ ul { list-style: none; }
 
 .team__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
 .team__card--featured {
@@ -412,6 +412,8 @@ ul { list-style: none; }
   justify-content: center;
   margin-bottom: 16px;
 }
+.team__photo-wrap--avatar { overflow: hidden; border: 2px solid var(--accent); }
+.team__avatar { width: 100%; height: 100%; object-fit: cover; }
 .team__photo-placeholder {
   font-family: var(--font-display);
   font-size: 1.4rem;
@@ -419,6 +421,8 @@ ul { list-style: none; }
   color: var(--accent);
 }
 .team__card:not(.team__card--featured) {
+  display: flex;
+  flex-direction: column;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 16px;
@@ -720,6 +724,8 @@ ul { list-style: none; }
 .why__card-link:hover { gap: 10px; color: var(--accent-dark); }
 .why__card-coming-soon {
   display: inline-block;
+  align-self: flex-start;
+  margin-top: 12px;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -951,6 +957,84 @@ ul { list-style: none; }
 }
 .agent-card--soon { opacity: 0.8; }
 
+/* ---- CARD DETAILS MODAL ---- */
+[data-modal-card] { cursor: pointer; }
+[data-modal-card]:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+[data-modal-card] .expand-only { display: none; }
+.is-expanded .collapse-only { display: none; }
+.card-more {
+  display: inline-flex;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--accent);
+  transition: color 0.2s;
+}
+[data-modal-card]:hover .card-more { color: var(--accent-dark); }
+
+.modal {
+  border: 0;
+  padding: 0;
+  margin: auto;
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  border-radius: 20px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 32px 80px rgba(26,22,18,0.25);
+  overflow: hidden;
+}
+.modal[open] { display: flex; flex-direction: column; animation: modal-in 0.22s ease; }
+.modal::backdrop { background: rgba(26,22,18,0.55); backdrop-filter: blur(3px); }
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to { opacity: 1; transform: none; }
+}
+.modal__close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 1;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  color: var(--text);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal__close:hover { background: var(--accent-light); color: var(--accent-dark); }
+.modal__body { padding: 40px 32px 32px; overflow-y: auto; }
+html.modal-open { overflow: hidden; }
+
+.modal .is-expanded {
+  width: auto;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+  opacity: 1;
+}
+.modal .agent-card__top { padding-right: 48px; }
+.modal .agent-card__tagline { font-size: 1.05rem; color: var(--text); }
+.modal .agent-card__facts li { font-size: 0.95rem; }
+.modal .agent-card__demo { margin-top: 0; }
+.modal .modal-cta { margin-top: 24px; text-align: center; }
+.modal .team__photo-wrap:not(.team__photo-wrap--placeholder) { margin-bottom: 24px; }
+.modal .team__photo { height: 300px; }
+.modal .team__bio { font-size: 1rem; }
+.modal .why__card-desc { font-size: 1.02rem; margin-bottom: 20px; }
+
+@media (max-width: 520px) {
+  .modal__body { padding: 36px 22px 24px; }
+  .modal .team__photo { height: 240px; }
+}
+
 .dept-custom {
   margin: 48px auto 0;
   text-align: center;
@@ -1106,36 +1190,40 @@ ul { list-style: none; }
         <p class="dept-panel__desc">From chasing leads to booking meetings — these AI employees make sure your pipeline never runs cold.</p>
         <div class="agents-grid">
 
-          <div class="agent-card">
+          <div class="agent-card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Max does">
             <div class="agent-card__top">
               <div class="agent-card__avatar">M</div>
               <span class="agent-card__status">● Online</span>
             </div>
             <h3 class="agent-card__name">Max</h3>
             <p class="agent-card__role">AI Appointment Setter</p>
-            <p class="agent-card__tagline">Your calendar's empty because nobody has time to chase leads. Max fixes that.</p>
-            <ul class="agent-card__facts">
+            <p class="agent-card__tagline expand-only">Your calendar's empty because nobody has time to chase leads. Max fixes that.</p>
+            <ul class="agent-card__facts expand-only">
               <li>Follows up every lead automatically</li>
               <li>Books directly into your calendar</li>
               <li>Works across WhatsApp, SMS & email</li>
             </ul>
-            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
+            <span class="card-more collapse-only">See what Max does →</span>
+            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
           </div>
 
-          <div class="agent-card">
+          <div class="agent-card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Iris does">
             <div class="agent-card__top">
               <div class="agent-card__avatar">Ir</div>
               <span class="agent-card__status">● Online</span>
             </div>
             <h3 class="agent-card__name">Iris</h3>
             <p class="agent-card__role">AI Research Assistant</p>
-            <p class="agent-card__tagline">Your reps walk into calls unprepared. Iris makes sure they never do again.</p>
-            <ul class="agent-card__facts">
+            <p class="agent-card__tagline expand-only">Your reps walk into calls unprepared. Iris makes sure they never do again.</p>
+            <ul class="agent-card__facts expand-only">
               <li>Researches leads before every call</li>
               <li>Pulls competitor & market data</li>
               <li>Delivers briefings in minutes</li>
             </ul>
-            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
+            <span class="card-more collapse-only">See what Iris does →</span>
+            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
           </div>
 
         </div>
@@ -1146,52 +1234,58 @@ ul { list-style: none; }
         <p class="dept-panel__desc">Keep your brand visible and your audience growing — without you having to write, film, or design a single thing.</p>
         <div class="agents-grid agents-grid--trio">
 
-          <div class="agent-card">
+          <div class="agent-card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Leo does">
             <div class="agent-card__top">
               <div class="agent-card__avatar">L</div>
               <span class="agent-card__status">● Online</span>
             </div>
             <h3 class="agent-card__name">Leo</h3>
             <p class="agent-card__role">AI Content Creator</p>
-            <p class="agent-card__tagline">Filming content is slow and expensive. Leo publishes in minutes.</p>
-            <ul class="agent-card__facts">
+            <p class="agent-card__tagline expand-only">Filming content is slow and expensive. Leo publishes in minutes.</p>
+            <ul class="agent-card__facts expand-only">
               <li>Writes posts, captions & emails</li>
               <li>Consistent output, every week</li>
               <li>Matched to your brand voice</li>
             </ul>
-            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
+            <span class="card-more collapse-only">See what Leo does →</span>
+            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
           </div>
 
-          <div class="agent-card agent-card--soon">
+          <div class="agent-card agent-card--soon" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Nova does">
             <div class="agent-card__top">
               <div class="agent-card__avatar">N</div>
               <span class="agent-card__badge">Coming Soon</span>
             </div>
             <h3 class="agent-card__name">Nova</h3>
             <p class="agent-card__role">AI Web Designer</p>
-            <p class="agent-card__tagline">Brief in, live website out. No developers, no delays, no invoices.</p>
-            <ul class="agent-card__facts">
+            <p class="agent-card__tagline expand-only">Brief in, live website out. No developers, no delays, no invoices.</p>
+            <ul class="agent-card__facts expand-only">
               <li>Takes a brief and builds your site</li>
               <li>Updates pages on request</li>
               <li>No developer needed, ever</li>
             </ul>
-            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
+            <span class="card-more collapse-only">See what Nova does →</span>
+            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
           </div>
 
-          <div class="agent-card agent-card--soon">
+          <div class="agent-card agent-card--soon" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Ada does">
             <div class="agent-card__top">
               <div class="agent-card__avatar">A</div>
               <span class="agent-card__badge">Coming Soon</span>
             </div>
             <h3 class="agent-card__name">Ada</h3>
             <p class="agent-card__role">AI Ads Writer</p>
-            <p class="agent-card__tagline">Most ad copy is forgettable. Ada writes ads that actually convert.</p>
-            <ul class="agent-card__facts">
+            <p class="agent-card__tagline expand-only">Most ad copy is forgettable. Ada writes ads that actually convert.</p>
+            <ul class="agent-card__facts expand-only">
               <li>Writes Google and Meta ad copy</li>
               <li>Generates A/B test variants</li>
               <li>Tailored to your offer and audience</li>
             </ul>
-            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
+            <span class="card-more collapse-only">See what Ada does →</span>
+            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
           </div>
 
         </div>
@@ -1202,36 +1296,40 @@ ul { list-style: none; }
         <p class="dept-panel__desc">Every customer touchpoint handled instantly — no hold times, no missed messages, no frustrated customers.</p>
         <div class="agents-grid">
 
-          <div class="agent-card">
+          <div class="agent-card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Ivy does">
             <div class="agent-card__top">
               <div class="agent-card__avatar">I</div>
               <span class="agent-card__status">● Online</span>
             </div>
             <h3 class="agent-card__name">Ivy</h3>
             <p class="agent-card__role">AI Receptionist</p>
-            <p class="agent-card__tagline">Every missed call is a lost customer. Ivy answers every call, 24/7.</p>
-            <ul class="agent-card__facts">
+            <p class="agent-card__tagline expand-only">Every missed call is a lost customer. Ivy answers every call, 24/7.</p>
+            <ul class="agent-card__facts expand-only">
               <li>Answers calls in your business name</li>
               <li>Handles FAQs & takes messages</li>
               <li>Transfers or escalates when needed</li>
             </ul>
-            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
+            <span class="card-more collapse-only">See what Ivy does →</span>
+            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
           </div>
 
-          <div class="agent-card">
+          <div class="agent-card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Sage does">
             <div class="agent-card__top">
               <div class="agent-card__avatar">S</div>
               <span class="agent-card__status">● Online</span>
             </div>
             <h3 class="agent-card__name">Sage</h3>
             <p class="agent-card__role">AI Support Agent</p>
-            <p class="agent-card__tagline">Your team is drowning in the same questions. Sage resolves them instantly.</p>
-            <ul class="agent-card__facts">
+            <p class="agent-card__tagline expand-only">Your team is drowning in the same questions. Sage resolves them instantly.</p>
+            <ul class="agent-card__facts expand-only">
               <li>Instant responses 24/7</li>
               <li>Handles returns, queries & complaints</li>
               <li>Learns your business inside out</li>
             </ul>
-            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
+            <span class="card-more collapse-only">See what Sage does →</span>
+            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
           </div>
 
         </div>
@@ -1242,36 +1340,40 @@ ul { list-style: none; }
         <p class="dept-panel__desc">Stop chasing payments and writing quotes by hand. These AI employees keep your cash flow moving.</p>
         <div class="agents-grid">
 
-          <div class="agent-card agent-card--soon">
+          <div class="agent-card agent-card--soon" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Felix does">
             <div class="agent-card__top">
               <div class="agent-card__avatar">F</div>
               <span class="agent-card__badge">Coming Soon</span>
             </div>
             <h3 class="agent-card__name">Felix</h3>
             <p class="agent-card__role">AI Invoice Chaser</p>
-            <p class="agent-card__tagline">Unpaid invoices cost you money and awkward conversations. Felix handles both.</p>
-            <ul class="agent-card__facts">
+            <p class="agent-card__tagline expand-only">Unpaid invoices cost you money and awkward conversations. Felix handles both.</p>
+            <ul class="agent-card__facts expand-only">
               <li>Chases unpaid invoices automatically</li>
               <li>Sends reminders at the right time</li>
               <li>Escalates overdue accounts</li>
             </ul>
-            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
+            <span class="card-more collapse-only">See what Felix does →</span>
+            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
           </div>
 
-          <div class="agent-card agent-card--soon">
+          <div class="agent-card agent-card--soon" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Quinn does">
             <div class="agent-card__top">
               <div class="agent-card__avatar">Q</div>
               <span class="agent-card__badge">Coming Soon</span>
             </div>
             <h3 class="agent-card__name">Quinn</h3>
             <p class="agent-card__role">AI Quote Writer</p>
-            <p class="agent-card__tagline">Slow quotes lose jobs. Quinn gets a professional proposal out in minutes.</p>
-            <ul class="agent-card__facts">
+            <p class="agent-card__tagline expand-only">Slow quotes lose jobs. Quinn gets a professional proposal out in minutes.</p>
+            <ul class="agent-card__facts expand-only">
               <li>Turns a brief into a professional quote</li>
               <li>Sends it directly to the client</li>
               <li>Follows up automatically</li>
             </ul>
-            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
+            <span class="card-more collapse-only">See what Quinn does →</span>
+            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
           </div>
 
         </div>
@@ -1282,20 +1384,22 @@ ul { list-style: none; }
         <p class="dept-panel__desc">The invisible engine that keeps everything running — scheduling, admin, emails, meeting notes. All handled.</p>
         <div class="agents-grid agents-grid--solo">
 
-          <div class="agent-card">
+          <div class="agent-card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Otto does">
             <div class="agent-card__top">
               <div class="agent-card__avatar">O</div>
               <span class="agent-card__status">● Online</span>
             </div>
             <h3 class="agent-card__name">Otto</h3>
             <p class="agent-card__role">AI Assistant</p>
-            <p class="agent-card__tagline">There aren't enough hours to be unorganised. Otto handles the busywork.</p>
-            <ul class="agent-card__facts">
+            <p class="agent-card__tagline expand-only">There aren't enough hours to be unorganised. Otto handles the busywork.</p>
+            <ul class="agent-card__facts expand-only">
               <li>Manages emails & scheduling</li>
               <li>Summarises meetings & notes</li>
               <li>Keeps things moving in the background</li>
             </ul>
-            <div class="agent-card__demo"><span>▶</span><p>Demo coming soon</p></div>
+            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
+            <span class="card-more collapse-only">See what Otto does →</span>
+            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
           </div>
 
         </div>
@@ -1319,31 +1423,37 @@ ul { list-style: none; }
       <h2 class="section__heading section__heading--center">Real people. Real results.</h2>
       <p class="section__sub">We're not a faceless software company. We're a small team that builds and runs AI employees for businesses like yours — and we're hands-on the whole way through.</p>
       <div class="team__grid">
-        <div class="team__card team__card--featured">
-          <div class="team__photo-wrap">
+        <div class="team__card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog">
+          <div class="team__photo-wrap team__photo-wrap--placeholder team__photo-wrap--avatar collapse-only">
+            <img src="shawaiz-avatar.jpg" alt="Shawaiz Naeem" class="team__avatar" />
+          </div>
+          <div class="team__photo-wrap expand-only">
             <img src="shawaiz.jpg" alt="Shawaiz Naeem" class="team__photo" />
           </div>
           <div class="team__info">
             <h3 class="team__name">Shawaiz Naeem</h3>
             <p class="team__role">Founder</p>
-            <p class="team__bio">Shawaiz started Energise AI because AI is a powerful tool — and used in the right way, it can make things easier, save time, expand what you're capable of, and keep you competitive. But used wrong, it doesn't deliver any of that. For him, it was never about the technology itself. AI is just code. What matters is what it brings.</p>
+            <p class="team__bio expand-only">Shawaiz started Energise AI because AI is a powerful tool — and used in the right way, it can make things easier, save time, expand what you're capable of, and keep you competitive. But used wrong, it doesn't deliver any of that. For him, it was never about the technology itself. AI is just code. What matters is what it brings.</p>
+            <span class="card-more collapse-only">Read bio →</span>
           </div>
         </div>
-        <div class="team__card">
+        <div class="team__card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog">
           <div class="team__photo-wrap team__photo-wrap--placeholder">
             <div class="team__photo-placeholder">SN</div>
           </div>
           <h3 class="team__name">Shayaan Naeem</h3>
           <p class="team__role">Sales Manager</p>
-          <p class="team__bio">Shayaan is your first point of contact. He listens to what you need and makes sure the solution we build actually fits your business.</p>
+          <p class="team__bio expand-only">Shayaan is your first point of contact. He listens to what you need and makes sure the solution we build actually fits your business.</p>
+          <span class="card-more collapse-only">Read bio →</span>
         </div>
-        <div class="team__card">
+        <div class="team__card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog">
           <div class="team__photo-wrap team__photo-wrap--placeholder">
             <div class="team__photo-placeholder">YS</div>
           </div>
           <h3 class="team__name">Yashmit Sohi</h3>
           <p class="team__role">Social Media Manager</p>
-          <p class="team__bio">Yashmit handles how we reach the right people and makes sure the businesses that need us can actually find us.</p>
+          <p class="team__bio expand-only">Yashmit handles how we reach the right people and makes sure the businesses that need us can actually find us.</p>
+          <span class="card-more collapse-only">Read bio →</span>
         </div>
       </div>
     </div>
@@ -1359,24 +1469,27 @@ ul { list-style: none; }
       <p class="label" style="margin-bottom: 24px;">Included add-ons</p>
       <div class="why__grid">
 
-        <div class="why__card">
+        <div class="why__card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog">
           <div class="why__card-icon">📚</div>
           <h3 class="why__card-title">AI Training</h3>
-          <p class="why__card-desc">We train your people to work alongside AI properly — building real capability and confidence so your team stays ahead as the technology evolves.</p>
-          <a href="app/hub" class="why__card-link">Learn more →</a>
+          <p class="why__card-desc expand-only">We train your people to work alongside AI properly — building real capability and confidence so your team stays ahead as the technology evolves.</p>
+          <span class="card-more collapse-only">Read more →</span>
+          <a href="app/hub" class="why__card-link expand-only">Find out more →</a>
         </div>
 
-        <div class="why__card">
+        <div class="why__card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog">
           <div class="why__card-icon">🎯</div>
           <h3 class="why__card-title">AI Consulting</h3>
-          <p class="why__card-desc">We identify exactly where AI creates the most value in your business — before you spend a penny on implementation. Strategy first, tools second.</p>
-          <a href="app/ai-strategy" class="why__card-link">Learn more →</a>
+          <p class="why__card-desc expand-only">We identify exactly where AI creates the most value in your business — before you spend a penny on implementation. Strategy first, tools second.</p>
+          <span class="card-more collapse-only">Read more →</span>
+          <a href="app/ai-strategy" class="why__card-link expand-only">Find out more →</a>
         </div>
 
-        <div class="why__card" style="grid-column: 1 / -1; max-width: 560px; margin: 0 auto;">
+        <div class="why__card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" style="grid-column: 1 / -1; width: 100%; max-width: 560px; margin: 0 auto;">
           <div class="why__card-icon">⚡</div>
           <h3 class="why__card-title">Human Optimisation</h3>
-          <p class="why__card-desc">The best AI works best alongside people who are performing well. We help your team build better focus, energy, and habits so the whole system — human and AI — runs better together.</p>
+          <p class="why__card-desc expand-only">The best AI works best alongside people who are performing well. We help your team build better focus, energy, and habits so the whole system — human and AI — runs better together.</p>
+          <span class="card-more collapse-only">Read more →</span>
           <span class="why__card-coming-soon">Coming Soon</span>
         </div>
 
@@ -1471,6 +1584,12 @@ ul { list-style: none; }
     </div>
   </footer>
 
+  <!-- CARD DETAILS MODAL -->
+  <dialog class="modal" id="cardModal" aria-label="Details">
+    <button class="modal__close" type="button" aria-label="Close">×</button>
+    <div class="modal__body"></div>
+  </dialog>
+
   <script>
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
@@ -1513,6 +1632,36 @@ ul { list-style: none; }
         tab.setAttribute('aria-selected', 'true');
         document.querySelector(`.dept-panel[data-dept="${dept}"]`).classList.add('dept-panel--active');
       });
+    });
+
+    // Card details modal: cards show a summary, the full card opens in a pop-up
+    const modal = document.getElementById('cardModal');
+    const modalBody = modal.querySelector('.modal__body');
+    let lastCard = null;
+    function openCard(card) {
+      const copy = card.cloneNode(true);
+      ['data-modal-card', 'tabindex', 'role', 'aria-haspopup', 'aria-label', 'style'].forEach(a => copy.removeAttribute(a));
+      copy.classList.add('is-expanded');
+      modalBody.replaceChildren(copy);
+      lastCard = card;
+      modal.showModal();
+      document.documentElement.classList.add('modal-open');
+      modalBody.scrollTop = 0;
+    }
+    document.querySelectorAll('[data-modal-card]').forEach(card => {
+      card.addEventListener('click', () => openCard(card));
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCard(card); }
+      });
+    });
+    modal.querySelector('.modal__close').addEventListener('click', () => modal.close());
+    modal.addEventListener('click', e => {
+      if (e.target === modal) modal.close();                        // click on backdrop
+      if (e.target.closest('a[href^="#"]')) modal.close();          // in-page links, e.g. Get In Touch
+    });
+    modal.addEventListener('close', () => {
+      document.documentElement.classList.remove('modal-open');
+      if (lastCard) lastCard.focus({ preventScroll: true });
     });
   </script>
 
