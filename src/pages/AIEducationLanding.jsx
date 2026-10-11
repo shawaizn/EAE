@@ -358,7 +358,7 @@ export function AIEducationLanding() {
       <section id="testimonials" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-2 text-center" style={{ color: theme.colors.text.primary }}>
-            What My Past Students Say
+            What Students Say
           </h2>
           <p className="text-sm text-center mb-8" style={{ color: theme.colors.text.secondary }}>
             From Year 11 students I tutored for their GCSEs
