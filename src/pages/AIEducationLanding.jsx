@@ -1,15 +1,22 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ExternalLink, FileText, Target, Users, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, CalendarDays, UserCheck } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Target, Users, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, CalendarDays, UserCheck } from 'lucide-react';
 import { theme, behavior } from '../styles/theme';
 import { LogoHorizontal } from '../components/branding/Logo';
 import teacherPhoto from '../assets/shawaiz-teacher.jpg';
 import { certificates } from '../data/certificates';
+import { CertificateDialog, CertificateThumb } from '../components/features/CertificateDialog';
 
 // Derive landing page base URL from the app basename so links work on any host
 const landingBase = (import.meta.env.VITE_BASENAME || '/EAE/app').replace(/\/app$/, '') + '/';
 
 export function AIEducationLanding() {
+  // Certificate pop-up: null = closed, 'all' = every certificate, number = one certificate
+  const [certView, setCertView] = useState(null);
+  const [certFromAll, setCertFromAll] = useState(false);
+  const showCert = useCallback((view, fromAll = false) => { setCertView(view); setCertFromAll(fromAll); }, []);
+  const closeCert = useCallback(() => setCertView(null), []);
+
   useEffect(() => {
     // Load Stripe buy button script
     const script = document.createElement('script');
@@ -325,32 +332,24 @@ export function AIEducationLanding() {
             My Certificates
           </h3>
           <p className="text-sm text-center mb-8" style={{ color: theme.colors.text.secondary }}>
-            Tap any certificate to open the original. Each one can be verified on Codecademy.
+            {certificates.length} Codecademy certificates in AI, machine learning and programming. Tap one to see it in full.
           </p>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
-            {certificates.map((c) => (
-              <div key={c.title} className="flex flex-col rounded-lg border bg-white overflow-hidden" style={{ borderColor: theme.colors.border.subtle }}>
-                <a href={c.pdf} target="_blank" rel="noopener noreferrer" aria-label={`Open ${c.title} certificate`}>
-                  <img src={c.image} alt={`Codecademy certificate: ${c.title}`} width={640} height={511} className="w-full h-auto border-b" style={{ borderColor: theme.colors.border.subtle }} loading="lazy" />
-                </a>
-                <div className="p-3 sm:p-4 flex flex-col flex-1">
-                  <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: theme.colors.accent.cyan }}>
-                    {c.kind} · {c.date}
-                  </p>
-                  <h4 className="text-sm sm:text-base font-semibold mt-1 flex-1" style={{ color: theme.colors.text.primary }}>
-                    {c.title}
-                  </h4>
-                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs sm:text-sm font-medium">
-                    <a href={c.pdf} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:underline" style={{ color: theme.colors.accent.cyan }}>
-                      <FileText size={14} /> View
-                    </a>
-                    <a href={c.verifyUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:underline" style={{ color: theme.colors.text.secondary }}>
-                      <ExternalLink size={14} /> Verify
-                    </a>
-                  </div>
-                </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5">
+            {certificates.slice(0, 3).map((c, i) => (
+              <div key={c.title} className={i === 2 ? 'hidden sm:flex' : 'flex'}>
+                <CertificateThumb cert={c} onClick={() => showCert(i)} />
               </div>
             ))}
+          </div>
+          <div className="text-center mt-8">
+            <button
+              type="button"
+              onClick={() => showCert('all')}
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg font-semibold border bg-white transition-all hover:shadow-md"
+              style={{ borderColor: theme.colors.accent.cyan, color: theme.colors.accent.cyan }}
+            >
+              View all {certificates.length} certificates <ArrowRight size={18} />
+            </button>
           </div>
         </div>
       </section>
@@ -514,6 +513,14 @@ export function AIEducationLanding() {
           </div>
         </div>
       </section>
+
+      <CertificateDialog
+        certificates={certificates}
+        view={certView}
+        fromAll={certFromAll}
+        onShow={showCert}
+        onClose={closeCert}
+      />
 
       {/* Footer */}
       <footer className="border-t py-8 px-4 sm:px-6 lg:px-8" style={{ borderColor: theme.colors.border.subtle }}>
