@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ExternalLink, FileText, Zap, Target, Users, Award, BookOpen, TrendingUp, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, CalendarDays, UserCheck } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink, FileText, Target, Users, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, CalendarDays, UserCheck } from 'lucide-react';
 import { theme, behavior } from '../styles/theme';
 import { LogoHorizontal } from '../components/branding/Logo';
 import teacherPhoto from '../assets/shawaiz-teacher.jpg';
@@ -50,12 +50,6 @@ export function AIEducationLanding() {
     },
   ];
 
-  const benefits = [
-    { icon: TrendingUp, text: 'Increased employability', color: '#0fa3b1' },
-    { icon: Zap, text: 'Faster & smarter learning', color: '#0fa3b1' },
-    { icon: Users, text: 'Confidence with technology', color: '#0fa3b1' },
-  ];
-
   const testimonials = [
     { name: 'Zain', quote: 'Very helpful, friendly, social. Great at explaining.' },
     { name: 'Rosa', quote: 'Helpful, good resources and time management (also got 9s).' },
@@ -96,8 +90,8 @@ export function AIEducationLanding() {
             </a>
             <nav className="flex items-center gap-8">
               <a href="#why" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Why</a>
-              <a href="#teacher" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Tutor</a>
               <a href="#curriculum" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Curriculum</a>
+              <a href="#teacher" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Tutor</a>
               <a href="#parents" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Parents</a>
               <a
                 href={landingBase}
@@ -211,95 +205,6 @@ export function AIEducationLanding() {
         </div>
       </section>
 
-      {/* Teacher Section */}
-      <section id="teacher" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
-            Meet the Tutor
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center p-6 sm:p-8 rounded-lg border bg-white" style={{ borderColor: theme.colors.border.subtle }}>
-            <img
-              src={teacherPhoto}
-              alt="Shawaiz Naeem, founder of Energise AI"
-              className="md:col-span-2 w-full max-w-xs mx-auto rounded-lg object-cover aspect-[3/4]"
-              loading="lazy"
-            />
-            <div className="md:col-span-3">
-              <h3 className="text-2xl font-bold" style={{ color: theme.colors.text.primary }}>Shawaiz Naeem</h3>
-              <p className="text-sm font-semibold uppercase tracking-wide mb-4" style={{ color: theme.colors.accent.cyan }}>
-                Founder, Energise AI
-              </p>
-              <p className="leading-relaxed mb-4" style={{ color: theme.colors.text.secondary }}>
-                I teach every lesson myself, live. I started Energise AI because AI, used the right way, makes things easier, saves time and expands what you&apos;re capable of. Used wrong, it delivers none of that.
-              </p>
-              <p className="leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                I&apos;ve also tutored GCSE students. This course brings the same patient, step-by-step approach to teaching young people how to use AI well.
-              </p>
-              <p className="leading-relaxed mt-4 font-medium" style={{ color: theme.colors.text.primary }}>
-                I hold {certificates.length} Codecademy certificates in AI, machine learning and programming, including the Machine Learning/AI Engineer Career Path.
-              </p>
-            </div>
-          </div>
-
-          <h3 id="certificates" className="text-2xl font-bold mt-16 mb-2 text-center" style={{ color: theme.colors.text.primary }}>
-            My Certificates
-          </h3>
-          <p className="text-sm text-center mb-8" style={{ color: theme.colors.text.secondary }}>
-            Tap any certificate to open the original. Each one can be verified on Codecademy.
-          </p>
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
-            {certificates.map((c) => (
-              <div key={c.title} className="flex flex-col rounded-lg border bg-white overflow-hidden" style={{ borderColor: theme.colors.border.subtle }}>
-                <a href={c.pdf} target="_blank" rel="noopener noreferrer" aria-label={`Open ${c.title} certificate`}>
-                  <img src={c.image} alt={`Codecademy certificate: ${c.title}`} width={640} height={511} className="w-full h-auto border-b" style={{ borderColor: theme.colors.border.subtle }} loading="lazy" />
-                </a>
-                <div className="p-3 sm:p-4 flex flex-col flex-1">
-                  <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: theme.colors.accent.cyan }}>
-                    {c.kind} · {c.date}
-                  </p>
-                  <h4 className="text-sm sm:text-base font-semibold mt-1 flex-1" style={{ color: theme.colors.text.primary }}>
-                    {c.title}
-                  </h4>
-                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs sm:text-sm font-medium">
-                    <a href={c.pdf} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:underline" style={{ color: theme.colors.accent.cyan }}>
-                      <FileText size={14} /> View
-                    </a>
-                    <a href={c.verifyUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:underline" style={{ color: theme.colors.text.secondary }}>
-                      <ExternalLink size={14} /> Verify
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-2 text-center" style={{ color: theme.colors.text.primary }}>
-            What My Past Students Say
-          </h2>
-          <p className="text-sm text-center mb-8" style={{ color: theme.colors.text.secondary }}>
-            From Year 11 students I tutored for their GCSEs
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <figure key={t.name} className="p-6 rounded-lg border bg-white flex flex-col" style={{ borderColor: theme.colors.border.subtle }}>
-                <Quote size={24} className="mb-3" style={{ color: theme.colors.accent.cyan }} />
-                <blockquote className="flex-1 leading-relaxed" style={{ color: theme.colors.text.primary }}>
-                  &ldquo;{t.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-4 text-sm font-semibold" style={{ color: theme.colors.text.secondary }}>
-                  {t.name} · Year 11 student
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Curriculum Section */}
       <section id="curriculum" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
@@ -386,54 +291,97 @@ export function AIEducationLanding() {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
+      {/* Teacher Section */}
+      <section id="teacher" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
-            AI Skills Give
+            Meet the Tutor
           </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {benefits.map((benefit, idx) => {
-              const Icon = benefit.icon;
-              return (
-                <div
-                  key={idx}
-                  className="flex items-start gap-4 p-6 rounded-lg border"
-                  style={{
-                    borderColor: theme.colors.border.subtle,
-                    backgroundColor: theme.colors.background.card,
-                  }}
-                >
-                  <div className="flex-shrink-0 mt-1">
-                    <Icon size={24} style={{ color: benefit.color }} />
-                  </div>
-                  <p className="text-lg font-semibold" style={{ color: theme.colors.text.primary }}>
-                    {benefit.text}
-                  </p>
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center p-6 sm:p-8 rounded-lg border bg-white" style={{ borderColor: theme.colors.border.subtle }}>
+            <img
+              src={teacherPhoto}
+              alt="Shawaiz Naeem, founder of Energise AI"
+              className="md:col-span-2 w-full max-w-xs mx-auto rounded-lg object-cover aspect-[3/4]"
+              loading="lazy"
+            />
+            <div className="md:col-span-3">
+              <h3 className="text-2xl font-bold" style={{ color: theme.colors.text.primary }}>Shawaiz Naeem</h3>
+              <p className="text-sm font-semibold uppercase tracking-wide mb-4" style={{ color: theme.colors.accent.cyan }}>
+                Founder, Energise AI
+              </p>
+              <p className="leading-relaxed mb-4" style={{ color: theme.colors.text.secondary }}>
+                I teach every lesson myself, live. I started Energise AI because AI, used the right way, makes things easier, saves time and expands what you&apos;re capable of. Used wrong, it delivers none of that.
+              </p>
+              <p className="leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+                I&apos;ve also tutored GCSE students. This course brings the same patient, step-by-step approach to teaching young people how to use AI well.
+              </p>
+              <p className="leading-relaxed mt-4 font-medium" style={{ color: theme.colors.text.primary }}>
+                I hold {certificates.length} Codecademy certificates in AI, machine learning and programming, including the Machine Learning/AI Engineer Career Path.
+              </p>
+            </div>
           </div>
 
-          {/* Additional Info */}
-          <div className="p-8 rounded-lg border text-center bg-gradient-to-br" style={{
-            borderColor: theme.colors.border.subtle,
-            background: `linear-gradient(135deg, ${theme.colors.accent.cyan}08 0%, ${theme.colors.background.card} 100%)`,
-          }}>
-            <Award size={40} className="mx-auto mb-4" style={{ color: theme.colors.accent.cyan }} />
-            <h3 className="text-2xl font-bold mb-2" style={{ color: theme.colors.text.primary }}>
-              Receive a certificate upon completion
-            </h3>
-            <p style={{ color: theme.colors.text.secondary }}>
-              Students who complete the program receive an official certificate
-            </p>
+          <h3 id="certificates" className="text-2xl font-bold mt-16 mb-2 text-center" style={{ color: theme.colors.text.primary }}>
+            My Certificates
+          </h3>
+          <p className="text-sm text-center mb-8" style={{ color: theme.colors.text.secondary }}>
+            Tap any certificate to open the original. Each one can be verified on Codecademy.
+          </p>
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5">
+            {certificates.map((c) => (
+              <div key={c.title} className="flex flex-col rounded-lg border bg-white overflow-hidden" style={{ borderColor: theme.colors.border.subtle }}>
+                <a href={c.pdf} target="_blank" rel="noopener noreferrer" aria-label={`Open ${c.title} certificate`}>
+                  <img src={c.image} alt={`Codecademy certificate: ${c.title}`} width={640} height={511} className="w-full h-auto border-b" style={{ borderColor: theme.colors.border.subtle }} loading="lazy" />
+                </a>
+                <div className="p-3 sm:p-4 flex flex-col flex-1">
+                  <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: theme.colors.accent.cyan }}>
+                    {c.kind} · {c.date}
+                  </p>
+                  <h4 className="text-sm sm:text-base font-semibold mt-1 flex-1" style={{ color: theme.colors.text.primary }}>
+                    {c.title}
+                  </h4>
+                  <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-xs sm:text-sm font-medium">
+                    <a href={c.pdf} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:underline" style={{ color: theme.colors.accent.cyan }}>
+                      <FileText size={14} /> View
+                    </a>
+                    <a href={c.verifyUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:underline" style={{ color: theme.colors.text.secondary }}>
+                      <ExternalLink size={14} /> Verify
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-2 text-center" style={{ color: theme.colors.text.primary }}>
+            What My Past Students Say
+          </h2>
+          <p className="text-sm text-center mb-8" style={{ color: theme.colors.text.secondary }}>
+            From Year 11 students I tutored for their GCSEs
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimonials.map((t) => (
+              <figure key={t.name} className="p-6 rounded-lg border bg-white flex flex-col" style={{ borderColor: theme.colors.border.subtle }}>
+                <Quote size={24} className="mb-3" style={{ color: theme.colors.accent.cyan }} />
+                <blockquote className="flex-1 leading-relaxed" style={{ color: theme.colors.text.primary }}>
+                  &ldquo;{t.quote}&rdquo;
+                </blockquote>
+                <figcaption className="mt-4 text-sm font-semibold" style={{ color: theme.colors.text.secondary }}>
+                  {t.name} · Year 11 student
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Parent Reassurance Section */}
-      <section id="parents" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="parents" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
             For Parents
@@ -471,7 +419,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* CTA Section */}
-      <section id="book" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
+      <section id="book" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{ color: theme.colors.text.primary }}>
             Ready to Start Your AI Journey?
@@ -535,7 +483,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: theme.colors.text.primary }}>
             Questions Before You Book?
