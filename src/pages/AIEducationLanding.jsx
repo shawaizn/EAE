@@ -29,9 +29,29 @@ export function AIEducationLanding() {
     { week: 5, title: 'Website Build', description: 'Building with AI technology' },
   ];
 
+  const stats = [
+    {
+      value: '34%',
+      text: 'higher average pay for UK workers with AI skills',
+      source: 'PwC UK AI Jobs Barometer 2026',
+      sourceUrl: 'https://www.pwc.co.uk/press-room/press-releases/research-commentary/2026/ai-jobs-barometer-2026.html',
+    },
+    {
+      value: '#1',
+      text: 'fastest-growing skill in the world to 2030: AI and big data',
+      source: 'World Economic Forum, Future of Jobs Report 2025',
+      sourceUrl: 'https://www.weforum.org/publications/the-future-of-jobs-report-2025/in-full/3-skills-outlook/',
+    },
+    {
+      value: '39%',
+      text: "of workers' core skills are expected to change by 2030",
+      source: 'World Economic Forum, Future of Jobs Report 2025',
+      sourceUrl: 'https://www.weforum.org/publications/the-future-of-jobs-report-2025/in-full/3-skills-outlook/',
+    },
+  ];
+
   const benefits = [
     { icon: TrendingUp, text: 'Increased employability', color: '#0fa3b1' },
-    { icon: Award, text: 'Higher salaries (£1000+)', color: '#0fa3b1' },
     { icon: Zap, text: 'Faster & smarter learning', color: '#0fa3b1' },
     { icon: Users, text: 'Confidence with technology', color: '#0fa3b1' },
   ];
@@ -143,24 +163,33 @@ export function AIEducationLanding() {
             Why We Created This
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="p-6 rounded-lg border bg-white" style={{ borderColor: theme.colors.border.subtle }}>
-              <p className="text-base leading-relaxed mb-4 italic" style={{ color: theme.colors.text.secondary }}>
-                In a world changing this fast, traditional education alone may not be enough.
-              </p>
-              <p className="text-base leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                AI is drastically changing the future of work, and AI skills are becoming essential for success.
-              </p>
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-8">
+            {stats.map((stat) => (
+              <div key={stat.value} className="p-6 rounded-lg border bg-white text-center flex flex-col" style={{ borderColor: theme.colors.border.subtle }}>
+                <p className="text-5xl font-bold mb-3" style={{ color: theme.colors.accent.cyan }}>
+                  {stat.value}
+                </p>
+                <p className="flex-1 leading-relaxed font-medium" style={{ color: theme.colors.text.primary }}>
+                  {stat.text}
+                </p>
+                <a
+                  href={stat.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-4 text-xs hover:underline"
+                  style={{ color: theme.colors.text.muted }}
+                >
+                  Source: {stat.source}
+                </a>
+              </div>
+            ))}
+          </div>
 
-            <div className="p-6 rounded-lg" style={{
-              background: `linear-gradient(135deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
-            }}>
-              <p className="text-xl font-bold text-white mb-2">
-                "UK employers pay around 14% more for AI-skilled roles"
-              </p>
-              <p className="text-white/90 text-sm">— PwC</p>
-            </div>
+          <div className="p-6 rounded-lg border bg-white text-center mb-8" style={{ borderColor: theme.colors.border.subtle }}>
+            <p className="text-base leading-relaxed" style={{ color: theme.colors.text.secondary }}>
+              <span className="italic">In a world changing this fast, traditional education alone may not be enough.</span>{' '}
+              AI is drastically changing the future of work, and AI skills are becoming essential for success.
+            </p>
           </div>
 
           <div className="p-8 rounded-lg border text-center" style={{
@@ -357,7 +386,7 @@ export function AIEducationLanding() {
             AI Skills Give
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
             {benefits.map((benefit, idx) => {
               const Icon = benefit.icon;
               return (
