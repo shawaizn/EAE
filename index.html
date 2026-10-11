@@ -449,144 +449,11 @@ ul { list-style: none; }
 }
 .team__info .team__name { margin-top: 0; }
 
-.agents-section__header { margin-bottom: 0; }
 
-.agents-track-wrap {
-  overflow-x: auto;
-  padding: 8px 0 32px;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  /* Gradient fade on right edge signals there's more content to scroll to */
-  -webkit-mask-image: linear-gradient(to right, black calc(100% - 48px), transparent 100%);
-  mask-image: linear-gradient(to right, black calc(100% - 48px), transparent 100%);
-}
-.agents-track-wrap::-webkit-scrollbar { display: none; }
 
-.agents-track {
-  display: flex;
-  gap: 20px;
-  padding: 16px 24px;
-  width: max-content;
-  margin: 0 auto;
-}
 
-.agent-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px 24px;
-  width: 260px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-.agent-card:hover {
-  box-shadow: 0 8px 32px rgba(193,127,58,0.1);
-  transform: translateY(-4px);
-}
-.agent-card--custom {
-  border-style: dashed;
-  border-color: var(--accent);
-  background: var(--accent-light);
-}
 
-.agent-card__top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-.agent-card__avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: var(--accent-light);
-  border: 2px solid var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--accent);
-}
-.agent-card--custom .agent-card__avatar {
-  background: var(--accent);
-  color: #fff;
-}
-.agent-card__status {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: #2d8a5e;
-  letter-spacing: 0.04em;
-}
 
-.agent-card__name {
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin-bottom: 4px;
-}
-.agent-card__role {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 16px;
-}
-.agent-card__tagline {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-.agent-card__facts {
-  display: flex;
-  flex-direction: column;
-  gap: 9px;
-  margin-bottom: 20px;
-  flex: 1;
-  border-top: 1px solid var(--border);
-  padding-top: 16px;
-}
-.agent-card__facts li {
-  font-size: 0.85rem;
-  color: var(--text);
-  padding-left: 16px;
-  position: relative;
-  line-height: 1.4;
-}
-.agent-card__facts li::before {
-  content: '✓';
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-weight: 700;
-  font-size: 0.75rem;
-}
-.agent-card__demo {
-  background: var(--bg-alt);
-  border: 1.5px dashed var(--border);
-  border-radius: 8px;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-top: auto;
-}
-.agent-card__demo span {
-  font-size: 1.2rem;
-  color: var(--accent);
-  opacity: 0.6;
-}
-.agent-card__demo p {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-}
 
 .pricing-single {
   max-width: 720px;
@@ -895,67 +762,259 @@ ul { list-style: none; }
   margin-bottom: 20px;
 }
 
-/* ---- DEPARTMENT TABS ---- */
-.dept-tabs {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 40px;
+
+
+
+
+
+/* ---- AI EMPLOYEE CATALOGUE ---- */
+.cat-head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 48px;
+  align-items: end;
+  padding-bottom: 36px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--border);
 }
-.dept-tab {
-  display: flex;
+.cat-head .section__heading { margin-bottom: 16px; }
+.cat-head__sub { color: var(--text-muted); line-height: 1.7; max-width: 560px; }
+.cat-stats {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+.cat-stats__item { padding: 18px 26px; text-align: center; }
+.cat-stats__item + .cat-stats__item { border-left: 1px solid var(--border); }
+.cat-stats dt {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--accent);
+}
+.cat-stats dd {
+  margin-top: 4px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.cat-filter { display: flex; flex-wrap: wrap; gap: 8px; }
+.cat-filter__btn {
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 12px 22px;
-  border-radius: 8px;
-  border: 1.5px solid var(--border);
+  padding: 9px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
   background: var(--surface);
-  font-family: var(--font);
+  font: inherit;
   font-size: 0.88rem;
   font-weight: 600;
-  color: var(--text-muted);
+  color: var(--text);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
 }
-.dept-tab:hover { border-color: var(--accent); color: var(--accent); }
-.dept-tab--active { background: var(--accent); border-color: var(--accent); color: #fff; }
-.dept-tab__icon { font-size: 1rem; }
-
-.dept-panel { display: none; }
-.dept-panel--active { display: block; }
-
-.dept-panel__desc {
-  text-align: center;
-  font-size: 1rem;
+.cat-filter__btn:hover { border-color: var(--accent); }
+.cat-filter__btn--active { background: var(--text); border-color: var(--text); color: #fff; }
+.cat-filter__count {
+  min-width: 22px;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--bg-alt);
   color: var(--text-muted);
-  line-height: 1.7;
-  max-width: 560px;
-  margin: 0 auto 36px;
+  font-size: 0.75rem;
+  text-align: center;
 }
+.cat-filter__btn--active .cat-filter__count { background: rgba(255,255,255,0.16); color: #fff; }
+.cat-dept-desc { margin-top: 18px; color: var(--text-muted); font-size: 0.95rem; }
 
-.agents-grid {
+.cat-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 20px;
-  max-width: 620px;
-  margin: 0 auto;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
 }
-.agents-grid--trio { max-width: 880px; }
-.agents-grid--solo { max-width: 300px; }
-.agents-grid .agent-card { width: auto; flex-shrink: unset; }
-
-.agent-card__badge {
-  font-size: 0.68rem;
+.cat-card {
+  display: flex;
+  flex-direction: column;
+  padding: 18px 18px 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+  animation: cat-in 0.25s ease;
+}
+.cat-card[hidden] { display: none; }
+@keyframes cat-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.cat-card:hover {
+  border-color: rgba(193,127,58,0.45);
+  box-shadow: 0 10px 30px rgba(193,127,58,0.1);
+  transform: translateY(-3px);
+}
+.cat-card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 6px;
+  height: 22px;
+  margin-bottom: 22px;
+  white-space: nowrap;
+}
+.cat-card__no {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.cat-card__status { font-size: 0.72rem; font-weight: 600; color: #2d8a5e; }
+.cat-card__status--soon {
+  color: var(--accent);
+  border: 1px solid rgba(193,127,58,0.4);
+  border-radius: 999px;
+  padding: 2px 9px;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.cat-card__id { display: flex; flex-direction: column; gap: 16px; margin-bottom: 22px; }
+.cat-card__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+}
+.cat-card__name {
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 500;
+  line-height: 1.15;
+}
+.cat-card__role {
+  margin-top: 4px;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
-  border: 1.5px solid rgba(193,127,58,0.4);
-  border-radius: 20px;
-  padding: 3px 10px;
 }
-.agent-card--soon { opacity: 0.8; }
+.cat-card__foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.cat-card__dept { font-size: 0.78rem; color: var(--text-muted); white-space: nowrap; }
+.cat-card__more { font-size: 0.82rem; font-weight: 600; color: var(--accent); white-space: nowrap; }
+.cat-card:hover .cat-card__more { color: var(--accent-dark); }
+.cat-card--soon .cat-card__avatar { background: var(--bg-alt); color: var(--text-muted); }
+
+.cat-card--custom {
+  border: 1.5px dashed rgba(193,127,58,0.55);
+  background: var(--accent-light);
+}
+.cat-card__avatar--custom { background: var(--accent); color: #fff; margin-bottom: 16px; }
+.cat-card__custom-desc { margin: 8px 0 16px; font-size: 0.85rem; line-height: 1.55; color: var(--text-muted); }
+.cat-card--custom .cat-card__more { margin-top: auto; }
+
+/* Profile (spec sheet) inside the modal */
+.modal .cat-card { animation: none; }
+.modal .cat-card__head { padding-right: 48px; margin-bottom: 20px; }
+.modal .cat-card__id { flex-direction: row; align-items: center; gap: 18px; margin-bottom: 16px; }
+.modal .cat-card__avatar { width: 72px; height: 72px; border-radius: 18px; font-size: 1.9rem; }
+.modal .cat-card__name { font-size: 2rem; }
+.modal .cat-card__foot { margin-top: 0; padding-top: 0; border-top: 0; }
+.modal .cat-card__dept {
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--bg-alt);
+}
+.spec { margin-top: 24px; border-top: 1px solid var(--border); }
+.spec__label {
+  margin: 22px 0 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.spec__text { font-size: 1.05rem; line-height: 1.6; }
+.spec__list { border: 1px solid var(--border); border-radius: 12px; }
+.spec__list li {
+  position: relative;
+  padding: 12px 16px 12px 42px;
+  font-size: 0.95rem;
+}
+.spec__list li + li { border-top: 1px solid var(--border); }
+.spec__list li::before {
+  content: '✓';
+  position: absolute;
+  left: 16px;
+  color: var(--accent);
+  font-weight: 700;
+}
+.spec__demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px;
+  border: 1.5px dashed var(--border);
+  border-radius: 12px;
+  background: var(--bg-alt);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.spec__demo span { color: var(--accent); }
+.spec__cta { display: block; margin-top: 26px; text-align: center; }
+
+@media (max-width: 1080px) { .cat-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 900px) {
+  .cat-head { grid-template-columns: 1fr; gap: 24px; align-items: start; }
+  .cat-stats { justify-self: start; }
+}
+@media (max-width: 760px) {
+  .cat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .cat-card--custom { grid-column: 1 / -1; }
+}
+@media (max-width: 520px) {
+  .cat-stats { justify-self: stretch; grid-template-columns: repeat(3, 1fr); }
+  .cat-stats__item { padding: 14px 8px; }
+  .cat-stats dt { font-size: 1.6rem; }
+  .cat-filter { flex-wrap: nowrap; overflow-x: auto; margin: 0 -24px; padding: 0 24px 4px; scrollbar-width: none; }
+  .cat-filter::-webkit-scrollbar { display: none; }
+  .cat-filter__btn { flex-shrink: 0; }
+  .cat-card { padding: 14px 14px 12px; }
+  .cat-card__head { margin-bottom: 16px; }
+  .cat-card__no { font-size: 0.62rem; letter-spacing: 0.08em; }
+  .cat-card__status { font-size: 0.66rem; }
+  .cat-card__status--soon { font-size: 0.55rem; padding: 1px 6px; letter-spacing: 0.04em; }
+  .cat-card__id { gap: 12px; margin-bottom: 16px; }
+  .cat-card__avatar { width: 46px; height: 46px; border-radius: 12px; font-size: 1.2rem; }
+  .cat-card__name { font-size: 1.2rem; }
+  .cat-card__role { font-size: 0.62rem; }
+  .cat-card__foot { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .modal .cat-card__name { font-size: 1.6rem; }
+  .modal .cat-card__avatar { width: 60px; height: 60px; }
+}
 
 /* ---- CARD DETAILS MODAL ---- */
 [data-modal-card] { cursor: pointer; }
@@ -1020,10 +1079,6 @@ html.modal-open { overflow: hidden; }
   transform: none;
   opacity: 1;
 }
-.modal .agent-card__top { padding-right: 48px; }
-.modal .agent-card__tagline { font-size: 1.05rem; color: var(--text); }
-.modal .agent-card__facts li { font-size: 0.95rem; }
-.modal .agent-card__demo { margin-top: 0; }
 .modal .modal-cta { margin-top: 24px; text-align: center; }
 .modal .team__photo-wrap:not(.team__photo-wrap--placeholder) { margin-bottom: 24px; }
 .modal .team__photo { height: 300px; }
@@ -1035,35 +1090,8 @@ html.modal-open { overflow: hidden; }
   .modal .team__photo { height: 240px; }
 }
 
-.dept-custom {
-  margin: 48px auto 0;
-  text-align: center;
-  padding: 36px 32px;
-  border: 1.5px dashed var(--accent);
-  border-radius: 16px;
-  background: var(--accent-light);
-  max-width: 560px;
-}
-.dept-custom__icon {
-  width: 52px; height: 52px; border-radius: 50%;
-  background: var(--accent); color: #fff;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem; margin: 0 auto 16px;
-}
-.dept-custom__title {
-  font-family: var(--font-display); font-size: 1.3rem;
-  font-weight: 500; color: var(--text); margin-bottom: 10px;
-}
-.dept-custom__desc {
-  font-size: 0.9rem; color: var(--text-muted); line-height: 1.65;
-  margin-bottom: 20px; max-width: 400px;
-  margin-left: auto; margin-right: auto;
-}
 
 @media (max-width: 640px) {
-  .dept-tabs { gap: 6px; }
-  .dept-tab { padding: 10px 14px; font-size: 0.82rem; }
-  .agents-grid--trio, .agents-grid--solo { max-width: 100%; }
 }
   </style>
 </head>
@@ -1160,259 +1188,343 @@ html.modal-open { overflow: hidden; }
     </div>
   </section>
 
-  <!-- AI EMPLOYEES BY DEPARTMENT -->
+  <!-- AI EMPLOYEES CATALOGUE (by department) -->
   <section class="section" id="what-we-do">
     <div class="container">
-      <p class="label label--center">AI Employees by Department</p>
-      <h2 class="section__heading section__heading--center">Which part of your business<br>needs the most help?</h2>
-      <p class="section__sub">Every department has tasks that eat time and cost money. Select yours below to see which AI employee handles it.</p>
-
-      <div class="dept-tabs" role="tablist" aria-label="Business departments">
-        <button class="dept-tab dept-tab--active" data-dept="sales" role="tab" aria-selected="true">
-          <span class="dept-tab__icon">💼</span>Sales
-        </button>
-        <button class="dept-tab" data-dept="marketing" role="tab" aria-selected="false">
-          <span class="dept-tab__icon">📣</span>Marketing
-        </button>
-        <button class="dept-tab" data-dept="customer-service" role="tab" aria-selected="false">
-          <span class="dept-tab__icon">🎧</span>Customer Service
-        </button>
-        <button class="dept-tab" data-dept="finance" role="tab" aria-selected="false">
-          <span class="dept-tab__icon">💰</span>Finance
-        </button>
-        <button class="dept-tab" data-dept="operations" role="tab" aria-selected="false">
-          <span class="dept-tab__icon">⚙️</span>Operations
-        </button>
+      <div class="cat-head">
+        <div class="cat-head__intro">
+          <p class="label">AI Employees by Department</p>
+          <h2 class="section__heading">Which part of your business<br>needs the most help?</h2>
+          <p class="cat-head__sub">Every department has tasks that eat time and cost money. Select yours below to see which AI employee handles it.</p>
+        </div>
+        <dl class="cat-stats">
+          <div class="cat-stats__item"><dt>10</dt><dd>AI employees</dd></div>
+          <div class="cat-stats__item"><dt>5</dt><dd>Departments</dd></div>
+          <div class="cat-stats__item"><dt>24/7</dt><dd>On shift</dd></div>
+        </dl>
       </div>
 
-      <!-- SALES -->
-      <div class="dept-panel dept-panel--active" data-dept="sales" role="tabpanel">
-        <p class="dept-panel__desc">From chasing leads to booking meetings — these AI employees make sure your pipeline never runs cold.</p>
-        <div class="agents-grid">
+      <div class="cat-filter" role="tablist" aria-label="Filter by department">
+        <button class="cat-filter__btn cat-filter__btn--active" data-dept="all" role="tab" aria-selected="true">All <span class="cat-filter__count">10</span></button>
+        <button class="cat-filter__btn" data-dept="sales" role="tab" aria-selected="false"><span aria-hidden="true">💼</span> Sales <span class="cat-filter__count">2</span></button>
+        <button class="cat-filter__btn" data-dept="marketing" role="tab" aria-selected="false"><span aria-hidden="true">📣</span> Marketing <span class="cat-filter__count">3</span></button>
+        <button class="cat-filter__btn" data-dept="customer-service" role="tab" aria-selected="false"><span aria-hidden="true">🎧</span> Customer Service <span class="cat-filter__count">2</span></button>
+        <button class="cat-filter__btn" data-dept="finance" role="tab" aria-selected="false"><span aria-hidden="true">💰</span> Finance <span class="cat-filter__count">2</span></button>
+        <button class="cat-filter__btn" data-dept="operations" role="tab" aria-selected="false"><span aria-hidden="true">⚙️</span> Operations <span class="cat-filter__count">1</span></button>
+      </div>
+      <p class="cat-dept-desc" id="catDeptDesc" aria-live="polite"></p>
 
-          <div class="agent-card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Max does">
-            <div class="agent-card__top">
-              <div class="agent-card__avatar">M</div>
-              <span class="agent-card__status">● Online</span>
+      <div class="cat-grid">
+        <article class="cat-card" data-dept="sales" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="View Max's profile">
+          <div class="cat-card__head">
+            <span class="cat-card__no">No. 01</span>
+            <span class="cat-card__status">● Online</span>
+          </div>
+          <div class="cat-card__id">
+            <div class="cat-card__avatar">M</div>
+            <div>
+              <h3 class="cat-card__name">Max</h3>
+              <p class="cat-card__role">AI Appointment Setter</p>
             </div>
-            <h3 class="agent-card__name">Max</h3>
-            <p class="agent-card__role">AI Appointment Setter</p>
-            <p class="agent-card__tagline expand-only">Your calendar's empty because nobody has time to chase leads. Max fixes that.</p>
-            <ul class="agent-card__facts expand-only">
+          </div>
+          <div class="cat-card__foot">
+            <span class="cat-card__dept"><span aria-hidden="true">💼</span> Sales</span>
+            <span class="cat-card__more collapse-only">View profile →</span>
+          </div>
+          <div class="spec expand-only">
+            <p class="spec__label">The problem it solves</p>
+            <p class="spec__text">Your calendar's empty because nobody has time to chase leads. Max fixes that.</p>
+            <p class="spec__label">What Max does</p>
+            <ul class="spec__list">
               <li>Follows up every lead automatically</li>
               <li>Books directly into your calendar</li>
               <li>Works across WhatsApp, SMS & email</li>
             </ul>
-            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
-            <span class="card-more collapse-only">See what Max does →</span>
-            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
+            <p class="spec__label">Demo</p>
+            <div class="spec__demo"><span aria-hidden="true">▶</span> Demo coming soon</div>
+            <a href="#contact" class="btn btn--primary spec__cta">Hire Max →</a>
           </div>
-
-          <div class="agent-card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Iris does">
-            <div class="agent-card__top">
-              <div class="agent-card__avatar">Ir</div>
-              <span class="agent-card__status">● Online</span>
+        </article>
+        <article class="cat-card" data-dept="sales" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="View Iris's profile">
+          <div class="cat-card__head">
+            <span class="cat-card__no">No. 02</span>
+            <span class="cat-card__status">● Online</span>
+          </div>
+          <div class="cat-card__id">
+            <div class="cat-card__avatar">Ir</div>
+            <div>
+              <h3 class="cat-card__name">Iris</h3>
+              <p class="cat-card__role">AI Research Assistant</p>
             </div>
-            <h3 class="agent-card__name">Iris</h3>
-            <p class="agent-card__role">AI Research Assistant</p>
-            <p class="agent-card__tagline expand-only">Your reps walk into calls unprepared. Iris makes sure they never do again.</p>
-            <ul class="agent-card__facts expand-only">
+          </div>
+          <div class="cat-card__foot">
+            <span class="cat-card__dept"><span aria-hidden="true">💼</span> Sales</span>
+            <span class="cat-card__more collapse-only">View profile →</span>
+          </div>
+          <div class="spec expand-only">
+            <p class="spec__label">The problem it solves</p>
+            <p class="spec__text">Your reps walk into calls unprepared. Iris makes sure they never do again.</p>
+            <p class="spec__label">What Iris does</p>
+            <ul class="spec__list">
               <li>Researches leads before every call</li>
               <li>Pulls competitor & market data</li>
               <li>Delivers briefings in minutes</li>
             </ul>
-            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
-            <span class="card-more collapse-only">See what Iris does →</span>
-            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
+            <p class="spec__label">Demo</p>
+            <div class="spec__demo"><span aria-hidden="true">▶</span> Demo coming soon</div>
+            <a href="#contact" class="btn btn--primary spec__cta">Hire Iris →</a>
           </div>
-
-        </div>
-      </div>
-
-      <!-- MARKETING -->
-      <div class="dept-panel" data-dept="marketing" role="tabpanel">
-        <p class="dept-panel__desc">Keep your brand visible and your audience growing — without you having to write, film, or design a single thing.</p>
-        <div class="agents-grid agents-grid--trio">
-
-          <div class="agent-card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Leo does">
-            <div class="agent-card__top">
-              <div class="agent-card__avatar">L</div>
-              <span class="agent-card__status">● Online</span>
+        </article>
+        <article class="cat-card" data-dept="marketing" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="View Leo's profile">
+          <div class="cat-card__head">
+            <span class="cat-card__no">No. 03</span>
+            <span class="cat-card__status">● Online</span>
+          </div>
+          <div class="cat-card__id">
+            <div class="cat-card__avatar">L</div>
+            <div>
+              <h3 class="cat-card__name">Leo</h3>
+              <p class="cat-card__role">AI Content Creator</p>
             </div>
-            <h3 class="agent-card__name">Leo</h3>
-            <p class="agent-card__role">AI Content Creator</p>
-            <p class="agent-card__tagline expand-only">Filming content is slow and expensive. Leo publishes in minutes.</p>
-            <ul class="agent-card__facts expand-only">
+          </div>
+          <div class="cat-card__foot">
+            <span class="cat-card__dept"><span aria-hidden="true">📣</span> Marketing</span>
+            <span class="cat-card__more collapse-only">View profile →</span>
+          </div>
+          <div class="spec expand-only">
+            <p class="spec__label">The problem it solves</p>
+            <p class="spec__text">Filming content is slow and expensive. Leo publishes in minutes.</p>
+            <p class="spec__label">What Leo does</p>
+            <ul class="spec__list">
               <li>Writes posts, captions & emails</li>
               <li>Consistent output, every week</li>
               <li>Matched to your brand voice</li>
             </ul>
-            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
-            <span class="card-more collapse-only">See what Leo does →</span>
-            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
+            <p class="spec__label">Demo</p>
+            <div class="spec__demo"><span aria-hidden="true">▶</span> Demo coming soon</div>
+            <a href="#contact" class="btn btn--primary spec__cta">Hire Leo →</a>
           </div>
-
-          <div class="agent-card agent-card--soon" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Nova does">
-            <div class="agent-card__top">
-              <div class="agent-card__avatar">N</div>
-              <span class="agent-card__badge">Coming Soon</span>
+        </article>
+        <article class="cat-card cat-card--soon" data-dept="marketing" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="View Nova's profile">
+          <div class="cat-card__head">
+            <span class="cat-card__no">No. 04</span>
+            <span class="cat-card__status cat-card__status--soon">Coming Soon</span>
+          </div>
+          <div class="cat-card__id">
+            <div class="cat-card__avatar">N</div>
+            <div>
+              <h3 class="cat-card__name">Nova</h3>
+              <p class="cat-card__role">AI Web Designer</p>
             </div>
-            <h3 class="agent-card__name">Nova</h3>
-            <p class="agent-card__role">AI Web Designer</p>
-            <p class="agent-card__tagline expand-only">Brief in, live website out. No developers, no delays, no invoices.</p>
-            <ul class="agent-card__facts expand-only">
+          </div>
+          <div class="cat-card__foot">
+            <span class="cat-card__dept"><span aria-hidden="true">📣</span> Marketing</span>
+            <span class="cat-card__more collapse-only">View profile →</span>
+          </div>
+          <div class="spec expand-only">
+            <p class="spec__label">The problem it solves</p>
+            <p class="spec__text">Brief in, live website out. No developers, no delays, no invoices.</p>
+            <p class="spec__label">What Nova does</p>
+            <ul class="spec__list">
               <li>Takes a brief and builds your site</li>
               <li>Updates pages on request</li>
               <li>No developer needed, ever</li>
             </ul>
-            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
-            <span class="card-more collapse-only">See what Nova does →</span>
-            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
+            <p class="spec__label">Demo</p>
+            <div class="spec__demo"><span aria-hidden="true">▶</span> Demo coming soon</div>
+            <a href="#contact" class="btn btn--primary spec__cta">Get In Touch</a>
           </div>
-
-          <div class="agent-card agent-card--soon" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Ada does">
-            <div class="agent-card__top">
-              <div class="agent-card__avatar">A</div>
-              <span class="agent-card__badge">Coming Soon</span>
+        </article>
+        <article class="cat-card cat-card--soon" data-dept="marketing" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="View Ada's profile">
+          <div class="cat-card__head">
+            <span class="cat-card__no">No. 05</span>
+            <span class="cat-card__status cat-card__status--soon">Coming Soon</span>
+          </div>
+          <div class="cat-card__id">
+            <div class="cat-card__avatar">A</div>
+            <div>
+              <h3 class="cat-card__name">Ada</h3>
+              <p class="cat-card__role">AI Ads Writer</p>
             </div>
-            <h3 class="agent-card__name">Ada</h3>
-            <p class="agent-card__role">AI Ads Writer</p>
-            <p class="agent-card__tagline expand-only">Most ad copy is forgettable. Ada writes ads that actually convert.</p>
-            <ul class="agent-card__facts expand-only">
+          </div>
+          <div class="cat-card__foot">
+            <span class="cat-card__dept"><span aria-hidden="true">📣</span> Marketing</span>
+            <span class="cat-card__more collapse-only">View profile →</span>
+          </div>
+          <div class="spec expand-only">
+            <p class="spec__label">The problem it solves</p>
+            <p class="spec__text">Most ad copy is forgettable. Ada writes ads that actually convert.</p>
+            <p class="spec__label">What Ada does</p>
+            <ul class="spec__list">
               <li>Writes Google and Meta ad copy</li>
               <li>Generates A/B test variants</li>
               <li>Tailored to your offer and audience</li>
             </ul>
-            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
-            <span class="card-more collapse-only">See what Ada does →</span>
-            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
+            <p class="spec__label">Demo</p>
+            <div class="spec__demo"><span aria-hidden="true">▶</span> Demo coming soon</div>
+            <a href="#contact" class="btn btn--primary spec__cta">Get In Touch</a>
           </div>
-
-        </div>
-      </div>
-
-      <!-- CUSTOMER SERVICE -->
-      <div class="dept-panel" data-dept="customer-service" role="tabpanel">
-        <p class="dept-panel__desc">Every customer touchpoint handled instantly — no hold times, no missed messages, no frustrated customers.</p>
-        <div class="agents-grid">
-
-          <div class="agent-card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Ivy does">
-            <div class="agent-card__top">
-              <div class="agent-card__avatar">I</div>
-              <span class="agent-card__status">● Online</span>
+        </article>
+        <article class="cat-card" data-dept="customer-service" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="View Ivy's profile">
+          <div class="cat-card__head">
+            <span class="cat-card__no">No. 06</span>
+            <span class="cat-card__status">● Online</span>
+          </div>
+          <div class="cat-card__id">
+            <div class="cat-card__avatar">I</div>
+            <div>
+              <h3 class="cat-card__name">Ivy</h3>
+              <p class="cat-card__role">AI Receptionist</p>
             </div>
-            <h3 class="agent-card__name">Ivy</h3>
-            <p class="agent-card__role">AI Receptionist</p>
-            <p class="agent-card__tagline expand-only">Every missed call is a lost customer. Ivy answers every call, 24/7.</p>
-            <ul class="agent-card__facts expand-only">
+          </div>
+          <div class="cat-card__foot">
+            <span class="cat-card__dept"><span aria-hidden="true">🎧</span> Customer Service</span>
+            <span class="cat-card__more collapse-only">View profile →</span>
+          </div>
+          <div class="spec expand-only">
+            <p class="spec__label">The problem it solves</p>
+            <p class="spec__text">Every missed call is a lost customer. Ivy answers every call, 24/7.</p>
+            <p class="spec__label">What Ivy does</p>
+            <ul class="spec__list">
               <li>Answers calls in your business name</li>
               <li>Handles FAQs & takes messages</li>
               <li>Transfers or escalates when needed</li>
             </ul>
-            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
-            <span class="card-more collapse-only">See what Ivy does →</span>
-            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
+            <p class="spec__label">Demo</p>
+            <div class="spec__demo"><span aria-hidden="true">▶</span> Demo coming soon</div>
+            <a href="#contact" class="btn btn--primary spec__cta">Hire Ivy →</a>
           </div>
-
-          <div class="agent-card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Sage does">
-            <div class="agent-card__top">
-              <div class="agent-card__avatar">S</div>
-              <span class="agent-card__status">● Online</span>
+        </article>
+        <article class="cat-card" data-dept="customer-service" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="View Sage's profile">
+          <div class="cat-card__head">
+            <span class="cat-card__no">No. 07</span>
+            <span class="cat-card__status">● Online</span>
+          </div>
+          <div class="cat-card__id">
+            <div class="cat-card__avatar">S</div>
+            <div>
+              <h3 class="cat-card__name">Sage</h3>
+              <p class="cat-card__role">AI Support Agent</p>
             </div>
-            <h3 class="agent-card__name">Sage</h3>
-            <p class="agent-card__role">AI Support Agent</p>
-            <p class="agent-card__tagline expand-only">Your team is drowning in the same questions. Sage resolves them instantly.</p>
-            <ul class="agent-card__facts expand-only">
+          </div>
+          <div class="cat-card__foot">
+            <span class="cat-card__dept"><span aria-hidden="true">🎧</span> Customer Service</span>
+            <span class="cat-card__more collapse-only">View profile →</span>
+          </div>
+          <div class="spec expand-only">
+            <p class="spec__label">The problem it solves</p>
+            <p class="spec__text">Your team is drowning in the same questions. Sage resolves them instantly.</p>
+            <p class="spec__label">What Sage does</p>
+            <ul class="spec__list">
               <li>Instant responses 24/7</li>
               <li>Handles returns, queries & complaints</li>
               <li>Learns your business inside out</li>
             </ul>
-            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
-            <span class="card-more collapse-only">See what Sage does →</span>
-            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
+            <p class="spec__label">Demo</p>
+            <div class="spec__demo"><span aria-hidden="true">▶</span> Demo coming soon</div>
+            <a href="#contact" class="btn btn--primary spec__cta">Hire Sage →</a>
           </div>
-
-        </div>
-      </div>
-
-      <!-- FINANCE -->
-      <div class="dept-panel" data-dept="finance" role="tabpanel">
-        <p class="dept-panel__desc">Stop chasing payments and writing quotes by hand. These AI employees keep your cash flow moving.</p>
-        <div class="agents-grid">
-
-          <div class="agent-card agent-card--soon" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Felix does">
-            <div class="agent-card__top">
-              <div class="agent-card__avatar">F</div>
-              <span class="agent-card__badge">Coming Soon</span>
+        </article>
+        <article class="cat-card cat-card--soon" data-dept="finance" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="View Felix's profile">
+          <div class="cat-card__head">
+            <span class="cat-card__no">No. 08</span>
+            <span class="cat-card__status cat-card__status--soon">Coming Soon</span>
+          </div>
+          <div class="cat-card__id">
+            <div class="cat-card__avatar">F</div>
+            <div>
+              <h3 class="cat-card__name">Felix</h3>
+              <p class="cat-card__role">AI Invoice Chaser</p>
             </div>
-            <h3 class="agent-card__name">Felix</h3>
-            <p class="agent-card__role">AI Invoice Chaser</p>
-            <p class="agent-card__tagline expand-only">Unpaid invoices cost you money and awkward conversations. Felix handles both.</p>
-            <ul class="agent-card__facts expand-only">
+          </div>
+          <div class="cat-card__foot">
+            <span class="cat-card__dept"><span aria-hidden="true">💰</span> Finance</span>
+            <span class="cat-card__more collapse-only">View profile →</span>
+          </div>
+          <div class="spec expand-only">
+            <p class="spec__label">The problem it solves</p>
+            <p class="spec__text">Unpaid invoices cost you money and awkward conversations. Felix handles both.</p>
+            <p class="spec__label">What Felix does</p>
+            <ul class="spec__list">
               <li>Chases unpaid invoices automatically</li>
               <li>Sends reminders at the right time</li>
               <li>Escalates overdue accounts</li>
             </ul>
-            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
-            <span class="card-more collapse-only">See what Felix does →</span>
-            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
+            <p class="spec__label">Demo</p>
+            <div class="spec__demo"><span aria-hidden="true">▶</span> Demo coming soon</div>
+            <a href="#contact" class="btn btn--primary spec__cta">Get In Touch</a>
           </div>
-
-          <div class="agent-card agent-card--soon" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Quinn does">
-            <div class="agent-card__top">
-              <div class="agent-card__avatar">Q</div>
-              <span class="agent-card__badge">Coming Soon</span>
+        </article>
+        <article class="cat-card cat-card--soon" data-dept="finance" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="View Quinn's profile">
+          <div class="cat-card__head">
+            <span class="cat-card__no">No. 09</span>
+            <span class="cat-card__status cat-card__status--soon">Coming Soon</span>
+          </div>
+          <div class="cat-card__id">
+            <div class="cat-card__avatar">Q</div>
+            <div>
+              <h3 class="cat-card__name">Quinn</h3>
+              <p class="cat-card__role">AI Quote Writer</p>
             </div>
-            <h3 class="agent-card__name">Quinn</h3>
-            <p class="agent-card__role">AI Quote Writer</p>
-            <p class="agent-card__tagline expand-only">Slow quotes lose jobs. Quinn gets a professional proposal out in minutes.</p>
-            <ul class="agent-card__facts expand-only">
+          </div>
+          <div class="cat-card__foot">
+            <span class="cat-card__dept"><span aria-hidden="true">💰</span> Finance</span>
+            <span class="cat-card__more collapse-only">View profile →</span>
+          </div>
+          <div class="spec expand-only">
+            <p class="spec__label">The problem it solves</p>
+            <p class="spec__text">Slow quotes lose jobs. Quinn gets a professional proposal out in minutes.</p>
+            <p class="spec__label">What Quinn does</p>
+            <ul class="spec__list">
               <li>Turns a brief into a professional quote</li>
               <li>Sends it directly to the client</li>
               <li>Follows up automatically</li>
             </ul>
-            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
-            <span class="card-more collapse-only">See what Quinn does →</span>
-            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
+            <p class="spec__label">Demo</p>
+            <div class="spec__demo"><span aria-hidden="true">▶</span> Demo coming soon</div>
+            <a href="#contact" class="btn btn--primary spec__cta">Get In Touch</a>
           </div>
-
-        </div>
-      </div>
-
-      <!-- OPERATIONS -->
-      <div class="dept-panel" data-dept="operations" role="tabpanel">
-        <p class="dept-panel__desc">The invisible engine that keeps everything running — scheduling, admin, emails, meeting notes. All handled.</p>
-        <div class="agents-grid agents-grid--solo">
-
-          <div class="agent-card" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="See what Otto does">
-            <div class="agent-card__top">
-              <div class="agent-card__avatar">O</div>
-              <span class="agent-card__status">● Online</span>
+        </article>
+        <article class="cat-card" data-dept="operations" data-modal-card tabindex="0" role="button" aria-haspopup="dialog" aria-label="View Otto's profile">
+          <div class="cat-card__head">
+            <span class="cat-card__no">No. 10</span>
+            <span class="cat-card__status">● Online</span>
+          </div>
+          <div class="cat-card__id">
+            <div class="cat-card__avatar">O</div>
+            <div>
+              <h3 class="cat-card__name">Otto</h3>
+              <p class="cat-card__role">AI Assistant</p>
             </div>
-            <h3 class="agent-card__name">Otto</h3>
-            <p class="agent-card__role">AI Assistant</p>
-            <p class="agent-card__tagline expand-only">There aren't enough hours to be unorganised. Otto handles the busywork.</p>
-            <ul class="agent-card__facts expand-only">
+          </div>
+          <div class="cat-card__foot">
+            <span class="cat-card__dept"><span aria-hidden="true">⚙️</span> Operations</span>
+            <span class="cat-card__more collapse-only">View profile →</span>
+          </div>
+          <div class="spec expand-only">
+            <p class="spec__label">The problem it solves</p>
+            <p class="spec__text">There aren't enough hours to be unorganised. Otto handles the busywork.</p>
+            <p class="spec__label">What Otto does</p>
+            <ul class="spec__list">
               <li>Manages emails & scheduling</li>
               <li>Summarises meetings & notes</li>
               <li>Keeps things moving in the background</li>
             </ul>
-            <div class="agent-card__demo expand-only"><span>▶</span><p>Demo coming soon</p></div>
-            <span class="card-more collapse-only">See what Otto does →</span>
-            <a href="#contact" class="btn btn--primary modal-cta expand-only">Get In Touch</a>
+            <p class="spec__label">Demo</p>
+            <div class="spec__demo"><span aria-hidden="true">▶</span> Demo coming soon</div>
+            <a href="#contact" class="btn btn--primary spec__cta">Hire Otto →</a>
           </div>
-
-        </div>
+        </article>
+        <a href="#contact" class="cat-card cat-card--custom">
+          <div class="cat-card__head">
+            <span class="cat-card__no">Custom</span>
+          </div>
+          <div class="cat-card__avatar cat-card__avatar--custom" aria-hidden="true">+</div>
+          <h3 class="cat-card__name">Don't see what you need?</h3>
+          <p class="cat-card__custom-desc">We build custom AI employees around your specific workflow, your team, and your business — whatever the role, we can fill it.</p>
+          <span class="cat-card__more">Let's build yours →</span>
+        </a>
       </div>
-
-      <!-- CUSTOM SLOT -->
-      <div class="dept-custom">
-        <div class="dept-custom__icon">+</div>
-        <h3 class="dept-custom__title">Don't see what you need?</h3>
-        <p class="dept-custom__desc">We build custom AI employees around your specific workflow, your team, and your business — whatever the role, we can fill it.</p>
-        <a href="#contact" class="btn btn--primary">Let's build yours →</a>
-      </div>
-
     </div>
   </section>
 
@@ -1620,19 +1732,29 @@ html.modal-open { overflow: hidden; }
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    // Department tab switching
-    const deptTabs = document.querySelectorAll('.dept-tab');
-    const deptPanels = document.querySelectorAll('.dept-panel');
-    deptTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const dept = tab.dataset.dept;
-        deptTabs.forEach(t => { t.classList.remove('dept-tab--active'); t.setAttribute('aria-selected', 'false'); });
-        deptPanels.forEach(p => p.classList.remove('dept-panel--active'));
-        tab.classList.add('dept-tab--active');
-        tab.setAttribute('aria-selected', 'true');
-        document.querySelector(`.dept-panel[data-dept="${dept}"]`).classList.add('dept-panel--active');
+    // AI employee catalogue: department filter
+    const deptDescs = {
+      'sales': "From chasing leads to booking meetings \u2014 these AI employees make sure your pipeline never runs cold.",
+      'marketing': "Keep your brand visible and your audience growing \u2014 without you having to write, film, or design a single thing.",
+      'customer-service': "Every customer touchpoint handled instantly \u2014 no hold times, no missed messages, no frustrated customers.",
+      'finance': "Stop chasing payments and writing quotes by hand. These AI employees keep your cash flow moving.",
+      'operations': "The invisible engine that keeps everything running \u2014 scheduling, admin, emails, meeting notes. All handled."
+    };
+    const catBtns = document.querySelectorAll('.cat-filter__btn');
+    const catCards = document.querySelectorAll('.cat-grid .cat-card[data-dept]');
+    const catDesc = document.getElementById('catDeptDesc');
+    function filterCatalogue(dept) {
+      catBtns.forEach(b => {
+        const on = b.dataset.dept === dept;
+        b.classList.toggle('cat-filter__btn--active', on);
+        b.setAttribute('aria-selected', on ? 'true' : 'false');
       });
-    });
+      catCards.forEach(c => { c.hidden = dept !== 'all' && c.dataset.dept !== dept; });
+      catDesc.textContent = deptDescs[dept] || '';
+      catDesc.hidden = !deptDescs[dept];
+    }
+    catBtns.forEach(b => b.addEventListener('click', () => filterCatalogue(b.dataset.dept)));
+    filterCatalogue('all');
 
     // Card details modal: cards show a summary, the full card opens in a pop-up
     const modal = document.getElementById('cardModal');
