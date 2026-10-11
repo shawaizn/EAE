@@ -53,7 +53,7 @@ export function AIEducationLanding() {
     { q: 'Does my child need any experience with AI?', a: 'No. We start from the basics of what AI is and build up step by step.' },
     { q: 'When does it start?', a: 'The first lesson is on 1st November.' },
     { q: 'What if it turns out not to be for them?', a: "After the first lesson, if it's not for your child, just let us know and you'll get a full refund." },
-    { q: 'What if they miss a lesson?', a: 'Lessons can be recorded, and all the course material is on the Energise AI learning platform, so they can catch up.' },
+    { q: 'What if they miss a lesson?', a: 'Lessons are recorded and shared privately with students on the course, so they can catch up. All the course material is also on the Energise AI learning platform.' },
     { q: 'Is the payment secure?', a: 'Yes. Payments are handled by Stripe, one of the world’s largest payment providers. We never see or store your card details.' },
   ];
 
