@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ExternalLink, FileText, Zap, Target, Users, Award, BookOpen, TrendingUp, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, CalendarDays, UserCheck } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ExternalLink, FileText, Target, Users, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, CalendarDays, UserCheck } from 'lucide-react';
 import { theme, behavior } from '../styles/theme';
 import { LogoHorizontal } from '../components/branding/Logo';
 import teacherPhoto from '../assets/shawaiz-teacher.jpg';
@@ -48,12 +48,6 @@ export function AIEducationLanding() {
       source: 'World Economic Forum, Future of Jobs Report 2025',
       sourceUrl: 'https://www.weforum.org/publications/the-future-of-jobs-report-2025/in-full/3-skills-outlook/',
     },
-  ];
-
-  const benefits = [
-    { icon: TrendingUp, text: 'Increased employability', color: '#0fa3b1' },
-    { icon: Zap, text: 'Faster & smarter learning', color: '#0fa3b1' },
-    { icon: Users, text: 'Confidence with technology', color: '#0fa3b1' },
   ];
 
   const testimonials = [
@@ -386,54 +380,8 @@ export function AIEducationLanding() {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
-            AI Skills Give
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            {benefits.map((benefit, idx) => {
-              const Icon = benefit.icon;
-              return (
-                <div
-                  key={idx}
-                  className="flex items-start gap-4 p-6 rounded-lg border"
-                  style={{
-                    borderColor: theme.colors.border.subtle,
-                    backgroundColor: theme.colors.background.card,
-                  }}
-                >
-                  <div className="flex-shrink-0 mt-1">
-                    <Icon size={24} style={{ color: benefit.color }} />
-                  </div>
-                  <p className="text-lg font-semibold" style={{ color: theme.colors.text.primary }}>
-                    {benefit.text}
-                  </p>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Additional Info */}
-          <div className="p-8 rounded-lg border text-center bg-gradient-to-br" style={{
-            borderColor: theme.colors.border.subtle,
-            background: `linear-gradient(135deg, ${theme.colors.accent.cyan}08 0%, ${theme.colors.background.card} 100%)`,
-          }}>
-            <Award size={40} className="mx-auto mb-4" style={{ color: theme.colors.accent.cyan }} />
-            <h3 className="text-2xl font-bold mb-2" style={{ color: theme.colors.text.primary }}>
-              Receive a certificate upon completion
-            </h3>
-            <p style={{ color: theme.colors.text.secondary }}>
-              Students who complete the program receive an official certificate
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Parent Reassurance Section */}
-      <section id="parents" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="parents" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
             For Parents
@@ -471,7 +419,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* CTA Section */}
-      <section id="book" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
+      <section id="book" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{ color: theme.colors.text.primary }}>
             Ready to Start Your AI Journey?
@@ -535,7 +483,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: theme.colors.text.primary }}>
             Questions Before You Book?
