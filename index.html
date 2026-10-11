@@ -253,17 +253,31 @@ ul { list-style: none; }
 /* Desktop: text column spans exactly the photo's height —
    headline top lines up with the photo top, buttons with its bottom */
 @media (min-width: 901px) {
-  .hero { align-content: center; }
+  .hero {
+    align-content: center;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
   .hero__content {
     align-self: stretch;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
-  .hero__content > *,
-  .hero__copy .hero__sub { margin-bottom: 0; }
-  .hero__copy .hero__definition { margin-bottom: 24px; }
-  .hero__headline { margin-top: -0.17em; }
+  .hero__content > * { margin-bottom: 0; }
+  .hero__headline {
+    margin-top: -0.17em;
+    font-size: clamp(3.4rem, min(6.4vw, 11vh), 5.1rem);
+    white-space: nowrap;
+  }
+  /* Text grows with screen height so it fills the photo's height evenly */
+  .hero__definition {
+    font-size: clamp(1.25rem, min(2.35vw, 3.1vh), 2.1rem);
+    max-width: none;
+  }
+  .hero__sub {
+    font-size: clamp(1.05rem, min(1.9vw, 2.5vh), 1.6rem);
+    max-width: none;
+  }
 }
 .hero__image img {
   width: 100%;
@@ -1007,10 +1021,8 @@ ul { list-style: none; }
   <section class="hero" id="home">
     <div class="hero__content">
       <h1 class="hero__headline">AI Employees</h1>
-      <div class="hero__copy">
-        <p class="hero__definition">An AI employee is software that does a specific job in your business, like answering calls, replying to customers or following up leads, around the clock.</p>
-        <p class="hero__sub">We build AI employees for Sales, Marketing, Customer Service, Finance, Operations and more — so you can focus on the parts of your business only you can do.</p>
-      </div>
+      <p class="hero__definition">An AI employee is software that does a specific job in your business, like answering calls, replying to customers or following up leads, around the clock.</p>
+      <p class="hero__sub">We build AI employees for Sales, Marketing, Customer Service, Finance, Operations and more — so you can focus on the parts of your business only you can do.</p>
       <div class="hero__actions">
         <a href="#contact" class="btn btn--primary">Get In Touch</a>
         <a href="#what-we-do" class="btn btn--ghost">See What We Do</a>
