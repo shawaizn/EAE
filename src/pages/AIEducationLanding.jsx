@@ -448,8 +448,8 @@ export function AIEducationLanding() {
             <h3 className="text-xl font-bold mb-4 text-center" style={{ color: theme.colors.text.primary }}>What happens after you book</h3>
             <ol className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
-                'You get a payment confirmation by email straight away.',
-                'We get in touch before 1st November with your joining details and platform login.',
+                'Book securely through Stripe, adding your phone number at checkout.',
+                'Shawaiz texts you personally before 1st November with your joining details and platform login.',
                 "Your child joins the first lesson. If it's not for them, you get a full refund.",
               ].map((step, i) => (
                 <li key={i} className="flex gap-3 p-5 rounded-lg border bg-white" style={{ borderColor: theme.colors.border.subtle }}>
