@@ -6,11 +6,9 @@ import { LogoHorizontal } from '../components/branding/Logo';
 import teacherPhoto from '../assets/shawaiz-teacher.jpg';
 import { certificates } from '../data/certificates';
 import { CertificateDialog, CertificateThumb } from '../components/features/CertificateDialog';
-import { YouTubeLite } from '../components/features/YouTubeLite';
-
-// YouTube video shown in the hero. Paste the video's ID here (the part after
-// "watch?v=" or "youtu.be/"). While it's empty, a "Video coming soon" placeholder shows.
-const HERO_VIDEO_ID = '';
+import { HeroVideo } from '../components/features/HeroVideo';
+import adVideo from '../assets/ai-advantage-academy-ad.mp4';
+import adPoster from '../assets/ai-advantage-academy-ad-poster.jpg';
 
 // Derive landing page base URL from the app basename so links work on any host
 const landingBase = (import.meta.env.VITE_BASENAME || '/EAE/app').replace(/\/app$/, '') + '/';
@@ -135,9 +133,9 @@ export function AIEducationLanding() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8" style={{ color: theme.colors.text.primary }}>
             AI Advantage Academy
           </h1>
-          {/* Sized so title, video and buttons fit on one screen */}
-          <div className="mx-auto" style={{ width: 'min(100%, 960px, calc((100svh - 4rem - 340px) * 16 / 9))' }}>
-            <YouTubeLite id={HERO_VIDEO_ID} title="AI Advantage Academy" />
+          {/* Portrait ad, sized so title, video and buttons fit on one screen */}
+          <div className="mx-auto flex justify-center" style={{ height: 'clamp(330px, calc(100svh - 4rem - 340px), 720px)' }}>
+            <HeroVideo src={adVideo} poster={adPoster} title="AI Advantage Academy advert" />
           </div>
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3">
             <a
