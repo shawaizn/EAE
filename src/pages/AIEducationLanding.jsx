@@ -264,10 +264,10 @@ export function AIEducationLanding() {
             }}>
               <h3 className="font-semibold mb-2" style={{ color: theme.colors.text.primary }}>Price</h3>
               <p className="text-2xl font-bold" style={{ color: theme.colors.accent.cyan }}>
-                £11
+                £60
               </p>
               <p className="text-sm" style={{ color: theme.colors.text.secondary }}>
-                per lesson
+                for the whole course
               </p>
             </div>
           </div>
