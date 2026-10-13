@@ -9,6 +9,8 @@ import { CertificateDialog, CertificateThumb } from '../components/features/Cert
 import { HeroVideo } from '../components/features/HeroVideo';
 import adVideo from '../assets/ai-advantage-academy-ad.mp4';
 import adPoster from '../assets/ai-advantage-academy-ad-poster.jpg';
+import adVideoPortrait from '../assets/ai-advantage-academy-ad-portrait.mp4';
+import adPosterPortrait from '../assets/ai-advantage-academy-ad-poster-portrait.jpg';
 
 // Derive landing page base URL from the app basename so links work on any host
 const landingBase = (import.meta.env.VITE_BASENAME || '/EAE/app').replace(/\/app$/, '') + '/';
@@ -126,16 +128,20 @@ export function AIEducationLanding() {
 
       {/* Hero Section */}
       <section className="min-h-[calc(100svh-4rem)] flex items-center justify-center py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
-        <div className="w-full max-w-5xl mx-auto text-center">
+        <div className="w-full max-w-6xl mx-auto text-center">
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] mb-3" style={{ color: theme.colors.accent.cyan }}>
             Energise AI presents
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8" style={{ color: theme.colors.text.primary }}>
             AI Advantage Academy
           </h1>
-          {/* Portrait ad, sized so title, video and buttons fit on one screen */}
-          <div className="mx-auto flex justify-center" style={{ height: 'clamp(330px, calc(100svh - 4rem - 340px), 720px)' }}>
-            <HeroVideo src={adVideo} poster={adPoster} title="AI Advantage Academy advert" />
+          {/* Full-width landscape advert */}
+          <div className="mx-auto w-full max-w-6xl">
+            <HeroVideo
+              landscape={{ src: adVideo, poster: adPoster }}
+              portrait={{ src: adVideoPortrait, poster: adPosterPortrait }}
+              title="AI Advantage Academy advert"
+            />
           </div>
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3">
             <a
