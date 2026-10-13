@@ -6,16 +6,20 @@ import { LogoHorizontal } from '../components/branding/Logo';
 import teacherPhoto from '../assets/shawaiz-teacher.jpg';
 import { certificates } from '../data/certificates';
 import { CertificateDialog, CertificateThumb } from '../components/features/CertificateDialog';
-import { YouTubeLite } from '../components/features/YouTubeLite';
-
-// YouTube video shown in the hero. Paste the video's ID here (the part after
-// "watch?v=" or "youtu.be/"). While it's empty, a "Video coming soon" placeholder shows.
-const HERO_VIDEO_ID = '';
+import { HeroVideo } from '../components/features/HeroVideo';
+import adVideo from '../assets/ai-advantage-academy-ad.mp4';
+import adPoster from '../assets/ai-advantage-academy-ad-poster.jpg';
 
 // Derive landing page base URL from the app basename so links work on any host
 const landingBase = (import.meta.env.VITE_BASENAME || '/EAE/app').replace(/\/app$/, '') + '/';
 
 export function AIEducationLanding() {
+  useEffect(() => {
+    const previous = document.title;
+    document.title = 'AI Advantage Academy — Energise AI';
+    return () => { document.title = previous; };
+  }, []);
+
   // Certificate pop-up: null = closed, 'all' = every certificate, number = one certificate
   const [certView, setCertView] = useState(null);
   const [certFromAll, setCertFromAll] = useState(false);
@@ -34,11 +38,11 @@ export function AIEducationLanding() {
   }, []);
 
   const curriculumWeeks = [
-    { week: 1, title: 'What is AI', description: 'Foundations of Artificial Intelligence' },
-    { week: 2, title: 'AI Products', description: 'Practical AI tools and applications' },
-    { week: 3, title: 'Safe AI Use', description: 'Responsible and ethical AI practices' },
-    { week: 4, title: 'Prompting', description: 'Mastering AI interaction techniques' },
-    { week: 5, title: 'Website Build', description: 'Building with AI technology' },
+    { week: 1, title: 'What AI Is', description: 'Foundations of artificial intelligence' },
+    { week: 2, title: 'AI Tools', description: 'Practical AI tools and how to use them' },
+    { week: 3, title: 'Using AI Safely', description: 'Responsible and safe AI use' },
+    { week: 4, title: 'Prompt Engineering', description: 'Getting great results from AI' },
+    { week: 5, title: 'Building a Website with AI', description: 'Putting it all into practice' },
   ];
 
   const stats = [
@@ -76,9 +80,11 @@ export function AIEducationLanding() {
   ];
 
   const faqs = [
-    { q: 'Who is this for?', a: "Young people aged 16 and under. You know your child best, so it's up to you to decide if it's the right fit. If you're unsure, message us and we'll talk it through." },
+    { q: 'Who is this for?', a: "Young people aged 14 to 16. You know your child best, so it's up to you to decide if it's the right fit. If you're unsure, message us and we'll talk it through." },
     { q: 'Does my child need any experience with AI?', a: 'No. We start from the basics of what AI is and build up step by step.' },
-    { q: 'When does it start?', a: 'The first lesson is on 1st November.' },
+    { q: 'When does it start?', a: "As soon as all 30 places are filled, and by 1st December at the latest. We'll tell you the exact start date as soon as the last place fills." },
+    { q: 'How long is the course?', a: 'Ten live lessons, two a week for five weeks. Each lesson lasts one hour.' },
+    { q: 'Do they get a certificate?', a: 'Yes. Students receive a certificate when they complete the course.' },
     { q: 'What if it turns out not to be for them?', a: "After the first lesson, if it's not for your child, just let us know and you'll get a full refund." },
     { q: 'What if they miss a lesson?', a: 'Lessons are recorded and shared privately with students on the course, so they can catch up. All the course material is also on the Energise AI learning platform.' },
     { q: 'Is the payment secure?', a: 'Yes. Payments are handled by Stripe, one of the world’s largest payment providers. We never see or store your card details.' },
@@ -121,12 +127,15 @@ export function AIEducationLanding() {
       {/* Hero Section */}
       <section className="min-h-[calc(100svh-4rem)] flex items-center justify-center py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-5xl mx-auto text-center">
+          <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] mb-3" style={{ color: theme.colors.accent.cyan }}>
+            Energise AI presents
+          </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8" style={{ color: theme.colors.text.primary }}>
-            AI Education Program
+            AI Advantage Academy
           </h1>
-          {/* Sized so title, video and buttons fit on one screen */}
-          <div className="mx-auto" style={{ width: 'min(100%, 960px, calc((100svh - 4rem - 300px) * 16 / 9))' }}>
-            <YouTubeLite id={HERO_VIDEO_ID} title="AI Education Program" />
+          {/* Portrait ad, sized so title, video and buttons fit on one screen */}
+          <div className="mx-auto flex justify-center" style={{ height: 'clamp(330px, calc(100svh - 4rem - 340px), 720px)' }}>
+            <HeroVideo src={adVideo} poster={adPoster} title="AI Advantage Academy advert" />
           </div>
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3">
             <a
@@ -234,14 +243,17 @@ export function AIEducationLanding() {
           </div>
 
           {/* Program Details */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="p-6 rounded-lg border text-center" style={{
               borderColor: theme.colors.border.subtle,
               backgroundColor: theme.colors.background.card,
             }}>
               <h3 className="font-semibold mb-2" style={{ color: theme.colors.text.primary }}>Start Date</h3>
-              <p className="text-2xl font-bold" style={{ color: theme.colors.accent.cyan }}>
-                1<sup>st</sup> November
+              <p className="text-xl font-bold whitespace-nowrap" style={{ color: theme.colors.accent.cyan }}>
+                By 1<sup>st</sup> December
+              </p>
+              <p className="text-sm" style={{ color: theme.colors.text.secondary }}>
+                or sooner, once all 30 places fill
               </p>
             </div>
 
@@ -251,10 +263,10 @@ export function AIEducationLanding() {
             }}>
               <h3 className="font-semibold mb-2" style={{ color: theme.colors.text.primary }}>Format</h3>
               <p className="text-lg" style={{ color: theme.colors.text.secondary }}>
-                1 hour online lessons
+                10 live online lessons
               </p>
               <p className="text-sm" style={{ color: theme.colors.text.secondary }}>
-                10 lessons total
+                2 a week for 5 weeks, 1 hour each
               </p>
             </div>
 
@@ -264,10 +276,23 @@ export function AIEducationLanding() {
             }}>
               <h3 className="font-semibold mb-2" style={{ color: theme.colors.text.primary }}>Price</h3>
               <p className="text-2xl font-bold" style={{ color: theme.colors.accent.cyan }}>
-                £11
+                £40
               </p>
               <p className="text-sm" style={{ color: theme.colors.text.secondary }}>
-                per lesson
+                for the full course
+              </p>
+            </div>
+
+            <div className="p-6 rounded-lg border text-center" style={{
+              borderColor: theme.colors.border.subtle,
+              backgroundColor: theme.colors.background.card,
+            }}>
+              <h3 className="font-semibold mb-2" style={{ color: theme.colors.text.primary }}>Certificate</h3>
+              <p className="text-lg" style={{ color: theme.colors.text.secondary }}>
+                Awarded on completion
+              </p>
+              <p className="text-sm" style={{ color: theme.colors.text.secondary }}>
+                Ages 14 to 16
               </p>
             </div>
           </div>
@@ -419,7 +444,7 @@ export function AIEducationLanding() {
             backgroundColor: `${theme.colors.accent.cyan}08`,
             color: theme.colors.accent.cyan,
           }}>
-            Only 29 spots available • First 15 students get £20 discount
+            Only 30 places available
           </p>
 
           <div className="flex items-start sm:items-center justify-center gap-3 mb-6 p-4 rounded-lg text-left sm:text-center" style={{
@@ -464,7 +489,7 @@ export function AIEducationLanding() {
             <ol className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
                 'Book securely through Stripe, adding your phone number at checkout.',
-                'Shawaiz texts you personally before 1st November with your joining details and platform login.',
+                'Shawaiz texts you personally as soon as all 30 places fill, with your start date, joining details and platform login.',
                 "Your child joins the first lesson. If it's not for them, you get a full refund.",
               ].map((step, i) => (
                 <li key={i} className="flex gap-3 p-5 rounded-lg border bg-white" style={{ borderColor: theme.colors.border.subtle }}>
@@ -524,7 +549,7 @@ export function AIEducationLanding() {
       <footer className="border-t py-8 px-4 sm:px-6 lg:px-8" style={{ borderColor: theme.colors.border.subtle }}>
         <div className="max-w-6xl mx-auto text-center">
           <p style={{ color: theme.colors.text.secondary }}>
-            © 2026 Energise AI Education · <a href={landingBase} className="underline">energiseai.co.uk</a>
+            © 2026 Energise AI · AI Advantage Academy · <a href={landingBase} className="underline">energiseai.co.uk</a>
           </p>
         </div>
       </footer>

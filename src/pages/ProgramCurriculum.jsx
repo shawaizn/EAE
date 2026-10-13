@@ -96,7 +96,6 @@ export function ProgramCurriculum() {
           <div className="space-y-4">
             {modulesData.map((module, index) => {
               const isExpanded = expandedModule === module.id;
-              const weekNumber = Math.floor(index / 2) + 1;
               return (
                 <div
                   key={module.id}
@@ -115,12 +114,6 @@ export function ProgramCurriculum() {
                     <div className="flex items-start justify-between gap-4 mb-3">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-baseline gap-3 mb-2">
-                          <div className="inline-flex items-center gap-2 px-2 py-1 rounded-md text-xs font-bold whitespace-nowrap flex-shrink-0" style={{
-                            backgroundColor: `${theme.colors.accent.cyan}15`,
-                            color: theme.colors.accent.cyan,
-                          }}>
-                            Week {weekNumber}
-                          </div>
                           <h3 className="text-lg sm:text-xl font-bold" style={{
                             color: theme.colors.text.primary,
                           }}>
