@@ -5,6 +5,7 @@ import { theme, behavior } from '../styles/theme';
 import { LogoHorizontal } from '../components/branding/Logo';
 import teacherPhoto from '../assets/shawaiz-teacher.jpg';
 import { certificates } from '../data/certificates';
+import { COURSE_PRICE, STRIPE_PAYMENT_LINK } from '../config/course';
 import { CertificateDialog, CertificateThumb } from '../components/features/CertificateDialog';
 import { HeroVideo } from '../components/features/HeroVideo';
 import adVideo from '../assets/ai-advantage-academy-ad.mp4';
@@ -27,17 +28,6 @@ export function AIEducationLanding() {
   const [certFromAll, setCertFromAll] = useState(false);
   const showCert = useCallback((view, fromAll = false) => { setCertView(view); setCertFromAll(fromAll); }, []);
   const closeCert = useCallback(() => setCertView(null), []);
-
-  useEffect(() => {
-    // Load Stripe buy button script
-    const script = document.createElement('script');
-    script.src = 'https://js.stripe.com/v3/buy-button.js';
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
 
   const curriculumWeeks = [
     { week: 1, title: 'What AI Is', description: 'Foundations of artificial intelligence' },
@@ -282,7 +272,7 @@ export function AIEducationLanding() {
             }}>
               <h3 className="font-semibold mb-2" style={{ color: theme.colors.text.primary }}>Price</h3>
               <p className="text-2xl font-bold" style={{ color: theme.colors.accent.cyan }}>
-                £40
+                {COURSE_PRICE}
               </p>
               <p className="text-sm" style={{ color: theme.colors.text.secondary }}>
                 for the full course
@@ -465,25 +455,13 @@ export function AIEducationLanding() {
             borderColor: theme.colors.border.subtle,
             backgroundColor: 'white',
           }}>
-            {/* OLD STRIPE CODE - COMMENTED OUT FOR NOW */}
-            {/* 
-            <script async
-              src="https://js.stripe.com/v3/buy-button.js">
-            </script>
-
-            <stripe-buy-button
-              buy-button-id="buy_btn_1TQ3drJaju4Y4wsr7v4itBjq"
-              publishable-key="pk_live_51RkVzzJaju4Y4wsrQsnGXWnUAr9vwAYU7OFPGgLtIcGxfNaW9AsBejXDTFtrCMGikdLzIL3pqvt6ryM0vKwltScV00KH4zcc30"
+            <a
+              href={STRIPE_PAYMENT_LINK}
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 rounded-lg text-lg font-semibold text-white transition-all hover:scale-105"
+              style={{ backgroundColor: theme.colors.accent.cyan }}
             >
-            </stripe-buy-button>
-            */}
-
-            {/* NEW STRIPE BUY BUTTON */}
-            <stripe-buy-button
-              buy-button-id="buy_btn_1TQ3drJaju4Y4wsr7v4itBjq"
-              publishable-key="pk_live_51RkVzzJaju4Y4wsrQsnGXWnUAr9vwAYU7OFPGgLtIcGxfNaW9AsBejXDTFtrCMGikdLzIL3pqvt6ryM0vKwltScV00KH4zcc30"
-            >
-            </stripe-buy-button>
+              Book Now · {COURSE_PRICE} <ArrowRight size={20} />
+            </a>
             <p className="mt-4 flex items-center justify-center gap-2 text-sm" style={{ color: theme.colors.text.secondary }}>
               <Lock size={14} />
               Secure payment by Stripe. We never see your card details.

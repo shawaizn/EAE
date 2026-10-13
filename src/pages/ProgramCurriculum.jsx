@@ -1,11 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ChevronDown } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ChevronDown } from 'lucide-react';
 import { theme, behavior } from '../styles/theme';
 import { LogoHorizontal } from '../components/branding/Logo';
 import { FeaturesTable } from '../components/features/FeaturesTable';
 import { modulesData } from '../data/modulesData';
 import { activityData } from '../data/activityData';
+import { COURSE_PRICE, STRIPE_PAYMENT_LINK } from '../config/course';
 
 const moduleNarratives = [
   "Accelerated foundations -- what AI is, how it fits in technology history, and the evolution to machine learning. Understanding is a necessity, not a destination.",
@@ -20,17 +21,6 @@ const moduleNarratives = [
 
 export function ProgramCurriculum() {
   const [expandedModule, setExpandedModule] = useState(null);
-
-  useEffect(() => {
-    // Load Stripe buy button script
-    const script = document.createElement('script');
-    script.src = 'https://js.stripe.com/v3/buy-button.js';
-    script.async = true;
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
 
   const toggleModule = (moduleId) => {
     setExpandedModule((prev) => (prev === moduleId ? null : moduleId));
@@ -215,11 +205,15 @@ export function ProgramCurriculum() {
             borderColor: theme.colors.border.subtle,
             backgroundColor: 'white',
           }}>
-            <stripe-buy-button
-              buy-button-id="buy_btn_1TQ3drJaju4Y4wsr7v4itBjq"
-              publishable-key="pk_live_51RkVzzJaju4Y4wsrQsnGXWnUAr9vwAYU7OFPGgLtIcGxfNaW9AsBejXDTFtrCMGikdLzIL3pqvt6ryM0vKwltScV00KH4zcc30"
-            >
-            </stripe-buy-button>
+            <div className="text-center">
+              <a
+                href={STRIPE_PAYMENT_LINK}
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 rounded-lg text-lg font-semibold text-white transition-all hover:scale-105"
+                style={{ backgroundColor: theme.colors.accent.cyan }}
+              >
+                Book Now · {COURSE_PRICE} <ArrowRight size={20} />
+              </a>
+            </div>
           </div>
         </div>
       </section>
