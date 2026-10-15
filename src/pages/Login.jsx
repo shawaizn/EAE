@@ -12,7 +12,6 @@ import { Navbar } from '../components/layout/Navbar';
 const landingBase = (import.meta.env.VITE_BASENAME || '/EAE/app').replace(/\/app$/, '') + '/';
 
 export function Login() {
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -26,11 +25,11 @@ export function Login() {
     setLoading(true);
 
     try {
-      await signIn(username, password);
+      await signIn(password);
       setSidebarOpen(false);
       navigate('/hub');
     } catch (err) {
-      setError(err.message || 'Failed to sign in. Please check your credentials.');
+      setError(err.message || 'Failed to sign in. Please check your password.');
     } finally {
       setLoading(false);
     }
@@ -55,23 +54,6 @@ export function Login() {
 
         <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           <div>
-            <label htmlFor="username" className="block text-xs sm:text-sm font-semibold text-slate-900 mb-1 sm:mb-2">
-              Username
-            </label>
-            <input
-              id="username"
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-energise-400 focus:border-energise-400 transition text-sm"
-              placeholder="student"
-              autoCapitalize="none"
-              autoComplete="username"
-            />
-          </div>
-
-          <div>
             <label htmlFor="password" className="block text-xs sm:text-sm font-semibold text-slate-900 mb-1 sm:mb-2">
               Password
             </label>
@@ -81,6 +63,8 @@ export function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              autoFocus
+              autoComplete="current-password"
               className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-energise-400 focus:border-energise-400 transition text-sm"
               placeholder="••••••••"
             />
