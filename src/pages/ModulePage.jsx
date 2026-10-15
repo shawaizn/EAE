@@ -6,8 +6,8 @@ import { moduleIntros } from '../data/moduleIntros';
 import { Check, CheckCircle2, Circle, ArrowRight, BookOpen, Lock } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
 import { theme } from '../styles/theme';
+import { isModuleLocked } from '../config/access';
 
-const LOCKED_MODULES = [3, 4, 5, 6, 7, 8];
 
 export function ModulePage() {
   const { user } = useAuth();
@@ -15,7 +15,7 @@ export function ModulePage() {
   const { isComplete, loading } = useProgress(user?.id, []);
 
   const moduleIdNum = parseInt(moduleId);
-  const isLocked = LOCKED_MODULES.includes(moduleIdNum);
+  const isLocked = isModuleLocked(moduleIdNum);
   const module = modulesData.find(m => m.id === moduleIdNum);
 
   if (!module) {
@@ -143,7 +143,7 @@ export function ModulePage() {
               <div>
                 <p className="font-semibold text-sm" style={{ color: '#c17f3a' }}>Module locked</p>
                 <p className="text-sm mt-1" style={{ color: '#6b5c4e' }}>
-                  Complete Foundation (modules 1 &amp; 2) to unlock this module's lessons.
+                  Strategy isn't part of your course, so these lessons are locked.
                   You can browse the overview below to see what's covered.
                 </p>
               </div>

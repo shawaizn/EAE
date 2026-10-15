@@ -3,12 +3,12 @@ import { Link, useLocation } from 'react-router-dom';
 import { ChevronRight, ChevronDown, Lock } from 'lucide-react';
 import { modulesData } from '../../data/modulesData';
 import { lang } from '../../styles/theme';
+import { isModuleLocked } from '../../config/access';
 
-const tiers = [
+const tierList = [
   {
     id: 'beginner',
     modules: [1, 2],
-    locked: false,
     color: {
       bg: 'bg-cyan-50',
       activeBg: 'bg-cyan-100',
@@ -20,7 +20,6 @@ const tiers = [
   {
     id: 'intermediate',
     modules: [3, 4, 5],
-    locked: true,
     color: {
       bg: 'bg-slate-100',
       activeBg: 'bg-slate-200',
@@ -32,7 +31,6 @@ const tiers = [
   {
     id: 'advanced',
     modules: [6, 7, 8],
-    locked: true,
     color: {
       bg: 'bg-slate-50',
       activeBg: 'bg-slate-100',
@@ -42,6 +40,9 @@ const tiers = [
     }
   }
 ];
+
+// A tier is locked when all of its modules are locked (see config/access.js)
+const tiers = tierList.map(t => ({ ...t, locked: t.modules.every(isModuleLocked) }));
 
 export function MainSidebar({ user, onNavigate }) {
   const [expandedTier, setExpandedTier] = useState(null);

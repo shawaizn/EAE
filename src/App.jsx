@@ -21,6 +21,7 @@ import { PromptsPage } from './pages/PromptsPage';
 import { CertificatePage } from './pages/CertificatePage';
 import QuizPage from './components/quiz-system/QuizPage';
 import { SidebarProvider } from './context/SidebarContext';
+import { isModuleLocked } from './config/access';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -32,12 +33,10 @@ function ScrollToTop() {
   return null;
 }
 
-// Modules 3+ lessons are locked — redirect to the module overview page
-const LOCKED_MODULES = [3, 4, 5, 6, 7, 8];
-
+// Lessons in locked modules (Strategy) redirect to the module overview page
 function UnlockedLessonRoute({ children }) {
   const { moduleId } = useParams();
-  if (LOCKED_MODULES.includes(parseInt(moduleId))) {
+  if (isModuleLocked(moduleId)) {
     return <Navigate to={`/modules/${moduleId}`} replace />;
   }
   return children;
