@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Login is password only: the password decides which account you get, so
 // each password must be unique. Students share the student password; access
@@ -10,15 +10,20 @@ const CREDENTIALS = [
 
 const SESSION_KEY = 'eae_session';
 
-export function useAuth() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
+function readSession() {
+  try {
     const stored = localStorage.getItem(SESSION_KEY);
-    if (stored) setUser(JSON.parse(stored));
-    setLoading(false);
-  }, []);
+    return stored ? JSON.parse(stored) : null;
+  } catch {
+    return null;
+  }
+}
+
+export function useAuth() {
+  // Read the saved session straight away so access checks never see a
+  // signed-in user as signed out on the first render
+  const [user, setUser] = useState(readSession);
+  const loading = false;
 
   const signIn = async (password) => {
     const match = CREDENTIALS.find(c => c.password === password.trim());
