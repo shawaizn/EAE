@@ -36,7 +36,8 @@ function ScrollToTop() {
 // Lessons in locked modules (Strategy) redirect to the module overview page
 function UnlockedLessonRoute({ children }) {
   const { moduleId } = useParams();
-  if (isModuleLocked(moduleId)) {
+  const { user } = useAuth();
+  if (isModuleLocked(moduleId, user)) {
     return <Navigate to={`/modules/${moduleId}`} replace />;
   }
   return children;

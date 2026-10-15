@@ -4,6 +4,7 @@ import { ChevronRight, ChevronDown, Lock } from 'lucide-react';
 import { modulesData } from '../../data/modulesData';
 import { lang } from '../../styles/theme';
 import { isModuleLocked } from '../../config/access';
+import { useAuth } from '../../hooks/useAuth';
 
 const tierList = [
   {
@@ -41,12 +42,13 @@ const tierList = [
   }
 ];
 
-// A tier is locked when all of its modules are locked (see config/access.js)
-const tiers = tierList.map(t => ({ ...t, locked: t.modules.every(isModuleLocked) }));
-
 export function MainSidebar({ user, onNavigate }) {
   const [expandedTier, setExpandedTier] = useState(null);
   const location = useLocation();
+  // Read the session here: the `user` prop can be stale right after login
+  const { user: account } = useAuth();
+  // A tier is locked when all of its modules are locked (see config/access.js)
+  const tiers = tierList.map(t => ({ ...t, locked: t.modules.every(id => isModuleLocked(id, account)) }));
 
   // Auto-expand tier containing current module
   useEffect(() => {

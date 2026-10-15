@@ -15,7 +15,7 @@ export function ModulePage() {
   const { isComplete, loading } = useProgress(user?.id, []);
 
   const moduleIdNum = parseInt(moduleId);
-  const isLocked = isModuleLocked(moduleIdNum);
+  const isLocked = isModuleLocked(moduleIdNum, user);
   const module = modulesData.find(m => m.id === moduleIdNum);
 
   if (!module) {
