@@ -1,110 +1,67 @@
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { useSidebar } from '../../context/SidebarContext';
+import { useAuth } from '../../hooks/useAuth';
+import { eduTheme as theme } from '../../styles/theme';
+import { LogoHorizontal } from '../branding/Logo';
 
-// Derive landing page base URL from the app basename so links work on any host
-const landingBase = (import.meta.env.VITE_BASENAME || '/EAE/app').replace(/\/app$/, '') + '/';
-
-export function Navbar({ user }) {
+// Learning platform top bar: just the Energise AI Education logo and the
+// log in / log out button (plus the sidebar toggle once signed in).
+export function Navbar({ showSidebarToggle = true }) {
   const { sidebarOpen, setSidebarOpen } = useSidebar();
+  // Read the session here: App's copy of `user` can be stale right after login
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+  const c = theme.colors;
+
+  const handleSignOut = async () => {
+    await signOut();
+    setSidebarOpen(false);
+    // Full reload so every page drops the old session straight away
+    window.location.assign(`${import.meta.env.VITE_BASENAME || '/EAE/app'}/login`);
+  };
 
   return (
-    <nav style={{
-      background: 'rgba(250,248,245,0.92)',
-      backdropFilter: 'blur(12px)',
-      WebkitBackdropFilter: 'blur(12px)',
-      borderBottom: '1px solid rgba(193,127,58,0.15)',
-      position: 'sticky',
-      top: 0,
-      zIndex: 50,
-    }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1.5rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
-
-          {/* Left: sidebar toggle + wordmark */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            {user && (
+    <nav className="sticky top-0 z-50 bg-white border-b" style={{ borderColor: c.border.subtle }}>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between h-16 gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+            {user && showSidebarToggle && (
               <button
+                type="button"
                 onClick={() => setSidebarOpen(!sidebarOpen)}
                 aria-label={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  color: '#6b5c4e',
-                  padding: '6px',
-                  borderRadius: '6px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  transition: 'color 0.2s',
-                }}
-                onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
-                onMouseLeave={e => e.currentTarget.style.color = '#6b5c4e'}
+                className="p-1.5 rounded-md transition-colors hover:bg-orange-50"
+                style={{ color: c.text.secondary }}
               >
                 {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
             )}
-            <a
-              href={landingBase}
-              style={{ textDecoration: 'none' }}
-            >
-              <span style={{
-                fontFamily: "'Playfair Display', Georgia, serif",
-                fontSize: '1.35rem',
-                fontWeight: 700,
-                color: '#1a1612',
-                letterSpacing: '-0.01em',
-              }}>
-                Energise <span style={{ color: '#c17f3a' }}>AI</span>
-              </span>
-            </a>
+            <Link to="/ai-education-landing" aria-label="Energise AI Education home" className="flex-shrink-0">
+              <LogoHorizontal size="sm" accent={c.brand.fill} accentText={c.accent.cyan} />
+            </Link>
           </div>
 
-          {/* Right: nav links — hidden on small screens to prevent overflow */}
-          <div className="hidden md:flex" style={{ alignItems: 'center', gap: '24px' }}>
-            <a
-              href={`${landingBase}business/#what-we-do`}
-              style={{ fontSize: '0.9rem', color: '#4a3f35', textDecoration: 'none', fontWeight: 500 }}
-              onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
-              onMouseLeave={e => e.currentTarget.style.color = '#4a3f35'}
+          {user ? (
+            <button
+              type="button"
+              onClick={handleSignOut}
+              className="px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap border transition-colors hover:bg-neutral-50"
+              style={{ borderColor: c.border.default, color: c.text.primary }}
             >
-              Services
-            </a>
-            <a
-              href={`${landingBase}business/#why-us`}
-              style={{ fontSize: '0.9rem', color: '#4a3f35', textDecoration: 'none', fontWeight: 500 }}
-              onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
-              onMouseLeave={e => e.currentTarget.style.color = '#4a3f35'}
+              Log out
+            </button>
+          ) : pathname !== '/login' && (
+            <button
+              type="button"
+              onClick={() => navigate('/login')}
+              className="px-4 py-2 rounded-lg text-sm font-semibold whitespace-nowrap"
+              style={{ backgroundColor: c.brand.fill, color: c.brand.onFill }}
             >
-              Why Us
-            </a>
-            <a
-              href={`${landingBase}business/#pricing`}
-              style={{ fontSize: '0.9rem', color: '#4a3f35', textDecoration: 'none', fontWeight: 500 }}
-              onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
-              onMouseLeave={e => e.currentTarget.style.color = '#4a3f35'}
-            >
-              Pricing
-            </a>
-            <a
-              href={`${landingBase}business/#contact`}
-              style={{
-                fontSize: '0.88rem',
-                fontWeight: 700,
-                color: '#faf8f5',
-                background: '#c17f3a',
-                border: '2px solid #c17f3a',
-                borderRadius: '6px',
-                padding: '7px 18px',
-                textDecoration: 'none',
-                transition: 'background 0.2s, color 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.background = '#a66830'; e.currentTarget.style.borderColor = '#a66830'; }}
-              onMouseLeave={e => { e.currentTarget.style.background = '#c17f3a'; e.currentTarget.style.borderColor = '#c17f3a'; }}
-            >
-              Contact
-            </a>
-          </div>
-
+              Log in
+            </button>
+          )}
         </div>
       </div>
     </nav>

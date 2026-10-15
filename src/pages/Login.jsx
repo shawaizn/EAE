@@ -7,6 +7,7 @@ import { Card } from '../components/ui/Card';
 import { AnimatedLoginBackground } from '../components/branding/AnimatedLoginBackground';
 import { behavior } from '../styles/theme';
 import { ArrowLeft } from 'lucide-react';
+import { Navbar } from '../components/layout/Navbar';
 
 const landingBase = (import.meta.env.VITE_BASENAME || '/EAE/app').replace(/\/app$/, '') + '/';
 
@@ -36,6 +37,8 @@ export function Login() {
   };
 
   return (
+    <>
+    <Navbar />
     <div className="min-h-[calc(100vh-4rem)] flex items-center justify-center px-4 py-6 sm:py-8" style={{ backgroundColor: '#faf8f5' }}>
       <Card className="w-full max-w-md bg-white border-2 shadow-md p-4 sm:p-6" style={{ borderColor: '#e8dfd4' }}>
         <a
@@ -62,7 +65,9 @@ export function Login() {
               onChange={(e) => setUsername(e.target.value)}
               required
               className="w-full px-3 sm:px-4 py-2 sm:py-3 border-2 border-slate-200 rounded-lg focus:ring-2 focus:ring-energise-400 focus:border-energise-400 transition text-sm"
-              placeholder="shawaiz"
+              placeholder="student"
+              autoCapitalize="none"
+              autoComplete="username"
             />
           </div>
 
@@ -98,5 +103,6 @@ export function Login() {
         </form>
       </Card>
     </div>
+    </>
   );
 }

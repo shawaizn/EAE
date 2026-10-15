@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { Navbar } from '../components/layout/Navbar';
 import { BookOpen, Target, Cpu, Zap, Shield, ArrowRight, ArrowLeft } from 'lucide-react';
 
 const landingBase = (import.meta.env.VITE_BASENAME || '/EAE/app').replace(/\/app$/, '') + '/';
@@ -59,27 +60,7 @@ export function HubPage() {
   return (
     <div style={{ minHeight: '100vh', background: '#faf8f5' }}>
 
-      {/* Nav */}
-      <nav style={{
-        background: 'rgba(250,248,245,0.92)',
-        backdropFilter: 'blur(12px)',
-        WebkitBackdropFilter: 'blur(12px)',
-        borderBottom: '1px solid rgba(193,127,58,0.15)',
-        position: 'sticky',
-        top: 0,
-        zIndex: 20,
-      }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '64px' }}>
-          <span style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: '1.35rem', fontWeight: 700, color: '#1a1612', letterSpacing: '-0.01em' }}>
-            Energise <span style={{ color: '#c17f3a' }}>AI</span>
-          </span>
-          {user?.email && (
-            <span className="hidden sm:block" style={{ fontSize: '0.8rem', color: '#9a8a7a' }}>
-              {user.email}
-            </span>
-          )}
-        </div>
-      </nav>
+      <Navbar showSidebarToggle={false} />
 
       {/* Main */}
       <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 1.5rem 5rem' }}>

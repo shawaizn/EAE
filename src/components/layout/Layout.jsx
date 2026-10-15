@@ -17,7 +17,7 @@ export function Layout({ children, user, onSignOut }) {
 
   return (
     <div className="min-h-screen relative" style={{ background: '#faf8f5' }}>
-      <Navbar user={user} />
+      <Navbar />
       <div className="flex" style={{ minHeight: 'calc(100dvh - 4rem)' }}>
 
         {sidebarOpen && (
