@@ -111,6 +111,10 @@ HTEOF
             [ -f "$img" ] && cp "$img" dist/
           done
           cp dist/app/index.html dist/404.html
+          # Business site, education/course short links
+          for d in business education course; do
+            [ -d "$d" ] && cp -r "$d" dist/
+          done
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

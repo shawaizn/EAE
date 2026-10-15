@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, ChevronDown } from 'lucide-react';
-import { theme, behavior } from '../styles/theme';
-import { LogoHorizontal } from '../components/branding/Logo';
+import { ArrowRight, ChevronDown } from 'lucide-react';
+import { eduTheme as theme, behavior } from '../styles/theme';
+import { EduHeader } from '../components/layout/EduHeader';
 import { FeaturesTable } from '../components/features/FeaturesTable';
 import { modulesData } from '../data/modulesData';
 import { activityData } from '../data/activityData';
@@ -32,22 +31,7 @@ export function ProgramCurriculum() {
 
   return (
     <div className="w-full min-h-screen bg-white">
-      {/* Header */}
-      <header className="sticky top-0 z-20 bg-white border-b" style={{ borderColor: theme.colors.border.subtle }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link
-              to="/"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-md transition-colors hover:opacity-70"
-              style={{ color: theme.colors.text.secondary }}
-            >
-              <ArrowLeft size={18} />
-              <span className="text-sm font-medium">Back</span>
-            </Link>
-            <LogoHorizontal size="sm" />
-          </div>
-        </div>
-      </header>
+      <EduHeader />
 
       {/* Hero Section */}
       <section className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8">
@@ -208,8 +192,8 @@ export function ProgramCurriculum() {
             <div className="text-center">
               <a
                 href={STRIPE_PAYMENT_LINK}
-                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 rounded-lg text-lg font-semibold text-white transition-all hover:scale-105"
-                style={{ backgroundColor: theme.colors.accent.cyan }}
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 rounded-lg text-lg font-semibold transition-all hover:scale-105"
+                style={{ backgroundColor: theme.colors.brand.fill, color: theme.colors.brand.onFill }}
               >
                 Apply Now · {COURSE_PRICE} <ArrowRight size={20} />
               </a>

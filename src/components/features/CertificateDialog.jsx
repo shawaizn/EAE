@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { ArrowLeft, ExternalLink, FileText, X } from 'lucide-react';
-import { theme } from '../../styles/theme';
+import { eduTheme as theme } from '../../styles/theme';
 
 // Pop-up for the course page certificates. `view` is null (closed), 'all'
 // (grid of every certificate) or a certificate index (that certificate large).
@@ -91,8 +91,8 @@ export function CertificateDialog({ certificates, view, fromAll, onShow, onClose
                   href={cert.pdf}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-white"
-                  style={{ backgroundColor: theme.colors.accent.cyan }}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold"
+                  style={{ backgroundColor: theme.colors.brand.fill, color: theme.colors.brand.onFill }}
                 >
                   <FileText size={18} /> Open PDF
                 </a>
