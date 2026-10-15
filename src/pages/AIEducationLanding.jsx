@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Target, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, UserCheck } from 'lucide-react';
+import { Award, ArrowLeft, ArrowRight, Target, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, UserCheck } from 'lucide-react';
 import { theme, behavior } from '../styles/theme';
 import { LogoHorizontal } from '../components/branding/Logo';
 import teacherPhoto from '../assets/shawaiz-teacher.jpg';
@@ -28,6 +28,23 @@ export function AIEducationLanding() {
   const [certFromAll, setCertFromAll] = useState(false);
   const showCert = useCallback((view, fromAll = false) => { setCertView(view); setCertFromAll(fromAll); }, []);
   const closeCert = useCallback(() => setCertView(null), []);
+
+  const outcomes = [
+    { title: 'Prompting', text: 'Great results from AI, using the CO‑STAR method' },
+    { title: 'Thinks for themselves', text: 'Knows when to use AI and when not to' },
+    { title: 'Safe use', text: 'Knows the traps and the risks of misuse' },
+    { title: 'AI literacy', text: 'Understands what AI is and how it works' },
+    { title: 'Good judgement', text: 'Spots hype and wrong answers' },
+    { title: 'Savvy', text: 'Knows who is behind AI and what it costs them' },
+    { title: 'Confidence', text: 'AI stops being scary or mysterious' },
+  ];
+
+  const quickFacts = [
+    { value: '10', label: 'live lessons' },
+    { value: '2', label: 'a week, 1 hour each' },
+    { value: '30', label: 'places only' },
+    { value: '14–16', label: 'year olds' },
+  ];
 
   const curriculumWeeks = [
     { week: 1, title: 'What AI Is', description: 'Foundations of artificial intelligence' },
@@ -99,6 +116,7 @@ export function AIEducationLanding() {
               <LogoHorizontal size="sm" />
             </a>
             <nav className="flex items-center gap-8">
+              <a href="#outcomes" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">What They Get</a>
               <a href="#why" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Why</a>
               <a href="#curriculum" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Curriculum</a>
               <a href="#teacher" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Tutor</a>
@@ -120,11 +138,14 @@ export function AIEducationLanding() {
       <section className="min-h-[calc(100svh-4rem)] flex items-center justify-center py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-6xl mx-auto text-center">
           <p className="text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] mb-3" style={{ color: theme.colors.accent.cyan }}>
-            Energise AI presents
+            Energise AI presents · Live online course · Ages 14 to 16
           </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-8" style={{ color: theme.colors.text.primary }}>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-3" style={{ color: theme.colors.text.primary }}>
             AI Advantage Academy
           </h1>
+          <p className="text-lg sm:text-2xl font-semibold mb-8" style={{ color: theme.colors.text.secondary }}>
+            Your teen using <span style={{ color: theme.colors.accent.cyan }}>AI like a pro</span>, and still thinking for themselves
+          </p>
           {/* Full-width landscape advert */}
           <div className="mx-auto w-full max-w-6xl">
             <HeroVideo
@@ -139,7 +160,7 @@ export function AIEducationLanding() {
               className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-white transition-all hover:scale-105"
               style={{ backgroundColor: theme.colors.accent.cyan }}
             >
-              Book a Place <ArrowRight size={18} />
+              Apply Now <ArrowRight size={18} />
             </a>
             <a
               href="#teacher"
@@ -152,8 +173,61 @@ export function AIEducationLanding() {
         </div>
       </section>
 
+      {/* Quick Facts Strip */}
+      <section className="px-4 sm:px-6 lg:px-8 py-8 sm:py-10" style={{ backgroundColor: theme.colors.primary.deep }}>
+        <div className="max-w-5xl mx-auto">
+          <dl className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center sm:text-left">
+            {quickFacts.map((f) => (
+              <div key={f.label}>
+                <dt className="text-3xl sm:text-4xl font-bold" style={{ color: theme.colors.accent.cyan }}>{f.value}</dt>
+                <dd className="mt-1 text-sm sm:text-base text-white/80">{f.label}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="mt-6 pt-6 border-t border-white/15 text-sm sm:text-base text-white/80 text-center sm:text-left">
+            Starts when all 30 places fill, or by 1st December · Taught live by Shawaiz Naeem
+          </p>
+        </div>
+      </section>
+
+      {/* Outcomes Section */}
+      <section id="outcomes" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3 text-center" style={{ color: theme.colors.text.primary }}>
+            What Your Teen Gets
+          </h2>
+          <p className="text-center mb-10" style={{ color: theme.colors.text.secondary }}>
+            By the end of the course, your teen:
+          </p>
+          <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-10">
+            {outcomes.map((o, i) => (
+              <li key={o.title} className="flex gap-4 py-5 border-b" style={{ borderColor: theme.colors.border.subtle }}>
+                <span className="text-lg font-bold tabular-nums w-8 flex-shrink-0" style={{ color: theme.colors.accent.cyan }}>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span>
+                  <span className="block text-lg font-bold" style={{ color: theme.colors.text.primary }}>{o.title}</span>
+                  <span className="block mt-1 leading-relaxed" style={{ color: theme.colors.text.secondary }}>{o.text}</span>
+                </span>
+              </li>
+            ))}
+            <li className="flex gap-4 py-5 border-b" style={{ borderColor: theme.colors.border.subtle }}>
+              <span className="w-8 flex-shrink-0 pt-0.5">
+                <span className="flex items-center justify-center w-7 h-7 rounded-full text-white" style={{ backgroundColor: theme.colors.accent.cyan }}>
+                  <Award size={16} />
+                </span>
+              </span>
+              <span>
+                <span className="block text-lg font-bold" style={{ color: theme.colors.text.primary }}>Certificate</span>
+                <span className="block mt-1 leading-relaxed" style={{ color: theme.colors.text.secondary }}>On completion of the course</span>
+              </span>
+            </li>
+          </ol>
+        </div>
+      </section>
+
       {/* Why Section */}
-      <section id="why" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
+      <section id="why" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
             Why We Created This
@@ -201,14 +275,14 @@ export function AIEducationLanding() {
               className="inline-flex items-center justify-center gap-2 mt-2 px-7 py-3.5 rounded-lg font-semibold text-white transition-all hover:scale-105"
               style={{ backgroundColor: theme.colors.accent.cyan }}
             >
-              Book a Place <ArrowRight size={18} />
+              Apply Now <ArrowRight size={18} />
             </a>
           </div>
         </div>
       </section>
 
       {/* Curriculum Section */}
-      <section id="curriculum" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="curriculum" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
             Our Curriculum
@@ -310,7 +384,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* Teacher Section */}
-      <section id="teacher" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
+      <section id="teacher" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
             Meet the Tutor
@@ -366,7 +440,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="testimonials" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-2 text-center" style={{ color: theme.colors.text.primary }}>
             What Students Say
@@ -391,7 +465,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* Parent Reassurance Section */}
-      <section id="parents" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
+      <section id="parents" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 text-center" style={{ color: theme.colors.text.primary }}>
             For Parents
@@ -429,7 +503,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* CTA Section */}
-      <section id="book" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      <section id="book" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8" style={{ color: theme.colors.text.primary }}>
             Ready to Start Your AI Journey?
@@ -460,7 +534,7 @@ export function AIEducationLanding() {
               className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 rounded-lg text-lg font-semibold text-white transition-all hover:scale-105"
               style={{ backgroundColor: theme.colors.accent.cyan }}
             >
-              Book Now · {COURSE_PRICE} <ArrowRight size={20} />
+              Apply Now · {COURSE_PRICE} <ArrowRight size={20} />
             </a>
             <p className="mt-4 flex items-center justify-center gap-2 text-sm" style={{ color: theme.colors.text.secondary }}>
               <Lock size={14} />
@@ -489,7 +563,7 @@ export function AIEducationLanding() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: theme.colors.background.subtle }}>
+      <section id="contact" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl font-bold mb-3" style={{ color: theme.colors.text.primary }}>
             Questions Before You Book?
