@@ -1,5 +1,5 @@
 import { Video, Wrench, BookMarked, FileText, Brain, MapPin, Lightbulb, Layers, Diamond, Workflow, Gauge, Trophy } from 'lucide-react';
-import { theme, behavior } from '../../styles/theme';
+import { eduTheme as theme, behavior } from '../../styles/theme';
 
 const FEATURES = [
   {

@@ -4,7 +4,7 @@
 import React from 'react';
 
 // HORIZONTAL LOGO - Use in headers, marketing, full branding
-export function LogoHorizontal({ size = 'md', whiteMode = false }) {
+export function LogoHorizontal({ size = 'md', whiteMode = false, accent = '#0891b2', accentText, label = 'AI EDUCATION' }) {
   const sizeMap = {
     sm: { svg: 48, text: 'text-lg' },
     md: { svg: 64, text: 'text-xl' },
@@ -13,10 +13,10 @@ export function LogoHorizontal({ size = 'md', whiteMode = false }) {
 
   const { svg, text } = sizeMap[size];
 
-  const topArcColor = '#0891b2';
+  const topArcColor = accent;
   const bottomArcColor = whiteMode ? '#ffffff' : '#1a2332';
-  const dotsColor = '#0891b2';
-  const linesColor = '#0891b2';
+  const dotsColor = accent;
+  const linesColor = accent;
   const energiseColor = whiteMode ? '#ffffff' : '#1a2332';
   const eLetter = whiteMode ? '#ffffff' : '#1a2332';
 
@@ -45,8 +45,8 @@ export function LogoHorizontal({ size = 'md', whiteMode = false }) {
         <p className={`${text} font-black`} style={{color: energiseColor, fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', letterSpacing: '-0.02em'}}>
           Energise
         </p>
-        <p className="text-xs font-semibold" style={{color: '#0891b2', fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', letterSpacing: '0.05em'}}>
-          AI EDUCATION
+        <p className="text-xs font-semibold" style={{color: accentText || accent, fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif', letterSpacing: '0.05em'}}>
+          {label}
         </p>
       </div>
     </div>

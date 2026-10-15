@@ -58,8 +58,8 @@ export function HeroVideo({ landscape, portrait, title }) {
         >
           <span className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-transparent" />
           <span
-            className={`absolute left-1/2 ${isPhone ? 'top-[72%]' : 'top-[66%]'} -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full text-white transition-transform group-hover:scale-110`}
-            style={{ backgroundColor: '#c17f3a', boxShadow: '0 12px 32px rgba(0,0,0,0.35)' }}
+            className={`absolute left-1/2 ${isPhone ? 'top-[72%]' : 'top-[66%]'} -translate-x-1/2 -translate-y-1/2 flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full transition-transform group-hover:scale-110`}
+            style={{ backgroundColor: '#F5A100', color: '#111111', boxShadow: '0 12px 32px rgba(0,0,0,0.35)' }}
           >
             <svg viewBox="0 0 24 24" className="w-8 h-8 sm:w-9 sm:h-9 ml-1" fill="currentColor" aria-hidden="true">
               <path d="M8 5.14v13.72a1 1 0 0 0 1.5.86l11-6.86a1 1 0 0 0 0-1.72l-11-6.86A1 1 0 0 0 8 5.14z" />

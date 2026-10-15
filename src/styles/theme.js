@@ -262,6 +262,24 @@ const enterpriseTheme = {
 
 export const theme = DESIGN_MODE === 'enterprise' ? enterpriseTheme : currentTheme;
 
+// Energise AI Education: sister brand for the course pages (orange, black and
+// white, matching the AI Advantage Academy leaflet and advert). Same shape as
+// the main theme, so education pages can import it as `theme`.
+// - brand.fill: vivid orange for buttons and highlights, always with brand.onFill text
+// - accent.cyan: deeper orange that stays readable as text on white
+export const eduTheme = {
+  ...enterpriseTheme,
+  colors: {
+    ...enterpriseTheme.colors,
+    brand: { fill: '#F5A100', onFill: '#111111', soft: '#FFF4DE' },
+    primary: { deep: '#111111', electric: '#F5A100', light: '#FFF4DE' },
+    accent: { cyan: '#B45309', coral: '#92400E' },
+    background: { base: '#FFFFFF', card: '#FFFFFF', subtle: '#FFF8EC', overlay: 'rgba(255, 255, 255, 0.97)' },
+    text: { primary: '#111111', secondary: '#454545', muted: '#8A8A8A', inverse: '#FFFFFF' },
+    border: { subtle: '#EFE6D6', default: '#E2D3B8', strong: '#F5A100' },
+  },
+};
+
 // ─── Helpers ─────────────────────────────────────────────────────
 
 export const getColor = (path) => {

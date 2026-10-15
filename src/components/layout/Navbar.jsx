@@ -62,7 +62,7 @@ export function Navbar({ user }) {
           {/* Right: nav links — hidden on small screens to prevent overflow */}
           <div className="hidden md:flex" style={{ alignItems: 'center', gap: '24px' }}>
             <a
-              href={`${landingBase}#services`}
+              href={`${landingBase}business/#what-we-do`}
               style={{ fontSize: '0.9rem', color: '#4a3f35', textDecoration: 'none', fontWeight: 500 }}
               onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
               onMouseLeave={e => e.currentTarget.style.color = '#4a3f35'}
@@ -70,7 +70,7 @@ export function Navbar({ user }) {
               Services
             </a>
             <a
-              href={`${landingBase}#why-us`}
+              href={`${landingBase}business/#why-us`}
               style={{ fontSize: '0.9rem', color: '#4a3f35', textDecoration: 'none', fontWeight: 500 }}
               onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
               onMouseLeave={e => e.currentTarget.style.color = '#4a3f35'}
@@ -78,7 +78,7 @@ export function Navbar({ user }) {
               Why Us
             </a>
             <a
-              href={`${landingBase}#pricing`}
+              href={`${landingBase}business/#pricing`}
               style={{ fontSize: '0.9rem', color: '#4a3f35', textDecoration: 'none', fontWeight: 500 }}
               onMouseEnter={e => e.currentTarget.style.color = '#c17f3a'}
               onMouseLeave={e => e.currentTarget.style.color = '#4a3f35'}
@@ -86,7 +86,7 @@ export function Navbar({ user }) {
               Pricing
             </a>
             <a
-              href={`${landingBase}#contact`}
+              href={`${landingBase}business/#contact`}
               style={{
                 fontSize: '0.88rem',
                 fontWeight: 700,

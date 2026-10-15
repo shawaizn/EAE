@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Award, ArrowLeft, ArrowRight, Target, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, UserCheck } from 'lucide-react';
-import { theme, behavior } from '../styles/theme';
-import { LogoHorizontal } from '../components/branding/Logo';
+import { Award, ArrowRight, Target, ShieldCheck, Lock, MessageCircle, Mail, Instagram, Linkedin, Video, Monitor, Quote, RotateCcw, UserCheck } from 'lucide-react';
+import { eduTheme as theme, behavior } from '../styles/theme';
+import { EduHeader } from '../components/layout/EduHeader';
 import teacherPhoto from '../assets/shawaiz-teacher.jpg';
 import { certificates } from '../data/certificates';
 import { COURSE_PRICE, STRIPE_PAYMENT_LINK } from '../config/course';
@@ -108,31 +108,12 @@ export function AIEducationLanding() {
 
   return (
     <div className="w-full min-h-screen bg-white">
-      {/* Header */}
-      <header className="sticky top-0 z-20 bg-white border-b" style={{ borderColor: theme.colors.border.subtle }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <a href={landingBase} aria-label="Energise AI home">
-              <LogoHorizontal size="sm" />
-            </a>
-            <nav className="flex items-center gap-8">
-              <a href="#outcomes" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">What They Get</a>
-              <a href="#why" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Why</a>
-              <a href="#curriculum" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Curriculum</a>
-              <a href="#teacher" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Tutor</a>
-              <a href="#parents" className="hidden sm:inline text-sm font-medium hover:text-cyan-600 transition-colors">Parents</a>
-              <a
-                href={landingBase}
-                className="flex items-center gap-2 text-sm font-medium transition-colors"
-                style={{ color: theme.colors.accent.cyan }}
-              >
-                <ArrowLeft className="w-4 h-4" />
-                Back to Energise AI
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <EduHeader links={[
+        { href: '#outcomes', label: 'What They Get' },
+        { href: '#curriculum', label: 'Curriculum' },
+        { href: '#teacher', label: 'Tutor' },
+        { href: '#parents', label: 'Parents' },
+      ]} />
 
       {/* Hero Section */}
       <section className="min-h-[calc(100svh-4rem)] flex items-center justify-center py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
@@ -157,8 +138,8 @@ export function AIEducationLanding() {
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row justify-center gap-3">
             <a
               href="#book"
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg font-semibold text-white transition-all hover:scale-105"
-              style={{ backgroundColor: theme.colors.accent.cyan }}
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg font-semibold transition-all hover:scale-105"
+              style={{ backgroundColor: theme.colors.brand.fill, color: theme.colors.brand.onFill }}
             >
               Apply Now <ArrowRight size={18} />
             </a>
@@ -179,7 +160,7 @@ export function AIEducationLanding() {
           <dl className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center sm:text-left">
             {quickFacts.map((f) => (
               <div key={f.label}>
-                <dt className="text-3xl sm:text-4xl font-bold" style={{ color: theme.colors.accent.cyan }}>{f.value}</dt>
+                <dt className="text-3xl sm:text-4xl font-bold" style={{ color: theme.colors.brand.fill }}>{f.value}</dt>
                 <dd className="mt-1 text-sm sm:text-base text-white/80">{f.label}</dd>
               </div>
             ))}
@@ -213,7 +194,7 @@ export function AIEducationLanding() {
             ))}
             <li className="flex gap-4 py-5 border-b" style={{ borderColor: theme.colors.border.subtle }}>
               <span className="w-8 flex-shrink-0 pt-0.5">
-                <span className="flex items-center justify-center w-7 h-7 rounded-full text-white" style={{ backgroundColor: theme.colors.accent.cyan }}>
+                <span className="flex items-center justify-center w-7 h-7 rounded-full" style={{ backgroundColor: theme.colors.brand.fill, color: theme.colors.brand.onFill }}>
                   <Award size={16} />
                 </span>
               </span>
@@ -272,8 +253,8 @@ export function AIEducationLanding() {
             </h3>
             <a
               href="#book"
-              className="inline-flex items-center justify-center gap-2 mt-2 px-7 py-3.5 rounded-lg font-semibold text-white transition-all hover:scale-105"
-              style={{ backgroundColor: theme.colors.accent.cyan }}
+              className="inline-flex items-center justify-center gap-2 mt-2 px-7 py-3.5 rounded-lg font-semibold transition-all hover:scale-105"
+              style={{ backgroundColor: theme.colors.brand.fill, color: theme.colors.brand.onFill }}
             >
               Apply Now <ArrowRight size={18} />
             </a>
@@ -373,8 +354,8 @@ export function AIEducationLanding() {
               to="/program-curriculum"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all hover:scale-105"
               style={{
-                background: `linear-gradient(135deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
-                color: 'white',
+                backgroundColor: theme.colors.brand.fill,
+                color: theme.colors.brand.onFill,
               }}
             >
               Learn More About Our Program <ArrowRight size={20} />
@@ -531,8 +512,8 @@ export function AIEducationLanding() {
           }}>
             <a
               href={STRIPE_PAYMENT_LINK}
-              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 rounded-lg text-lg font-semibold text-white transition-all hover:scale-105"
-              style={{ backgroundColor: theme.colors.accent.cyan }}
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 rounded-lg text-lg font-semibold transition-all hover:scale-105"
+              style={{ backgroundColor: theme.colors.brand.fill, color: theme.colors.brand.onFill }}
             >
               Apply Now · {COURSE_PRICE} <ArrowRight size={20} />
             </a>
@@ -551,7 +532,7 @@ export function AIEducationLanding() {
                 "Your child joins the first lesson. If it's not for them, you get a full refund.",
               ].map((step, i) => (
                 <li key={i} className="flex gap-3 p-5 rounded-lg border bg-white" style={{ borderColor: theme.colors.border.subtle }}>
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold text-white" style={{ backgroundColor: theme.colors.accent.cyan }}>
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold" style={{ backgroundColor: theme.colors.brand.fill, color: theme.colors.brand.onFill }}>
                     {i + 1}
                   </span>
                   <span className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>{step}</span>
@@ -607,7 +588,7 @@ export function AIEducationLanding() {
       <footer className="border-t py-8 px-4 sm:px-6 lg:px-8" style={{ borderColor: theme.colors.border.subtle }}>
         <div className="max-w-6xl mx-auto text-center">
           <p style={{ color: theme.colors.text.secondary }}>
-            © 2026 Energise AI · AI Advantage Academy · <a href={landingBase} className="underline">energiseai.co.uk</a>
+            © 2026 Energise AI Education · AI Advantage Academy · <a href={landingBase} className="underline">energiseai.co.uk</a>
           </p>
         </div>
       </footer>
