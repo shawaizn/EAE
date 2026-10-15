@@ -211,7 +211,7 @@ export function ProgramCurriculum() {
                 className="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-10 py-4 rounded-lg text-lg font-semibold text-white transition-all hover:scale-105"
                 style={{ backgroundColor: theme.colors.accent.cyan }}
               >
-                Book Now · {COURSE_PRICE} <ArrowRight size={20} />
+                Apply Now · {COURSE_PRICE} <ArrowRight size={20} />
               </a>
             </div>
           </div>
