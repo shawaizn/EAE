@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 
-// Students sign in with the shared student account; access to modules is
-// set in src/config/access.js (Foundation + Application, not Strategy).
+// Login is password only: the password decides which account you get, so
+// each password must be unique. Students share the student password; access
+// to modules is set in src/config/access.js (Foundation + Application).
 const CREDENTIALS = [
   { username: 'shawaiz', password: 'naeem' },
   { username: 'student', password: 'academy' },
@@ -19,11 +20,9 @@ export function useAuth() {
     setLoading(false);
   }, []);
 
-  const signIn = async (username, password) => {
-    const match = CREDENTIALS.find(
-      c => c.username === username.trim().toLowerCase() && c.password === password.trim()
-    );
-    if (!match) throw new Error('Invalid credentials.');
+  const signIn = async (password) => {
+    const match = CREDENTIALS.find(c => c.password === password.trim());
+    if (!match) throw new Error('Incorrect password.');
     const user = { id: match.username, username: match.username };
     localStorage.setItem(SESSION_KEY, JSON.stringify(user));
     setUser(user);
