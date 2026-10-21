@@ -42,7 +42,7 @@ export function AIEducationLanding() {
   const quickFacts = [
     { value: '10', label: 'live lessons' },
     { value: '2', label: 'a week, 1 hour each' },
-    { value: '30', label: 'places only' },
+    { value: '10', label: 'places only' },
     { value: '14–16', label: 'year olds' },
   ];
 
@@ -91,7 +91,7 @@ export function AIEducationLanding() {
   const faqs = [
     { q: 'Who is this for?', a: "Young people aged 14 to 16. You know your child best, so it's up to you to decide if it's the right fit. If you're unsure, message us and we'll talk it through." },
     { q: 'Does my child need any experience with AI?', a: 'No. We start from the basics of what AI is and build up step by step.' },
-    { q: 'When does it start?', a: "As soon as all 30 places are filled, and by 1st December at the latest. We'll tell you the exact start date as soon as the last place fills." },
+    { q: 'When does it start?', a: "As soon as all 10 places are filled, and by 1st December at the latest. We'll tell you the exact start date as soon as the last place fills." },
     { q: 'How long is the course?', a: 'Ten live lessons, two a week for five weeks. Each lesson lasts one hour.' },
     { q: 'Do they get a certificate?', a: 'Yes. Students receive a certificate when they complete the course.' },
     { q: 'What if it turns out not to be for them?', a: "After the first lesson, if it's not for your child, just let us know and you'll get a full refund." },
@@ -166,7 +166,7 @@ export function AIEducationLanding() {
             ))}
           </dl>
           <p className="mt-6 pt-6 border-t border-white/15 text-sm sm:text-base text-white/80 text-center sm:text-left">
-            Starts when all 30 places fill, or by 1st December · Taught live by Shawaiz Naeem
+            Starts when all 10 places fill, or by 1st December · Taught live by Shawaiz Naeem
           </p>
         </div>
       </section>
@@ -304,7 +304,7 @@ export function AIEducationLanding() {
                 By 1<sup>st</sup> December
               </p>
               <p className="text-sm" style={{ color: theme.colors.text.secondary }}>
-                or sooner, once all 30 places fill
+                or sooner, once all 10 places fill
               </p>
             </div>
 
@@ -495,7 +495,7 @@ export function AIEducationLanding() {
             backgroundColor: `${theme.colors.accent.cyan}08`,
             color: theme.colors.accent.cyan,
           }}>
-            Only 30 places available
+            Only 10 places available
           </p>
 
           <div className="flex items-start sm:items-center justify-center gap-3 mb-6 p-4 rounded-lg text-left sm:text-center" style={{
@@ -528,7 +528,7 @@ export function AIEducationLanding() {
             <ol className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {[
                 'Book securely through Stripe, adding your phone number at checkout.',
-                'Shawaiz texts you personally as soon as all 30 places fill, with your start date, joining details and platform login.',
+                'Shawaiz texts you personally as soon as all 10 places fill, with your start date, joining details and platform login.',
                 "Your child joins the first lesson. If it's not for them, you get a full refund.",
               ].map((step, i) => (
                 <li key={i} className="flex gap-3 p-5 rounded-lg border bg-white" style={{ borderColor: theme.colors.border.subtle }}>
