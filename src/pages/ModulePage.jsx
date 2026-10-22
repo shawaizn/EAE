@@ -1,316 +1,157 @@
 import { useParams, Link } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
-import { modulesData } from '../data/modulesData';
 import { moduleIntros } from '../data/moduleIntros';
-import { Check, CheckCircle2, Circle, ArrowRight, BookOpen, Lock } from 'lucide-react';
+import { ArrowRight, FileText, Lock } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
-import { theme } from '../styles/theme';
+import { eduTheme as theme } from '../styles/theme';
 import { isModuleLocked } from '../config/access';
+import { COURSE_TITLE, MODULE_BLURBS, getModule, moduleStats, sectionForModule, lessonPath } from '../lib/course';
+import { LessonStatus, ProgressBar } from '../components/course/Syllabus';
 
+const c = theme.colors;
 
+// Module overview, like a Codecademy module page: what it covers, your
+// progress, a Start/Resume button and the lessons as a list of steps.
 export function ModulePage() {
   const { user } = useAuth();
   const { moduleId } = useParams();
   const { isComplete, loading } = useProgress(user?.id, []);
 
   const moduleIdNum = parseInt(moduleId);
-  const isLocked = isModuleLocked(moduleIdNum, user);
-  const module = modulesData.find(m => m.id === moduleIdNum);
+  const module = getModule(moduleIdNum);
 
   if (!module) {
-    return (
-      <div className="flex-1 p-8">
-        <p>Module not found</p>
-      </div>
-    );
+    return <div className="p-8"><p>Module not found</p></div>;
   }
-
   if (loading) {
-    return (
-      <div className="flex-1 flex items-center justify-center">
-        <div className="text-gray-600">Loading...</div>
-      </div>
-    );
+    return <div className="p-8 text-center" style={{ color: c.text.secondary }}>Loading...</div>;
   }
 
-  const completedLessons = module.lessons.filter(
-    lesson => isComplete(getLessonNumber(moduleIdNum, lesson.id), 'lesson')
-  ).length;
-  const progress = (completedLessons / module.lessons.length) * 100;
-  const nextLesson = module.lessons.find(
-    lesson => !isComplete(getLessonNumber(moduleIdNum, lesson.id), 'lesson')
-  );
+  const isLocked = isModuleLocked(moduleIdNum, user);
+  const { done, total, pct } = moduleStats(moduleIdNum, isComplete);
+  const nextLesson = module.lessons.find(l => !isComplete(getLessonNumber(moduleIdNum, l.id), 'lesson'));
+  const section = sectionForModule(moduleIdNum);
+  const nextModule = getModule(moduleIdNum + 1);
+  const nextModuleOpen = nextModule && !isModuleLocked(nextModule.id, user);
+  const intro = moduleIntros[moduleIdNum];
+
+  const cta = isLocked ? null
+    : done === 0 ? { label: 'Start module', to: lessonPath({ moduleId: moduleIdNum, lessonId: module.lessons[0].id }) }
+    : nextLesson ? { label: 'Resume', to: lessonPath({ moduleId: moduleIdNum, lessonId: nextLesson.id }) }
+    : { label: 'Notes & quiz', to: `/modules/${moduleIdNum}/recap` };
 
   return (
-    <div className="flex-1 overflow-y-auto" style={{ backgroundColor: theme.colors.background.base }}>
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-        <div className="space-y-8">
-          <div className="rounded-2xl border-2 overflow-hidden" style={{
-            backgroundColor: theme.colors.background.card,
-            borderColor: theme.colors.primary.electric,
-          }}>
-            <div className="relative p-8 lg:p-12">
-              <div className="absolute inset-0 opacity-5" style={{
-                backgroundImage: `linear-gradient(135deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
-              }} />
+    <div>
+      {/* Header */}
+      <header className="bg-white border-b" style={{ borderColor: c.border.subtle }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
+          <p className="text-xs font-bold uppercase tracking-widest" style={{ color: c.accent.cyan }}>
+            {COURSE_TITLE} · {section?.title}
+          </p>
+          <p className="mt-3 text-sm font-semibold" style={{ color: c.text.muted }}>Module {moduleIdNum} · {total} lessons</p>
+          <h1 className="mt-1 text-3xl sm:text-5xl font-extrabold tracking-tight" style={{ color: c.text.primary }}>{module.title}</h1>
+          <p className="mt-3 max-w-2xl text-base sm:text-lg leading-relaxed" style={{ color: c.text.secondary }}>{MODULE_BLURBS[moduleIdNum]}</p>
 
-              <div className="relative">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full mb-4" style={{
-                  backgroundColor: `${theme.colors.primary.electric}15`,
-                  border: `1px solid ${theme.colors.primary.electric}30`,
-                }}>
-                  <BookOpen size={14} style={{ color: theme.colors.primary.electric }} />
-                  <span className="text-xs font-bold uppercase tracking-wider" style={{ color: theme.colors.primary.electric }}>
-                    Module {moduleIdNum} of {modulesData.length}
-                  </span>
-                </div>
-
-                <h1 className="text-3xl lg:text-5xl font-bold mb-6" style={{
-                  color: theme.colors.text.primary,
-                  letterSpacing: '-0.02em',
-                }}>
-                  {module.title}
-                </h1>
-
-                <div className="grid md:grid-cols-3 gap-6 mb-6">
-                  <div className="p-4 rounded-xl" style={{
-                    backgroundColor: `${theme.colors.primary.electric}08`,
-                    border: `1px solid ${theme.colors.primary.electric}20`,
-                  }}>
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{
-                      color: theme.colors.text.muted
-                    }}>
-                      Progress
-                    </p>
-                    <p className="text-2xl font-bold" style={{ color: theme.colors.primary.electric }}>
-                      {Math.round(progress)}%
-                    </p>
-                  </div>
-
-                  <div className="p-4 rounded-xl" style={{
-                    backgroundColor: `${theme.colors.accent.cyan}08`,
-                    border: `1px solid ${theme.colors.accent.cyan}20`,
-                  }}>
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{
-                      color: theme.colors.text.muted
-                    }}>
-                      Completed
-                    </p>
-                    <p className="text-2xl font-bold" style={{ color: theme.colors.accent.cyan }}>
-                      {completedLessons} / {module.lessons.length}
-                    </p>
-                  </div>
-
-                  <div className="p-4 rounded-xl" style={{
-                    backgroundColor: `${theme.colors.accent.coral}08`,
-                    border: `1px solid ${theme.colors.accent.coral}20`,
-                  }}>
-                    <p className="text-xs font-semibold uppercase tracking-wider mb-1" style={{
-                      color: theme.colors.text.muted
-                    }}>
-                      Est. Time
-                    </p>
-                    <p className="text-2xl font-bold" style={{ color: theme.colors.accent.coral }}>
-                      ~{Math.ceil(module.lessons.length * 0.5)}h
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex-1">
-                  <div className="h-3 rounded-full overflow-hidden" style={{
-                    backgroundColor: `${theme.colors.primary.electric}15`,
-                  }}>
-                    <div
-                      className="h-full transition-all duration-500"
-                      style={{
-                        width: `${progress}%`,
-                        background: `linear-gradient(90deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {isLocked && (
-            <div className="flex items-start gap-4 p-5 rounded-xl border-2" style={{
-              backgroundColor: '#fdf8f3',
-              borderColor: '#c17f3a',
-            }}>
-              <Lock size={20} style={{ color: '#c17f3a', flexShrink: 0, marginTop: 2 }} />
+          {isLocked ? (
+            <div className="mt-6 flex items-start gap-3 p-4 rounded-xl max-w-2xl" style={{ backgroundColor: c.background.subtle, border: `1px solid ${c.border.default}` }}>
+              <Lock size={20} className="flex-none mt-0.5" style={{ color: c.accent.cyan }} />
               <div>
-                <p className="font-semibold text-sm" style={{ color: '#c17f3a' }}>Module locked</p>
-                <p className="text-sm mt-1" style={{ color: '#6b5c4e' }}>
-                  Strategy isn't part of your course, so these lessons are locked.
-                  You can browse the overview below to see what's covered.
+                <p className="font-bold text-sm" style={{ color: c.text.primary }}>Module locked</p>
+                <p className="text-sm mt-1" style={{ color: c.text.secondary }}>
+                  Strategy isn't part of your course, so these lessons are locked. You can still read what it covers below.
                 </p>
               </div>
             </div>
-          )}
-
-          {!isLocked && nextLesson && (
-            <Link
-              to={`/modules/${moduleIdNum}/lessons/${nextLesson.id}`}
-              className="group block p-6 rounded-xl border-2 transition-all hover:shadow-lg"
-              style={{
-                backgroundColor: theme.colors.background.card,
-                borderColor: theme.colors.accent.cyan,
-              }}
-            >
-              <div className="flex items-center justify-between gap-4">
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider mb-2" style={{
-                    color: theme.colors.accent.cyan
-                  }}>
-                    Continue Learning
-                  </p>
-                  <h3 className="text-xl font-bold" style={{ color: theme.colors.text.primary }}>
-                    Lesson {nextLesson.id}: {nextLesson.title}
-                  </h3>
+          ) : (
+            <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+              <Link
+                to={cta.to}
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-lg font-bold text-base transition-transform hover:scale-[1.02]"
+                style={{ backgroundColor: c.brand.fill, color: c.brand.onFill }}
+              >
+                {cta.label} <ArrowRight size={18} />
+              </Link>
+              <div className="flex-1 max-w-sm">
+                <div className="flex justify-between text-sm font-semibold mb-1.5" style={{ color: c.text.secondary }}>
+                  <span>{done} of {total} lessons complete</span><span>{pct}%</span>
                 </div>
-                <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center transition-all group-hover:scale-110" style={{
-                  backgroundColor: theme.colors.accent.cyan,
-                }}>
-                  <ArrowRight size={18} style={{ color: 'white' }} />
-                </div>
-              </div>
-            </Link>
-          )}
-
-          {moduleIntros[moduleIdNum] && (
-            <div className="grid lg:grid-cols-3 gap-6">
-              <div className="p-6 rounded-xl border" style={{
-                backgroundColor: theme.colors.background.card,
-                borderColor: theme.colors.border.subtle,
-              }}>
-                <h3 className="text-lg font-bold mb-3" style={{
-                  color: theme.colors.text.primary
-                }}>
-                  What You Already Know
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                  {moduleIntros[moduleIdNum].activation}
-                </p>
-              </div>
-
-              <div className="p-6 rounded-xl border" style={{
-                backgroundColor: theme.colors.background.card,
-                borderColor: theme.colors.border.subtle,
-              }}>
-                <h3 className="text-lg font-bold mb-3" style={{
-                  color: theme.colors.text.primary
-                }}>
-                  In This Module
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                  {moduleIntros[moduleIdNum].zoom}
-                </p>
-              </div>
-
-              <div className="p-6 rounded-xl border" style={{
-                backgroundColor: theme.colors.background.card,
-                borderColor: theme.colors.border.subtle,
-              }}>
-                <h3 className="text-lg font-bold mb-3" style={{
-                  color: theme.colors.text.primary
-                }}>
-                  Why This Matters
-                </h3>
-                <p className="text-sm leading-relaxed" style={{ color: theme.colors.text.secondary }}>
-                  {moduleIntros[moduleIdNum].stakes}
-                </p>
+                <ProgressBar pct={pct} />
               </div>
             </div>
-          )}
-
-          <div>
-            <h2 className="text-2xl font-bold mb-4" style={{
-              color: theme.colors.text.primary,
-              letterSpacing: '-0.02em'
-            }}>
-              Lessons
-            </h2>
-            <div className="grid gap-3">
-              {module.lessons.map((lesson) => {
-                const completed = isComplete(getLessonNumber(moduleIdNum, lesson.id), 'lesson');
-
-                if (isLocked) {
-                  return (
-                    <div
-                      key={lesson.id}
-                      className="flex items-center gap-4 p-5 rounded-xl border-2"
-                      style={{
-                        backgroundColor: '#f7f5f2',
-                        borderColor: '#e5e0d8',
-                        opacity: 0.75,
-                        cursor: 'not-allowed',
-                      }}
-                    >
-                      <Lock size={20} style={{ color: '#b0a090', flexShrink: 0 }} />
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-base font-semibold" style={{ color: '#9a8a7a' }}>
-                          Lesson {lesson.id}: {lesson.title}
-                        </h3>
-                      </div>
-                      <span className="text-xs font-semibold px-2 py-1 rounded-full flex-shrink-0" style={{
-                        background: '#ede8e0',
-                        color: '#9a8a7a',
-                      }}>
-                        Locked
-                      </span>
-                    </div>
-                  );
-                }
-
-                return (
-                  <Link
-                    key={lesson.id}
-                    to={`/modules/${moduleIdNum}/lessons/${lesson.id}`}
-                    className="group flex items-center gap-4 p-5 rounded-xl border-2 transition-all hover:shadow-md"
-                    style={{
-                      backgroundColor: completed
-                        ? `${theme.colors.status.success}05`
-                        : theme.colors.background.card,
-                      borderColor: completed
-                        ? theme.colors.status.success
-                        : theme.colors.border.subtle,
-                    }}
-                  >
-                    <div className="flex-shrink-0">
-                      {completed ? (
-                        <CheckCircle2 size={24} style={{ color: theme.colors.status.success }} />
-                      ) : (
-                        <Circle size={24} style={{ color: theme.colors.border.subtle }} />
-                      )}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-base font-semibold" style={{ color: theme.colors.text.primary }}>
-                        Lesson {lesson.id}: {lesson.title}
-                      </h3>
-                    </div>
-                    <ArrowRight size={20} className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" style={{ color: theme.colors.text.muted }} />
-                  </Link>
-                );
-              })}
-            </div>
-          </div>
-
-          {!isLocked && (
-          <div className="flex justify-center pt-4">
-            <Link
-              to={`/modules/${moduleIdNum}/recap`}
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-semibold transition-all hover:scale-105 text-white"
-              style={{
-                background: `linear-gradient(135deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
-              }}
-            >
-              Module Notes &amp; Quiz <ArrowRight size={20} />
-            </Link>
-          </div>
           )}
         </div>
+      </header>
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-8 sm:py-10 grid lg:grid-cols-3 gap-8 items-start">
+        {/* Lessons as steps */}
+        <section className="lg:col-span-2">
+          <h2 className="text-xl font-extrabold mb-4" style={{ color: c.text.primary }}>Lessons</h2>
+          <ol className="rounded-xl border bg-white overflow-hidden" style={{ borderColor: c.border.subtle }}>
+            {module.lessons.map(l => {
+              const n = getLessonNumber(moduleIdNum, l.id);
+              const isDone = isComplete(n, 'lesson');
+              const isNext = !isLocked && nextLesson?.id === l.id;
+              const inner = (
+                <>
+                  {isLocked ? <Lock size={18} className="flex-none" style={{ color: c.text.muted }} /> : <LessonStatus done={isDone} next={isNext} size={24} />}
+                  <span className="flex-1 min-w-0">
+                    <span className="block text-xs font-semibold" style={{ color: c.text.muted }}>Lesson {l.id}</span>
+                    <span className="block text-base font-semibold" style={{ color: isLocked ? c.text.muted : c.text.primary }}>{l.title}</span>
+                  </span>
+                  {!isLocked && (
+                    <span className="text-sm font-bold whitespace-nowrap" style={{ color: isNext ? c.accent.cyan : c.text.muted }}>
+                      {isDone ? 'Review' : isNext ? 'Start' : ''}
+                    </span>
+                  )}
+                </>
+              );
+              return (
+                <li key={l.id} className="border-b" style={{ borderColor: c.border.subtle }}>
+                  {isLocked
+                    ? <div className="flex items-center gap-4 px-5 py-4">{inner}</div>
+                    : <Link to={lessonPath({ moduleId: moduleIdNum, lessonId: l.id })} className="flex items-center gap-4 px-5 py-4 hover:bg-orange-50/60 transition-colors" style={isNext ? { backgroundColor: '#FFFBF3' } : undefined}>{inner}</Link>}
+                </li>
+              );
+            })}
+            {!isLocked && (
+              <li>
+                <Link to={`/modules/${moduleIdNum}/recap`} className="flex items-center gap-4 px-5 py-4 hover:bg-orange-50/60 transition-colors">
+                  <span className="flex-none w-6 h-6 rounded-md flex items-center justify-center" style={{ backgroundColor: c.brand.soft, color: c.accent.cyan }}>
+                    <FileText size={15} />
+                  </span>
+                  <span className="flex-1">
+                    <span className="block text-xs font-semibold" style={{ color: c.text.muted }}>Checkpoint</span>
+                    <span className="block text-base font-semibold" style={{ color: c.text.primary }}>Module notes &amp; quiz</span>
+                  </span>
+                </Link>
+              </li>
+            )}
+          </ol>
+
+          {nextModuleOpen && (
+            <Link to={`/modules/${nextModule.id}`} className="mt-4 flex items-center justify-between gap-4 p-4 rounded-xl border bg-white hover:shadow-sm transition-shadow" style={{ borderColor: c.border.subtle }}>
+              <span>
+                <span className="block text-xs font-semibold" style={{ color: c.text.muted }}>Next module</span>
+                <span className="block font-bold" style={{ color: c.text.primary }}>Module {nextModule.id}: {nextModule.title}</span>
+              </span>
+              <ArrowRight size={18} style={{ color: c.accent.cyan }} />
+            </Link>
+          )}
+        </section>
+
+        {/* About this module */}
+        {intro && (
+          <aside className="rounded-xl border bg-white p-6 space-y-5" style={{ borderColor: c.border.subtle }}>
+            <h2 className="text-lg font-extrabold" style={{ color: c.text.primary }}>About this module</h2>
+            {[['What you already know', intro.activation], ['In this module', intro.zoom], ['Why this matters', intro.stakes]].map(([h, t]) => (
+              <div key={h}>
+                <h3 className="text-sm font-bold mb-1" style={{ color: c.text.primary }}>{h}</h3>
+                <p className="text-sm leading-relaxed" style={{ color: c.text.secondary }}>{t}</p>
+              </div>
+            ))}
+          </aside>
+        )}
       </div>
     </div>
   );

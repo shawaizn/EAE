@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
-import { getProgressStats } from '../lib/utils';
-import { theme, getShadow } from '../styles/theme';
+import { COURSE_TITLE, unlockedLessons } from '../lib/course';
+import { eduTheme as theme, getShadow } from '../styles/theme';
 import { Award, Download, Share2, CheckCircle2, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -26,8 +26,14 @@ export function CertificatePage() {
   const [copied, setCopied] = useState(false);
   const certRef = useRef(null);
 
-  const stats = getProgressStats(completions);
-  const isComplete = stats.percentComplete === 100;
+  // The certificate covers every lesson this student can open
+  const open = unlockedLessons(user);
+  const doneSet = new Set(completions.filter(c => c.completed && c.category === 'lesson').map(c => c.lesson_number));
+  const lessonsCompleted = open.filter(l => doneSet.has(l.number)).length;
+  const totalLessons = open.length;
+  const totalModules = new Set(open.map(l => l.moduleId)).size;
+  const stats = { lessonsCompleted, percentComplete: totalLessons ? Math.round((lessonsCompleted / totalLessons) * 100) : 0 };
+  const isComplete = totalLessons > 0 && lessonsCompleted === totalLessons;
 
   useEffect(() => {
     if (user?.username) setUserName(user.username);
@@ -50,7 +56,7 @@ export function CertificatePage() {
   };
 
   const handleShare = () => {
-    const text = `I completed the Strategic AI Mastery program by Energise AI -- 44 lessons across 8 modules of hands-on AI strategy.`;
+    const text = `I completed ${COURSE_TITLE} by Energise AI -- ${totalLessons} lessons across ${totalModules} modules.`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 3000);
@@ -75,8 +81,8 @@ export function CertificatePage() {
             Certificate Locked
           </h1>
           <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-            Complete all 44 lessons to unlock your Strategic AI Mastery certificate.
-            You've completed {stats.lessonsCompleted} so far -- {44 - stats.lessonsCompleted} to go.
+            Complete all {totalLessons} lessons to unlock your {COURSE_TITLE} certificate.
+            You've completed {stats.lessonsCompleted} so far -- {totalLessons - stats.lessonsCompleted} to go.
           </p>
 
           <div className="w-full bg-slate-100 rounded-full h-4 mb-8 overflow-hidden">
@@ -90,7 +96,7 @@ export function CertificatePage() {
           </div>
 
           <Link
-            to="/progress"
+            to="/hub"
             className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white font-semibold rounded-lg hover:bg-slate-800 transition-colors"
           >
             Continue Learning
@@ -164,17 +170,17 @@ export function CertificatePage() {
                 </h2>
                 <div className="w-48 h-px mx-auto bg-slate-600 mb-6" />
                 <p className="text-slate-400 text-sm leading-relaxed max-w-md mx-auto">
-                  has successfully completed all 44 lessons across 8 modules of the
+                  has successfully completed all {totalLessons} lessons across {totalModules} modules of
                 </p>
                 <h3 className="text-xl sm:text-2xl font-bold mt-3" style={{ color: COLORS.accent }}>
-                  Strategic AI Mastery Program
+                  {COURSE_TITLE}
                 </h3>
               </div>
 
               <div className="grid grid-cols-3 gap-4 mb-10">
                 {[
-                  { label: 'Lessons', value: '44' },
-                  { label: 'Modules', value: '8' },
+                  { label: 'Lessons', value: String(totalLessons) },
+                  { label: 'Modules', value: String(totalModules) },
                   { label: 'Completed', value: completionDate?.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) || '' },
                 ].map(item => (
                   <div key={item.label} className="text-center p-3 rounded-lg bg-white/5">

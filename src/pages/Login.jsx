@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import { useSidebar } from '../context/SidebarContext';
 import { Button } from '../components/ui/Button';
 import { Card } from '../components/ui/Card';
 import { AnimatedLoginBackground } from '../components/branding/AnimatedLoginBackground';
@@ -16,7 +15,6 @@ export function Login() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { signIn } = useAuth();
-  const { setSidebarOpen } = useSidebar();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -26,7 +24,6 @@ export function Login() {
 
     try {
       await signIn(password);
-      setSidebarOpen(false);
       navigate('/hub');
     } catch (err) {
       setError(err.message || 'Failed to sign in. Please check your password.');

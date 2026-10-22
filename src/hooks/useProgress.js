@@ -2,21 +2,29 @@ import { useState, useEffect } from 'react';
 import { calculateProgress } from '../lib/utils';
 
 const STORAGE_KEY = 'eae_completions';
+// Fired after every save so every part of the page shows the same progress
+const SYNC_EVENT = 'eae-progress-change';
 
 export function useProgress(userId, lessonAccess) {
   const [completions, setCompletions] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!userId) { setLoading(false); return; }
-    const stored = localStorage.getItem(`${STORAGE_KEY}_${userId}`);
-    setCompletions(stored ? JSON.parse(stored) : []);
+    if (!userId) { setLoading(false); return undefined; }
+    const load = () => {
+      const stored = localStorage.getItem(`${STORAGE_KEY}_${userId}`);
+      setCompletions(stored ? JSON.parse(stored) : []);
+    };
+    load();
     setLoading(false);
+    window.addEventListener(SYNC_EVENT, load);
+    return () => window.removeEventListener(SYNC_EVENT, load);
   }, [userId]);
 
   const save = (updated) => {
     setCompletions(updated);
     localStorage.setItem(`${STORAGE_KEY}_${userId}`, JSON.stringify(updated));
+    window.dispatchEvent(new Event(SYNC_EVENT));
   };
 
   const markComplete = async (lessonNumber, category) => {

@@ -1,14 +1,11 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { useSidebar } from '../../context/SidebarContext';
 import { useAuth } from '../../hooks/useAuth';
 import { eduTheme as theme } from '../../styles/theme';
 import { LogoHorizontal } from '../branding/Logo';
 
 // Learning platform top bar: just the Energise AI Education logo and the
-// log in / log out button (plus the sidebar toggle once signed in).
-export function Navbar({ showSidebarToggle = true }) {
-  const { sidebarOpen, setSidebarOpen } = useSidebar();
+// log in / log out button. Signed in, the logo goes to the dashboard.
+export function Navbar() {
   // Read the session here: App's copy of `user` can be stale right after login
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
@@ -17,7 +14,6 @@ export function Navbar({ showSidebarToggle = true }) {
 
   const handleSignOut = async () => {
     await signOut();
-    setSidebarOpen(false);
     // Full reload so every page drops the old session straight away
     window.location.assign(`${import.meta.env.VITE_BASENAME || '/EAE/app'}/login`);
   };
@@ -27,18 +23,7 @@ export function Navbar({ showSidebarToggle = true }) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 gap-3">
           <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-            {user && showSidebarToggle && (
-              <button
-                type="button"
-                onClick={() => setSidebarOpen(!sidebarOpen)}
-                aria-label={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
-                className="p-1.5 rounded-md transition-colors hover:bg-orange-50"
-                style={{ color: c.text.secondary }}
-              >
-                {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
-              </button>
-            )}
-            <Link to="/ai-education-landing" aria-label="Energise AI Education home" className="flex-shrink-0">
+            <Link to={user ? '/hub' : '/ai-education-landing'} aria-label={user ? 'Dashboard' : 'Energise AI Education home'} className="flex-shrink-0">
               <LogoHorizontal size="sm" accent={c.brand.fill} accentText={c.accent.cyan} />
             </Link>
           </div>

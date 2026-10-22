@@ -1,7 +1,7 @@
 import { useAuth } from '../hooks/useAuth';
 import { Link } from 'react-router-dom';
 import appFrameworkPdf from '../assets/app-framework.pdf';
-import { theme } from '../styles/theme';
+import { eduTheme as theme } from '../styles/theme';
 import { FileText, Download, BookOpen } from 'lucide-react';
 
 export function ResourcesPage() {
