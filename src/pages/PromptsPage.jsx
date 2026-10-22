@@ -3,7 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 import { usePrompts } from '../hooks/usePrompts';
 import { PromptCategory } from '../components/prompts/PromptCategory';
 import { Zap, PenTool, BarChart3, Lightbulb, Layers, Library } from 'lucide-react';
-import { theme } from '../styles/theme';
+import { eduTheme as theme } from '../styles/theme';
 
 const CATEGORIES = [
   {

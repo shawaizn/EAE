@@ -2,15 +2,16 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
-import { Button } from '../components/ui/Button';
 import { Modal } from '../components/ui/Modal';
-import { Check, Copy, ChevronDown, ChevronUp, Bookmark } from 'lucide-react';
+import { Check, Copy, ChevronDown, ChevronUp, Bookmark, ArrowLeft, ArrowRight, ListOrdered, X } from 'lucide-react';
 import { modulesData } from '../data/modulesData';
 import { lessonMedia } from '../data/lessonMedia';
 import { activityData } from '../data/activityData';
 import { getLessonNumber, parseMarkdownToHTML } from '../lib/utils';
 import { useBookmarks } from '../hooks/useBookmarks';
-import { lang, theme } from '../styles/theme';
+import { lang, eduTheme as theme } from '../styles/theme';
+import { CourseOutline } from '../components/course/CourseOutline';
+import { neighbours, lessonPath } from '../lib/course';
 
 const COLORS = {
   bg: theme.colors.background.light || theme.colors.background.base,
@@ -23,6 +24,9 @@ const COLORS = {
   primary: theme.colors.primary.deep,
   border: theme.colors.border.subtle,
   success: theme.colors.status.success,
+  brand: theme.colors.brand.fill,
+  onBrand: theme.colors.brand.onFill,
+  brandSoft: theme.colors.brand.soft,
 };
 
 export function LessonPage() {
@@ -35,7 +39,8 @@ export function LessonPage() {
   const [copied, setCopied] = useState(false);
   const [isMarking, setIsMarking] = useState(false);
   const [activeModal, setActiveModal] = useState(null);
-  const { isComplete, toggleComplete, loading } = useProgress(user?.id, []);
+  const [showOutline, setShowOutline] = useState(false);
+  const { isComplete, toggleComplete, markComplete, loading } = useProgress(user?.id, []);
   const { isBookmarked, toggleBookmark } = useBookmarks(user?.id);
 
   const moduleIdNum = parseInt(moduleId);
@@ -161,12 +166,47 @@ export function LessonPage() {
     }
   };
 
+  // Back / Next stay inside the module; after the last lesson comes the
+  // module's notes & quiz (like a Codecademy module checkpoint)
+  const { prev, next } = neighbours(moduleIdNum, lessonIdNum);
+  const backTo = prev && prev.moduleId === moduleIdNum ? lessonPath(prev) : `/modules/${moduleIdNum}`;
+  const nextTo = next && next.moduleId === moduleIdNum ? lessonPath(next) : `/modules/${moduleIdNum}/recap`;
+  const nextLabel = next && next.moduleId === moduleIdNum ? 'Next lesson' : 'Notes & quiz';
+  const position = module.lessons.findIndex(l => l.id === lessonIdNum) + 1;
+
+  // Next marks the lesson complete, then moves on
+  const handleNext = async () => {
+    if (!completed) await markComplete(globalLessonNumber, 'lesson');
+    navigate(nextTo);
+  };
+
   return (
-    <div className="flex-1 overflow-y-auto" style={{ backgroundColor: COLORS.bg }}>
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
-          {/* Lesson Title */}
-          <div className="flex items-start justify-between gap-4 mb-12 sm:mb-24">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black" style={{
+    <div className="flex" style={{ backgroundColor: COLORS.bg }}>
+      {/* Course outline: always visible on large screens, a drawer on phones */}
+      <aside className="hidden lg:block w-80 flex-none border-r bg-white sticky top-16 self-start overflow-y-auto" style={{ borderColor: COLORS.border, height: 'calc(100dvh - 4rem - 4.5rem)' }}>
+        <CourseOutline moduleId={moduleIdNum} lessonId={lessonIdNum} user={user} isComplete={isComplete} />
+      </aside>
+      {showOutline && (
+        <div className="lg:hidden fixed inset-0 z-[60]">
+          <div className="absolute inset-0 bg-black/40" onClick={() => setShowOutline(false)} />
+          <div className="absolute left-0 top-0 bottom-0 w-[85%] max-w-sm bg-white overflow-y-auto shadow-xl">
+            <button type="button" onClick={() => setShowOutline(false)} className="absolute top-3 right-3 p-2 rounded-full" style={{ color: COLORS.textSecondary }} aria-label="Close outline">
+              <X size={20} />
+            </button>
+            <CourseOutline moduleId={moduleIdNum} lessonId={lessonIdNum} user={user} isComplete={isComplete} onNavigate={() => setShowOutline(false)} />
+          </div>
+        </div>
+      )}
+
+      <div className="flex-1 min-w-0 pb-28">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+          {/* Breadcrumb + title */}
+          <p className="text-sm font-semibold" style={{ color: COLORS.textMuted }}>
+            <Link to={`/modules/${moduleIdNum}`} className="hover:underline" style={{ color: COLORS.accent }}>Module {moduleIdNum}: {module.title}</Link>
+            <span> · Lesson {position} of {module.lessons.length}</span>
+          </p>
+          <div className="flex items-start justify-between gap-4 mt-2 mb-6 sm:mb-8">
+            <h1 className="text-2xl sm:text-4xl font-extrabold" style={{
               letterSpacing: '-0.02em',
               color: COLORS.textPrimary
             }}>
@@ -174,7 +214,7 @@ export function LessonPage() {
             </h1>
             <button
               onClick={() => toggleBookmark(globalLessonNumber)}
-              className="flex-shrink-0 mt-1 p-2.5 rounded-lg border-2 transition-all duration-200"
+              className="flex-shrink-0 mt-1 p-2.5 rounded-lg border transition-all duration-200"
               style={{
                 backgroundColor: isBookmarked(globalLessonNumber) ? `${COLORS.accent}15` : COLORS.cardBg,
                 borderColor: isBookmarked(globalLessonNumber) ? COLORS.accent : COLORS.border,
@@ -187,14 +227,14 @@ export function LessonPage() {
           </div>
 
           {/* Video */}
-          <div className="lesson-video-wrapper mb-8 sm:mb-16 bg-black rounded-lg overflow-hidden shadow-lg">
+          <div className="lesson-video-wrapper mb-8 bg-black rounded-xl overflow-hidden shadow-lg">
             <div dangerouslySetInnerHTML={{ __html: lessonMedia_.video }} />
           </div>
 
           {/* Summary Section */}
-          <div className="mb-12 sm:mb-24 rounded-lg shadow-sm" style={{
+          <div className="mb-5 rounded-xl overflow-hidden" style={{
             backgroundColor: COLORS.cardBg,
-            borderWidth: '2px',
+            borderWidth: '1px',
             borderColor: COLORS.border,
           }}>
             <button
@@ -204,7 +244,7 @@ export function LessonPage() {
                 backgroundColor: `${COLORS.textPrimary}08`,
               }}
             >
-              <h2 className="text-lg sm:text-2xl font-black" style={{
+              <h2 className="text-lg sm:text-xl font-extrabold" style={{
                 letterSpacing: '-0.02em',
                 color: COLORS.textPrimary
               }}>Lesson Summary</h2>
@@ -250,9 +290,9 @@ export function LessonPage() {
 
           {/* Activity Section */}
           {activity && (
-            <div className="mb-12 sm:mb-24 rounded-lg shadow-sm" style={{
+            <div className="mb-5 rounded-xl overflow-hidden" style={{
               backgroundColor: COLORS.cardBg,
-              borderWidth: '2px',
+              borderWidth: '1px',
               borderColor: COLORS.border,
             }}>
               <button
@@ -262,7 +302,7 @@ export function LessonPage() {
                   backgroundColor: `${COLORS.textPrimary}08`,
                 }}
               >
-                <h2 className="text-lg sm:text-2xl font-black break-words" style={{
+                <h2 className="text-lg sm:text-xl font-extrabold break-words text-left" style={{
                   letterSpacing: '-0.02em',
                   color: COLORS.textPrimary
                 }}>
@@ -382,9 +422,9 @@ export function LessonPage() {
           )}
 
           {/* Guide Section */}
-          <div className="mb-12 sm:mb-24 rounded-lg shadow-sm" style={{
+          <div className="mb-5 rounded-xl overflow-hidden" style={{
             backgroundColor: COLORS.cardBg,
-            borderWidth: '2px',
+            borderWidth: '1px',
             borderColor: COLORS.border,
           }}>
             <button
@@ -394,7 +434,7 @@ export function LessonPage() {
                 backgroundColor: `${COLORS.textPrimary}08`,
               }}
             >
-              <h2 className="text-lg sm:text-2xl font-black" style={{
+              <h2 className="text-lg sm:text-xl font-extrabold" style={{
                 letterSpacing: '-0.02em',
                 color: COLORS.textPrimary
               }}>Guide</h2>
@@ -457,63 +497,54 @@ export function LessonPage() {
             />
           </Modal>
 
-          {/* Mark Complete Button */}
-          <div className="pt-6 sm:pt-12" style={{
-            borderTopWidth: '2px',
-            borderTopColor: COLORS.border,
-          }}>
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-4">
-              <Button
-                variant={completed ? 'success' : 'primary'}
-                onClick={handleToggleComplete}
-                disabled={isMarking}
-                className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 text-sm sm:text-base flex-1 sm:flex-none"
-              >
-                {completed ? (
-                  <>
-                    <Check size={18} /> Completed
-                  </>
-                ) : (
-                  'Mark as Complete'
-                )}
-              </Button>
+        </div>
+      </div>
 
-              {completed && (() => {
-                // Find next lesson
-                const currentLessonIndex = module.lessons.findIndex(l => l.id === lessonIdNum);
-                const nextLesson = module.lessons[currentLessonIndex + 1];
+      {/* Bottom bar: Back · progress through the module · Next */}
+      <div className="fixed bottom-0 inset-x-0 z-40 bg-white border-t" style={{ borderColor: COLORS.border }}>
+        <div className="h-[4.5rem] px-3 sm:px-6 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2">
+            <button type="button" onClick={() => setShowOutline(true)} className="lg:hidden p-2.5 rounded-lg border" style={{ borderColor: COLORS.border, color: COLORS.textPrimary }} aria-label="Course outline">
+              <ListOrdered size={18} />
+            </button>
+            <Link to={backTo} className="inline-flex items-center gap-1.5 px-3 sm:px-4 py-2.5 rounded-lg border text-sm font-semibold" style={{ borderColor: COLORS.border, color: COLORS.textPrimary }}>
+              <ArrowLeft size={16} /> Back
+            </Link>
+          </div>
 
-                if (nextLesson) {
-                  // Next lesson in same module
-                  return (
-                    <Link
-                      to={`/modules/${moduleIdNum}/lessons/${nextLesson.id}`}
-                      className="px-4 sm:px-6 py-3 text-white font-medium rounded-lg hover:opacity-90 transition-opacity text-sm sm:text-base text-center flex-1 sm:flex-none"
-                      style={{
-                        backgroundColor: COLORS.primary
-                      }}
-                    >
-                      Next Lesson →
-                    </Link>
-                  );
-                } else {
-                  // Last lesson in module - go to recap
-                  return (
-                    <Link
-                      to={`/modules/${moduleIdNum}/recap`}
-                      className="px-4 sm:px-6 py-3 text-white font-medium rounded-lg hover:opacity-90 transition-opacity text-sm sm:text-base text-center flex-1 sm:flex-none"
-                      style={{
-                        backgroundColor: COLORS.primary
-                      }}
-                    >
-                      Module Notes &amp; Quiz →
-                    </Link>
-                  );
-                }
-              })()}
-            </div>
+          <div className="hidden sm:flex flex-col items-center gap-1.5">
+            <span className="text-xs font-semibold" style={{ color: COLORS.textSecondary }}>Lesson {position} of {module.lessons.length}</span>
+            <span className="flex gap-1.5" aria-hidden="true">
+              {module.lessons.map(l => {
+                const here = l.id === lessonIdNum;
+                const done = isComplete(getLessonNumber(moduleIdNum, l.id), 'lesson');
+                return <span key={l.id} className="h-1.5 rounded-full" style={{ width: here ? 22 : 14, backgroundColor: done || here ? COLORS.brand : '#E8DCC6' }} />;
+              })}
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={handleToggleComplete}
+              disabled={isMarking}
+              className="hidden md:inline-flex items-center gap-1.5 px-3 py-2.5 rounded-lg text-sm font-semibold"
+              style={completed ? { color: COLORS.textPrimary, backgroundColor: COLORS.brandSoft } : { color: COLORS.textSecondary }}
+              title={completed ? 'Mark as not complete' : 'Mark as complete'}
+            >
+              <Check size={16} /> {completed ? 'Completed' : 'Mark complete'}
+            </button>
+            <button
+              type="button"
+              onClick={handleNext}
+              className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2.5 rounded-lg text-sm font-bold"
+              style={{ backgroundColor: COLORS.brand, color: COLORS.onBrand }}
+            >
+              {nextLabel} <ArrowRight size={16} />
+            </button>
           </div>
         </div>
       </div>
+    </div>
   );
 }

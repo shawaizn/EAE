@@ -10,8 +10,7 @@ import { AIImplementation } from './pages/AIImplementation';
 import { AISolutions } from './pages/AISolutions';
 import { AISecurity } from './pages/AISecurity';
 import { Login } from './pages/Login';
-import { ProgressPage } from './pages/ProgressPage';
-import { HubPage } from './pages/HubPage';
+import { DashboardPage } from './pages/DashboardPage';
 import { LessonPage } from './pages/LessonPage';
 import { ModulePage } from './pages/ModulePage';
 import { RecapPage } from './pages/RecapPage';
@@ -20,7 +19,6 @@ import { ResourcesPage } from './pages/ResourcesPage';
 import { PromptsPage } from './pages/PromptsPage';
 import { CertificatePage } from './pages/CertificatePage';
 import QuizPage from './components/quiz-system/QuizPage';
-import { SidebarProvider } from './context/SidebarContext';
 import { isModuleLocked } from './config/access';
 
 function ScrollToTop() {
@@ -59,7 +57,7 @@ function ProtectedRoute({ children }) {
 }
 
 function App() {
-  const { user, loading, signOut } = useAuth();
+  const { user, loading } = useAuth();
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -68,7 +66,6 @@ function App() {
     );
   }
   return (
-    <SidebarProvider>
       <BrowserRouter basename={import.meta.env.VITE_BASENAME || '/EAE/app'}>
         <ScrollToTop />
         <Routes>
@@ -85,30 +82,23 @@ function App() {
             path="/hub"
             element={
               <ProtectedRoute>
-                <HubPage />
-              </ProtectedRoute>
-            }
-          />
-
-          <Route
-            path="/progress"
-            element={
-              <ProtectedRoute>
-                <Layout user={user} onSignOut={signOut}>
-                  <ProgressPage />
+                <Layout backToDashboard={false}>
+                  <DashboardPage />
                 </Layout>
               </ProtectedRoute>
             }
           />
+
+          <Route path="/progress" element={<Navigate to="/hub" replace />} />
           <Route
             path="/dashboard"
-            element={<Navigate to="/progress" replace />}
+            element={<Navigate to="/hub" replace />}
           />
           <Route
             path="/modules/:moduleId"
             element={
               <ProtectedRoute>
-                <Layout user={user} onSignOut={signOut}>
+                <Layout>
                   <ModulePage />
                 </Layout>
               </ProtectedRoute>
@@ -119,7 +109,7 @@ function App() {
             element={
               <ProtectedRoute>
                 <UnlockedLessonRoute>
-                  <Layout user={user} onSignOut={signOut}>
+                  <Layout bare>
                     <LessonPage />
                   </Layout>
                 </UnlockedLessonRoute>
@@ -131,7 +121,7 @@ function App() {
             element={
               <ProtectedRoute>
                 <UnlockedLessonRoute>
-                  <Layout user={user} onSignOut={signOut}>
+                  <Layout>
                     <RecapPage />
                   </Layout>
                 </UnlockedLessonRoute>
@@ -142,7 +132,7 @@ function App() {
             path="/notes"
             element={
               <ProtectedRoute>
-                <Layout user={user} onSignOut={signOut}>
+                <Layout>
                   <NotesPage />
                 </Layout>
               </ProtectedRoute>
@@ -152,7 +142,7 @@ function App() {
             path="/resources"
             element={
               <ProtectedRoute>
-                <Layout user={user} onSignOut={signOut}>
+                <Layout>
                   <ResourcesPage />
                 </Layout>
               </ProtectedRoute>
@@ -162,7 +152,7 @@ function App() {
             path="/prompts"
             element={
               <ProtectedRoute>
-                <Layout user={user} onSignOut={signOut}>
+                <Layout>
                   <PromptsPage />
                 </Layout>
               </ProtectedRoute>
@@ -172,7 +162,7 @@ function App() {
             path="/certificate"
             element={
               <ProtectedRoute>
-                <Layout user={user} onSignOut={signOut}>
+                <Layout>
                   <CertificatePage />
                 </Layout>
               </ProtectedRoute>
@@ -182,7 +172,7 @@ function App() {
             path="/quiz/lesson/:lessonNumber"
             element={
               <ProtectedRoute>
-                <Layout user={user} onSignOut={signOut}>
+                <Layout>
                   <QuizPage />
                 </Layout>
               </ProtectedRoute>
@@ -192,7 +182,6 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
-    </SidebarProvider>
   );
 }
 

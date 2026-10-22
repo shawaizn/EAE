@@ -7,7 +7,7 @@ import { BookOpen, FileText } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
 import { getModuleNotes } from '../lib/notesFetch';
 import { useState, useEffect } from 'react';
-import { theme } from '../styles/theme';
+import { eduTheme as theme } from '../styles/theme';
 
 const COLORS = {
   bg: theme.colors.background.light || theme.colors.background.base,
@@ -17,6 +17,9 @@ const COLORS = {
   accent: theme.colors.accent.cyan,
   primary: theme.colors.primary.deep,
   border: theme.colors.border.subtle,
+  textMuted: theme.colors.text.muted,
+  brand: theme.colors.brand.fill,
+  onBrand: theme.colors.brand.onFill,
 };
 
 export function RecapPage() {
@@ -60,7 +63,7 @@ export function RecapPage() {
 
   return (
     <div className="flex-1 overflow-y-auto" style={{ backgroundColor: COLORS.bg }}>
-      <div className="max-w-screen-xl mx-auto px-8 py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 sm:py-10">
           {/* Breadcrumb */}
           {/* <div className="mb-8">
             <Link to="/dashboard" className="font-medium transition-colors" style={{ color: COLORS.accent }}>
@@ -75,20 +78,24 @@ export function RecapPage() {
           </div> */}
 
           {/* Header */}
-          <div className="mb-24">
-            <h1 className="text-5xl font-black mb-3" style={{
+          <div className="mb-8 sm:mb-10">
+            <p className="text-sm font-semibold" style={{ color: COLORS.textMuted }}>
+              <Link to={`/modules/${moduleIdNum}`} className="hover:underline" style={{ color: COLORS.accent }}>Module {moduleIdNum}: {module.title}</Link>
+              <span> · Checkpoint</span>
+            </p>
+            <h1 className="mt-2 text-3xl sm:text-5xl font-extrabold" style={{
               letterSpacing: '-0.02em',
               color: COLORS.textPrimary
             }}>
-              Module Recap
+              Module notes &amp; quiz
             </h1>
-            <p className="text-lg font-medium" style={{ color: COLORS.textSecondary }}>
-              {module.title}
+            <p className="mt-2 text-base sm:text-lg" style={{ color: COLORS.textSecondary }}>
+              Read the notes to revise, then test yourself with the quiz.
             </p>
           </div>
 
           {/* Module Notes */}
-          <div className="mb-24 rounded-lg shadow-sm" style={{
+          <div className="mb-10 rounded-xl overflow-hidden" style={{
             backgroundColor: COLORS.cardBg,
             borderWidth: '2px',
             borderColor: COLORS.border,
@@ -104,7 +111,7 @@ export function RecapPage() {
                 color: COLORS.textPrimary
               }}>Module Notes</h2>
             </div>
-            <div className="p-12">
+            <div className="p-5 sm:p-10">
               {notesLoading ? (
                 <p style={{
                   color: COLORS.textSecondary,
@@ -150,12 +157,12 @@ export function RecapPage() {
           </div>
 
           {/* Practice Quiz */}
-          <div className="mb-24 rounded-lg shadow-sm" style={{
+          <div className="mb-10 rounded-xl overflow-hidden" style={{
             backgroundColor: `${COLORS.accent}15`,
             borderWidth: '2px',
             borderColor: COLORS.accent,
           }}>
-            <div className="p-12">
+            <div className="p-5 sm:p-10">
               <div className="flex items-center gap-3 mb-6">
                 <BookOpen size={28} style={{ color: COLORS.accent }} />
                 <h2 className="text-2xl font-black" style={{
@@ -168,9 +175,10 @@ export function RecapPage() {
               </p>
               <Link
                 to={`/quiz/lesson/${moduleIdNum}`}
-                className="inline-block px-8 py-4 text-white rounded-lg hover:opacity-90 transition-opacity font-semibold"
+                className="inline-block px-8 py-4 rounded-lg hover:opacity-90 transition-opacity font-bold"
                 style={{
-                  backgroundColor: COLORS.accent,
+                  backgroundColor: COLORS.brand,
+                  color: COLORS.onBrand,
                 }}
               >
                 Start Module Quiz
@@ -179,7 +187,7 @@ export function RecapPage() {
           </div>
 
           {/* Navigation */}
-          <div className="pt-12 flex justify-between items-center" style={{
+          <div className="pt-8 flex justify-between items-center gap-3" style={{
             borderTopWidth: '2px',
             borderTopColor: COLORS.border,
           }}>
@@ -200,9 +208,10 @@ export function RecapPage() {
             {moduleIdNum < 8 && (
               <Link
                 to={`/modules/${moduleIdNum + 1}`}
-                className="px-8 py-4 text-white rounded-lg hover:opacity-90 transition-opacity font-semibold"
+                className="px-6 sm:px-8 py-3 sm:py-4 rounded-lg hover:opacity-90 transition-opacity font-bold"
                 style={{
-                  backgroundColor: COLORS.primary,
+                  backgroundColor: COLORS.brand,
+                  color: COLORS.onBrand,
                 }}
               >
                 Next Module →

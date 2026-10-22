@@ -3,7 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useNotes } from '../hooks/useNotes';
 import { NoteCategory } from '../components/notes/NoteCategory';
 import { Clock, Sparkles, Heart, Target, BookMarked } from 'lucide-react';
-import { theme } from '../styles/theme';
+import { eduTheme as theme } from '../styles/theme';
 
 const CATEGORIES = [
   {
