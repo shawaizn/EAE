@@ -1,7 +1,9 @@
-export async function getModuleNotes() {
-  return null;
+import { moduleNotes } from '../data/moduleNotes';
+
+export async function getModuleNotes(moduleId) {
+  return moduleNotes[Number(moduleId)] || null;
 }
 
 export async function getAllModuleNotes() {
-  return null;
+  return moduleNotes;
 }
