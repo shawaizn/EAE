@@ -297,6 +297,7 @@ export function ModulePage() {
             </div>
           </div>
 
+          {!isLocked && (
           <div className="flex justify-center pt-4">
             <Link
               to={`/modules/${moduleIdNum}/recap`}
@@ -305,9 +306,10 @@ export function ModulePage() {
                 background: `linear-gradient(135deg, ${theme.colors.primary.electric} 0%, ${theme.colors.accent.cyan} 100%)`,
               }}
             >
-              View Module Recap <ArrowRight size={20} />
+              Module Notes &amp; Quiz <ArrowRight size={20} />
             </Link>
           </div>
+          )}
         </div>
       </div>
     </div>

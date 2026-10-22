@@ -130,9 +130,11 @@ function App() {
             path="/modules/:moduleId/recap"
             element={
               <ProtectedRoute>
-                <Layout user={user} onSignOut={signOut}>
-                  <RecapPage />
-                </Layout>
+                <UnlockedLessonRoute>
+                  <Layout user={user} onSignOut={signOut}>
+                    <RecapPage />
+                  </Layout>
+                </UnlockedLessonRoute>
               </ProtectedRoute>
             }
           />

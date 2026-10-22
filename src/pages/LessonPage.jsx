@@ -506,7 +506,7 @@ export function LessonPage() {
                         backgroundColor: COLORS.primary
                       }}
                     >
-                      View Module Recap →
+                      Module Notes &amp; Quiz →
                     </Link>
                   );
                 }
