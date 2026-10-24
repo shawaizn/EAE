@@ -7,6 +7,7 @@ import { eduTheme as theme } from '../styles/theme';
 import { COURSE_TITLE, unlockedLessons, resumeLesson, lessonPath, getModule } from '../lib/course';
 import { getModuleAndLesson } from '../lib/utils';
 import { Syllabus, ProgressBar } from '../components/course/Syllabus';
+import { TutorPromptStep } from '../components/course/TutorPromptStep';
 
 const c = theme.colors;
 
@@ -41,6 +42,9 @@ export function DashboardPage() {
 
       <div className="mt-7 grid lg:grid-cols-3 gap-6 lg:gap-8 items-start">
         <div className="lg:col-span-2 space-y-10">
+          {/* Step 1: AI tutor prompt */}
+          <TutorPromptStep />
+
           {/* Course card */}
           <section className="rounded-2xl p-6 sm:p-8 text-white relative overflow-hidden" style={{ backgroundColor: c.text.primary }}>
             <div className="absolute -right-16 -top-20 w-64 h-64 rounded-full" style={{ backgroundColor: 'rgba(245,161,0,0.12)' }} aria-hidden="true" />
