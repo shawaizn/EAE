@@ -3,7 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 import { useProgress } from '../hooks/useProgress';
 import { modulesData } from '../data/modulesData';
 import { Button } from '../components/ui/Button';
-import { BookOpen, FileText } from 'lucide-react';
+import { BookOpen, FileText, Copy, Check } from 'lucide-react';
 import { getLessonNumber } from '../lib/utils';
 import { getModuleNotes } from '../lib/notesFetch';
 import { useState, useEffect } from 'react';
@@ -28,6 +28,24 @@ export function RecapPage() {
   const { isComplete, loading } = useProgress(user?.id, []);
   const [notes, setNotes] = useState(null);
   const [notesLoading, setNotesLoading] = useState(true);
+  const [copied, setCopied] = useState(false);
+
+  // Copy every note on the page as plain text, headings included
+  const handleCopyNotes = async () => {
+    if (!notes?.sections) return;
+    const parts = [notes.title || ''];
+    notes.sections.forEach(section => {
+      parts.push('', section.name.toUpperCase());
+      if (Array.isArray(section.subsections)) {
+        section.subsections.forEach(sub => parts.push('', sub.title, sub.content));
+      } else if (section.content) {
+        parts.push('', section.content);
+      }
+    });
+    await navigator.clipboard.writeText(parts.join('\n').trim());
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const moduleIdNum = parseInt(moduleId);
   const module = modulesData.find(m => m.id === moduleIdNum);
@@ -147,6 +165,15 @@ export function RecapPage() {
                       )}
                     </div>
                   ))}
+                  <button
+                    type="button"
+                    onClick={handleCopyNotes}
+                    className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 rounded-lg font-bold transition-opacity hover:opacity-90"
+                    style={{ backgroundColor: COLORS.brand, color: COLORS.onBrand }}
+                  >
+                    {copied ? <Check size={18} /> : <Copy size={18} />}
+                    {copied ? 'Copied!' : 'Copy notes'}
+                  </button>
                 </div>
               ) : (
                 <p style={{ color: COLORS.textSecondary }}>
